@@ -5,6 +5,7 @@ The Microsemi SmartFusion2 projects for quadcopter and rover
 1. Горудко Виталий
 2. Радкевич Павел
 3. Позняк Андрей
+4. Вова Артёменко
 
 ## Наборы
 ### Avia Kit (квадрокоптер)
