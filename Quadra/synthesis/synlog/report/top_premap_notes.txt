@@ -1,0 +1,5 @@
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\i2c\quadra\component\work\top\coreuartapb_0\rtl\vhdl\core\rx_async.vhd":443:6:443:7|Removing sequential instance clear_parity_en_xhdl3 of view:PrimLib.dffr(prim) in hierarchy view:coreuartapb_lib.top_CoreUARTapb_0_Rx_async_0_0(translated) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\i2c\quadra\component\work\top\coreuartapb_0\rtl\vhdl\core\rx_async.vhd":443:6:443:7|Removing sequential instance fifo_write_xhdl6 of view:PrimLib.dffs(prim) in hierarchy view:coreuartapb_lib.top_CoreUARTapb_0_Rx_async_0_0(translated) because there are no references to its outputs 
+@N: BN225 |Writing default property annotation file C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\top.sap.

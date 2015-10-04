@@ -1,0 +1,19 @@
+#OPTIONS:"|-mixedhdl|-modhint|C:\\Users\\kruci_000\\Desktop\\SoC\\i2c\\Quadra\\synthesis\\synwork\\_verilog_hintfile|-top|work.tx_rx|-mpparams|C:\\Users\\kruci_000\\Desktop\\SoC\\i2c\\Quadra\\synthesis\\synwork\\_mh_params|-layerid|1|-prodtype|synplify_pro|-primux|-dspmac|-pqdpadd|-fixsmult|-divnmod|-nram|-I|C:\\Users\\kruci_000\\Desktop\\SoC\\i2c\\Quadra\\synthesis\\|-I|C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib|-v2001|-devicelib|C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\generic\\smartfusion2.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work"
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\bin64\\c_ver.exe":1412882178
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\i2c\\Quadra\\synthesis\\synwork\\_verilog_hintfile":1443985807
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\generic\\smartfusion2.v":1412928306
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\umr_capim.v":1412882098
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\scemi_objects.v":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\scemi_pipes.svh":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\hypermods.v":1412881844
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\i2c\\Quadra\\hdl\\rx_tx.v":1443985365
+#numinternalfiles:5
+#defaultlanguage:verilog
+0			"C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\hdl\rx_tx.v" verilog
+#Dependency Lists(Uses List)
+0 -1
+#Dependency Lists(Users Of)
+0 -1
+#Design Unit to File Association
+module work tx_rx 0
+#Unbound instances to file Association.

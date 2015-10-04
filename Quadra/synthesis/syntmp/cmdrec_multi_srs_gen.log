@@ -1,0 +1,7 @@
+C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\bin64\syn_nfilter.exe  -link  -top  work.top  -multisrs  C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\synwork\top_comp.srs  -osyn  C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\synwork\top_mult.srs  -log  C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\synlog\top_multi_srs_gen.srr 
+rc:0 success:1
+C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\synwork\top_comp.srs|i|1443985808|59425
+C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\synwork\top_mult.srs|o|1443985810|14646
+C:\Users\kruci_000\Desktop\SoC\i2c\Quadra\synthesis\synlog\top_multi_srs_gen.srr|o|1443985810|377
+C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\bin\syn_nfilter.exe|i|1412882062|2743296
+C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\bin64\syn_nfilter.exe|i|1412882256|6340608
