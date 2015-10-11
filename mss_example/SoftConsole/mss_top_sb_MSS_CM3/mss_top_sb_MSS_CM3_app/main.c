@@ -210,6 +210,11 @@ void handle_i2c_status(i2c_status_t instance, uint8_t* buf, uint8_t len)
     }
 }
 
+/*------------------------------------------------------------------------------
+ * Slave write handler function called as a result of a the I2C slave being the
+ * target of a write transaction. This function simply displays the date content
+ * of received write transaction.
+ */
 i2c_slave_handler_ret_t slave_write_handler
 (
     i2c_instance_t * this_i2c,

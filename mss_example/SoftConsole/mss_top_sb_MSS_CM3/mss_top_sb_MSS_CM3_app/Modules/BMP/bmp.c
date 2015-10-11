@@ -125,8 +125,3 @@ i2c_status_t do_write_read_transaction
 
     return status;
 }
-/*------------------------------------------------------------------------------
- * Slave write handler function called as a result of a the I2C slave being the
- * target of a write transaction. This function simply displays the date content
- * of received write transaction.
- */
