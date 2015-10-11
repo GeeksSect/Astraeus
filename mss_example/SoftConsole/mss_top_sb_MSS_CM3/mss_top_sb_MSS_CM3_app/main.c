@@ -39,70 +39,10 @@
  *****************************************************************************/
 UART_instance_t g_uart;
 
-/******************************************************************************
- * Instruction message. This message will be transmitted over the UART to
- * HyperTerminal when the program starts.
- *****************************************************************************/
-uint8_t g_message[] =
-"\n\r\n\r\n\rCoreUARTapb polled transmitter and receiver example. \n\rAll characters typed \
-will be echoed back.\n\r";
-
-/******************************************************************************
- * main function.
- *****************************************************************************/
-
-//int main( void )
-//{
-//    uint8_t rx_data[MAX_RX_DATA_SIZE];
-//    size_t rx_size;
-//
-//    /**************************************************************************
-//     * Initialize CoreUARTapb with its base address, baud value, and line
-//     * configuration.
-//     *************************************************************************/
-//    UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_57600, (DATA_8_BITS | NO_PARITY) );
-//
-//    /**************************************************************************
-//     * Send the instructions message.
-//     *************************************************************************/
-//    UART_send( &g_uart, g_message, sizeof(g_message) );
-//
-//    /**************************************************************************
-//     * Infinite Loop.
-//     *************************************************************************/
-//    while(1)
-//    {
-//        /*************************************************************************
-//         * Check for any errors in communication while receiving data
-//         ************************************************************************/
-//        if(UART_APB_NO_ERROR == UART_get_rx_status(&g_uart))
-//        {
-//            /**********************************************************************
-//             * Read data received by the UART.
-//             *********************************************************************/
-//            rx_size = UART_get_rx( &g_uart, rx_data, sizeof(rx_data) );
-//
-//            /**********************************************************************
-//             * Echo back data received, if any.
-//             *********************************************************************/
-//            if ( rx_size > 0 )
-//            {
-//                UART_send( &g_uart, rx_data, rx_size );
-//            }
-//        }
-//    }
-//}
-
-
 /*------------------------------------------------------------------------------
  * Instance data for our two CoreI2C devices
  */
 i2c_instance_t g_core_i2c0;
-
-/*------------------------------------------------------------------------------
- * I2C master serial address.
- */
-#define MASTER_SER_ADDR     0x21
 
 /*-----------------------------------------------------------------------------
  * I2C slave serial address.
@@ -130,7 +70,7 @@ i2c_status_t do_write_transaction(uint8_t, uint8_t * , uint8_t);
 i2c_status_t do_read_transaction(uint8_t, uint8_t * , uint8_t);
 i2c_status_t do_write_read_transaction(uint8_t , uint8_t * , uint8_t , uint8_t * , uint8_t);
 static void display_greeting(void);
-static void select_mode_i2c(void);
+static void select_command(void);
 uint8_t get_data(void);
 void press_any_key_to_continue(void);
 void itoa(char *buf, int base, int d);
@@ -184,7 +124,7 @@ int main(void)
      * menu.
     */
     display_greeting();
-    select_mode_i2c();
+    select_command();
     for(loop_count=0; loop_count < BUFFER_SIZE; loop_count++)
     {
     	g_slave_rx_buffer[loop_count] = 0x00;
@@ -196,186 +136,111 @@ int main(void)
      * Infinite loop processing user commands received over the UART command
      * line interface.
      */
-    do
+    while (1)
     {
         /* Start command line interface if any key is pressed. */
     	rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
         if(rx_size > 0)
         {
+        	int i;
             switch(rx_buff[0])
             {
                 case '1':
                     /*-------------------------------------------------------------------------
-                     * Send The data from Master (COREI2C0)
+                     * Measure temperature (DOF10)
                      */
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMT-SR Mode is Selected\n\r");
-
-                    // Temporary comment !
-                    // g_tx_length = get_data();
-
-                    // For testing BMP180
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rTry to read BMP180 Temperature registers\n\r");
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMeasure temperature\n\r");
 
                     g_master_tx_buf[0] = 0xF4;
                     g_master_tx_buf[1] = 0x2E;
-
                     g_tx_length = 2;
 
-                    /*Perform Master Transmit - Slave Receive */
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rSend data to BMP180\n\r");
+
                     instance = do_write_transaction(SLAVE_SER_ADDR, g_master_tx_buf, g_tx_length);
+                    handle_i2c_status(instance, g_master_tx_buf, g_tx_length);
 
-                    if(I2C_SUCCESS == instance)
-                    {
-                    	if(0 == g_tx_length)
-                    	{
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"0 Byte Data Write Successful\n\r");
-                    	}
-                    	else
-                    	{
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write Successful and Data is: ");
-                            UART_send(&g_uart, g_slave_rx_buffer, g_tx_length);
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
-                    	}
-                        UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
-                    }
-                    else
-                    {
-                    	/*
-                    	 * Distinguish between an identified failure, a time out and just to be paranoid
-                    	 * none of the above.
-                    	 */
-                        if(I2C_FAILED == instance)
-                        {
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write Failed!\n\r");
-                        }
-                        else if(I2C_TIMED_OUT == instance)
-                        {
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write Timed Out!\n\r");
-                        }
-                        else
-                        {
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write Unknown Response!\n\r");
-                        }
+                    // Wait 5ms for temperature measurement. Sys_Freq = 50 MHz
+                    for (i = 0; i < 50 * 5; i++);
 
-                        UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-                    }
-                    /* Display I2C Modes */
+                    g_master_tx_buf[0] = 0xF6;
+                    g_tx_length = 1;
+
+                    instance = do_write_transaction(SLAVE_SER_ADDR, g_master_tx_buf, g_tx_length);
+                    handle_i2c_status(instance, g_master_tx_buf, g_tx_length);
+
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rReceive data from BMP180\n\r");
+
+                    uint8_t bytes_to_read = 2u;
+                    instance = do_read_transaction(SLAVE_SER_ADDR, g_master_rx_buf, bytes_to_read);
+                    handle_i2c_status(instance, g_master_rx_buf, bytes_to_read);
+
+                    /* Display commands */
                     press_any_key_to_continue();
                 break;
 
-                case '2':
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMR-ST Mode is Selected\n\r");
-                    /*Perform Master Receive - Slave Transmit */
-                    instance = do_read_transaction(SLAVE_SER_ADDR, g_master_rx_buf, sizeof(g_master_rx_buf));
-
-                    if(I2C_SUCCESS == instance)
-                    {
-                        UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Read Successful and Data is: ");
-
-                        int i = 0;
-                        char print_buf[BUFFER_SIZE * 2];
-                        for (i = 0; i < 32u; i++)
-                        {
-                        	itoa(&print_buf[2 * i], 'x', g_master_rx_buf[i]);
-                        }
-
-                        // UART_send(&g_uart, g_master_rx_buf, sizeof(g_master_rx_buf));
-                        UART_send(&g_uart, print_buf, sizeof(print_buf));
-                        UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-                    }
-                    else
-                    {
-                    	/*
-                    	 * Distinguish between an identified failure, a time out and just to be paranoid
-                    	 * none of the above.
-                    	 */
-                        if(I2C_FAILED == instance)
-                        {
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Read Failed!\n\r");
-                        }
-                        else if(I2C_TIMED_OUT == instance)
-                        {
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Read Timed Out!\n\r");
-                        }
-                        else
-                        {
-                            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Read Unknown Response!\n\r");
-                        }
-
-                        UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-                    }
-                    /* Display I2C Modes */
-                    press_any_key_to_continue();
-
-                break;
-
-                case '3':
-                    /*-------------------------------------------------------------------------
-                     * Write the Data to Slave and Read The data from Slave (MSS-I2C1)
-                    */
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMT-MR Mode is Selected\n\r");
-                    /*Perform Master Transmit - Master Receive */
-                    g_tx_length = get_data();
-                   	if(0 == g_tx_length)
-                	{
-                        UART_polled_tx_string(&g_uart, (const uint8_t *)"Error: 0 byte transfers not allowed for Write-Read!\n\r");
-                	}
-                   	else
-                   	{
-                   		/* Perform write-Read operation */
-                   		instance = do_write_read_transaction(SLAVE_SER_ADDR, g_master_tx_buf, g_tx_length, g_master_rx_buf, g_tx_length);
-
-						if(I2C_SUCCESS == instance)
-						{
-							UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write-Read Successful\n\r");
-							UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Received in Slave Receive Buffer is: ");
-							UART_send(&g_uart, g_slave_rx_buffer, g_tx_length);
-							UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rData Received to Master Receive Buffer is: ");
-							UART_send(&g_uart, g_master_rx_buf, g_tx_length);
-							UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-						}
-						else
-						{
-							/*
-							 * Distinguish between an identified failure, a time out and just to be paranoid
-							 * none of the above.
-							 */
-							if(I2C_FAILED == instance)
-							{
-								UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write-Read Failed!\n\r");
-							}
-							else if(I2C_TIMED_OUT == instance)
-							{
-								UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write-Read Timed Out!\n\r");
-							}
-							else
-							{
-								UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Write-Read Unknown Response!\n\r");
-							}
-
-							UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-						}
-                   	}
-                    /* Display I2C Modes */
-                    press_any_key_to_continue();
-
-                break;
-
-                case '4':
+                case '0':
                     /* To Exit from the application */
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rReturn from the Main function \n\r\n\r");
+                    return 0;
                 break;
 
                 default:
                     /* To Invalid Entry */
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rEnter A Valid Key: 1, 2, 3 or 4\n\r");
-                    select_mode_i2c();
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rEnter A Valid Key\n\r");
+                    select_command();
                 break;
             }
         }
-    } while(rx_buff[0] !='4');
+    };
 
     return 0;
+}
+
+void handle_i2c_status(i2c_status_t instance, uint8_t* buf, uint8_t len)
+{
+    if(I2C_SUCCESS == instance)
+    {
+    	if(0 == len)
+    	{
+            UART_polled_tx_string(&g_uart, (const uint8_t *)"0 Byte Data Transfer Successful\n\r");
+    	}
+    	else
+    	{
+            int i = 0;
+            uint8_t print_buf[len * 2];
+            for (i = 0; i < len; i++)
+            {
+            	itoa(&print_buf[2 * i], 'x', buf[i]);
+            }
+
+            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Successful and Data is: ");
+            UART_send(&g_uart, print_buf, len * 2);
+            UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+    	}
+        UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
+    }
+    else
+    {
+    	/*
+    	 * Distinguish between an identified failure, a time out and just to be paranoid
+    	 * none of the above.
+    	 */
+        if(I2C_FAILED == instance)
+        {
+            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Failed!\n\r");
+        }
+        else if(I2C_TIMED_OUT == instance)
+        {
+            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Timed Out!\n\r");
+        }
+        else
+        {
+            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Unknown Response!\n\r");
+        }
+
+        UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
+    }
 }
 
 /*------------------------------------------------------------------------------
@@ -483,27 +348,20 @@ i2c_slave_handler_ret_t slave_write_handler
 static void display_greeting(void)
 {
     UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r******************************************************************************\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"**************************** Core I2C Example ********************************\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"**************************** DOF10 CLI ***************************************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"******************************************************************************\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"This example project Demonstrates the use of I2C in Different Modes\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"CoreI2C0 is configured in Master Mode and CoreI2C1 is configured in Slave Mode\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"************* I2C Modes supported by this example project are ****************\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"1. MT-SR :- Master Transmit - Slave Receiver Mode (Write To Slave)\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"2. MR-ST :- Master Receive  - Slave transmit Mode (Read 32 bytes From Slave)\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"3. MT-MR :- Master Transmit - Master Receive Mode (Write To + Read From Slave) \n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"************* Functions supported by this CLI project are ********************\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"1. Read Temperature\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }
 /*------------------------------------------------------------------------------
   Select the I2C Mode.
  */
-static void select_mode_i2c(void)
+static void select_command(void)
 {
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r*********************** Select the I2C Mode to perform ***********************\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '1' to perform MT-SR (Master Transmit - Slave Receive)\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '2' to perform MR-ST (Master Receive  - Slave transmit)\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '3' to perform MT-MR (Master Transmit - Master Receive)\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '4' to EXIT from the Application \n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r*********************** Select the command *******************************\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '1' to measure temperature\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '0' to EXIT from the Application \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }
 
@@ -565,7 +423,7 @@ void press_any_key_to_continue(void)
     do {
         rx_size = UART_get_rx(&g_uart, &rx_char, sizeof(rx_char));
     } while(rx_size == 0);
-    select_mode_i2c();
+    select_command();
 }
 
 
