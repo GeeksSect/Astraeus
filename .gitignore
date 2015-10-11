@@ -2,7 +2,7 @@
 *.mk
 *.d
 *.o
-*.ld
+# *.ld
 *.snap
 *.prefs
 *.sc
