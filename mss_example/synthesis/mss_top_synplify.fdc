@@ -1,0 +1,3 @@
+#1000 define_clock {n:mss_top_sb_0.CCC_0.GL0_net} -name {mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock} -ref_rise {0.000000} -ref_fall {5.000000} -uncertainty {0.000000} -period {10.000000} -clockgroup {Inferred_clkgroup_0} -rise {0.000000} -fall {5.000000}
+define_attribute {i:mss_top_sb_0.BIBUF_COREI2C_0_0_SCL_IO}  {syn_noprune} 1
+define_attribute {i:mss_top_sb_0.BIBUF_COREI2C_0_0_SDA_IO}  {syn_noprune} 1

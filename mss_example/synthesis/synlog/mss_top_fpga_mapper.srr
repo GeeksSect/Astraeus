@@ -1,0 +1,456 @@
+Synopsys Generic Technology Mapper, Version mapact, Build 1350R, Built Oct 16 2014 10:02:37
+Copyright (C) 1994-2014, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+Product Version I-2014.03M-SP1
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+
+@W: MO228 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":296:18:296:21|Optimizing internal tristate to a wire based on don't care (X) analysis
+@W: MO228 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":296:18:296:21|Optimizing internal tristate to a wire based on don't care (X) analysis
+@W: MO228 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":296:18:296:21|Optimizing internal tristate to a wire based on don't care (X) analysis
+@W: MO171 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":781:8:781:9|Sequential instance mss_top_sb_0.CORERESETP_0.sm1_areset_n_q1 reduced to a combinational gate by constant propagation 
+@W: MO228 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":296:18:296:21|Optimizing internal tristate to a wire based on don't care (X) analysis
+@W: MO228 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":296:18:296:21|Optimizing internal tristate to a wire based on don't care (X) analysis
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":805:18:805:21|ROM serSTA_WRITE_PROC\.sersta_31[4:0] mapped in logic.
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":805:18:805:21|ROM serSTA_WRITE_PROC\.sersta_31[4:0] mapped in logic.
+@N: MO106 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":805:18:805:21|Found ROM, 'serSTA_WRITE_PROC\.sersta_31[4:0]', 29 words by 5 bits 
+@W: MO129 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":781:8:781:9|Sequential instance mss_top_sb_0.CORERESETP_0.sm1_areset_n_clk_base reduced to a combinational gate by constant propagation
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|ROM CoreAPB3_0.iPSELS_raw_4[1:0] mapped in logic.
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|ROM CoreAPB3_0.iPSELS_raw_4[1:0] mapped in logic.
+@N: MO106 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|Found ROM, 'CoreAPB3_0.iPSELS_raw_4[1:0]', 16 words by 2 bits 
+@W: MO129 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sequential instance mss_top_sb_0.CORERESETP_0.RESET_N_F2M_int reduced to a combinational gate by constant propagation
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 135MB)
+
+Encoding state machine fsmmod[0:6] (view:corei2c_lib.COREI2CREAL(rtl))
+original code -> new code
+   0000001 -> 0000000
+   0000010 -> 0000011
+   0000100 -> 0000101
+   0001000 -> 0001001
+   0010000 -> 0010001
+   0100000 -> 0100001
+   1000000 -> 1000001
+Encoding state machine fsmsync[0:7] (view:corei2c_lib.COREI2CREAL(rtl))
+original code -> new code
+   00000001 -> 00000000
+   00000010 -> 00000011
+   00000100 -> 00000101
+   00001000 -> 00001001
+   00010000 -> 00010001
+   00100000 -> 00100001
+   01000000 -> 01000001
+   10000000 -> 10000001
+Encoding state machine fsmdet[0:6] (view:corei2c_lib.COREI2CREAL(rtl))
+original code -> new code
+   0000001 -> 0000000
+   0000010 -> 0000011
+   0000100 -> 0000101
+   0001000 -> 0001001
+   0010000 -> 0010001
+   0100000 -> 0100001
+   1000000 -> 1000001
+@N:"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\clock_gen.vhd":203:11:203:12|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Clock_gen(rtl) inst baud_cntr[12:0]
+Encoding state machine xmit_state[0:5] (view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Tx_async(translated))
+original code -> new code
+   00000000000000000000000000000000 -> 000000
+   00000000000000000000000000000001 -> 000011
+   00000000000000000000000000000010 -> 000101
+   00000000000000000000000000000011 -> 001001
+   00000000000000000000000000000100 -> 010001
+   00000000000000000000000000000101 -> 100001
+@W: MO160 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\tx_async.vhd":126:4:126:5|Register bit xmit_state[1] is always 0, optimizing ...
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\tx_async.vhd":277:4:277:5|Removing sequential instance tx_parity in hierarchy view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Tx_async(translated) because there are no references to its outputs 
+Encoding state machine rx_state[0:2] (view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Rx_async(translated))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_0_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
+
+Finished factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 151MB peak: 151MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 143MB peak: 151MB)
+
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":320:6:320:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_parity_calc in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":283:6:283:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_shift[8] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":1543:4:1543:5|Removing sequential instance mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.fsmsync[0] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 141MB peak: 151MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 141MB peak: 151MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 148MB peak: 151MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 148MB peak: 151MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 147MB peak: 151MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 178MB peak: 181MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:04s		    -9.36ns		 523 /       201
+------------------------------------------------------------
+
+
+
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:04s		    -8.89ns		 524 /       201
+------------------------------------------------------------
+
+
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:04s		    -8.89ns		 524 /       201
+------------------------------------------------------------
+
+@N: FP130 |Promoting Net mss_top_sb_0.MSS_READY on CLKINT  I_103 
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 150MB peak: 181MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 150MB peak: 181MB)
+
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+Clock optimization not enabled
+1 non-gated/non-generated clock tree(s) driving 202 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+================================================ Non-Gated/Non-Generated Clocks ================================================
+Clock Tree ID     Driving Element                 Drive Element Type     Fanout     Sample Instance                             
+--------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       mss_top_sb_0.CCC_0.GL0_INST     CLKINT                 202        mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST
+================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+Writing Analyst data base C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\mss_top.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 149MB peak: 181MB)
+
+Writing Analyst data base C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synwork\mss_top_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 149MB peak: 181MB)
+
+Writing EDIF Netlist and constraint files
+@N: BW103 |Synopsys Constraint File time units using default value of 1ns 
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+I-2014.03M-SP1
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 150MB peak: 181MB)
+
+@W: MT246 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\mss_top_sb.vhd":916:0:916:11|Blackbox SYSRESET is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\ccc_0\mss_top_sb_ccc_0_fccc.vhd":106:4:106:11|Blackbox CCC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT420 |Found inferred clock mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock with period 10.00ns. Please declare a user-defined clock on object "n:mss_top_sb_0.CCC_0.GL0_net"
+
+
+
+@S |##### START OF TIMING REPORT #####[
+# Timing Report written on Tue Oct 06 00:01:00 2015
+#
+
+
+Top view:               mss_top
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 0.341
+
+                                                 Requested     Estimated     Requested     Estimated               Clock        Clock              
+Starting Clock                                   Frequency     Frequency     Period        Period        Slack     Type         Group              
+---------------------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     100.0 MHz     103.5 MHz     10.000        9.659         0.341     inferred     Inferred_clkgroup_0
+System                                           100.0 MHz     895.2 MHz     10.000        1.117         8.883     system       system_clkgroup    
+===================================================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                                                      |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                                      Ending                                        |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+System                                        System                                        |  10.000      8.883  |  No paths    -      |  No paths    -      |  No paths    -    
+mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock  mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock  |  10.000      0.341  |  No paths    -      |  No paths    -      |  No paths    -    
+==================================================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                                 Starting                                                                                                                            Arrival          
+Instance                                         Reference                                        Type        Pin                Net                                                 Time        Slack
+                                                 Clock                                                                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[5]      CoreAPB3_0_APBmslave0_PADDR[5]                      3.657       0.341
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[6]      CoreAPB3_0_APBmslave0_PADDR[6]                      3.746       0.526
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[1]      CoreAPB3_0_APBmslave0_PADDR[1]                      3.597       0.630
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[0]      CoreAPB3_0_APBmslave0_PADDR[0]                      3.660       0.699
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[13]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[13]     3.647       1.025
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[7]      CoreAPB3_0_APBmslave0_PADDR[7]                      3.593       1.124
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[8]      CoreAPB3_0_APBmslave0_PADDR[8]                      3.945       1.134
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[14]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[14]     3.652       1.249
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[4]      CoreAPB3_0_APBmslave0_PADDR[4]                      3.560       1.364
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[12]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[12]     3.677       1.435
+======================================================================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                    Starting                                                                                                    Required          
+Instance                                            Reference                                        Type        Pin                Net                         Time         Slack
+                                                    Clock                                                                                                                         
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[2]     N_28_i_0                    9.655        0.341
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[3]     N_26_i_0                    9.393        0.367
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[7]     N_18_i_0                    9.722        0.408
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[4]     N_24_i_0                    9.459        0.433
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[6]     N_20_i_0                    9.590        0.488
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[5]     N_425_i_0                   9.615        0.513
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[0]     N_32_i_0                    9.551        0.525
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[1]     N_30_i_0                    9.629        0.603
+mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.ack           mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE         D                  ack_7                       9.745        0.737
+mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.serdat[0]     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE         EN                 un1_serdat_2_sqmuxa_0_0     9.662        0.861
+==================================================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      10.000
+    - Setup time:                            0.345
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         9.655
+
+    - Propagation time:                      9.314
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     0.341
+
+    Number of logic level(s):                4
+    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[5]
+    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[2]
+    The start point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
+    The end   point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
+
+Instance / Net                                                                    Pin                Pin               Arrival     No. of    
+Name                                                                  Type        Name               Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                          MSS_010     F_HM0_ADDR[5]      Out     3.657     3.657       -         
+CoreAPB3_0_APBmslave0_PADDR[5]                                        Net         -                  -       1.117     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o2_4[7]                CFG4        D                  In      -         4.774       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o2_4[7]                CFG4        Y                  Out     0.470     5.244       -         
+PRDATA_i_o2_4[7]                                                      Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o2[7]                  CFG4        B                  In      -         5.799       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o2[7]                  CFG4        Y                  Out     0.164     5.964       -         
+N_428                                                                 Net         -                  -       0.770     -           6         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o3_0_o2[7]             CFG3        C                  In      -         6.734       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o3_0_o2[7]             CFG3        Y                  Out     0.210     6.943       -         
+N_437                                                                 Net         -                  -       0.812     -           8         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o3_0_o2_RNIVHST[7]     CFG4        D                  In      -         7.755       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_i_o3_0_o2_RNIVHST[7]     CFG4        Y                  Out     0.442     8.197       -         
+N_28_i_0                                                              Net         -                  -       1.117     -           1         
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                          MSS_010     F_HM0_RDATA[2]     In      -         9.314       -         
+=============================================================================================================================================
+Total path delay (propagation time + setup) of 9.659 is 5.287(54.7%) logic and 4.372(45.3%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+
+====================================
+Detailed Report for Clock: System
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                           Starting                                                                                           Arrival          
+Instance                                   Reference     Type               Pin        Net                                                    Time        Slack
+                                           Clock                                                                                                               
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.FABOSC_0.I_RCOSC_25_50MHZ     System        RCOSC_25_50MHZ     CLKOUT     FABOSC_0_RCOSC_25_50MHZ_CCC_OUT_RCOSC_25_50MHZ_CCC     0.000       8.883
+===============================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                Starting                                                                                         Required          
+Instance                        Reference     Type     Pin                Net                                                    Time         Slack
+                                Clock                                                                                                              
+---------------------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.CCC_0.CCC_INST     System        CCC      RCOSC_25_50MHZ     FABOSC_0_RCOSC_25_50MHZ_CCC_OUT_RCOSC_25_50MHZ_CCC     10.000       8.883
+===================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      10.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         10.000
+
+    - Propagation time:                      1.117
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (non-critical) :                 8.883
+
+    Number of logic level(s):                0
+    Starting point:                          mss_top_sb_0.FABOSC_0.I_RCOSC_25_50MHZ / CLKOUT
+    Ending point:                            mss_top_sb_0.CCC_0.CCC_INST / RCOSC_25_50MHZ
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            System [rising]
+
+Instance / Net                                                            Pin                Pin               Arrival     No. of    
+Name                                                   Type               Name               Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.FABOSC_0.I_RCOSC_25_50MHZ                 RCOSC_25_50MHZ     CLKOUT             Out     0.000     0.000       -         
+FABOSC_0_RCOSC_25_50MHZ_CCC_OUT_RCOSC_25_50MHZ_CCC     Net                -                  -       1.117     -           1         
+mss_top_sb_0.CCC_0.CCC_INST                            CCC                RCOSC_25_50MHZ     In      -         1.117       -         
+=====================================================================================================================================
+Total path delay (propagation time + setup) of 1.117 is 0.000(0.0%) logic and 1.117(100.0%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+---------------------------------------
+Resource Usage Report for mss_top 
+
+Mapping to part: m2s010tq144std
+Cell usage:
+CCC             1 use
+CLKINT          2 uses
+MSS_010         1 use
+OR3             3 uses
+RCOSC_25_50MHZ  1 use
+CFG1           5 uses
+CFG2           92 uses
+CFG3           126 uses
+CFG4           285 uses
+
+Carry primitives used for arithmetic functions:
+ARI1           14 uses
+
+
+Sequential Cells: 
+SLE            201 uses
+
+DSP Blocks:    0
+
+I/O ports: 5
+I/O primitives: 5
+BIBUF          2 uses
+INBUF          1 use
+OUTBUF         1 use
+SYSRESET       1 use
+
+
+Global Clock Buffers: 2
+
+
+Total LUTs:    522
+
+Extra resources required for RAM and MACC interface logic during P&R:
+
+RAM64x18 Interface Logic : SLEs = 0; LUTs = 0;
+RAM1K18  Interface Logic : SLEs = 0; LUTs = 0;
+MACC     Interface Logic : SLEs = 0; LUTs = 0;
+
+Total number of SLEs after P&R:  201 + 0 + 0 + 0 = 201;
+Total number of LUTs after P&R:  522 + 0 + 0 + 0 = 522;
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 53MB peak: 181MB)
+
+Process took 0h:00m:07s realtime, 0h:00m:07s cputime
+# Tue Oct 06 00:01:01 2015
+
+###########################################################]

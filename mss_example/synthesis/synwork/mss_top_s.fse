@@ -1,0 +1,56 @@
+
+fsm_encoding {142446424461} onehot
+
+fsm_state_encoding {142446424461} fsmmod0 {0000001}
+
+fsm_state_encoding {142446424461} fsmmod1 {0000010}
+
+fsm_state_encoding {142446424461} fsmmod2 {0000100}
+
+fsm_state_encoding {142446424461} fsmmod3 {0001000}
+
+fsm_state_encoding {142446424461} fsmmod4 {0010000}
+
+fsm_state_encoding {142446424461} fsmmod5 {0100000}
+
+fsm_state_encoding {142446424461} fsmmod6 {1000000}
+
+fsm_registers {142446424461} {fsmmod[0]}  {fsmmod[1]}  {fsmmod[2]}  {fsmmod[3]}  {fsmmod[4]}  {fsmmod[5]}  {fsmmod[6]} 
+
+fsm_encoding {141543415433} onehot
+
+fsm_state_encoding {141543415433} fsmsync0 {00000001}
+
+fsm_state_encoding {141543415433} fsmsync1 {00000010}
+
+fsm_state_encoding {141543415433} fsmsync2 {00000100}
+
+fsm_state_encoding {141543415433} fsmsync3 {00001000}
+
+fsm_state_encoding {141543415433} fsmsync4 {00010000}
+
+fsm_state_encoding {141543415433} fsmsync5 {00100000}
+
+fsm_state_encoding {141543415433} fsmsync6 {01000000}
+
+fsm_state_encoding {141543415433} fsmsync7 {10000000}
+
+fsm_registers {141543415433} {fsmsync[0]}  {fsmsync[1]}  {fsmsync[2]}  {fsmsync[3]}  {fsmsync[4]}  {fsmsync[5]}  {fsmsync[6]}  {fsmsync[7]} 
+
+fsm_encoding {142224422242} onehot
+
+fsm_state_encoding {142224422242} fsmdet0 {0000001}
+
+fsm_state_encoding {142224422242} fsmdet1 {0000010}
+
+fsm_state_encoding {142224422242} fsmdet2 {0000100}
+
+fsm_state_encoding {142224422242} fsmdet3 {0001000}
+
+fsm_state_encoding {142224422242} fsmdet4 {0010000}
+
+fsm_state_encoding {142224422242} fsmdet5 {0100000}
+
+fsm_state_encoding {142224422242} fsmdet6 {1000000}
+
+fsm_registers {142224422242} {fsmdet[0]}  {fsmdet[1]}  {fsmdet[2]}  {fsmdet[3]}  {fsmdet[4]}  {fsmdet[5]}  {fsmdet[6]} 

@@ -1,0 +1,45 @@
+Resource Usage Report for mss_top 
+
+Mapping to part: m2s010tq144std
+Cell usage:
+CCC             1 use
+CLKINT          2 uses
+MSS_010         1 use
+OR3             3 uses
+RCOSC_25_50MHZ  1 use
+CFG1           5 uses
+CFG2           92 uses
+CFG3           126 uses
+CFG4           285 uses
+
+Carry primitives used for arithmetic functions:
+ARI1           14 uses
+
+
+Sequential Cells: 
+SLE            201 uses
+
+DSP Blocks:    0
+
+I/O ports: 5
+I/O primitives: 5
+BIBUF          2 uses
+INBUF          1 use
+OUTBUF         1 use
+SYSRESET       1 use
+
+
+Global Clock Buffers: 2
+
+
+Total LUTs:    522
+
+Extra resources required for RAM and MACC interface logic during P&R:
+
+RAM64x18 Interface Logic : SLEs = 0; LUTs = 0;
+RAM1K18  Interface Logic : SLEs = 0; LUTs = 0;
+MACC     Interface Logic : SLEs = 0; LUTs = 0;
+
+Total number of SLEs after P&R:  201 + 0 + 0 + 0 = 201;
+Total number of LUTs after P&R:  522 + 0 + 0 + 0 = 522;
+
