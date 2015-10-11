@@ -15,5 +15,6 @@
 *.srec
 *.S
 *.a
+*.sav
 *Debug*
 !*.ld
