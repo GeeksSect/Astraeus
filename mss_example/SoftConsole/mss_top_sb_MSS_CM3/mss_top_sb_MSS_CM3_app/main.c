@@ -58,24 +58,14 @@ i2c_instance_t g_core_i2c0;
 #define ENTER          13u
 
 /*-----------------------------------------------------------------------------
- * I2C operation timeout value in mS. Define as I2C_NO_TIMEOUT to disable the
- * timeout functionality.
- */
-#define DEMO_I2C_TIMEOUT 3000u
-
-/*-----------------------------------------------------------------------------
  * Local functions.
  */
 i2c_slave_handler_ret_t slave_write_handler(i2c_instance_t *, uint8_t *, uint16_t);
 void report_bytes_written(uint8_t * p_rx_data, uint16_t rx_size);
-i2c_status_t do_write_transaction(uint8_t, uint8_t * , uint8_t);
-i2c_status_t do_read_transaction(uint8_t, uint8_t * , uint8_t);
-i2c_status_t do_write_read_transaction(uint8_t , uint8_t * , uint8_t , uint8_t * , uint8_t);
 static void display_greeting(void);
 static void select_command(void);
 uint8_t get_data(void);
 void press_any_key_to_continue(void);
-void itoa(char *buf, int base, int d);
 
 /*------------------------------------------------------------------------------
  * I2C buffers. These are the buffers where data written transferred via I2C
@@ -149,7 +139,7 @@ int main(void)
                 case '1':
                     /* Measure temperature (DOF10) */
                 	g_rx_length = 2;
-                	BMP_init(SLAVE_SER_ADDR);
+                	BMP_init(&g_core_i2c0, SLAVE_SER_ADDR);
                 	instance = BMP_get_temperature(g_master_rx_buf, g_rx_length);
                 	handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
                     /* Display commands */
@@ -219,82 +209,6 @@ void handle_i2c_status(i2c_status_t instance, uint8_t* buf, uint8_t len)
         UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
     }
 }
-
-/*------------------------------------------------------------------------------
- * Perform read transaction with parameters gathered from the command line
- * interface. This function is called as a result of the user's input in the
- * command line interface.
- */
-i2c_status_t do_read_transaction
-(
-    uint8_t serial_addr,
-    uint8_t * rx_buffer,
-    uint8_t read_length
-)
-{
-    i2c_status_t status;
-
-    I2C_read(&g_core_i2c0, serial_addr, rx_buffer, read_length, I2C_RELEASE_BUS);
-
-    status = I2C_wait_complete(&g_core_i2c0, DEMO_I2C_TIMEOUT);
-
-    return status;
-}
-
-/*------------------------------------------------------------------------------
- * Perform write transaction with parameters gathered from the command line
- * interface. This function is called as a result of the user's input in the
- * command line interface.
- */
-i2c_status_t do_write_transaction
-(
-    uint8_t serial_addr,
-    uint8_t * tx_buffer,
-    uint8_t write_length
-)
-{
-    i2c_status_t status;
-
-    I2C_write(&g_core_i2c0, serial_addr, tx_buffer, write_length, I2C_RELEASE_BUS);
-
-    status = I2C_wait_complete(&g_core_i2c0, DEMO_I2C_TIMEOUT);
-
-    return status;
-}
-
-/*------------------------------------------------------------------------------
- * Perform write-read transaction with parameters gathered from the command
- * line interface. This function is called as a result of the user's input in
- * the command line interface.
- */
-i2c_status_t do_write_read_transaction
-(
-    uint8_t serial_addr,
-    uint8_t * tx_buffer,
-    uint8_t write_length,
-    uint8_t * rx_buffer,
-    uint8_t read_length
-)
-{
-    i2c_status_t status;
-
-    I2C_write_read(&g_core_i2c0,
-                       serial_addr,
-                       tx_buffer,
-                       write_length,
-                       rx_buffer,
-                       read_length,
-                       I2C_RELEASE_BUS);
-
-    status = I2C_wait_complete(&g_core_i2c0, DEMO_I2C_TIMEOUT);
-
-    return status;
-}
-/*------------------------------------------------------------------------------
- * Slave write handler function called as a result of a the I2C slave being the
- * target of a write transaction. This function simply displays the date content
- * of received write transaction.
- */
 
 i2c_slave_handler_ret_t slave_write_handler
 (

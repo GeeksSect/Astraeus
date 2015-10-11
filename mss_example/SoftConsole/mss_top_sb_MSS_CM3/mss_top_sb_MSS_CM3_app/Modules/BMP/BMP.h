@@ -20,6 +20,7 @@ extern "C" {
 */
 void BMP_init
 (
+	i2c_instance_t* i2c_instance,
 	uint8_t addr
 );
 
