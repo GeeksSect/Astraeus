@@ -1,5 +1,5 @@
 #include "bmp.h"
-#include "../Helpers/sys_helper.h"
+#include "../../Helpers/sys_helper/sys_helper.h"
 
 #define BUFFER_SIZE    32u
 
