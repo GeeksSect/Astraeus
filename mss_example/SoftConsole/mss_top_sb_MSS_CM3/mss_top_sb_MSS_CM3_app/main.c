@@ -15,13 +15,14 @@
  * SVN $Revision: 3101 $
  * SVN $Date: 2010-10-22 18:20:56 +0530 (Fri, 22 Oct 2010) $
  */
+#include "Modules/BMP/bmp.h"
+
 #include "hal.h"
 #include "mss_top_hw_platform.h"
 #include "core_uart_apb.h"
 #include "CMSIS/m2sxxx.h"
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers_config/sys_config/sys_config.h"
-
 /******************************************************************************
  * Baud value to achieve a 57600 baud rate with a 24MHz system clock.
  * This value is calculated using the following equation:
@@ -142,39 +143,14 @@ int main(void)
     	rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
         if(rx_size > 0)
         {
-        	int i;
             switch(rx_buff[0])
             {
                 case '1':
-                    /*-------------------------------------------------------------------------
-                     * Measure temperature (DOF10)
-                     */
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMeasure temperature\n\r");
-
-                    g_master_tx_buf[0] = 0xF4;
-                    g_master_tx_buf[1] = 0x2E;
-                    g_tx_length = 2;
-
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rSend data to BMP180\n\r");
-
-                    instance = do_write_transaction(SLAVE_SER_ADDR, g_master_tx_buf, g_tx_length);
-                    handle_i2c_status(instance, g_master_tx_buf, g_tx_length);
-
-                    // Wait 5ms for temperature measurement. Sys_Freq = 50 MHz
-                    for (i = 0; i < 50 * 5; i++);
-
-                    g_master_tx_buf[0] = 0xF6;
-                    g_tx_length = 1;
-
-                    instance = do_write_transaction(SLAVE_SER_ADDR, g_master_tx_buf, g_tx_length);
-                    handle_i2c_status(instance, g_master_tx_buf, g_tx_length);
-
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rReceive data from BMP180\n\r");
-
-                    uint8_t bytes_to_read = 2u;
-                    instance = do_read_transaction(SLAVE_SER_ADDR, g_master_rx_buf, bytes_to_read);
-                    handle_i2c_status(instance, g_master_rx_buf, bytes_to_read);
-
+                    /* Measure temperature (DOF10) */
+                	g_rx_length = 2;
+                	BMP_init(SLAVE_SER_ADDR);
+                	instance = BMP_get_temperature(g_master_rx_buf, g_rx_length);
+                	handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
                     /* Display commands */
                     press_any_key_to_continue();
                 break;
