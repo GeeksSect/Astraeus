@@ -1,20 +1,3 @@
-/*******************************************************************************
- * (c) Copyright 2008-2010 Actel Corporation.  All rights reserved.
- *
- * CoreUARTapb polled transmit and  receive example.
- *
- * This simple example demonstrates how to use the CoreUARTapb driver to
- * transmit and receive data in polled mode.
- * This sample project is targeted at a Cortex-M1 design running on the Fusion
- * Embedded Development Kit (FEDK) board connected via a serial cable to a host
- * PC running HyperTerminal. HyperTerminal must be configured for 57600 baud,
- * 8 bits, 1 stop bit no parity, and no flow control.
- * This program displays a message on HyperTerminal then echoed back characters
- * typed in HyperTerminal.
- *
- * SVN $Revision: 3101 $
- * SVN $Date: 2010-10-22 18:20:56 +0530 (Fri, 22 Oct 2010) $
- */
 #include "Modules/BMP/bmp.h"
 #include "Helpers/converter/converter.h"
 
@@ -25,7 +8,7 @@
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers_config/sys_config/sys_config.h"
 /******************************************************************************
- * Baud value to achieve a 57600 baud rate with a 24MHz system clock.
+ * Baud value to achieve a 115200 baud rate with a 50 MHz system clock.
  * This value is calculated using the following equation:
  *      BAUD_VALUE = (CLOCK / (16 * BAUD_RATE)) - 1
  *****************************************************************************/
@@ -41,14 +24,6 @@
  *****************************************************************************/
 UART_instance_t g_uart;
 
-/*------------------------------------------------------------------------------
- * Instance data for our two CoreI2C devices
- */
-i2c_instance_t g_core_i2c0;
-
-/*-----------------------------------------------------------------------------
- * I2C slave serial address.
- */
 #define SLAVE_SER_ADDR     0x77
 
 /*-----------------------------------------------------------------------------
@@ -82,27 +57,23 @@ static uint8_t g_master_tx_buf[BUFFER_SIZE];
 static uint8_t g_tx_length=0x00;
 static uint8_t g_rx_length=0x00;
 
+void setup()
+{
+	i2c_init(1); // argument no matter
+	BMP_calibrate();
+}
+
 int main(void)
 {
-    i2c_status_t instance;
+    i2c_status_t status;
     uint8_t rx_size = 0;
     uint8_t rx_buff[1];
     uint8_t loop_count;
 
-    /*------------------------------------------------------------------------
+    /***************************************************************************
      * Initialize the UART driver with 11500 baud
-     */
+     **************************************************************************/
     UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
-
-    /*-------------------------------------------------------------------------
-     * Initialize the CoreI2C driver with its base address, I2C serial address
-     * and serial clock divider.
-     */
-    I2C_init(&g_core_i2c0, COREI2C_0_0, SLAVE_SER_ADDR, I2C_PCLK_DIV_256);
-    I2C_set_slave_tx_buffer(&g_core_i2c0, g_slave_tx_buffer, sizeof(g_slave_tx_buffer));
-    I2C_set_slave_mem_offset_length(&g_core_i2c0, 2);
-    I2C_set_slave_rx_buffer(&g_core_i2c0, g_slave_rx_buffer, sizeof(g_slave_rx_buffer));
-    I2C_register_write_handler(&g_core_i2c0, slave_write_handler);
 
     /*-------------------------------------------------------------------------
      * Initialize the system tick for 10mS operation or 1 tick every 100th of
@@ -137,14 +108,17 @@ int main(void)
             switch(rx_buff[0])
             {
                 case '1':
+                {
                     /* Measure temperature (DOF10) */
-                	g_rx_length = 2;
-                	BMP_init(&g_core_i2c0, SLAVE_SER_ADDR);
-                	instance = BMP_get_temperature(g_master_rx_buf, g_rx_length);
-                	handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
+                    uint16_t temperature;
+                    status = BMP_get_temperature(&temperature);
+                    // TODO! replace it by normal handler
+                    // handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
+
                     /* Display commands */
                     press_any_key_to_continue();
-                break;
+                    break;
+                }
 
                 case '0':
                     /* To Exit from the application */

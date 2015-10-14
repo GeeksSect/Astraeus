@@ -8,30 +8,40 @@
 #define BMP_H_
 
 #include "cpu_types.h"
-#include "core_i2c.h"
+#include "../../Helpers/I2C/i2c.h"
+
+#define BMP180_SERIAL_ADDRESS 0x77
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+struct Cal_values
+{
+    // Calibration values
+    int ac1;
+    int ac2;
+    int ac3;
+    unsigned int ac4;
+    unsigned int ac5;
+    unsigned int ac6;
+    int b1;
+    int b2;
+    int mb;
+    int mc;
+    int md;
+} g_bmp_cal_values;
 
-/*-------------------------------------------------------------------------
- * Initialization of module (DOF10)
-*/
-void BMP_init
-(
-	i2c_instance_t* i2c_instance,
-	uint8_t addr
-);
+/************************************
+ * @return: 0 if calibration completed successful.
+ *          In other cases return != 0
+ ************************************/
+uint8_t BMP_calibrate();
 
 /*-------------------------------------------------------------------------
  * Measure temperature (DOF10)
 */
-i2c_status_t BMP_get_temperature
-(
-	uint8_t* res_buf,
-	uint8_t res_len
-);
+i2c_status_t BMP_get_temperature(uint16_t* temperature);
 
 #ifdef __cplusplus
 }
