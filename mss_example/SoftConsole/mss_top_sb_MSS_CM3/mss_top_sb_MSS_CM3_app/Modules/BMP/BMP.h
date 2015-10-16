@@ -7,14 +7,12 @@
 #ifndef BMP_H_
 #define BMP_H_
 
-#include "cpu_types.h"
+#include <stdint.h>
+
+#include "../../Helpers/sys_helper/sys_helper.h"
 #include "../../Helpers/I2C/i2c.h"
 
 #define BMP180_SERIAL_ADDRESS 0x77
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 struct Cal_values
 {
@@ -42,9 +40,5 @@ uint8_t BMP_calibrate();
  * Measure temperature (DOF10)
 */
 i2c_status_t BMP_get_temperature(uint16_t* temperature);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* BMP_H_ */

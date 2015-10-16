@@ -20,7 +20,7 @@
 // Global variables. I2C instances
 i2c_instance_t g_core_i2c0;
 
-uint32_t i2c_timeout = 3000u;
+// uint32_t i2c_timeout_0 = 3000u;
 
 void i2c_init(uint8_t chanels_count);
 
@@ -34,8 +34,12 @@ i2c_status_t i2c_readBytes(uint8_t serial_addr,
                            uint8_t chanel);
 
 i2c_status_t i2c_writeBytes(uint8_t serial_addr,
-                            uint8_t * tx_buffer,
+                            uint8_t* tx_buffer,
                             uint8_t write_length,
                             uint8_t chanel);
+
+/*------------------------------------------------------------------------------
+ * Service the I2C timeout functionality.
+ */
 
 #endif /* I2C_H_ */

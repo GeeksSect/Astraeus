@@ -26,33 +26,29 @@ i2c_status_t i2c_readInt(uint8_t serial_addr,
     i2c_status_t status;
     uint8_t rx_buf[2];
     I2C_read(&g_core_i2c0, serial_addr, rx_buf, 2, I2C_RELEASE_BUS);
-    status = I2C_wait_complete(&g_core_i2c0, i2c_timeout);
+    status = I2C_wait_complete(&g_core_i2c0, 3000u);
     *out_int = (rx_buf[0] << 8) | rx_buf[1];
     return status;
 }
 
-i2c_status_t readBytes
-(
-    uint8_t serial_addr,
-    uint8_t* rx_buffer,
-    uint8_t read_length
-)
+i2c_status_t i2c_readBytes(uint8_t serial_addr,
+                           uint8_t* rx_buffer,
+                           uint8_t read_length,
+                           uint8_t chanel)
 {
     i2c_status_t status;
     I2C_read(&g_core_i2c0, serial_addr, rx_buffer, read_length, I2C_RELEASE_BUS);
-    status = I2C_wait_complete(&g_core_i2c0, i2c_timeout);
+    status = I2C_wait_complete(&g_core_i2c0, 3000u);
     return status;
 }
 
-i2c_status_t writeBytes
-(
-    uint8_t serial_addr,
-    uint8_t * tx_buffer,
-    uint8_t write_length
-)
+i2c_status_t i2c_writeBytes(uint8_t serial_addr,
+                            uint8_t* tx_buffer,
+                            uint8_t write_length,
+                            uint8_t chanel)
 {
     i2c_status_t status;
     I2C_write(&g_core_i2c0, serial_addr, tx_buffer, write_length, I2C_RELEASE_BUS);
-    status = I2C_wait_complete(&g_core_i2c0, i2c_timeout);
+    status = I2C_wait_complete(&g_core_i2c0, 3000u);
     return status;
 }

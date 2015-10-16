@@ -1,9 +1,4 @@
 #include "bmp.h"
-#include "../../Helpers/sys_helper/sys_helper.h"
-
-i2c_status_t do_write_transaction(uint8_t, uint8_t * , uint8_t);
-i2c_status_t do_read_transaction(uint8_t, uint8_t * , uint8_t);
-i2c_status_t do_write_read_transaction(uint8_t , uint8_t * , uint8_t , uint8_t * , uint8_t);
 
 #define BUFFER_SIZE    32u
 
