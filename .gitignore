@@ -1,20 +1,18 @@
-*makefile*
-*.mk
+# *.mk
 *.d
 *.o
 # *.ld
-*.snap
-*.prefs
-*.sc
-*.index
-*.pdom
+# *.snap
+# *.prefs
+# *.sc
+# *.index
+# *.pdom
 *.log
 *.hex
-*.lst
-*.map
-*.srec
-*.S
-*.a
-*.sav
+# *.lst
+# *.map
+# *.srec
+# *.S
+# *.a
 *Debug*
 !*.ld
