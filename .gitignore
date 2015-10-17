@@ -10,7 +10,7 @@
 *.log
 *.hex
 # *.lst
-*.map
+# *.map
 # *.srec
 # *.S
 # *.a
