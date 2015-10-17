@@ -52,3 +52,18 @@ i2c_status_t i2c_writeBytes(uint8_t serial_addr,
     status = I2C_wait_complete(&g_core_i2c0, 3000u);
     return status;
 }
+
+i2c_status_t i2c_write_read(uint8_t serial_addr,
+							uint8_t* tx_buffer,
+							uint8_t write_length,
+							uint8_t* rx_buffer,
+							uint8_t read_length,
+							uint8_t chanel)
+{
+	i2c_status_t status;
+	status = i2c_writeBytes(serial_addr, tx_buffer, write_length, chanel);
+	if (I2C_SUCCESS == status) {
+		status = i2c_readBytes(serial_addr, rx_buffer, read_length, chanel);
+	}
+	return status;
+}
