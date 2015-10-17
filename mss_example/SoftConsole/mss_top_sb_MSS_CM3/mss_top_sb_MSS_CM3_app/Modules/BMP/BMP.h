@@ -10,7 +10,7 @@
 #include <stdint.h>
 
 #include "../../Helpers/sys_helper/sys_helper.h"
-#include "../../Helpers/I2C/i2c.h"
+#include "../I2C/i2c.h"
 
 #define BMP180_SERIAL_ADDRESS 0x77
 

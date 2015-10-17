@@ -1,4 +1,5 @@
 #include "Modules/BMP/bmp.h"
+#include "Modules/I2C/i2c.h"
 #include "Helpers/converter/converter.h"
 
 #include "hal.h"
@@ -59,6 +60,7 @@ static uint8_t g_rx_length=0x00;
 
 void setup()
 {
+	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 }
@@ -70,10 +72,7 @@ int main(void)
     uint8_t rx_buff[1];
     uint8_t loop_count;
 
-    /***************************************************************************
-     * Initialize the UART driver with 11500 baud
-     **************************************************************************/
-    UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
+    setup();
 
     /*-------------------------------------------------------------------------
      * Initialize the system tick for 10mS operation or 1 tick every 100th of
@@ -82,10 +81,6 @@ int main(void)
     NVIC_SetPriority(SysTick_IRQn, 0xFFu); /* Lowest possible priority */
     SysTick_Config(MSS_SYS_M3_CLK_FREQ / 100);
 
-    /*-------------------------------------------------------------------------
-     * Display the initial information about the demo followed by the main
-     * menu.
-    */
     display_greeting();
     select_command();
     for(loop_count=0; loop_count < BUFFER_SIZE; loop_count++)
@@ -95,10 +90,6 @@ int main(void)
         g_master_tx_buf[loop_count] = 0x00;
     }
 
-    /*--------------------------------------------------------------------------
-     * Infinite loop processing user commands received over the UART command
-     * line interface.
-     */
     while (1)
     {
         /* Start command line interface if any key is pressed. */
@@ -110,10 +101,16 @@ int main(void)
                 case '1':
                 {
                     /* Measure temperature (DOF10) */
-                    uint16_t temperature;
+                    uint16_t temperature = 0xFFFF;
                     status = BMP_get_temperature(&temperature);
                     // TODO! replace it by normal handler
                     // handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
+
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rTemperature is: ");
+                    uint8_t print_buf[4];
+                    itoa((char *)&print_buf, 'x', temperature);
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)" C\n\r");
 
                     /* Display commands */
                     press_any_key_to_continue();
@@ -294,6 +291,20 @@ void press_any_key_to_continue(void)
         rx_size = UART_get_rx(&g_uart, &rx_char, sizeof(rx_char));
     } while(rx_size == 0);
     select_command();
+}
+
+/*------------------------------------------------------------------------------
+ * Service the I2C timeout functionality.
+ */
+void SysTick_Handler(void)
+{
+    I2C_system_tick(&g_core_i2c0, 10);
+}
+
+
+void FabricIrq0_IRQHandler(void)
+{
+	I2C_isr(&g_core_i2c0);
 }
 
 

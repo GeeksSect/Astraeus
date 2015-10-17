@@ -7,7 +7,7 @@
 
 #include "i2c.h"
 
-void i2c0_init(uint8_t chanels_count)
+void i2c_init(uint8_t chanels_count)
 {
     /*-------------------------------------------------------------------------
      * Initialize the CoreI2C driver with its base address, I2C serial address

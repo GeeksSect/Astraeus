@@ -38,8 +38,4 @@ i2c_status_t i2c_writeBytes(uint8_t serial_addr,
                             uint8_t write_length,
                             uint8_t chanel);
 
-/*------------------------------------------------------------------------------
- * Service the I2C timeout functionality.
- */
-
 #endif /* I2C_H_ */
