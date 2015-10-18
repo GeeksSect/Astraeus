@@ -1,5 +1,6 @@
 #include "Modules/BMP/bmp.h"
 #include "Modules/I2C/i2c.h"
+#include "Modules/MPU6050/mpu6050.h"
 #include "Helpers/converter/converter.h"
 
 #include "hal.h"
@@ -63,6 +64,7 @@ void setup()
 	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
+	MPU6050_initialize();
 }
 
 int main(void)
@@ -93,7 +95,7 @@ int main(void)
     while (1)
     {
         /* Start command line interface if any key is pressed. */
-    	rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
+        rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
         if(rx_size > 0)
         {
             switch(rx_buff[0])
@@ -111,6 +113,57 @@ int main(void)
                     itoa((char *)&print_buf, 'x', temperature);
                     UART_send(&g_uart, (const uint8_t *)print_buf, 4);
                     UART_polled_tx_string(&g_uart, (const uint8_t *)" C\n\r");
+
+                    /* Display commands */
+                    press_any_key_to_continue();
+                    break;
+                }
+
+                case '2':
+                {
+                    uint16_t ax = 0x0000;
+                    uint16_t ay = 0x0000;
+                    uint16_t az = 0x0000;
+                    uint16_t gx = 0x0000;
+                    uint16_t gy = 0x0000;
+                    uint16_t gz = 0x0000;
+
+                    MPU6050_getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+                    // TODO! replace it by normal handler
+                    // handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
+
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMPU6050 data is:\n\r");
+                    uint8_t print_buf[4];
+
+                    itoa((char *)&print_buf, 'x', ax);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r ax : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', ay);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r ay : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', az);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r az : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', gx);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r gx : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', gy);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r gy : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', gz);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r gz : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
 
                     /* Display commands */
                     press_any_key_to_continue();
@@ -228,6 +281,7 @@ static void select_command(void)
 {
     UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r*********************** Select the command *******************************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '1' to measure temperature\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '2' to get data from MPU6050 \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '0' to EXIT from the Application \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }

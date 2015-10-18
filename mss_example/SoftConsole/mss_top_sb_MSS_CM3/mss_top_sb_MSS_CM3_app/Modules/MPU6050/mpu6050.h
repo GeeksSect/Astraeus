@@ -365,9 +365,9 @@
 #define MPU6050_DMP_MEMORY_BANK_SIZE    256
 #define MPU6050_DMP_MEMORY_CHUNK_SIZE   16
 
-static uint8_t dev_addr;
+static uint8_t mpu6050_dev_addr;
 
-void MPU6050_initialize(uint8_t addr);
+void MPU6050_initialize();
 
 void MPU6050_setClockSource(uint8_t source);
 
@@ -376,5 +376,14 @@ void MPU6050_setFullScaleGyroRange(uint8_t range);
 void MPU6050_setFullScaleAccelRange(uint8_t range);
 
 void MPU6050_setSleepEnabled(uint8_t enabled);
+
+void MPU6050_setDLPFMode(uint8_t mode);
+
+void MPU6050_getMotion6(int16_t* ax,
+                        int16_t* ay,
+                        int16_t* az,
+                        int16_t* gx,
+                        int16_t* gy,
+                        int16_t* gz);
 
 #endif /* MPU6050_H_ */
