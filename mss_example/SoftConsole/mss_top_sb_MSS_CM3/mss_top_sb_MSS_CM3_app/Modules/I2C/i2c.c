@@ -52,3 +52,67 @@ i2c_status_t i2c_writeBytes(uint8_t serial_addr,
     status = I2C_wait_complete(&g_core_i2c0, 3000u);
     return status;
 }
+
+i2c_status_t i2c_writeBits(uint8_t dev_addr,
+                           uint8_t reg_addr,
+                           uint8_t bit_start,
+                           uint8_t length,
+                           uint8_t data,
+                           uint8_t channel)
+{
+    //      010 value to write
+    // 76543210 bit numbers
+    //    xxx   args: bitStart=4, length=3
+    // 00011100 mask byte
+    // 10101111 original value (sample)
+    // 10100011 original & ~mask
+    // 10101011 masked | value
+    uint8_t b;
+    i2c_status_t status;
+    status  = i2c_writeBytes(dev_addr, &reg_addr, 1, 0);
+    status |= i2c_readBytes(dev_addr, &b, 1, 0);
+    if (status == I2C_SUCCESS)
+    {
+        uint8_t mask = ((1 << length) - 1) << (bit_start - length + 1);
+        data <<= (bit_start - length + 1); // shift data into correct position
+        data &= mask; // zero all non-important bits in data
+        b &= ~(mask); // zero all important bits in existing byte
+        b |= data; // combine data with existing byte
+
+        uint8_t tx_buf[2];
+        uint8_t tx_len = 2;
+
+        tx_buf[0] = reg_addr;
+        tx_buf[1] = b;
+
+        status |= i2c_writeBytes(dev_addr, tx_buf, tx_len, 0);
+        return status;
+    }
+    return status;
+ }
+
+i2c_status_t i2c_writeBit(uint8_t dev_addr,
+                          uint8_t reg_addr,
+                          uint8_t bit_num,
+                          uint8_t data,
+                          uint8_t channel)
+{
+    uint8_t b;
+    i2c_status_t status;
+    status  = i2c_writeBytes(dev_addr, &reg_addr, 1, 0);
+    status |= i2c_readBytes(dev_addr, &b, 1, 0);
+    if (status == I2C_SUCCESS)
+    {
+        b = (data != 0) ? (b | (1 << bit_num)) : (b & ~(1 << bit_num));
+
+        uint8_t tx_buf[2];
+        uint8_t tx_len = 2;
+
+        tx_buf[0] = reg_addr;
+        tx_buf[1] = b;
+
+        status |= i2c_writeBytes(dev_addr, tx_buf, tx_len, 0);
+        return status;
+    }
+    return status;
+ }
