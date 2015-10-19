@@ -1,0 +1,20 @@
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":805:18:805:21|ROM serSTA_WRITE_PROC\.sersta_31[4:0] mapped in logic.
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":805:18:805:21|ROM serSTA_WRITE_PROC\.sersta_31[4:0] mapped in logic.
+@N: MO106 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":805:18:805:21|Found ROM, 'serSTA_WRITE_PROC\.sersta_31[4:0]', 29 words by 5 bits 
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|ROM CoreAPB3_0.iPSELS_raw_4[1:0] mapped in logic.
+@N: FA239 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|ROM CoreAPB3_0.iPSELS_raw_4[1:0] mapped in logic.
+@N: MO106 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|Found ROM, 'CoreAPB3_0.iPSELS_raw_4[1:0]', 16 words by 2 bits 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\tx_async.vhd":277:4:277:5|Removing sequential instance tx_parity in hierarchy view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Tx_async(translated) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_0_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":320:6:320:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_parity_calc in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":283:6:283:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_shift[8] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
+@N: BN362 :"c:\users\kruci_000\desktop\soc\mss_cemetery\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":1543:4:1543:5|Removing sequential instance mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.fsmsync[0] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
+@N: FP130 |Promoting Net mss_top_sb_0.MSS_READY on CLKINT  I_103 
+@N: BW103 |Synopsys Constraint File time units using default value of 1ns 
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.

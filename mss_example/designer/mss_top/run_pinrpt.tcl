@@ -1,0 +1,10 @@
+DESIGN=mss_top
+DESDIR=C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\designer\mss_top
+TARGET_DIR=C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\designer\mss_top
+FAM=SmartFusion2
+DIE=PA4M1000_N
+PACKAGE=tq144
+PINRPT_BY_NAME=1
+PINRPT_BY_NUMBER=1
+BANK_REPORT=1
+IOREG_REPORT=1
