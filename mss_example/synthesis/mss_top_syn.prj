@@ -1,30 +1,30 @@
 #--  Synopsys, Inc.
 #--  Version I-2014.03M-SP1
-#--  Project file C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\mss_top_syn.prj
+#--  Project file C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\mss_top_syn.prj
 
 #project files
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CCC_0/mss_top_sb_CCC_0_FCCC.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/SgCore/OSC/1.0.103/osc_comps.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/FABOSC_0/mss_top_sb_FABOSC_0_OSC.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS_syn.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS.vhd"
-add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_muxptob3.vhd"
-add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_iaddr_reg.vhd"
-add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3.vhd"
-add_file -vhdl -lib COREI2C_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2creal.vhd"
-add_file -vhdl -lib COREI2C_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2c.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Clock_gen.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Tx_async.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Rx_async.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/fifo_256x8_smartfusion2.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUART.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUARTapb.vhd"
-add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/components.vhd"
-add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/components.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/mss_top_sb.vhd"
-add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top/mss_top.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CCC_0/mss_top_sb_CCC_0_FCCC.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/SgCore/OSC/1.0.103/osc_comps.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/FABOSC_0/mss_top_sb_FABOSC_0_OSC.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS_syn.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS.vhd"
+add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_muxptob3.vhd"
+add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_iaddr_reg.vhd"
+add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3.vhd"
+add_file -vhdl -lib COREI2C_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2creal.vhd"
+add_file -vhdl -lib COREI2C_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2c.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Clock_gen.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Tx_async.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Rx_async.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/fifo_256x8_smartfusion2.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUART.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUARTapb.vhd"
+add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/components.vhd"
+add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/components.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/mss_top_sb.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top/mss_top.vhd"
 
 
 
