@@ -87,7 +87,7 @@ int main(void)
     select_command();
     for(loop_count=0; loop_count < BUFFER_SIZE; loop_count++)
     {
-    	g_slave_rx_buffer[loop_count] = 0x00;
+        g_slave_rx_buffer[loop_count] = 0x00;
         g_master_rx_buf[loop_count] = 0x00;
         g_master_tx_buf[loop_count] = 0x00;
     }
@@ -187,81 +187,7 @@ int main(void)
 
     return 0;
 }
-//
-//void handle_i2c_status(i2c_status_t instance, uint8_t* buf, uint8_t len)
-//{
-//    if(I2C_SUCCESS == instance)
-//    {
-//    	if(0 == len)
-//    	{
-//            UART_polled_tx_string(&g_uart, (const uint8_t *)"0 Byte Data Transfer Successful\n\r");
-//    	}
-//    	else
-//    	{
-//            int i = 0;
-//            uint8_t print_buf[len * 2];
-//            for (i = 0; i < len; i++)
-//            {
-//            	itoa(&print_buf[2 * i], 'x', buf[i]);
-//            }
-//
-//            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Successful and Data is: ");
-//            UART_send(&g_uart, print_buf, len * 2);
-//            UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
-//    	}
-//        UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
-//    }
-//    else
-//    {
-//    	/*
-//    	 * Distinguish between an identified failure, a time out and just to be paranoid
-//    	 * none of the above.
-//    	 */
-//        if(I2C_FAILED == instance)
-//        {
-//            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Failed!\n\r");
-//        }
-//        else if(I2C_TIMED_OUT == instance)
-//        {
-//            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Timed Out!\n\r");
-//        }
-//        else
-//        {
-//            UART_polled_tx_string(&g_uart, (const uint8_t *)"Data Transfer Unknown Response!\n\r");
-//        }
-//
-//        UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r------------------------------------------------------------------------------\n\r");
-//    }
-//}
-//
-///*------------------------------------------------------------------------------
-// * Slave write handler function called as a result of a the I2C slave being the
-// * target of a write transaction. This function simply displays the date content
-// * of received write transaction.
-// */
-//i2c_slave_handler_ret_t slave_write_handler
-//(
-//    i2c_instance_t * this_i2c,
-//    uint8_t * p_rx_data,
-//    uint16_t rx_size
-//)
-//{
-//    uint8_t loop_count;
-//
-//    g_rx_length = rx_size;
-//    if(rx_size > BUFFER_SIZE) /* Safety check and limit the data length */
-//    {
-//    	rx_size = BUFFER_SIZE;
-//    }
-//
-//    /* Copy only the data we have received */
-//    for(loop_count = 0; loop_count < rx_size; loop_count++)
-//    {
-//        g_slave_tx_buffer[loop_count] = g_slave_rx_buffer[loop_count];
-//    }
-//
-//    return I2C_REENABLE_SLAVE_RX;
-//}
+
 /*------------------------------------------------------------------------------
   Display greeting message when application is started.
  */
@@ -286,51 +212,6 @@ static void select_command(void)
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }
 
-///*------------------------------------------------------------------------------
-//  Function to get the key from user
-// */
-//uint8_t get_data()
-//{
-//    uint8_t complete = 0;
-//    uint8_t rx_buff[1];
-//    uint8_t count=0;
-//    uint8_t rx_size=0;
-//
-//    /*--------------------------------------------------------------------------
-//    Read the key strokes entered by user and store them for transmission to the
-//    slave.
-//    */
-//    UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\rEnter up to 32 characters to write to I2C1: ");
-//    count = 0;
-//    while(!complete)
-//    {
-//        rx_size = UART_get_rx(&g_uart, rx_buff, sizeof(rx_buff));
-//        if(rx_size > 0)
-//        {
-//            UART_send(&g_uart, rx_buff, sizeof(rx_buff));
-//
-//            /* Is it to terminate from the loop */
-//            if(ENTER == rx_buff[0])
-//            {
-//                complete = 1;
-//            }
-//            /* Is a character to add to our transmit string */
-//            else
-//            {
-//                g_master_tx_buf[count] = rx_buff[0];
-//                count++;
-//                if(32 == count)
-//                {
-//                   complete = 1;
-//                }
-//            }
-//        }
-//    }
-//
-//    UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r");
-//
-//    return(count);
-//}
 /*------------------------------------------------------------------------------
  * Display "Press any key to continue." message and wait for key press.
  */

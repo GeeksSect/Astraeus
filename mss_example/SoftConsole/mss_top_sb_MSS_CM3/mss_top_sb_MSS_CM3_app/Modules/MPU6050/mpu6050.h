@@ -377,6 +377,8 @@ void MPU6050_setFullScaleAccelRange(uint8_t range);
 
 void MPU6050_setSleepEnabled(uint8_t enabled);
 
+void MPU6050_setBypassMode();
+
 void MPU6050_setDLPFMode(uint8_t mode);
 
 void MPU6050_getMotion6(int16_t* ax,
