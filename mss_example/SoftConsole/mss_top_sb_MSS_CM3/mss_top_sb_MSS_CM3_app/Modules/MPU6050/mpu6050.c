@@ -106,3 +106,33 @@ void MPU6050_getMotion6(int16_t* ax,
     *gy = (((int16_t)rx_buf[10]) << 8) | rx_buf[11];
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
 }
+
+void MPU6050_getMotion9(int16_t* ax,
+                        int16_t* ay,
+                        int16_t* az,
+                        int16_t* gx,
+                        int16_t* gy,
+                        int16_t* gz,
+                        int16_t* mx,
+                        int16_t* my,
+                        int16_t* mz)
+{
+    uint8_t tx_buf[1]; uint8_t tx_len;
+    tx_buf[0] = MPU6050_RA_ACCEL_XOUT_H;
+    tx_len = 1;
+
+    uint8_t rx_len = 14;
+    uint8_t rx_buf[rx_len];
+
+    i2c_writeBytes(mpu6050_dev_addr, tx_buf, tx_len, 0);
+    i2c_readBytes(mpu6050_dev_addr, rx_buf, rx_len, 0);
+
+    *ax = (((int16_t)rx_buf[0]) << 8) | rx_buf[1];
+    *ay = (((int16_t)rx_buf[2]) << 8) | rx_buf[3];
+    *az = (((int16_t)rx_buf[4]) << 8) | rx_buf[5];
+    *gx = (((int16_t)rx_buf[8]) << 8) | rx_buf[9];
+    *gy = (((int16_t)rx_buf[10]) << 8) | rx_buf[11];
+    *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
+
+    HMC_getData(mx, my, mz);
+}
