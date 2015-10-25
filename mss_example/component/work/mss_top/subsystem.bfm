@@ -1,5 +1,5 @@
 #===========================================================
-# Created by Microsemi SmartDesign Mon Oct 05 23:59:29 2015
+# Created by Microsemi SmartDesign Sun Oct 25 01:39:20 2015
 #
 # Syntax: 
 # ------- 
@@ -19,6 +19,7 @@
 
 memmap COREI2C_0_0 0x50000000;
 memmap CoreUARTapb_0_0 0x50001000;
+memmap corepwm_0_0 0x50002000;
 #-----------------------------------------------------------
 # Include resource scriptlets
 #-----------------------------------------------------------

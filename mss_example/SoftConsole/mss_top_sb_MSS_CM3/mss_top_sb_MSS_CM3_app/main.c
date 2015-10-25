@@ -8,6 +8,7 @@
 #include "core_uart_apb.h"
 #include "CMSIS/m2sxxx.h"
 #include "drivers/corei2c/core_i2c.h"
+#include "drivers/CorePWM/core_pwm.h"
 #include "drivers_config/sys_config/sys_config.h"
 /******************************************************************************
  * Baud value to achieve a 115200 baud rate with a 50 MHz system clock.
@@ -20,12 +21,6 @@
  * Maximum receiver buffer size.
  *****************************************************************************/
 #define MAX_RX_DATA_SIZE    256
-
-/******************************************************************************
- * CoreUARTapb instance data.
- *****************************************************************************/
-UART_instance_t g_uart;
-
 #define SLAVE_SER_ADDR     0x77
 
 /*-----------------------------------------------------------------------------
@@ -53,18 +48,30 @@ static uint8_t g_slave_tx_buffer[BUFFER_SIZE] = "<<-------Slave Tx data ------->
 static uint8_t g_master_rx_buf[BUFFER_SIZE];
 static uint8_t g_master_tx_buf[BUFFER_SIZE];
 
-/*------------------------------------------------------------------------------
- * Counts of data sent by master and received by slave.
- */
-static uint8_t g_tx_length=0x00;
-static uint8_t g_rx_length=0x00;
+#define PWM_PRESCALE 1
+#define PWM_PERIOD 1000
+
+// Core instances
+UART_instance_t g_uart;
+pwm_instance_t  g_pwm;
 
 void setup()
 {
+	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
 	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
+
+	PWM_enable(&g_pwm, PWM_1);
+	PWM_enable(&g_pwm, PWM_2);
+	PWM_enable(&g_pwm, PWM_3);
+	PWM_enable(&g_pwm, PWM_4);
+
+	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 }
 
 int main(void)
@@ -170,6 +177,31 @@ int main(void)
                     break;
                 }
 
+                case '3':
+                {
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM control mode \n\r\n\r");
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"Select channel (1 .. 4) n\r");
+
+                    uint8_t rx_len = 32;
+                    uint8_t rx_buf[rx_len];
+                    uint8_t rx_rdy_bytes = 0;
+
+                    while (rx_rdy_bytes < 1)
+                        rx_rdy_bytes = UART_get_rx( &g_uart, rx_buf, rx_len );
+
+                    uint8_t channel = rx_buf[0];
+
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"Select duty cycle (1 .. 1000) n\r");
+
+                    rx_rdy_bytes = 0;
+                    while (rx_rdy_bytes < 1)
+                        rx_rdy_bytes = UART_get_rx( &g_uart, rx_buf, rx_len );
+
+                    uint8_t duty_cycle = rx_buf[0];
+
+                    PWM_set_duty_cycle(&g_pwm, channel, duty_cycle);
+                }
+
                 case '0':
                     /* To Exit from the application */
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rReturn from the Main function \n\r\n\r");
@@ -198,6 +230,9 @@ static void display_greeting(void)
     UART_polled_tx_string(&g_uart, (const uint8_t*)"******************************************************************************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"************* Functions supported by this CLI project are ********************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"1. Read Temperature\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"2. Read MPU6050\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"3. PWM control\n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"0. Read Temperature\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }
 /*------------------------------------------------------------------------------
@@ -208,6 +243,7 @@ static void select_command(void)
     UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r*********************** Select the command *******************************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '1' to measure temperature\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '2' to get data from MPU6050 \n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '3' to control PWM \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '0' to EXIT from the Application \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }

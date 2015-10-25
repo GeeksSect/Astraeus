@@ -13,6 +13,7 @@
 *---------------------------------------------------------------------------*/
 #define COREI2C_0_0                     0x50000000U
 #define COREUARTAPB_0_0                 0x50001000U
+#define COREPWM_0_0                     0x50002000U
 
 
 #endif /* mss_top_HW_PLATFORM_H_*/

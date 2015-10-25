@@ -1,6 +1,6 @@
 DESIGN=mss_top
-DESDIR=C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\designer\mss_top
-TARGET_DIR=C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\designer\mss_top
+DESDIR=C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\designer\mss_top
+TARGET_DIR=C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\designer\mss_top
 FAM=SmartFusion2
 DIE=PA4M1000_N
 PACKAGE=tq144

@@ -1,66 +1,72 @@
 Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)
 
-Date      :  Mon Oct 05 23:57:58 2015
-Project   :  C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example
+Date      :  Sun Oct 25 01:31:29 2015
+Project   :  C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example
 Component :  mss_top_sb
 Family    :  SmartFusion2
 
 
 HDL source files for all Synthesis and Simulation tools:
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2c.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2creal.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/components.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_iaddr_reg.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_muxptob3.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CCC_0/mss_top_sb_CCC_0_FCCC.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Clock_gen.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUART.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUARTapb.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Rx_async.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Tx_async.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/components.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/fifo_256x8_smartfusion2.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/FABOSC_0/mss_top_sb_FABOSC_0_OSC.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/mss_top_sb.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2c.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2creal.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/components.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_iaddr_reg.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3_muxptob3.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreResetP/7.0.104/rtl/vhdl/core/coreresetp_pcie_hotreset.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/components.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/corepwm.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/pwm_gen.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/reg_if.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/tach_if.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/timebase.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CCC_0/mss_top_sb_CCC_0_FCCC.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Clock_gen.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUART.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUARTapb.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Rx_async.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Tx_async.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/components.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/fifo_256x8_smartfusion2.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/FABOSC_0/mss_top_sb_FABOSC_0_OSC.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/mss_top_sb.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS.vhd
 
 HDL source files for Synopsys SynplifyPro Synthesis tool:
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/SgCore/OSC/1.0.103/osc_comps.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS_syn.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/SgCore/OSC/1.0.103/osc_comps.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS_syn.vhd
 
 HDL source files for Mentor Precision Synthesis tool:
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/SgCore/OSC/1.0.103/osc_comps_pre.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS_pre.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/SgCore/OSC/1.0.103/osc_comps_pre.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/mss_top_sb_MSS_pre.vhd
 
 Stimulus files for all Simulation tools:
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/SmartFusion2MSS/MSS/1.1.300/peripheral_init.bfm
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/bfmtovec_compile.do
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/coreuart_usertb_apb_master.bfm
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/coreuart_usertb_include.bfm
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/wave_vhdl_amba.do
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/CM3_compile_bfm.tcl
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/test.bfm
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/user.bfm
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/SmartFusion2MSS/MSS/1.1.300/peripheral_init.bfm
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/bfmtovec_compile.do
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/coreuart_usertb_apb_master.bfm
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/coreuart_usertb_include.bfm
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/mti/scripts/wave_vhdl_amba.do
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/CM3_compile_bfm.tcl
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/test.bfm
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/user.bfm
 
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/coreparameters.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbl.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahblapb.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbslave.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbslaveext.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbtoapb.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apb.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apbslave.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apbslaveext.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apbtoapb.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_main.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_package.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/misc.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/textio.vhd
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/test/user/testbench.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/coreparameters.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbl.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahblapb.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbslave.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbslaveext.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_ahbtoapb.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apb.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apbslave.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apbslaveext.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_apbtoapb.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_main.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/bfm_package.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/misc.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreUARTapb/5.2.2/rtl/vhdl/amba_bfm/textio.vhd
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/test/user/testbench.vhd
 
 Firmware files for all Software IDE tools:
-    C:/Users/kruci_000/Desktop/SoC/mss_cemetery/mss_example/component/work/mss_top_sb_MSS/sys_config_mss_clocks.h
+    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb_MSS/sys_config_mss_clocks.h
 

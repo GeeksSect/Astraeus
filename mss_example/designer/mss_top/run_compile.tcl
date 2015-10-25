@@ -69,11 +69,11 @@ set_compile_info \
 set_compile_info \
     -category {"Source Files"} \
     -name {"Source"} \
-    -value {"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\mss_top.edn"}
+    -value {"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\mss_top.edn"}
 set_compile_info \
     -category {"Source Files"} \
     -name {"Source"} \
-    -value {"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\constraint\io\mss_top.io.pdc"}
+    -value {"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\constraint\io\mss_top.io.pdc"}
 set_compile_info \
     -category {"Options"} \
     -name {"Merge User SDC file(s) with Existing Timing Constraints"} \
@@ -91,10 +91,10 @@ set_compile_info \
     -name {"Limit the number of high fanout nets to display to"} \
     -value {"10"}
 compile \
-    -desdir {C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\designer\mss_top} \
+    -desdir {C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\designer\mss_top} \
     -design mss_top \
     -fam SmartFusion2 \
     -die PA4M1000_N \
     -pkg tq144 \
-    -pdc_file {C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\constraint\io\mss_top.io.pdc} \
+    -pdc_file {C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\constraint\io\mss_top.io.pdc} \
     -merge_pdc 0

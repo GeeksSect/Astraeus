@@ -15,6 +15,11 @@ add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/ms
 add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/coreapb3.vhd"
 add_file -vhdl -lib COREI2C_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2creal.vhd"
 add_file -vhdl -lib COREI2C_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/COREI2C/7.0.102/rtl/vhdl/core/corei2c.vhd"
+add_file -vhdl -lib COREPWM_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/reg_if.vhd"
+add_file -vhdl -lib COREPWM_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/timebase.vhd"
+add_file -vhdl -lib COREPWM_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/tach_if.vhd"
+add_file -vhdl -lib COREPWM_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/pwm_gen.vhd"
+add_file -vhdl -lib COREPWM_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/corepwm.vhd"
 add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Clock_gen.vhd"
 add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Tx_async.vhd"
 add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/Rx_async.vhd"
@@ -22,8 +27,10 @@ add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus
 add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUART.vhd"
 add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/CoreUARTapb.vhd"
 add_file -vhdl -lib COREAPB3_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/CoreAPB3/4.1.100/rtl/vhdl/core/components.vhd"
+add_file -vhdl -lib COREPWM_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/Actel/DirectCore/corepwm/4.1.106/rtl/vhdl/core/components.vhd"
 add_file -vhdl -lib COREUARTAPB_LIB "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/CoreUARTapb_0_0/rtl/vhdl/core/components.vhd"
 add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top_sb/mss_top_sb.vhd"
+add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/hdl/PWM_separator.vhd"
 add_file -vhdl -lib work "C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top/mss_top.vhd"
 
 

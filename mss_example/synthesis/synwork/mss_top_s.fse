@@ -54,3 +54,29 @@ fsm_state_encoding {142224422242} fsmdet5 {0100000}
 fsm_state_encoding {142224422242} fsmdet6 {1000000}
 
 fsm_registers {142224422242} {fsmdet[0]}  {fsmdet[1]}  {fsmdet[2]}  {fsmdet[3]}  {fsmdet[4]}  {fsmdet[5]}  {fsmdet[6]} 
+
+fsm_encoding {1612641269} onehot
+
+fsm_state_encoding {1612641269} 00000000000000000000000000000000 {000001}
+
+fsm_state_encoding {1612641269} 00000000000000000000000000000001 {000010}
+
+fsm_state_encoding {1612641269} 00000000000000000000000000000010 {000100}
+
+fsm_state_encoding {1612641269} 00000000000000000000000000000011 {001000}
+
+fsm_state_encoding {1612641269} 00000000000000000000000000000100 {010000}
+
+fsm_state_encoding {1612641269} 00000000000000000000000000000101 {100000}
+
+fsm_registers {1612641269} {xmit_state[0]}  {xmit_state[1]}  {xmit_state[2]}  {xmit_state[3]}  {xmit_state[4]}  {xmit_state[5]} 
+
+fsm_encoding {17227622710} sequential
+
+fsm_state_encoding {17227622710} rx_idle {00}
+
+fsm_state_encoding {17227622710} rx_data_bits {01}
+
+fsm_state_encoding {17227622710} rx_stop_bit {10}
+
+fsm_registers {17227622710} {rx_state[1]}  {rx_state[0]} 
