@@ -180,7 +180,7 @@ int main(void)
                 case '3':
                 {
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM control mode \n\r\n\r");
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"Select channel (1 .. 4) n\r");
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"Select channel (1 .. 4 or all) n\r");
 
                     uint8_t rx_len = 32;
                     uint8_t rx_buf[rx_len];
@@ -191,6 +191,7 @@ int main(void)
 
                     uint8_t channel = rx_buf[0];
 
+		    // TODO remove magic constant 1000
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"Select duty cycle (1 .. 1000) n\r");
 
                     rx_rdy_bytes = 0;
@@ -198,8 +199,16 @@ int main(void)
                         rx_rdy_bytes = UART_get_rx( &g_uart, rx_buf, rx_len );
 
                     uint8_t duty_cycle = rx_buf[0];
-
-                    PWM_set_duty_cycle(&g_pwm, channel, duty_cycle);
+		    if (channel != 'a')
+			PWM_set_duty_cycle(&g_pwm, channel, duty_cycle);
+		    else
+		    {
+			uint8_t chan;
+			for (chan = 0; chan < 4; chan++) // 4 - PWM channels (4 motors on board)
+			{
+		            PWM_set_duty_cycle(&g_pwm, chan, duty_cycle);
+			}
+		    }
                 }
 
                 case '0':
