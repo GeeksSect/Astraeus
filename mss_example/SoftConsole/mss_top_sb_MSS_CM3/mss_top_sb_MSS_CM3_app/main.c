@@ -179,27 +179,27 @@ int main(void)
 
                 case '3':
                 {
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM control mode \n\r\n\r");
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"Select channel (1 .. 4) n\r");
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM test mode \n\r\n\r");
 
-                    uint8_t rx_len = 32;
-                    uint8_t rx_buf[rx_len];
-                    uint8_t rx_rdy_bytes = 0;
+                    PWM_set_duty_cycle(&g_pwm, PWM_1, 250);
+                    PWM_set_duty_cycle(&g_pwm, PWM_2, 250);
+                    PWM_set_duty_cycle(&g_pwm, PWM_3, 250);
+                    PWM_set_duty_cycle(&g_pwm, PWM_4, 250);
 
-                    while (rx_rdy_bytes < 1)
-                        rx_rdy_bytes = UART_get_rx( &g_uart, rx_buf, rx_len );
+                    delay(20 * 1000, 50);
+                    PWM_set_duty_cycle(&g_pwm, PWM_1, 500);
+                    PWM_set_duty_cycle(&g_pwm, PWM_2, 500);
+                    PWM_set_duty_cycle(&g_pwm, PWM_3, 500);
+                    PWM_set_duty_cycle(&g_pwm, PWM_4, 500);
 
-                    uint8_t channel = rx_buf[0];
+                    delay(20 * 1000, 50);
+                    PWM_set_duty_cycle(&g_pwm, PWM_1, 1000);
+                    PWM_set_duty_cycle(&g_pwm, PWM_2, 1000);
+                    PWM_set_duty_cycle(&g_pwm, PWM_3, 1000);
+                    PWM_set_duty_cycle(&g_pwm, PWM_4, 1000);
 
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"Select duty cycle (1 .. 1000) n\r");
-
-                    rx_rdy_bytes = 0;
-                    while (rx_rdy_bytes < 1)
-                        rx_rdy_bytes = UART_get_rx( &g_uart, rx_buf, rx_len );
-
-                    uint8_t duty_cycle = rx_buf[0];
-
-                    PWM_set_duty_cycle(&g_pwm, channel, duty_cycle);
+                    press_any_key_to_continue();
+                    break;
                 }
 
                 case '0':
@@ -277,5 +277,3 @@ void FabricIrq0_IRQHandler(void)
 {
 	I2C_isr(&g_core_i2c0);
 }
-
-

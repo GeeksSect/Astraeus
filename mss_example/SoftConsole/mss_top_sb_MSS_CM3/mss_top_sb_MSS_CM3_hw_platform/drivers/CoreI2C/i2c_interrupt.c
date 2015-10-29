@@ -9,6 +9,10 @@
 #include "hal.h"
 #include "hal_assert.h"
 #include "core_i2c.h"
+#include "../CMSIS/m2sxxx.h"
+
+
+extern i2c_instance_t g_core_i2c0;
 
 /*------------------------------------------------------------------------------
  * This function must be modified to enable interrupts generated from the
@@ -16,7 +20,10 @@
  */
 void I2C_enable_irq( i2c_instance_t * this_i2c )
 {
-    HAL_ASSERT(0)
+    if(this_i2c == &g_core_i2c0)
+    {
+        NVIC_EnableIRQ( FabricIrq0_IRQn );
+    }
 }
 
 /*------------------------------------------------------------------------------
@@ -25,5 +32,8 @@ void I2C_enable_irq( i2c_instance_t * this_i2c )
  */
 void I2C_disable_irq( i2c_instance_t * this_i2c )
 {
-    HAL_ASSERT(0)
+    if(this_i2c == &g_core_i2c0)
+    {
+    	 NVIC_DisableIRQ( FabricIrq0_IRQn );
+    }
 }

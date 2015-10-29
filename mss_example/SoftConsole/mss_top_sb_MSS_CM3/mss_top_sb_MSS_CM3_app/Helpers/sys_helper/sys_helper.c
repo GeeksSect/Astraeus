@@ -2,8 +2,8 @@
 
 void delay
 (
-	uint8_t time,
-	uint8_t frequency
+	uint32_t time,
+	uint32_t frequency
 )
 {
 	int i = 0;

@@ -845,28 +845,28 @@ PARENT="<project>\component\work\mss_top_sb_MSS\mss_top_sb_MSS.cxf"
 ENDFILE
 VALUE "<project>\synthesis\mss_top.edn,syn_edn"
 STATE="utd"
-TIME="1445288708"
-SIZE="607030"
+TIME="1445726458"
+SIZE="1278515"
 ENDFILE
 VALUE "<project>\synthesis\mss_top.so,so"
 STATE="utd"
-TIME="1445288708"
+TIME="1445726458"
 SIZE="239"
 ENDFILE
 VALUE "<project>\synthesis\mss_top.vhd,syn_hdl"
 STATE="utd"
-TIME="1445288710"
-SIZE="346377"
+TIME="1445726470"
+SIZE="666658"
 ENDFILE
 VALUE "<project>\synthesis\mss_top_sdc.sdc,syn_sdc"
 STATE="utd"
-TIME="1445288710"
+TIME="1445726458"
 SIZE="950"
 ENDFILE
 VALUE "<project>\synthesis\mss_top_syn.prj,prj"
 STATE="utd"
-TIME="1445288710"
-SIZE="4784"
+TIME="1445726460"
+SIZE="5853"
 ENDFILE
 ENDLIST
 LIST UsedFile
@@ -958,32 +958,18 @@ VALUE "<project>\component\Actel\DirectCore\corepwm\4.1.106\coreparameters.vhd,t
 VALUE "<project>\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\test\user\corepwm_pkg.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\test\user\tb_user_corepwm.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\coreparameters.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\coreparameters.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\misc.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\misc.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\textio.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\textio.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_package.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_package.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbl.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbl.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd,tb_hdl"
 VALUE "<project>\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\test\user\testbench.vhd,tb_hdl"
 ENDLIST
@@ -1028,32 +1014,18 @@ VALUE "<project>\component\Actel\DirectCore\corepwm\4.1.106\coreparameters.vhd,t
 VALUE "<project>\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\test\user\corepwm_pkg.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\test\user\tb_user_corepwm.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\coreparameters.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\coreparameters.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\misc.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\misc.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\textio.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\textio.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_package.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_package.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbl.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbl.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslave.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslaveext.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd,tb_hdl"
-VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd,tb_hdl"
 VALUE "<project>\component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd,tb_hdl"
 VALUE "<project>\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\test\user\testbench.vhd,tb_hdl"
 ENDLIST
@@ -1167,8 +1139,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\bin\synplify_pro.exe"
-PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
-BATCH=1
+PARAM=""
+BATCH=0
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -1237,13 +1209,13 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-Reports;Reports;0
-ReportsCurrentItem;Generate Bitstream:mss_top_generateBitstream.log
-StartPage;StartPage;0
 SmartDesign;mss_top;0
-HDL;hdl\PWM_separator.vhd;0
+Reports;Reports;0
+ReportsCurrentItem;Run PROGRAM Action:mss_top_PROGRAM.log
+StartPage;StartPage;0
+HDL;constraint\io\mss_top.io.pdc;0
 SmartDesign;DESIGN_FIRMWARE;0
-ACTIVEVIEW;Reports
+ACTIVEVIEW;mss_top
 ENDLIST
 LIST ModuleSubBlockList
 LIST "CoreI2C_Driver::work","","FALSE","FALSE"
@@ -1418,8 +1390,8 @@ LIST "bfM_Ahbl::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUA
 SUBBLOCK "bfm_Main::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd","FALSE","TRUE"
 ENDLIST
 LIST "bfM_ahblAPB::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd","FALSE","TRUE"
-SUBBLOCK "BFMA1i1lI::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd","FALSE","TRUE"
 SUBBLOCK "bfm_Main::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd","FALSE","TRUE"
+SUBBLOCK "BFMA1i1lI::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd","FALSE","TRUE"
 ENDLIST
 LIST "BFM_ahbSLAve::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd","FALSE","TRUE"
 SUBBLOCK "Bfm_aHBSlavEEXt::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd","FALSE","TRUE"
@@ -1427,8 +1399,8 @@ ENDLIST
 LIST "Bfm_aHBSlavEEXt::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd","FALSE","TRUE"
 ENDLIST
 LIST "bfm_APb::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd","FALSE","TRUE"
-SUBBLOCK "BFMA1i1lI::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd","FALSE","TRUE"
 SUBBLOCK "bfm_Main::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd","FALSE","TRUE"
+SUBBLOCK "BFMA1i1lI::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd","FALSE","TRUE"
 ENDLIST
 LIST "Bfm_aPB2apb::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd","FALSE","TRUE"
 ENDLIST
@@ -1442,16 +1414,16 @@ ENDLIST
 LIST "bfm_misc::COREUARTAPB_LIB","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\misc.vhd","FALSE","TRUE"
 ENDLIST
 LIST "bfM_packAGE::COREUARTAPB_LIB","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_package.vhd","FALSE","TRUE"
-SUBBLOCK "bfM_Ahbl::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbl.vhd","FALSE","TRUE"
-SUBBLOCK "bfM_ahblAPB::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd","FALSE","TRUE"
-SUBBLOCK "BFM_ahbSLAve::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd","FALSE","TRUE"
-SUBBLOCK "Bfm_aHBSlavEEXt::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd","FALSE","TRUE"
-SUBBLOCK "BFMA1i1lI::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd","FALSE","TRUE"
-SUBBLOCK "bfm_APb::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd","FALSE","TRUE"
-SUBBLOCK "BFM_apbSLAve::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslave.vhd","FALSE","TRUE"
-SUBBLOCK "BFm_apBSLaveEXT::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslaveext.vhd","FALSE","TRUE"
-SUBBLOCK "Bfm_aPB2apb::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd","FALSE","TRUE"
 SUBBLOCK "bfm_Main::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_main.vhd","FALSE","TRUE"
+SUBBLOCK "Bfm_aHBSlavEEXt::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslaveext.vhd","FALSE","TRUE"
+SUBBLOCK "BFM_ahbSLAve::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbslave.vhd","FALSE","TRUE"
+SUBBLOCK "BFm_apBSLaveEXT::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslaveext.vhd","FALSE","TRUE"
+SUBBLOCK "BFM_apbSLAve::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbslave.vhd","FALSE","TRUE"
+SUBBLOCK "bfM_Ahbl::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbl.vhd","FALSE","TRUE"
+SUBBLOCK "BFMA1i1lI::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahbtoapb.vhd","FALSE","TRUE"
+SUBBLOCK "bfM_ahblAPB::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_ahblapb.vhd","FALSE","TRUE"
+SUBBLOCK "bfm_APb::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apb.vhd","FALSE","TRUE"
+SUBBLOCK "Bfm_aPB2apb::COREUARTAPB_LIB::bfM_packAGE","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\bfm_apbtoapb.vhd","FALSE","TRUE"
 ENDLIST
 LIST "bfm_textio::COREUARTAPB_LIB","component\Actel\DirectCore\CoreUARTapb\5.2.2\rtl\vhdl\amba_bfm\textio.vhd","FALSE","TRUE"
 ENDLIST
