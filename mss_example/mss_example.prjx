@@ -1209,13 +1209,8 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-SmartDesign;mss_top;0
-Reports;Reports;0
-ReportsCurrentItem;Run PROGRAM Action:mss_top_PROGRAM.log
 StartPage;StartPage;0
-HDL;constraint\io\mss_top.io.pdc;0
-SmartDesign;DESIGN_FIRMWARE;0
-ACTIVEVIEW;mss_top
+ACTIVEVIEW;StartPage
 ENDLIST
 LIST ModuleSubBlockList
 LIST "CoreI2C_Driver::work","","FALSE","FALSE"
