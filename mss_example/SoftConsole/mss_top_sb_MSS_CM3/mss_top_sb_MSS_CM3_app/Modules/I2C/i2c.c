@@ -141,6 +141,7 @@ i2c_status_t i2c_readInt_from_reg(uint8_t serial_addr,
 	if (I2C_SUCCESS == status) {
 		status = i2c_readInt(serial_addr, out_int, chanel);
 	}
+	return status;
 }
 
 i2c_status_t i2c_write_read(uint8_t serial_addr,
