@@ -52,9 +52,9 @@ i2c_status_t BMP_get_temperature(uint16_t* temperature)
 // Region private function
 int64_t BMP180_get_true_temperature(int16_t UT)
 {
-	uint64_t X1 = (UT - g_bmp_cal_values.ac6) * g_bmp_cal_values.ac5 / pow(2, 15);
-	uint64_t X2 = g_bmp_cal_values.mc * pow(2, 11) / (X1 + g_bmp_cal_values.md);
-	uint64_t B5 = X1 + X2;
+	int64_t X1 = (UT - g_bmp_cal_values.ac6) * g_bmp_cal_values.ac5 / pow(2, 15);
+	int64_t X2 = g_bmp_cal_values.mc * pow(2, 11) / (X1 + g_bmp_cal_values.md);
+	int64_t B5 = X1 + X2;
 	return (B5 + 8) / pow(2, 4);
 }
 
