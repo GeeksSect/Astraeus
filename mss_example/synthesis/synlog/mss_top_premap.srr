@@ -9,16 +9,16 @@ Printing clock  summary report in "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\m
 @N: MF248 |Running in 64-bit mode.
 @N: MF667 |Clock conversion disabled 
 
-Design Input Complete (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
 
 @W: BN132 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance mss_top_sb_0.CORERESETP_0.MDDR_DDR_AXI_S_CORE_RESET_N_int,  because it is equivalent to instance mss_top_sb_0.CORERESETP_0.FDDR_CORE_RESET_N_int
 @N: BN362 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":380:6:380:7|Removing sequential instance clear_parity_en_xhdl3 of view:PrimLib.dffr(prim) in hierarchy view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Rx_async(translated) because there are no references to its outputs 
@@ -118,9 +118,9 @@ Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\mss_top.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:01s; Memory used current: 72MB peak: 138MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 72MB peak: 138MB)
 
-Process took 0h:00m:06s realtime, 0h:00m:02s cputime
-# Sun Oct 25 01:40:37 2015
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Nov 07 17:48:36 2015
 
 ###########################################################]

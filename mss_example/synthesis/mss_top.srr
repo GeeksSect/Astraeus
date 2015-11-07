@@ -11,7 +11,35 @@ Copyright (C) 1994-2014 Synopsys, Inc. This software and the associated document
 
 @N: CD720 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
 @N:"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Top entity is set to mss_top.
-Options changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CCC_0\mss_top_sb_CCC_0_FCCC.vhd changed - recompiling
+File C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp_pcie_hotreset.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS_syn.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_iaddr_reg.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\reg_if.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\timebase.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\tach_if.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\pwm_gen.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\components.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\components.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\components.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\hdl\PWM_separator.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\FABOSC_0\mss_top_sb_FABOSC_0_OSC.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2c.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\corepwm.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\mss_top.vhd changed - recompiling
 VHDL syntax check successful!
 @N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Synthesizing work.mss_top.rtl 
 @N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\hdl\PWM_separator.vhd":5:7:5:19|Synthesizing work.pwm_separator.bh 
@@ -462,20 +490,20 @@ State machine has 3 reachable states with original encodings of:
 @W: CL159 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\FABOSC_0\mss_top_sb_FABOSC_0_OSC.vhd":10:10:10:12|Input XTL is unused
 @END
 
-At c_vhdl Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 100MB peak: 119MB)
+At c_vhdl Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 100MB peak: 119MB)
 
-Process took 0h:00m:06s realtime, 0h:00m:05s cputime
-# Sun Oct 25 01:40:28 2015
+Process took 0h:00m:06s realtime, 0h:00m:06s cputime
+# Sat Nov 07 17:48:31 2015
 
 ###########################################################]
 Synopsys Netlist Linker, version comp201403sp1p1, Build 095R, built Oct  9 2014
 @N|Running in 64-bit mode
-File C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synwork\mss_top_comp.srs changed - recompiling
+File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synwork\mss_top_comp.srs changed - recompiling
 
-At syn_nfilter Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 74MB peak: 74MB)
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 74MB peak: 74MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sun Oct 25 01:40:30 2015
+# Sat Nov 07 17:48:33 2015
 
 ###########################################################]
 Pre-mapping Report
@@ -491,16 +519,16 @@ Printing clock  summary report in "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\m
 @N: MF248 |Running in 64-bit mode.
 @N: MF667 |Clock conversion disabled 
 
-Design Input Complete (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 111MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 111MB)
 
 @W: BN132 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance mss_top_sb_0.CORERESETP_0.MDDR_DDR_AXI_S_CORE_RESET_N_int,  because it is equivalent to instance mss_top_sb_0.CORERESETP_0.FDDR_CORE_RESET_N_int
 @N: BN362 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":380:6:380:7|Removing sequential instance clear_parity_en_xhdl3 of view:PrimLib.dffr(prim) in hierarchy view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Rx_async(translated) because there are no references to its outputs 
@@ -600,10 +628,10 @@ Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\mss_top.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:01s; Memory used current: 72MB peak: 138MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 72MB peak: 138MB)
 
-Process took 0h:00m:06s realtime, 0h:00m:02s cputime
-# Sun Oct 25 01:40:37 2015
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Nov 07 17:48:36 2015
 
 ###########################################################]
 Map & Optimize Report
@@ -663,7 +691,7 @@ Available hyper_sources - for debug and ip models
 @N: MO106 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|Found ROM, 'CoreAPB3_0.iPSELS_raw_5[2:0]', 16 words by 3 bits 
 @W: MO129 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sequential instance mss_top_sb_0.CORERESETP_0.RESET_N_F2M_int reduced to a combinational gate by constant propagation
 
-Finished RTL optimizations (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 135MB peak: 137MB)
+Finished RTL optimizations (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 135MB peak: 137MB)
 
 Encoding state machine fsmmod[0:6] (view:corei2c_lib.COREI2CREAL(rtl))
 original code -> new code
@@ -717,37 +745,37 @@ original code -> new code
    10 -> 10
 @N: BN362 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_0_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
 
-Finished factoring (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:04s; Memory used current: 156MB peak: 157MB)
+Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 156MB peak: 157MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:04s; Memory used current: 148MB peak: 157MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 148MB peak: 157MB)
 
 @N: BN362 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":320:6:320:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_parity_calc in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
 @N: BN362 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":283:6:283:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_shift[8] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
 @N: BN362 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":1543:4:1543:5|Removing sequential instance mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.fsmsync[0] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:05s; Memory used current: 147MB peak: 161MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 147MB peak: 161MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:06s; Memory used current: 147MB peak: 161MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 147MB peak: 161MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:07s; Memory used current: 148MB peak: 161MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 148MB peak: 161MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:07s; Memory used current: 147MB peak: 161MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 147MB peak: 161MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:08s; Memory used current: 148MB peak: 161MB)
+Finished preparing to map (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 148MB peak: 161MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:10s; Memory used current: 185MB peak: 187MB)
+Finished technology mapping (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 185MB peak: 187MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:10s		   -28.82ns		 920 /       406
+   1		0h:00m:09s		   -28.82ns		 920 /       406
 ------------------------------------------------------------
 
 
@@ -772,10 +800,10 @@ Added 0 Cells via replication
 	Added 0 Sequential Cells via replication
 	Added 0 Combinational Cells via replication
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:15s; CPU Time elapsed 0h:00m:12s; Memory used current: 154MB peak: 187MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 154MB peak: 187MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:15s; CPU Time elapsed 0h:00m:12s; Memory used current: 155MB peak: 187MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 155MB peak: 187MB)
 
 
 
@@ -797,18 +825,18 @@ Clock Tree ID     Driving Element                 Drive Element Type     Fanout 
 
 Writing Analyst data base C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\mss_top.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:17s; CPU Time elapsed 0h:00m:14s; Memory used current: 151MB peak: 187MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:13s; Memory used current: 151MB peak: 187MB)
 
 Writing Analyst data base C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synwork\mss_top_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:19s; CPU Time elapsed 0h:00m:15s; Memory used current: 151MB peak: 187MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:15s; CPU Time elapsed 0h:00m:14s; Memory used current: 151MB peak: 187MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |Synopsys Constraint File time units using default value of 1ns 
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 I-2014.03M-SP1
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:21s; CPU Time elapsed 0h:00m:16s; Memory used current: 153MB peak: 187MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:16s; CPU Time elapsed 0h:00m:16s; Memory used current: 153MB peak: 187MB)
 
 @W: MT246 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd":1252:0:1252:11|Blackbox SYSRESET is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 @W: MT246 :"c:\users\kruci_000\desktop\soc\git\astraeus\mss_example\component\work\mss_top_sb\ccc_0\mss_top_sb_ccc_0_fccc.vhd":106:4:106:11|Blackbox CCC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
@@ -817,7 +845,7 @@ Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:21s
 
 
 @S |##### START OF TIMING REPORT #####[
-# Timing Report written on Sun Oct 25 01:40:59 2015
+# Timing Report written on Sat Nov 07 17:48:53 2015
 #
 
 
@@ -1247,9 +1275,9 @@ Total number of LUTs after P&R:  940 + 0 + 0 + 0 = 940;
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:22s; CPU Time elapsed 0h:00m:17s; Memory used current: 54MB peak: 187MB)
+At Mapper Exit (Real Time elapsed 0h:00m:17s; CPU Time elapsed 0h:00m:16s; Memory used current: 54MB peak: 187MB)
 
-Process took 0h:00m:22s realtime, 0h:00m:17s cputime
-# Sun Oct 25 01:41:00 2015
+Process took 0h:00m:17s realtime, 0h:00m:16s cputime
+# Sat Nov 07 17:48:53 2015
 
 ###########################################################]

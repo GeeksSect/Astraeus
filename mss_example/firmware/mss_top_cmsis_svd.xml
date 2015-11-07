@@ -2,7 +2,7 @@
 <device>
   <name>mss_top</name>
   <version>1.0</version>
-  <description>CMSIS description for mss_top.  Created by Microsemi SmartDesign on Sat Oct 31 18:16:02 2015</description>
+  <description>CMSIS description for mss_top.  Created by Microsemi SmartDesign on Sat Nov 07 18:17:57 2015</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>

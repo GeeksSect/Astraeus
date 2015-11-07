@@ -1,0 +1,217 @@
+#defaultlanguage:vhdl
+#OPTIONS:"|-mixedhdl|-top|work.mss_top|-layerid|0|-prodtype|synplify_pro|-primux|-dspmac|-pqdpadd|-fixsmult|-divnmod|-nram|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|COREAPB3_LIB|-lib|COREAPB3_LIB|-lib|COREAPB3_LIB|-lib|COREI2C_LIB|-lib|COREI2C_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREUARTAPB_LIB|-lib|COREAPB3_LIB|-lib|COREUARTAPB_LIB|-lib|work|-lib|COREUART_LIB|-lib|COREUART_LIB|-lib|COREUART_LIB|-lib|COREUART_LIB|-lib|COREUART_LIB|-lib|COREUART_LIB|-lib|COREUART_LIB|-lib|work"
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\bin64\\c_vhdl.exe":1412882230
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\location.map":1413206672
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\std.vhd":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\snps_haps_pkg.vhd":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\std1164.vhd":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\numeric.vhd":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\umr_capim.vhd":1412882096
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\arith.vhd":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vhd\\unsigned.vhd":1412881844
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CCC_0\\mss_top_sb_CCC_0_FCCC.vhd":1446666989
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\generic\\smartfusion2.vhd":1412928306
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\CoreResetP\\7.0.104\\rtl\\vhdl\\core\\coreresetp_pcie_hotreset.vhd":1440060229
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\SgCore\\OSC\\1.0.103\\osc_comps.vhd":1440060231
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb_MSS\\mss_top_sb_MSS_syn.vhd":1446666980
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\coreapb3_muxptob3.vhd":1440060229
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\coreapb3_iaddr_reg.vhd":1440060229
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\COREI2C\\7.0.102\\rtl\\vhdl\\core\\corei2creal.vhd":1444077626
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\Clock_gen.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\Tx_async.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\Rx_async.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\fifo_256x8_smartfusion2.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\components.vhd":1440060229
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\components.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\Clock_gen.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\Tx_async.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\Rx_async.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\fifo_256x8_g4.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\coreuart_pkg.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\components.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\CoreResetP\\7.0.104\\rtl\\vhdl\\core\\coreresetp.vhd":1440060229
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\FABOSC_0\\mss_top_sb_FABOSC_0_OSC.vhd":1446666995
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb_MSS\\mss_top_sb_MSS.vhd":1446666981
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\CoreAPB3\\4.1.100\\rtl\\vhdl\\core\\coreapb3.vhd":1440060229
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\Actel\\DirectCore\\COREI2C\\7.0.102\\rtl\\vhdl\\core\\corei2c.vhd":1444077626
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\CoreUART.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\CoreUARTapb_0_0\\rtl\\vhdl\\core\\CoreUARTapb.vhd":1446666992
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top_sb\\mss_top_sb.vhd":1446666996
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\COREUART_0\\rtl\\vhdl\\core\\CoreUART.vhd":1446667008
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\component\\work\\mss_top\\mss_top.vhd":1446667008
+0 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CCC_0\mss_top_sb_CCC_0_FCCC.vhd" vhdl
+1 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp_pcie_hotreset.vhd" vhdl
+2 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd" vhdl
+3 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\SgCore\OSC\1.0.103\osc_comps.vhd" vhdl
+4 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\FABOSC_0\mss_top_sb_FABOSC_0_OSC.vhd" vhdl
+5 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS_syn.vhd" vhdl
+6 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS.vhd" vhdl
+7 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd" vhdl
+8 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_iaddr_reg.vhd" vhdl
+9 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd" vhdl
+10 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd" vhdl
+11 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2c.vhd" vhdl
+12 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd" vhdl
+13 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd" vhdl
+14 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd" vhdl
+15 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd" vhdl
+16 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd" vhdl
+17 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd" vhdl
+18 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\components.vhd" vhdl
+19 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\components.vhd" vhdl
+20 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd" vhdl
+21 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\Clock_gen.vhd" vhdl
+22 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\Tx_async.vhd" vhdl
+23 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\Rx_async.vhd" vhdl
+24 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\fifo_256x8_g4.vhd" vhdl
+25 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\coreuart_pkg.vhd" vhdl
+26 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\CoreUART.vhd" vhdl
+27 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\COREUART_0\rtl\vhdl\core\components.vhd" vhdl
+28 "C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\mss_top.vhd" vhdl
+
+# Dependency Lists (Uses list)
+0 -1
+1 -1
+2 1 
+3 -1
+4 3 
+5 -1
+6 5 
+7 -1
+8 -1
+9 7 8 
+10 -1
+11 10 
+12 -1
+13 -1
+14 -1
+15 -1
+16 12 13 14 15 
+17 16 
+18 -1
+19 -1
+20 0 9 11 2 17 4 6 18 19 
+21 -1
+22 -1
+23 -1
+24 -1
+25 -1
+26 21 22 23 24 25 
+27 -1
+28 26 20 27 
+
+# Dependency Lists (Users Of)
+0 20 
+1 2 
+2 20 
+3 4 
+4 20 
+5 6 
+6 20 
+7 9 
+8 9 
+9 20 
+10 11 
+11 20 
+12 16 
+13 16 
+14 16 
+15 16 
+16 17 
+17 20 
+18 20 
+19 20 
+20 28 
+21 26 
+22 26 
+23 26 
+24 26 
+25 26 
+26 28 
+27 28 
+28 -1
+
+# Design Unit to File Association
+arch work mss_top_sb_ccc_0_fccc def_arch 0
+module work mss_top_sb_ccc_0_fccc 0
+arch work coreresetp_pcie_hotreset rtl 1
+module work coreresetp_pcie_hotreset 1
+arch work coreresetp rtl 2
+module work coreresetp 2
+arch work xtlosc_fab def_arch 3
+module work xtlosc_fab 3
+arch work rcosc_25_50mhz_fab def_arch 3
+module work rcosc_25_50mhz_fab 3
+arch work rcosc_1mhz_fab def_arch 3
+module work rcosc_1mhz_fab 3
+arch work xtlosc def_arch 3
+module work xtlosc 3
+arch work rcosc_25_50mhz def_arch 3
+module work rcosc_25_50mhz 3
+arch work rcosc_1mhz def_arch 3
+module work rcosc_1mhz 3
+arch work mss_top_sb_fabosc_0_osc def_arch 4
+module work mss_top_sb_fabosc_0_osc 4
+arch work mss_010 def_arch 5
+module work mss_010 5
+arch work mss_top_sb_mss rtl 6
+module work mss_top_sb_mss 6
+arch coreapb3_lib coreapb3_muxptob3 coreapb3_muxptob3_arch 7
+module coreapb3_lib coreapb3_muxptob3 7
+arch coreapb3_lib coreapb3_iaddr_reg rtl 8
+module coreapb3_lib coreapb3_iaddr_reg 8
+arch coreapb3_lib coreapb3 coreapb3_arch 9
+module coreapb3_lib coreapb3 9
+arch corei2c_lib corei2creal rtl 10
+module corei2c_lib corei2creal 10
+arch corei2c_lib corei2c rtl 11
+module corei2c_lib corei2c 11
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_clock_gen rtl 12
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_clock_gen 12
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_tx_async translated 13
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_tx_async 13
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_rx_async translated 14
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_rx_async 14
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_ram128x8_pa4 translated 15
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_ram128x8_pa4 15
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_fifo_ctrl_128 translated 15
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_fifo_ctrl_128 15
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_fifo_256x8 translated 15
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_fifo_256x8 15
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_coreuart translated 16
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_coreuart 16
+arch coreuartapb_lib mss_top_sb_coreuartapb_0_0_coreuartapb translated 17
+module coreuartapb_lib mss_top_sb_coreuartapb_0_0_coreuartapb 17
+arch work mss_top_sb rtl 20
+module work mss_top_sb 20
+arch coreuart_lib mss_top_coreuart_0_clock_gen rtl 21
+module coreuart_lib mss_top_coreuart_0_clock_gen 21
+arch coreuart_lib mss_top_coreuart_0_tx_async translated 22
+module coreuart_lib mss_top_coreuart_0_tx_async 22
+arch coreuart_lib mss_top_coreuart_0_rx_async translated 23
+module coreuart_lib mss_top_coreuart_0_rx_async 23
+arch coreuart_lib mss_top_coreuart_0_ram128x8_pa4 translated 24
+module coreuart_lib mss_top_coreuart_0_ram128x8_pa4 24
+arch coreuart_lib mss_top_coreuart_0_fifo_ctrl_128 translated 24
+module coreuart_lib mss_top_coreuart_0_fifo_ctrl_128 24
+arch coreuart_lib mss_top_coreuart_0_fifo_256x8 translated 24
+module coreuart_lib mss_top_coreuart_0_fifo_256x8 24
+arch coreuart_lib mss_top_coreuart_0_coreuart translated 26
+module coreuart_lib mss_top_coreuart_0_coreuart 26
+arch work mss_top rtl 28
+module work mss_top 28
+
+# Unbound Instances to File Association
+inst work mss_top_sb_ccc_0_fccc ccc 0
+inst work mss_top_sb_ccc_0_fccc gnd 0
+inst work mss_top_sb_ccc_0_fccc vcc 0
+inst work mss_top_sb_ccc_0_fccc clkint 0
+inst coreuartapb_lib mss_top_sb_coreuartapb_0_0_ram128x8_pa4 ram64x18 15
+inst coreuartapb_lib mss_top_sb_coreuartapb_0_0_ram128x8_pa4 inv 15
+inst work mss_top_sb sysreset 20
+inst work mss_top_sb or3 20
+inst work mss_top_sb bibuf 20
+inst work mss_top bt_module 28
+
+
+# Configuration files used

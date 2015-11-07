@@ -1,6 +1,6 @@
 Compile Report
 Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)
-Date: Sun Oct 25 01:41:22 2015
+Date: Sat Nov 07 17:49:13 2015
 
 Device Selection
 +--------------------------------+----------------+
@@ -120,9 +120,9 @@ I/O Placement
 +----------+-------+------------+
 | Type     | Count | Percentage |
 +----------+-------+------------+
-| Locked   |  4    | 50.00%     |
+| Locked   |  8    | 100.00%    |
 | Placed   |  0    | 0.00%      |
-| UnPlaced |  4    | 50.00%     |
+| UnPlaced |  0    | 0.00%      |
 +----------+-------+------------+
 
 Nets assigned to chip global resources

@@ -2,7 +2,7 @@
 #define mss_top_HW_PLATFORM_H_
 /*****************************************************************************
 *
-*Created by Microsemi SmartDesign  Sat Oct 31 18:14:46 2015
+*Created by Microsemi SmartDesign  Sat Nov 07 18:17:57 2015
 *
 *Memory map specification for peripherals in mss_top
 */
