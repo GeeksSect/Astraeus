@@ -21,7 +21,6 @@
  * Maximum receiver buffer size.
  *****************************************************************************/
 #define MAX_RX_DATA_SIZE    256
-#define SLAVE_SER_ADDR     0x77
 
 /*-----------------------------------------------------------------------------
  * Receive buffer size.
@@ -118,7 +117,7 @@ int main(void)
 
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rTemperature is: ");
                     uint8_t print_buf[4];
-                    itoa((char *)&print_buf, 'x', temperature);
+                    itoa((char *)&print_buf, 'd', temperature);
                     UART_send(&g_uart, (const uint8_t *)print_buf, 4);
                     UART_polled_tx_string(&g_uart, (const uint8_t *)" C\n\r");
 
