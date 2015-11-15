@@ -9,7 +9,6 @@
 #include "core_uart_apb.h"
 #include "CMSIS/m2sxxx.h"
 #include "drivers/corei2c/core_i2c.h"
-//#include "drivers/CorePWM/core_pwm.h"
 #include "drivers_config/sys_config/sys_config.h"
 /******************************************************************************
  * Baud value to achieve a 115200 baud rate with a 50 MHz system clock.
@@ -38,7 +37,7 @@ static void display_greeting(void);
 static void select_command(void);
 //uint8_t get_data(void);
 void press_any_key_to_continue(void);
-//void pwm_control();
+void copter_control();
 
 /*------------------------------------------------------------------------------
  * I2C buffers. These are the buffers where data written transferred via I2C
@@ -49,31 +48,16 @@ static uint8_t g_slave_tx_buffer[BUFFER_SIZE] = "<<-------Slave Tx data ------->
 static uint8_t g_master_rx_buf[BUFFER_SIZE];
 static uint8_t g_master_tx_buf[BUFFER_SIZE];
 
-//#define PWM_PRESCALE 1
-//#define PWM_PERIOD 1000
-
 // Core instances
 UART_instance_t g_uart;
-//pwm_instance_t  g_pwm;
 
 void setup()
 {
-//	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
 	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
 	copter_init();
-
-//	PWM_enable(&g_pwm, PWM_1);
-//	PWM_enable(&g_pwm, PWM_2);
-//	PWM_enable(&g_pwm, PWM_3);
-//	PWM_enable(&g_pwm, PWM_4);
-//
-//	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-//	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-//	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-//	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 }
 
 int main(void)
@@ -181,27 +165,10 @@ int main(void)
 
                 case '3':
                 {
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM test mode \n\r\n\r");
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r Copter test mode \n\r\n\r");
 
-//                    pwm_control();
-/*
-                    PWM_set_duty_cycle(&g_pwm, PWM_1, 250);
-                    PWM_set_duty_cycle(&g_pwm, PWM_2, 250);
-                    PWM_set_duty_cycle(&g_pwm, PWM_3, 250);
-                    PWM_set_duty_cycle(&g_pwm, PWM_4, 250);
+                    copter_control();
 
-                    delay(20 * 1000, 50);
-                    PWM_set_duty_cycle(&g_pwm, PWM_1, 500);
-                    PWM_set_duty_cycle(&g_pwm, PWM_2, 500);
-                    PWM_set_duty_cycle(&g_pwm, PWM_3, 500);
-                    PWM_set_duty_cycle(&g_pwm, PWM_4, 500);
-
-                    delay(20 * 1000, 50);
-                    PWM_set_duty_cycle(&g_pwm, PWM_1, 1000);
-                    PWM_set_duty_cycle(&g_pwm, PWM_2, 1000);
-                    PWM_set_duty_cycle(&g_pwm, PWM_3, 1000);
-                    PWM_set_duty_cycle(&g_pwm, PWM_4, 1000);
-*/
                     press_any_key_to_continue();
                     break;
                 }
@@ -224,122 +191,36 @@ int main(void)
     return 0;
 }
 
-//void pwm_control()
-//{
-//	uint8_t pwm_enabled = (1 << 8) - 1;
-//	uint8_t pwm_1_mask = 1;
-//	uint8_t pwm_2_mask = 1 << 1;
-//	uint8_t pwm_3_mask = 1 << 2;
-//	uint8_t pwm_4_mask = 1 << 3;
-//
-//	uint16_t duty_cycle = 0;
-//	uint16_t duty_step = 100;
-//	uint16_t duty_max = 1000;
-//
-//    uint8_t rx_size = 0;
-//    uint8_t rx_buff[1];
-//
-//	uint8_t work_flag = 1;
-//
-//	while(work_flag)
-//	{
-//		rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
-//		if (rx_size > 0)
-//		{
-//			switch (rx_buff[0])
-//			{
-//			case '1':
-//			{
-//				if (pwm_enabled & pwm_1_mask)
-//				{
-//					PWM_disable(&g_pwm, PWM_1);
-//					pwm_enabled &= ~(pwm_1_mask);
-//				} else {
-//					PWM_enable(&g_pwm, PWM_1);
-//					pwm_enabled |= pwm_1_mask;
-//				}
-//				break;
-//			}
-//			case '2':
-//			{
-//				if (pwm_enabled & pwm_2_mask)
-//				{
-//					PWM_disable(&g_pwm, PWM_2);
-//					pwm_enabled &= ~(pwm_2_mask);
-//				} else {
-//					PWM_enable(&g_pwm, PWM_2);
-//					pwm_enabled |= pwm_2_mask;
-//				}
-//				break;
-//			}
-//			case '3':
-//			{
-//				if (pwm_enabled & pwm_3_mask)
-//				{
-//					PWM_disable(&g_pwm, PWM_3);
-//					pwm_enabled &= ~(pwm_3_mask);
-//				} else {
-//					PWM_enable(&g_pwm, PWM_3);
-//					pwm_enabled |= pwm_3_mask;
-//				}
-//				break;
-//			}
-//			case '4':
-//			{
-//				if (pwm_enabled & pwm_4_mask)
-//				{
-//					PWM_disable(&g_pwm, PWM_4);
-//					pwm_enabled &= ~(pwm_4_mask);
-//				} else {
-//					PWM_enable(&g_pwm, PWM_4);
-//					pwm_enabled |= pwm_4_mask;
-//				}
-//				break;
-//			}
-//			case 'w':
-//			{
-//				duty_cycle = (duty_step + duty_cycle <= duty_max) ?
-//							 duty_step + duty_cycle :
-//							 duty_cycle;
-//				break;
-//			}
-//			case 's':
-//			{
-//				duty_cycle = (duty_cycle - duty_step >= 0) ?
-//							  duty_cycle - duty_step:
-//							  duty_cycle;
-//				break;
-//			}
-//			case 'q':
-//			{
-//				work_flag = 0;
-//				break;
-//			}
-//			default:
-//			{
-//				break;
-//			}
-//			} // end switch
-//
-//			if (pwm_enabled & pwm_1_mask)
-//			{
-//				PWM_set_duty_cycle(&g_pwm, PWM_1, duty_cycle);
-//			}
-//			if (pwm_enabled & pwm_2_mask)
-//			{
-//				PWM_set_duty_cycle(&g_pwm, PWM_2, duty_cycle);
-//			}
-//			if (pwm_enabled & pwm_3_mask)
-//			{
-//				PWM_set_duty_cycle(&g_pwm, PWM_3, duty_cycle);
-//			}
-//			if (pwm_enabled & pwm_4_mask)
-//			{
-//				PWM_set_duty_cycle(&g_pwm, PWM_4, duty_cycle);
-//			}
-//		}
-//	}
-//}
+void copter_control()
+{
+	uint8_t index = 0;
+
+    uint8_t rx_size = 0;
+    uint8_t rx_buff[2];
+
+	uint8_t work_flag = 1;
+
+	while(work_flag)
+	{
+		rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
+		if (rx_size > 0)
+		{
+			index = rx_buff[0] - '0';
+			switch(rx_buff[1]) {
+			case 'w':
+				copter_increase_capacity(index);
+				break;
+			case 's':
+				copter_decrease_capacity(index);
+				break;
+			case 'q':
+				work_flag = 0;
+			default:
+				break;
+			}
+		}
+	}
+}
 
 /*------------------------------------------------------------------------------
   Display greeting message when application is started.
