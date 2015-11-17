@@ -10,6 +10,9 @@
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers/CorePWM/core_pwm.h"
 #include "drivers_config/sys_config/sys_config.h"
+
+#include <stdlib.h>
+#include <math.h>
 /******************************************************************************
  * Baud value to achieve a 115200 baud rate with a 50 MHz system clock.
  * This value is calculated using the following equation:
@@ -55,6 +58,36 @@ static uint8_t g_master_tx_buf[BUFFER_SIZE];
 // Core instances
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
+
+// ================== ACEL DEFINES
+#define k 65.53  // 2 bytes is range [-500;500] degrees
+#define k1 57.29 // radians to degrees
+
+// force ranged by 16 bits [0 to 32768] [0 to 100 %]
+#define low_trottle 8192  //minimal total force  (8192 is 12.5%)
+#define low_trottle2 5898 //minimal power of single motor (5898 is 9%)
+
+#define high_trottle 39321  //max total force  (39321 is 65%)
+
+#define Kp (0.5)   // sens
+
+
+int16_t g_ax, g_ay, g_az;
+int16_t g_gx, g_gy, g_gz;
+uint16_t t_prev, t_curr;
+int16_t pitch_prev, roll_prev;
+int16_t pitch_curr, roll_curr;
+int16_t acell_pitch, acell_roll;
+int16_t pitch0, roll0;
+uint16_t force = 25000;
+uint16_t pow1, pow2, pow3, pow4;
+
+void acell_angle();
+void my_angle();
+void my_ESC();
+
+void pwm_auto();
+// =========================== ACEL DEFINES
 
 void setup()
 {
@@ -205,6 +238,15 @@ int main(void)
                     break;
                 }
 
+                case '4':
+                {
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM auto mode \n\r\n\r");
+
+                    pwm_auto();
+                    press_any_key_to_continue();
+                    break;
+                }
+
                 case '0':
                     /* To Exit from the application */
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rReturn from the Main function \n\r\n\r");
@@ -340,6 +382,116 @@ void pwm_control()
 	}
 }
 
+void pwm_auto()
+{
+    uint8_t calibration_step = 10;
+
+    uint8_t rx_size = 0;
+    uint8_t rx_buff[1];
+
+	uint8_t work_flag = 1;
+	uint16_t force_delta = 5000;
+	force = 3000;
+
+	uint16_t duty_1 = 0;
+	uint16_t duty_2 = 0;
+	uint16_t duty_3 = 0;
+	uint16_t duty_4 = 0;
+
+	int16_t c_ax, c_ay, c_az, c_gx, c_gy, c_gz;
+	int16_t t_ax, t_ay, t_az, t_gx, t_gy, t_gz;
+
+	MPU6050_getMotion6(&c_az, &c_ay, &c_ax, &c_gx, &c_gy, &c_gz);
+
+	uint8_t i;
+	for (i = 0; i < calibration_step; ++i)
+	{
+		MPU6050_getMotion6(&t_az, &t_ay, &t_ax, &t_gx, &t_gy, &t_gz);
+		c_ax = (c_ax + t_ax) / 2;
+		c_ay = (c_ay + t_ay) / 2;
+		c_az = (c_az + t_az) / 2;
+		c_gx = (c_gx + t_gx) / 2;
+		c_gy = (c_gy + t_gy) / 2;
+		c_gz = (c_gz + t_gz) / 2;
+	}
+
+	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+
+	PWM_disable(&g_pwm, PWM_1);
+	PWM_disable(&g_pwm, PWM_2);
+	PWM_disable(&g_pwm, PWM_3);
+	PWM_disable(&g_pwm, PWM_4);
+
+	PWM_enable(&g_pwm, PWM_1);
+	PWM_enable(&g_pwm, PWM_2);
+	PWM_enable(&g_pwm, PWM_3);
+	PWM_enable(&g_pwm, PWM_4);
+
+	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+
+	while(work_flag)
+	{
+		rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
+		if (rx_size > 0)
+		{
+			switch (rx_buff[0])
+			{
+				case 'w':
+				{
+					force = (force + force_delta <= 65000) ?
+							 force + force_delta:
+							 force;
+					break;
+				}
+				case 's':
+				{
+					force = (force - force_delta >= 0) ?
+							 force - force_delta:
+							 force;
+					break;
+				}
+				case 'q':
+				{
+					work_flag = 0;
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			} // end switch
+		}
+
+		MPU6050_getMotion6(&g_az, &g_ay, &g_ax, &g_gx, &g_gy, &g_gz);
+
+		// calibrate values
+		g_ax -= c_ax;
+		g_ay -= c_ay;
+		g_az -= c_az;
+		g_gx -= c_gx;
+		g_gy -= c_gy;
+		g_gz -= c_gz;
+
+		my_ESC();
+
+		duty_1 = (pow1) / 66;
+		duty_3 = (pow2) / 66;
+		duty_4 = (pow3) / 66;
+		duty_2 = (pow4) / 66;
+
+		PWM_set_duty_cycle(&g_pwm, PWM_1, duty_1);
+		PWM_set_duty_cycle(&g_pwm, PWM_2, duty_2);
+		PWM_set_duty_cycle(&g_pwm, PWM_3, duty_3);
+		PWM_set_duty_cycle(&g_pwm, PWM_4, duty_4);
+	}
+}
+
 /*------------------------------------------------------------------------------
   Display greeting message when application is started.
  */
@@ -348,12 +500,6 @@ static void display_greeting(void)
     UART_polled_tx_string(&g_uart, (const uint8_t*)"\n\r******************************************************************************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"**************************** DOF10 CLI ***************************************\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"******************************************************************************\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"************* Functions supported by this CLI project are ********************\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"1. Read Temperature\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"2. Read MPU6050\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"3. PWM control\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"0. Read Temperature\n\r");
-    UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }
 /*------------------------------------------------------------------------------
   Select the I2C Mode.
@@ -364,6 +510,7 @@ static void select_command(void)
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '1' to measure temperature\n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '2' to get data from MPU6050 \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '3' to control PWM \n\r");
+    UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '4' to autocontrol PWM \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"Press Key '0' to EXIT from the Application \n\r");
     UART_polled_tx_string(&g_uart, (const uint8_t*)"------------------------------------------------------------------------------\n\r");
 }
@@ -396,4 +543,79 @@ void SysTick_Handler(void)
 void FabricIrq0_IRQHandler(void)
 {
 	I2C_isr(&g_core_i2c0);
+}
+
+
+// ============ ACEL FUNCTIONS
+
+void acell_angle()
+{
+  if (g_az > 1000) // if down is down
+  {
+    acell_roll = atan(g_ax / sqrt(g_ay * g_ay + g_az * g_az)) * k * k1;
+    acell_pitch = atan(g_ay / sqrt(g_ax * g_ax + g_az * g_az)) * k * k1;
+  }
+  else // if orientation is shit
+  {
+    if (g_ay > 1000)
+    {
+      acell_pitch = k * 90;
+    }
+    else
+    {
+      if (g_ay < 1000)
+      {
+        acell_pitch = k * (-90);
+      }
+    }
+    if (g_ax > 1000)
+    {
+      acell_roll = k * 90;
+    }
+    else
+    {
+      if (g_ax < 1000)
+      {
+        acell_roll = k * (-90);
+      }
+    }
+  }
+}
+
+void my_angle( )
+{
+	/*
+  acell_angle();
+  pitch_prev = pitch_curr;
+  roll_prev = roll_curr;
+  pitch_curr = (49*(gx*(t_curr - t_prev) + pitch_prev)/50) +  (acell_pitch / 50);
+  roll_curr = (49*(gy*(t_curr - t_prev) + roll_prev)/50) +  (acell_roll/50);
+  */
+}
+void my_ESC()
+{
+  acell_angle();
+  if(force < low_trottle)
+  {
+    pow1 = 0;
+    pow2 = 0;
+    pow3 = 0;
+    pow4 = 0;
+  }
+  else
+  {
+    if(force > high_trottle)
+    {
+      force = high_trottle;
+    }
+  }
+  {
+
+    // please, check a sign in expressions
+    pow1 = force + (acell_pitch + acell_roll)*Kp;
+    pow2 = force + (-acell_pitch + acell_roll)*Kp;
+    pow3 = force + (-acell_pitch - acell_roll)*Kp;
+    pow4 = force + (acell_pitch - acell_roll)*Kp;
+
+  }
 }
