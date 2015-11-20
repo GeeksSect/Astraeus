@@ -367,6 +367,8 @@
 
 static uint8_t mpu6050_dev_addr;
 
+static int32_t ax0, ay0, az0, gx0, gy0, gz0;
+
 void MPU6050_initialize();
 
 void MPU6050_setClockSource(uint8_t source);
@@ -386,6 +388,13 @@ void MPU6050_getMotion6(int16_t* ax,
                         int16_t* az,
                         int16_t* gx,
                         int16_t* gy,
-                        int16_t* gz);
+                        int16_t* gz,
+                        int use_calib);
+
+// calibration is not tested!
+void MPU6050_calibration();
+
+
+
 
 #endif /* MPU6050_H_ */

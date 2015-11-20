@@ -87,7 +87,8 @@ void MPU6050_getMotion6(int16_t* ax,
                         int16_t* az,
                         int16_t* gx,
                         int16_t* gy,
-                        int16_t* gz)
+                        int16_t* gz,
+                        int use_calib)
 {
     uint8_t tx_buf[1]; uint8_t tx_len;
     tx_buf[0] = MPU6050_RA_ACCEL_XOUT_H;
@@ -105,4 +106,39 @@ void MPU6050_getMotion6(int16_t* ax,
     *gx = (((int16_t)rx_buf[8]) << 8) | rx_buf[9];
     *gy = (((int16_t)rx_buf[10]) << 8) | rx_buf[11];
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
+    if(use_calib == 1)
+    {
+    	*ax -= ax0;
+    	*ay -= ay0;
+		*az -= az0;
+		*gx -= gx0;
+		*gy -= gy0;
+		*gz -= gz0;
+
+    }
+
 }
+void MPU6050_calibration(){
+	int i =0;
+	int tmp[6];
+	for(i=0; i<1000; i++)
+	{
+		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], false);
+		ax0 += tmp[0];
+		ay0 += tmp[1];
+		az0 += tmp[2];
+		gx0 += tmp[3];
+		gy0 += tmp[4];
+		gz0 += tmp[5];
+	}
+	ax0 /= 1000;
+	ay0 /= 1000;
+	az0 /= 1000;
+	gx0 /= 1000;
+	gy0 /= 1000;
+	gz0 /= 1000;
+
+}
+
+
+

@@ -1,6 +1,7 @@
 #include "Modules/BMP/bmp.h"
 #include "Modules/I2C/i2c.h"
 #include "Modules/MPU6050/mpu6050.h"
+#include "Modules/PID/PID.h"
 #include "Helpers/converter/converter.h"
 
 #include "hal.h"
@@ -82,9 +83,7 @@ int16_t pitch0, roll0;
 uint16_t force = 25000;
 uint16_t pow1, pow2, pow3, pow4;
 
-void acell_angle();
-void my_angle();
-void my_ESC();
+
 
 void pwm_auto();
 // =========================== ACEL DEFINES
@@ -141,25 +140,6 @@ int main(void)
         {
             switch(rx_buff[0])
             {
-                case '1':
-                {
-                    /* Measure temperature (DOF10) */
-                    uint16_t temperature = 0xFFFF;
-                    status = BMP_get_temperature(&temperature);
-                    // TODO! replace it by normal handler
-                    // handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
-
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rTemperature is: ");
-                    uint8_t print_buf[4];
-                    itoa((char *)&print_buf, 'x', temperature);
-                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)" C\n\r");
-
-                    /* Display commands */
-                    press_any_key_to_continue();
-                    break;
-                }
-
                 case '2':
                 {
                     uint16_t ax = 0x0000;
@@ -174,7 +154,7 @@ int main(void)
                     // handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
 
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rMPU6050 data is:\n\r");
-                    uint8_t print_buf[4];
+                    uint8_t print_buf[5];
 
                     itoa((char *)&print_buf, 'x', ax);
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r ax : ");
@@ -211,32 +191,6 @@ int main(void)
                     break;
                 }
 
-                case '3':
-                {
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM test mode \n\r\n\r");
-
-                    pwm_control();
-/*
-                    PWM_set_duty_cycle(&g_pwm, PWM_1, 250);
-                    PWM_set_duty_cycle(&g_pwm, PWM_2, 250);
-                    PWM_set_duty_cycle(&g_pwm, PWM_3, 250);
-                    PWM_set_duty_cycle(&g_pwm, PWM_4, 250);
-
-                    delay(20 * 1000, 50);
-                    PWM_set_duty_cycle(&g_pwm, PWM_1, 500);
-                    PWM_set_duty_cycle(&g_pwm, PWM_2, 500);
-                    PWM_set_duty_cycle(&g_pwm, PWM_3, 500);
-                    PWM_set_duty_cycle(&g_pwm, PWM_4, 500);
-
-                    delay(20 * 1000, 50);
-                    PWM_set_duty_cycle(&g_pwm, PWM_1, 1000);
-                    PWM_set_duty_cycle(&g_pwm, PWM_2, 1000);
-                    PWM_set_duty_cycle(&g_pwm, PWM_3, 1000);
-                    PWM_set_duty_cycle(&g_pwm, PWM_4, 1000);
-*/
-                    press_any_key_to_continue();
-                    break;
-                }
 
                 case '4':
                 {
@@ -485,6 +439,18 @@ void pwm_auto()
 		duty_4 = (pow3) / 66;
 		duty_2 = (pow4) / 66;
 
+        uint8_t print_buf[5];
+		itoa((char *)&print_buf, 'x', pow1);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		itoa((char *)&print_buf, 'x', pow1);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+
 		PWM_set_duty_cycle(&g_pwm, PWM_1, duty_1);
 		PWM_set_duty_cycle(&g_pwm, PWM_2, duty_2);
 		PWM_set_duty_cycle(&g_pwm, PWM_3, duty_3);
@@ -548,74 +514,4 @@ void FabricIrq0_IRQHandler(void)
 
 // ============ ACEL FUNCTIONS
 
-void acell_angle()
-{
-  if (g_az > 1000) // if down is down
-  {
-    acell_roll = atan(g_ax / sqrt(g_ay * g_ay + g_az * g_az)) * k * k1;
-    acell_pitch = atan(g_ay / sqrt(g_ax * g_ax + g_az * g_az)) * k * k1;
-  }
-  else // if orientation is shit
-  {
-    if (g_ay > 1000)
-    {
-      acell_pitch = k * 90;
-    }
-    else
-    {
-      if (g_ay < 1000)
-      {
-        acell_pitch = k * (-90);
-      }
-    }
-    if (g_ax > 1000)
-    {
-      acell_roll = k * 90;
-    }
-    else
-    {
-      if (g_ax < 1000)
-      {
-        acell_roll = k * (-90);
-      }
-    }
-  }
-}
 
-void my_angle( )
-{
-	/*
-  acell_angle();
-  pitch_prev = pitch_curr;
-  roll_prev = roll_curr;
-  pitch_curr = (49*(gx*(t_curr - t_prev) + pitch_prev)/50) +  (acell_pitch / 50);
-  roll_curr = (49*(gy*(t_curr - t_prev) + roll_prev)/50) +  (acell_roll/50);
-  */
-}
-void my_ESC()
-{
-  acell_angle();
-  if(force < low_trottle)
-  {
-    pow1 = 0;
-    pow2 = 0;
-    pow3 = 0;
-    pow4 = 0;
-  }
-  else
-  {
-    if(force > high_trottle)
-    {
-      force = high_trottle;
-    }
-  }
-  {
-
-    // please, check a sign in expressions
-    pow1 = force + (acell_pitch + acell_roll)*Kp;
-    pow2 = force + (-acell_pitch + acell_roll)*Kp;
-    pow3 = force + (-acell_pitch - acell_roll)*Kp;
-    pow4 = force + (acell_pitch - acell_roll)*Kp;
-
-  }
-}
