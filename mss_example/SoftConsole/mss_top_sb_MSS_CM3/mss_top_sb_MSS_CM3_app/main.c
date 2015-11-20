@@ -7,9 +7,11 @@
 #include "mss_top_hw_platform.h"
 #include "core_uart_apb.h"
 #include "CMSIS/m2sxxx.h"
+#include "system_m2sxxx.h"
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers/CorePWM/core_pwm.h"
 #include "drivers_config/sys_config/sys_config.h"
+#include "drivers/mss_timer/mss_timer.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -42,6 +44,9 @@ static void select_command(void);
 //uint8_t get_data(void);
 void press_any_key_to_continue(void);
 void pwm_control();
+uint64_t millis();
+
+static uint64_t t_milis = 0;
 
 /*------------------------------------------------------------------------------
  * I2C buffers. These are the buffers where data written transferred via I2C
@@ -74,7 +79,7 @@ pwm_instance_t  g_pwm;
 
 int16_t g_ax, g_ay, g_az;
 int16_t g_gx, g_gy, g_gz;
-uint16_t t_prev, t_curr;
+uint64_t t_prev, t_curr;
 int16_t pitch_prev, roll_prev;
 int16_t pitch_curr, roll_curr;
 int16_t acell_pitch, acell_roll;
@@ -96,6 +101,8 @@ void setup()
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
+
+	MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
 
 	PWM_enable(&g_pwm, PWM_1);
 	PWM_enable(&g_pwm, PWM_2);
@@ -267,6 +274,10 @@ int main(void)
 
 void pwm_control()
 {
+	MSS_TIM1_load_background(SystemCoreClock / 1000); // generate irq with 1 kHz
+	MSS_TIM1_start();
+	MSS_TIM1_enable_irq();
+
 	uint8_t pwm_enabled = (1 << 8) - 1;
 	uint8_t pwm_1_mask = 1;
 	uint8_t pwm_2_mask = 1 << 1;
@@ -281,6 +292,8 @@ void pwm_control()
     uint8_t rx_buff[1];
 
 	uint8_t work_flag = 1;
+
+	uint64_t start_t = millis();
 
 	while(work_flag)
 	{
@@ -379,11 +392,22 @@ void pwm_control()
 				PWM_set_duty_cycle(&g_pwm, PWM_4, duty_cycle);
 			}
 		}
+
+		if (millis() - start_t > 3000) // 3 sec
+		{
+			work_flag = 0;
+		}
 	}
+
+	MSS_TIM1_disable_irq();
 }
 
 void pwm_auto()
 {
+	MSS_TIM1_load_background(SystemCoreClock / 1000); // generate irq with 1 kHz
+	MSS_TIM1_start();
+	MSS_TIM1_enable_irq();
+
     uint8_t calibration_step = 10;
 
     uint8_t rx_size = 0;
@@ -401,12 +425,12 @@ void pwm_auto()
 	int16_t c_ax, c_ay, c_az, c_gx, c_gy, c_gz;
 	int16_t t_ax, t_ay, t_az, t_gx, t_gy, t_gz;
 
-	MPU6050_getMotion6(&c_az, &c_ay, &c_ax, &c_gx, &c_gy, &c_gz);
+	MPU6050_getMotion6(&c_az, &c_ay, &c_ax, &c_gz, &c_gy, &c_gx);
 
 	uint8_t i;
 	for (i = 0; i < calibration_step; ++i)
 	{
-		MPU6050_getMotion6(&t_az, &t_ay, &t_ax, &t_gx, &t_gy, &t_gz);
+		MPU6050_getMotion6(&t_az, &t_ay, &t_ax, &t_gz, &t_gy, &t_gx);
 		c_ax = (c_ax + t_ax) / 2;
 		c_ay = (c_ay + t_ay) / 2;
 		c_az = (c_az + t_az) / 2;
@@ -468,7 +492,7 @@ void pwm_auto()
 			} // end switch
 		}
 
-		MPU6050_getMotion6(&g_az, &g_ay, &g_ax, &g_gx, &g_gy, &g_gz);
+		MPU6050_getMotion6(&g_az, &g_ay, &g_ax, &g_gz, &g_gy, &g_gx);
 
 		// calibrate values
 		g_ax -= c_ax;
@@ -490,6 +514,8 @@ void pwm_auto()
 		PWM_set_duty_cycle(&g_pwm, PWM_3, duty_3);
 		PWM_set_duty_cycle(&g_pwm, PWM_4, duty_4);
 	}
+
+	MSS_TIM1_disable_irq();
 }
 
 /*------------------------------------------------------------------------------
@@ -584,17 +610,17 @@ void acell_angle()
 
 void my_angle( )
 {
-	/*
+  t_prev = t_curr;
+  t_curr = millis();
   acell_angle();
   pitch_prev = pitch_curr;
   roll_prev = roll_curr;
-  pitch_curr = (49*(gx*(t_curr - t_prev) + pitch_prev)/50) +  (acell_pitch / 50);
-  roll_curr = (49*(gy*(t_curr - t_prev) + roll_prev)/50) +  (acell_roll/50);
-  */
+  pitch_curr = (49 * (g_gx * (t_curr - t_prev) + pitch_prev) / 50) +  (acell_pitch / 50);
+  roll_curr = (49 * (g_gy * (t_curr - t_prev) + roll_prev) / 50) +  (acell_roll / 50);
 }
 void my_ESC()
 {
-  acell_angle();
+	my_angle();
   if(force < low_trottle)
   {
     pow1 = 0;
@@ -612,10 +638,22 @@ void my_ESC()
   {
 
     // please, check a sign in expressions
-    pow1 = force + (acell_pitch + acell_roll)*Kp;
-    pow2 = force + (-acell_pitch + acell_roll)*Kp;
-    pow3 = force + (-acell_pitch - acell_roll)*Kp;
-    pow4 = force + (acell_pitch - acell_roll)*Kp;
+    pow1 = force + (pitch_curr + roll_curr)*Kp;
+    pow2 = force + (-pitch_curr + roll_curr)*Kp;
+    pow3 = force + (-pitch_curr - roll_curr)*Kp;
+    pow4 = force + (pitch_curr - roll_curr)*Kp;
 
   }
+}
+
+uint64_t millis()
+{
+	return t_milis;
+}
+
+// Timer 1 irq handler
+void Timer1_IRQHandler()
+{
+	t_milis++;
+	MSS_TIM1_clear_irq();
 }
