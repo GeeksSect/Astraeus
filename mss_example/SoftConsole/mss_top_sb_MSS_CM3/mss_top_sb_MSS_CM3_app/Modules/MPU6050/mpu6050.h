@@ -367,7 +367,7 @@
 
 static uint8_t mpu6050_dev_addr;
 
-static int32_t ax0, ay0, az0, gx0, gy0, gz0;
+static int32_t ax0 =0 , ay0=0, az0=0, gx0=0, gy0=0, gz0=0;
 
 void MPU6050_initialize();
 

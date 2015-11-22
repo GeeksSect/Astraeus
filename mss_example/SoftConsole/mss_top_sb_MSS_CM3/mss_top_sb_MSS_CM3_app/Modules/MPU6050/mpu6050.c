@@ -120,10 +120,10 @@ void MPU6050_getMotion6(int16_t* ax,
 }
 void MPU6050_calibration(){
 	int i =0;
-	int tmp[6];
+	uint16_t tmp[6];
 	for(i=0; i<1000; i++)
 	{
-		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], false);
+		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
 		ax0 += tmp[0];
 		ay0 += tmp[1];
 		az0 += tmp[2];
@@ -137,6 +137,7 @@ void MPU6050_calibration(){
 	gx0 /= 1000;
 	gy0 /= 1000;
 	gz0 /= 1000;
+	ax0 -= 16384;
 
 }
 
