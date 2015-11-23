@@ -1,0 +1,21 @@
+
+. Module name, SLE, CFG, ARI1, BUFFER, MACC, RAM1KX18, RAM64X18, GLOBAL, IO
+. mss_top, 406, 774, 166, 0, 0, 0, 0, 2, 10
+.	. mss_top_sb, 406, 774, 166, 0, 0, 0, 0, 2, 4
+.	.	. COREI2C, 86, 321, 0, 0, 0, 0, 0, 0, 0
+.	.	.	. COREI2CREAL, 86, 321, 0, 0, 0, 0, 0, 0, 0
+.	.	. CoreAPB3, 0, 182, 0, 0, 0, 0, 0, 0, 0
+.	.	.	. COREAPB3_MUXPTOB3, 0, 180, 0, 0, 0, 0, 0, 0, 0
+.	.	. CoreResetP, 9, 2, 0, 0, 0, 0, 0, 1, 0
+.	.	. corepwm, 205, 167, 152, 0, 0, 0, 0, 0, 0
+.	.	.	. pwm_gen, 4, 67, 64, 0, 0, 0, 0, 0, 0
+.	.	.	. reg_if, 133, 18, 0, 0, 0, 0, 0, 0, 0
+.	.	.	. timebase, 64, 80, 88, 0, 0, 0, 0, 0, 0
+.	.	. mss_top_sb_CCC_0_FCCC, 0, 0, 0, 0, 0, 0, 0, 1, 0
+.	.	. mss_top_sb_CoreUARTapb_0_0_CoreUARTapb, 106, 102, 14, 0, 0, 0, 0, 0, 0
+.	.	.	. mss_top_sb_CoreUARTapb_0_0_COREUART, 82, 77, 14, 0, 0, 0, 0, 0, 0
+.	.	.	.	. mss_top_sb_CoreUARTapb_0_0_Clock_gen, 19, 11, 14, 0, 0, 0, 0, 0, 0
+.	.	.	.	. mss_top_sb_CoreUARTapb_0_0_Rx_async, 35, 38, 0, 0, 0, 0, 0, 0, 0
+.	.	.	.	. mss_top_sb_CoreUARTapb_0_0_Tx_async, 19, 22, 0, 0, 0, 0, 0, 0, 0
+.	.	. mss_top_sb_FABOSC_0_OSC, 0, 0, 0, 0, 0, 0, 0, 0, 0
+.	.	. mss_top_sb_MSS, 0, 0, 0, 0, 0, 0, 0, 0, 1

@@ -1,0 +1,9 @@
+@N: CG364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\hdl\BT_echo.v":1:7:1:15|Synthesizing module BT_module
+
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\hdl\BT_echo.v":18:0:18:5|Trying to extract state machine for register TX_RX_repiter
+Extracted state machine for register TX_RX_repiter
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11

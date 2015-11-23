@@ -1,0 +1,84 @@
+# Microsemi I/O Physical Design Constraints file
+# Auto Generated User I/O Constraints file
+
+# Version: v11.5 SP3 11.5.3.10
+# Family: SmartFusion2 , Die: M2S010 , Package: 144 TQ
+# Date generated: Sun Oct 25 01:42:55 2015 
+
+
+# 
+# User Locked I/O Bank Settings
+# 
+
+
+# 
+# Unlocked I/O Bank Settings
+# The I/O Bank Settings can be locked by directly editing this file
+# or by making changes in the I/O Attribute Editor
+# 
+
+
+# 
+# User Locked I/O settings
+# 
+
+set_io COREI2C_0_0_SCL_IO  \
+    -pinname 94            \
+    -fixed yes             \
+    -DIRECTION INOUT
+
+
+set_io COREI2C_0_0_SDA_IO  \
+    -pinname 91            \
+    -fixed yes             \
+    -DIRECTION INOUT
+
+
+set_io RX             \
+    -pinname 1        \
+    -fixed yes        \
+    -DIRECTION INPUT
+
+
+set_io TX              \
+    -pinname 2         \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_1       \
+    -pinname 83        \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_2       \
+    -pinname 43        \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_3       \
+    -pinname 101       \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_4       \
+    -pinname 3         \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+
+# 
+# Dedicated Peripheral I/O Settings
+# 
+
+
+# 
+# Unlocked I/O settings
+# The I/Os in this section are unplaced or placed but are not locked
+# the other listed attributes have been applied
+# 
+

@@ -1,0 +1,15 @@
+*****************************************************************
+Pin Report - Date: Sun Oct 04 22:10:49 2015 Pinchecksum: NOT-AVAILABLE
+Product: Designer
+Release: v11.5 SP3
+Version: 11.5.3.10
+Design Name: top
+Family: SmartFusion2
+Die: M2S010
+Package: 144 TQ
+*****************************************************************
+
+Port |Pin |Fixed |Function  |Bank     |I/O Std   |Direction                      |I/O state in Flash*Freeze mode |Resistor Pull                      |I/O available in Flash*Freeze mode |Schmitt Trigger |Odt_Static    |Odt Imp (Ohm)  |Low Power Exit |Input Delay |Slew         |Pre-Emphasis      |Output Drive (mA) |Output Load (pF) |
+-----|----|------|----------|---------|----------|-------------------------------|-------------------------------|-----------------------------------|-----------------------------------|----------------|--------------|---------------|---------------|------------|-------------|------------------|------------------|-----------------|
+RX    1    Yes    MSIO64NB7  Bank7     LVCMOS33   Input                           TRISTATE                        None                                No                                  Off              ---            ---             Off             Off          ---           ---                ---                ---               
+TX    2    Yes    MSIO64PB7  Bank7     LVCMOS33   Output                          TRISTATE                        None                                No                                  ---              ---            ---             ---             ---          ---           ---                4                  5                 

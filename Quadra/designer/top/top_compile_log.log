@@ -1,0 +1,65 @@
+The 'set_device' command succeeded.
+The 'read_edif' command succeeded.
+The 'write_adl' command succeeded.
+The Execute Script command succeeded.
+Running 'g4compile.exe' in 64-bit mode
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_defvar' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+The 'set_compile_info' command succeeded.
+
+===============================================================================.
+
+Info: Global design data: 
+      Total globals:                       2 
+      Globals that cannot be demoted:      1 
+      Globals considered for demotion:     1 
+
+
+Info: List of globals that cannot be demoted: 
+    CLK    ASYN   DATA   Instance Name 
+    ---    ----   ----   ------------- 
+    126    0      0      'FCCC_0/GL0_INST' 
+
+Info: List of globals considered for demotion: 
+    CLK    ASYN   DATA   Instance Name 
+    ---    ----   ----   ------------- 
+    0      115    0      'COREABC_0/RSTSYNC2_RNIK5VD' 
+
+Info: Demotion information: 
+Info: Added 0 row global instances. 
+Info: Deleted 0 global instances. 
+
+===============================================================================.
+
+INFO: No User PDC file(s) was specified.
+The 'compile' command succeeded.
+The Execute Script command succeeded.
+Running 'st_shell.exe' in 64-bit mode
+Running 'g4layout.exe' in 64-bit mode
