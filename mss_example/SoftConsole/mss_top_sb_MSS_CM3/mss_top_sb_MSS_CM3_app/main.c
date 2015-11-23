@@ -158,7 +158,7 @@ int main(void)
 
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\rTemperature is: ");
                     uint8_t print_buf[4];
-                    itoa((char *)&print_buf, 'x', temperature);
+                    itoa((char *)&print_buf, 'd', temperature);
                     UART_send(&g_uart, (const uint8_t *)print_buf, 4);
                     UART_polled_tx_string(&g_uart, (const uint8_t *)" C\n\r");
 
@@ -175,8 +175,11 @@ int main(void)
                     uint16_t gx = 0x0000;
                     uint16_t gy = 0x0000;
                     uint16_t gz = 0x0000;
+                    uint16_t mx = 0x0000;
+                    uint16_t my = 0x0000;
+                    uint16_t mz = 0x0000;
 
-                    MPU6050_getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+                    MPU6050_getMotion9(&ax, &ay, &az, &gx, &gy, &gz, &mx, &my, &mz);
                     // TODO! replace it by normal handler
                     // handle_i2c_status(instance, g_master_rx_buf, g_rx_length);
 
@@ -210,6 +213,21 @@ int main(void)
 
                     itoa((char *)&print_buf, 'x', gz);
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r gz : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', mx);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r mx : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', my);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r my : ");
+                    UART_send(&g_uart, (const uint8_t *)print_buf, 4);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
+
+                    itoa((char *)&print_buf, 'x', mz);
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r mz : ");
                     UART_send(&g_uart, (const uint8_t *)print_buf, 4);
                     UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r");
 
