@@ -5,7 +5,7 @@ The file contains the job information from mapper to be displayed as part of the
 *******************************************************************************************-->
 <job_run_status name="Mapper">
 <report_link name="Detailed report">
-<data>C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synlog\mss_top_fpga_mapper.srr</data>
+<data>C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synlog\mss_top_fpga_mapper.srr</data>
 <title>Synopsys Generic Technology Mapper</title>
 </report_link>
 <job_status>
@@ -13,34 +13,34 @@ The file contains the job information from mapper to be displayed as part of the
 </job_status>
 <job_info>
 <info name="Notes">
-<data>20</data>
+<data>24</data>
 <report_link name="more">
-<data>C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synlog\report\mss_top_fpga_mapper_notes.txt</data>
+<data>C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synlog\report\mss_top_fpga_mapper_notes.txt</data>
 </report_link>
 </info>
 <info name="Warnings">
-<data>12</data>
+<data>24</data>
 <report_link name="more">
-<data>C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synlog\report\mss_top_fpga_mapper_warnings.txt</data>
+<data>C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synlog\report\mss_top_fpga_mapper_warnings.txt</data>
 </report_link>
 </info>
 <info name="Errors">
 <data>0</data>
 <report_link name="more">
-<data>C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synlog\report\mss_top_fpga_mapper_errors.txt</data>
+<data>C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synlog\report\mss_top_fpga_mapper_errors.txt</data>
 </report_link>
 </info>
 <info name="CPU Time">
-<data>0h:00m:07s</data>
+<data>0h:00m:16s</data>
 </info>
 <info name="Real Time">
-<data>0h:00m:07s</data>
+<data>0h:00m:17s</data>
 </info>
 <info name="Peak Memory">
-<data>181MB</data>
+<data>187MB</data>
 </info>
 <info name="Date &amp; Time">
-<data type="timestamp">1444078861</data>
+<data type="timestamp">1446907733</data>
 </info>
 </job_info>
 </job_run_status>

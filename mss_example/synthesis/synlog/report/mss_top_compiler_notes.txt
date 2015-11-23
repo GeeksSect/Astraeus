@@ -1,59 +1,66 @@
 @N|Running in 64-bit mode
 @N: CD720 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
-@N:"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Top entity is set to mss_top.
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Synthesizing work.mss_top.rtl 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\mss_top_sb.vhd":25:7:25:16|Synthesizing work.mss_top_sb.rtl 
+@N:"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Top entity is set to mss_top.
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Synthesizing work.mss_top.rtl 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\hdl\PWM_separator.vhd":5:7:5:19|Synthesizing work.pwm_separator.bh 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd":28:7:28:16|Synthesizing work.mss_top_sb.rtl 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":434:10:434:14|Synthesizing smartfusion2.bibuf.syn_black_box 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":779:10:779:17|Synthesizing smartfusion2.sysreset.syn_black_box 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS.vhd":17:7:17:20|Synthesizing work.mss_top_sb_mss.rtl 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS_syn.vhd":10:7:10:13|Synthesizing work.mss_010.def_arch 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\FABOSC_0\mss_top_sb_FABOSC_0_OSC.vhd":8:7:8:29|Synthesizing work.mss_top_sb_fabosc_0_osc.def_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS.vhd":17:7:17:20|Synthesizing work.mss_top_sb_mss.rtl 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS_syn.vhd":10:7:10:13|Synthesizing work.mss_010.def_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\FABOSC_0\mss_top_sb_FABOSC_0_OSC.vhd":8:7:8:29|Synthesizing work.mss_top_sb_fabosc_0_osc.def_arch 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":562:10:562:15|Synthesizing smartfusion2.clkint.syn_black_box 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\SgCore\OSC\1.0.103\osc_comps.vhd":19:7:19:20|Synthesizing work.rcosc_25_50mhz.def_arch 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\SgCore\OSC\1.0.103\osc_comps.vhd":79:7:79:24|Synthesizing work.rcosc_25_50mhz_fab.def_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\SgCore\OSC\1.0.103\osc_comps.vhd":19:7:19:20|Synthesizing work.rcosc_25_50mhz.def_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\SgCore\OSC\1.0.103\osc_comps.vhd":79:7:79:24|Synthesizing work.rcosc_25_50mhz_fab.def_arch 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":249:10:249:12|Synthesizing smartfusion2.or3.syn_black_box 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":61:7:61:44|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuartapb.translated 
-@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":290:12:290:22|Removed redundant assignment
-@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":314:12:314:22|Removed redundant assignment
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuart.translated 
-@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":399:11:399:22|Removed redundant assignment
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_rx_async.translated 
-@N: CD233 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":64:24:64:25|Using sequential encoding for type receive_states
-@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":213:12:213:26|Removed redundant assignment
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":380:6:380:7|Sharing sequential element clear_framing_error_en_i.
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_tx_async.translated 
-@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":286:10:286:18|Removed redundant assignment
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":35:7:35:42|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_clock_gen.rtl 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":27:7:27:16|Synthesizing work.coreresetp.rtl 
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sharing sequential element M3_RESET_N_int.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q1.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif1_spll_lock_q1.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif0_spll_lock_q1.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element fpll_lock_q1.
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2c.vhd":41:7:41:13|Synthesizing corei2c_lib.corei2c.rtl 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":92:7:92:17|Synthesizing corei2c_lib.corei2creal.rtl 
-@N: CD231 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":237:17:237:18|Using onehot encoding for type fsmmod_type (fsmmod0="1000000")
-@N: CD231 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":229:18:229:19|Using onehot encoding for type fsmsync_type (fsmsync0="10000000")
-@N: CD231 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":221:17:221:18|Using onehot encoding for type fsmdet_type (fsmdet0="1000000")
-@N: CD232 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":207:17:207:18|Using gray code encoding for type fsmsta_type
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":34:7:34:14|Synthesizing coreapb3_lib.coreapb3.coreapb3_arch 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd":33:7:33:23|Synthesizing coreapb3_lib.coreapb3_muxptob3.coreapb3_muxptob3_arch 
-@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CCC_0\mss_top_sb_CCC_0_FCCC.vhd":8:7:8:27|Synthesizing work.mss_top_sb_ccc_0_fccc.def_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":61:7:61:44|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuartapb.translated 
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":290:12:290:22|Removed redundant assignment
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":314:12:314:22|Removed redundant assignment
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuart.translated 
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":399:11:399:22|Removed redundant assignment
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_rx_async.translated 
+@N: CD233 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":64:24:64:25|Using sequential encoding for type receive_states
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":213:12:213:26|Removed redundant assignment
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":380:6:380:7|Sharing sequential element clear_framing_error_en_i.
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_tx_async.translated 
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":286:10:286:18|Removed redundant assignment
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":35:7:35:42|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_clock_gen.rtl 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":27:7:27:16|Synthesizing work.coreresetp.rtl 
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sharing sequential element M3_RESET_N_int.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q1.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif1_spll_lock_q1.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif0_spll_lock_q1.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element fpll_lock_q1.
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\corepwm.vhd":30:7:30:13|Synthesizing corepwm_lib.corepwm.trans 
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\corepwm.vhd":1291:21:1291:31|Removed redundant assignment
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\pwm_gen.vhd":32:7:32:13|Synthesizing corepwm_lib.pwm_gen.trans 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\timebase.vhd":31:7:31:14|Synthesizing corepwm_lib.timebase.trans 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\reg_if.vhd":30:7:30:12|Synthesizing corepwm_lib.reg_if.trans 
+@N: CD364 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\reg_if.vhd":145:18:145:28|Removed redundant assignment
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2c.vhd":41:7:41:13|Synthesizing corei2c_lib.corei2c.rtl 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":92:7:92:17|Synthesizing corei2c_lib.corei2creal.rtl 
+@N: CD231 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":237:17:237:18|Using onehot encoding for type fsmmod_type (fsmmod0="1000000")
+@N: CD231 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":229:18:229:19|Using onehot encoding for type fsmsync_type (fsmsync0="10000000")
+@N: CD231 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":221:17:221:18|Using onehot encoding for type fsmdet_type (fsmdet0="1000000")
+@N: CD232 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":207:17:207:18|Using gray code encoding for type fsmsta_type
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd":34:7:34:14|Synthesizing coreapb3_lib.coreapb3.coreapb3_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd":33:7:33:23|Synthesizing coreapb3_lib.coreapb3_muxptob3.coreapb3_muxptob3_arch 
+@N: CD630 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CCC_0\mss_top_sb_CCC_0_FCCC.vhd":8:7:8:27|Synthesizing work.mss_top_sb_ccc_0_fccc.def_arch 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":787:10:787:12|Synthesizing smartfusion2.ccc.syn_black_box 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":569:10:569:12|Synthesizing smartfusion2.gnd.syn_black_box 
 @N: CD630 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd":575:10:575:12|Synthesizing smartfusion2.vcc.syn_black_box 
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":2446:4:2446:5|Trying to extract state machine for register fsmmod
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":2224:4:2224:5|Trying to extract state machine for register fsmdet
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":1543:4:1543:5|Trying to extract state machine for register fsmsync
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif0_spll_lock_q2.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element fpll_lock_q2.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif1_spll_lock_q2.
-@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q2.
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Trying to extract state machine for register sdif3_state
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Trying to extract state machine for register sdif2_state
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Trying to extract state machine for register sdif1_state
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Trying to extract state machine for register sdif0_state
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Trying to extract state machine for register sm0_state
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":126:4:126:5|Trying to extract state machine for register xmit_state
-@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":227:6:227:7|Trying to extract state machine for register rx_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":2446:4:2446:5|Trying to extract state machine for register fsmmod
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":2224:4:2224:5|Trying to extract state machine for register fsmdet
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd":1543:4:1543:5|Trying to extract state machine for register fsmsync
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif0_spll_lock_q2.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element fpll_lock_q2.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif1_spll_lock_q2.
+@N: CL177 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q2.
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1311:8:1311:9|Trying to extract state machine for register sdif3_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1252:8:1252:9|Trying to extract state machine for register sdif2_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1193:8:1193:9|Trying to extract state machine for register sdif1_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1134:8:1134:9|Trying to extract state machine for register sdif0_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Trying to extract state machine for register sm0_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":126:4:126:5|Trying to extract state machine for register xmit_state
+@N: CL201 :"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd":227:6:227:7|Trying to extract state machine for register rx_state
 

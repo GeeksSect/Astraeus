@@ -11,9 +11,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      201                100 %                
+SLE      406                100 %                
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top:	201 (22.97 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top:	406 (26.89 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -21,12 +21,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           508                100 %                
-ARI1          14                 100 %                
+CFG           774                100 %                
+ARI1          166                100 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     114                100 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top:	636 (72.69 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top:	1054 (69.80 % Utilization)
 
 
 DSP
@@ -57,7 +57,7 @@ Name       Total elements     Utilization     Notes
 ---------------------------------------------------
 GLOBAL     2                  100 %                
 ===================================================
-Total GLOBAL BUFFERS in the block mss_top:	2 (0.23 % Utilization)
+Total GLOBAL BUFFERS in the block mss_top:	2 (0.13 % Utilization)
 
 
 IO PADS
@@ -65,9 +65,9 @@ IO PADS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-IO       6                  100 %                
+IO       10                 100 %                
 =================================================
-Total IO PADS in the block mss_top:	6 (0.69 % Utilization)
+Total IO PADS in the block mss_top:	10 (0.66 % Utilization)
 
 ----------------------------------------------------------------
 ########   Utilization report for  cell:   mss_top_sb   ########
@@ -79,9 +79,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      201                100 %                
+SLE      406                100 %                
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top.mss_top_sb:	201 (22.97 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top.mss_top_sb:	406 (26.89 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -89,12 +89,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           508                100 %                
-ARI1          14                 100 %                
+CFG           774                100 %                
+ARI1          166                100 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     114                100 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top.mss_top_sb:	636 (72.69 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top.mss_top_sb:	1054 (69.80 % Utilization)
 
 
 DSP
@@ -125,7 +125,7 @@ Name       Total elements     Utilization     Notes
 ---------------------------------------------------
 GLOBAL     2                  100 %                
 ===================================================
-Total GLOBAL BUFFERS in the block mss_top.mss_top_sb:	2 (0.23 % Utilization)
+Total GLOBAL BUFFERS in the block mss_top.mss_top_sb:	2 (0.13 % Utilization)
 
 
 IO PADS
@@ -133,9 +133,9 @@ IO PADS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-IO       4                  66.7 %               
+IO       4                  40. %                
 =================================================
-Total IO PADS in the block mss_top.mss_top_sb:	4 (0.46 % Utilization)
+Total IO PADS in the block mss_top.mss_top_sb:	4 (0.26 % Utilization)
 
 -------------------------------------------------------------
 ########   Utilization report for  cell:   COREI2C   ########
@@ -147,9 +147,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      86                 42.8 %               
+SLE      86                 21.2 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.COREI2C:	86 (9.83 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.COREI2C:	86 (5.70 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -157,12 +157,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           369                72.6 %               
+CFG           321                41.5 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     4                  3.51 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.COREI2C:	373 (42.63 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.COREI2C:	325 (21.52 % Utilization)
 
 
 DSP
@@ -215,9 +215,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      86                 42.8 %               
+SLE      86                 21.2 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block COREI2C.COREI2CREAL:	86 (9.83 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block COREI2C.COREI2CREAL:	86 (5.70 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -225,12 +225,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           369                72.6 %               
+CFG           321                41.5 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     4                  3.51 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block COREI2C.COREI2CREAL:	373 (42.63 % Utilization)
+Total COMBINATIONAL LOGIC in the block COREI2C.COREI2CREAL:	325 (21.52 % Utilization)
 
 
 DSP
@@ -293,12 +293,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           35                 6.89 %               
+CFG           182                23.5 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreAPB3:	35 (4.00 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreAPB3:	182 (12.05 % Utilization)
 
 
 DSP
@@ -361,12 +361,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           34                 6.69 %               
+CFG           180                23.3 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block CoreAPB3.COREAPB3_MUXPTOB3:	34 (3.89 % Utilization)
+Total COMBINATIONAL LOGIC in the block CoreAPB3.COREAPB3_MUXPTOB3:	180 (11.92 % Utilization)
 
 
 DSP
@@ -419,9 +419,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      9                  4.48 %               
+SLE      9                  2.22 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.CoreResetP:	9 (1.03 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.CoreResetP:	9 (0.60 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -429,12 +429,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           2                  0.3940 %             
+CFG           2                  0.2580 %             
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     96                 84.2 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreResetP:	98 (11.20 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreResetP:	98 (6.49 % Utilization)
 
 
 DSP
@@ -465,7 +465,7 @@ Name       Total elements     Utilization     Notes
 ---------------------------------------------------
 GLOBAL     1                  50. %                
 ===================================================
-Total GLOBAL BUFFERS in the block mss_top_sb.CoreResetP:	1 (0.11 % Utilization)
+Total GLOBAL BUFFERS in the block mss_top_sb.CoreResetP:	1 (0.07 % Utilization)
 
 
 IO PADS
@@ -476,6 +476,278 @@ Name     Total elements     Utilization     Notes
 IO       0                  0.0 %                
 =================================================
 Total IO PADS in the block mss_top_sb.CoreResetP:	0 (0.00 % Utilization)
+
+-------------------------------------------------------------
+########   Utilization report for  cell:   corepwm   ########
+Instance path:   mss_top_sb.corepwm                          
+=============================================================
+
+SEQUENTIAL ELEMENTS
+*******************
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      205                50.5 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.corepwm:	205 (13.58 % Utilization)
+
+
+COMBINATIONAL LOGIC
+*******************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+CFG           167                21.6 %               
+ARI1          152                91.6 %               
+BUFFER        0                  0.0 %                
+BLACK BOX     0                  0.0 %                
+======================================================
+Total COMBINATIONAL LOGIC in the block mss_top_sb.corepwm:	319 (21.13 % Utilization)
+
+
+DSP
+***
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+MACC     0                  0.0 %                
+=================================================
+Total DSP in the block mss_top_sb.corepwm:	0 (0.00 % Utilization)
+
+
+MEMORY ELEMENTS
+***************
+
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM1KX18     0                  0.0 %                
+RAM64X18     0                  0.0 %                
+=====================================================
+Total MEMORY ELEMENTS in the block mss_top_sb.corepwm:	0 (0.00 % Utilization)
+
+
+GLOBAL BUFFERS
+**************
+
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+GLOBAL     0                  0.0 %                
+===================================================
+Total GLOBAL BUFFERS in the block mss_top_sb.corepwm:	0 (0.00 % Utilization)
+
+
+IO PADS
+*******
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+IO       0                  0.0 %                
+=================================================
+Total IO PADS in the block mss_top_sb.corepwm:	0 (0.00 % Utilization)
+
+-------------------------------------------------------------
+########   Utilization report for  cell:   pwm_gen   ########
+Instance path:   corepwm.pwm_gen                             
+=============================================================
+
+SEQUENTIAL ELEMENTS
+*******************
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      4                  0.9850 %             
+=================================================
+Total SEQUENTIAL ELEMENTS in the block corepwm.pwm_gen:	4 (0.26 % Utilization)
+
+
+COMBINATIONAL LOGIC
+*******************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+CFG           67                 8.66 %               
+ARI1          64                 38.6 %               
+BUFFER        0                  0.0 %                
+BLACK BOX     0                  0.0 %                
+======================================================
+Total COMBINATIONAL LOGIC in the block corepwm.pwm_gen:	131 (8.68 % Utilization)
+
+
+DSP
+***
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+MACC     0                  0.0 %                
+=================================================
+Total DSP in the block corepwm.pwm_gen:	0 (0.00 % Utilization)
+
+
+MEMORY ELEMENTS
+***************
+
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM1KX18     0                  0.0 %                
+RAM64X18     0                  0.0 %                
+=====================================================
+Total MEMORY ELEMENTS in the block corepwm.pwm_gen:	0 (0.00 % Utilization)
+
+
+GLOBAL BUFFERS
+**************
+
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+GLOBAL     0                  0.0 %                
+===================================================
+Total GLOBAL BUFFERS in the block corepwm.pwm_gen:	0 (0.00 % Utilization)
+
+
+IO PADS
+*******
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+IO       0                  0.0 %                
+=================================================
+Total IO PADS in the block corepwm.pwm_gen:	0 (0.00 % Utilization)
+
+------------------------------------------------------------
+########   Utilization report for  cell:   reg_if   ########
+Instance path:   corepwm.reg_if                             
+============================================================
+
+SEQUENTIAL ELEMENTS
+*******************
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      133                32.8 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block corepwm.reg_if:	133 (8.81 % Utilization)
+
+
+COMBINATIONAL LOGIC
+*******************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+CFG           18                 2.33 %               
+ARI1          0                  0.0 %                
+BUFFER        0                  0.0 %                
+BLACK BOX     0                  0.0 %                
+======================================================
+Total COMBINATIONAL LOGIC in the block corepwm.reg_if:	18 (1.19 % Utilization)
+
+
+DSP
+***
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+MACC     0                  0.0 %                
+=================================================
+Total DSP in the block corepwm.reg_if:	0 (0.00 % Utilization)
+
+
+MEMORY ELEMENTS
+***************
+
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM1KX18     0                  0.0 %                
+RAM64X18     0                  0.0 %                
+=====================================================
+Total MEMORY ELEMENTS in the block corepwm.reg_if:	0 (0.00 % Utilization)
+
+
+GLOBAL BUFFERS
+**************
+
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+GLOBAL     0                  0.0 %                
+===================================================
+Total GLOBAL BUFFERS in the block corepwm.reg_if:	0 (0.00 % Utilization)
+
+
+IO PADS
+*******
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+IO       0                  0.0 %                
+=================================================
+Total IO PADS in the block corepwm.reg_if:	0 (0.00 % Utilization)
+
+--------------------------------------------------------------
+########   Utilization report for  cell:   timebase   ########
+Instance path:   corepwm.timebase                             
+==============================================================
+
+SEQUENTIAL ELEMENTS
+*******************
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      64                 15.8 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block corepwm.timebase:	64 (4.24 % Utilization)
+
+
+COMBINATIONAL LOGIC
+*******************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+CFG           80                 10.3 %               
+ARI1          88                 53. %                
+BUFFER        0                  0.0 %                
+BLACK BOX     0                  0.0 %                
+======================================================
+Total COMBINATIONAL LOGIC in the block corepwm.timebase:	168 (11.13 % Utilization)
+
+
+DSP
+***
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+MACC     0                  0.0 %                
+=================================================
+Total DSP in the block corepwm.timebase:	0 (0.00 % Utilization)
+
+
+MEMORY ELEMENTS
+***************
+
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM1KX18     0                  0.0 %                
+RAM64X18     0                  0.0 %                
+=====================================================
+Total MEMORY ELEMENTS in the block corepwm.timebase:	0 (0.00 % Utilization)
+
+
+GLOBAL BUFFERS
+**************
+
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+GLOBAL     0                  0.0 %                
+===================================================
+Total GLOBAL BUFFERS in the block corepwm.timebase:	0 (0.00 % Utilization)
+
+
+IO PADS
+*******
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+IO       0                  0.0 %                
+=================================================
+Total IO PADS in the block corepwm.timebase:	0 (0.00 % Utilization)
 
 ---------------------------------------------------------------------------
 ########   Utilization report for  cell:   mss_top_sb_CCC_0_FCCC   ########
@@ -502,7 +774,7 @@ ARI1          0                  0.0 %
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.75 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CCC_0_FCCC:	2 (0.23 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CCC_0_FCCC:	2 (0.13 % Utilization)
 
 
 DSP
@@ -533,7 +805,7 @@ Name       Total elements     Utilization     Notes
 ---------------------------------------------------
 GLOBAL     1                  50. %                
 ===================================================
-Total GLOBAL BUFFERS in the block mss_top_sb.mss_top_sb_CCC_0_FCCC:	1 (0.11 % Utilization)
+Total GLOBAL BUFFERS in the block mss_top_sb.mss_top_sb_CCC_0_FCCC:	1 (0.07 % Utilization)
 
 
 IO PADS
@@ -555,9 +827,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      106                52.7 %               
+SLE      106                26.1 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	106 (12.11 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	106 (7.02 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -565,12 +837,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           102                20.1 %               
-ARI1          14                 100 %                
+CFG           102                13.2 %               
+ARI1          14                 8.43 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     8                  7.02 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	124 (14.17 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	124 (8.21 % Utilization)
 
 
 DSP
@@ -623,9 +895,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      82                 40.8 %               
+SLE      82                 20.2 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	82 (9.37 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	82 (5.43 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -633,12 +905,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           76                 15. %                
-ARI1          14                 100 %                
+CFG           77                 9.95 %               
+ARI1          14                 8.43 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     8                  7.02 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	98 (11.20 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	99 (6.56 % Utilization)
 
 
 DSP
@@ -691,9 +963,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      19                 9.45 %               
+SLE      19                 4.68 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	19 (2.17 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	19 (1.26 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -701,12 +973,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           11                 2.17 %               
-ARI1          14                 100 %                
+CFG           11                 1.42 %               
+ARI1          14                 8.43 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	25 (2.86 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	25 (1.66 % Utilization)
 
 
 DSP
@@ -759,9 +1031,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      35                 17.4 %               
+SLE      35                 8.62 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	35 (4.00 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	35 (2.32 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -769,12 +1041,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           38                 7.48 %               
+CFG           38                 4.91 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     6                  5.26 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	44 (5.03 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	44 (2.91 % Utilization)
 
 
 DSP
@@ -827,9 +1099,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      19                 9.45 %               
+SLE      19                 4.68 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	19 (2.17 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	19 (1.26 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -837,12 +1109,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           22                 4.33 %               
+CFG           22                 2.84 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.75 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	24 (2.74 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	24 (1.59 % Utilization)
 
 
 DSP
@@ -910,7 +1182,7 @@ ARI1          0                  0.0 %
 BUFFER        0                  0.0 %                
 BLACK BOX     1                  0.8770 %             
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_FABOSC_0_OSC:	1 (0.11 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_FABOSC_0_OSC:	1 (0.07 % Utilization)
 
 
 DSP
@@ -1017,9 +1289,9 @@ IO PADS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-IO       1                  16.7 %               
+IO       1                  10. %                
 =================================================
-Total IO PADS in the block mss_top_sb.mss_top_sb_MSS:	1 (0.11 % Utilization)
+Total IO PADS in the block mss_top_sb.mss_top_sb_MSS:	1 (0.07 % Utilization)
 
 
 ##### END OF AREA REPORT #####]

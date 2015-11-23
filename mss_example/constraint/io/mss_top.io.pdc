@@ -3,7 +3,7 @@
 
 # Version: v11.5 SP3 11.5.3.10
 # Family: SmartFusion2 , Die: M2S010 , Package: 144 TQ
-# Date generated: Tue Oct 06 00:01:57 2015 
+# Date generated: Sun Oct 25 01:42:55 2015 
 
 
 # 
@@ -42,6 +42,30 @@ set_io RX             \
 
 set_io TX              \
     -pinname 2         \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_1       \
+    -pinname 83        \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_2       \
+    -pinname 43        \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_3       \
+    -pinname 101       \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
+
+set_io pwm_out_4       \
+    -pinname 3         \
     -fixed yes         \
     -DIRECTION OUTPUT
 

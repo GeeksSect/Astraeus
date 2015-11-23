@@ -1,0 +1,19 @@
+#OPTIONS:"|-mixedhdl|-modhint|C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\synthesis\\synwork\\_verilog_hintfile|-top|work.BT_module|-mpparams|C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\synthesis\\synwork\\_mh_params|-layerid|1|-prodtype|synplify_pro|-primux|-dspmac|-pqdpadd|-fixsmult|-divnmod|-nram|-I|C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\synthesis\\|-I|C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib|-v95|-devicelib|C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\generic\\smartfusion2.v|-encrypt|-pro|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-lib|work"
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\bin64\\c_ver.exe":1412882178
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\synthesis\\synwork\\_verilog_hintfile":1446667024
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\generic\\smartfusion2.v":1412928306
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\umr_capim.v":1412882098
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\scemi_objects.v":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\scemi_pipes.svh":1412881844
+#CUR:"C:\\Microsemi\\Libero_v11.5\\Synopsys\\synplify_I201403MSP1\\lib\\vlog\\hypermods.v":1412881844
+#CUR:"C:\\Users\\kruci_000\\Desktop\\SoC\\git\\Astraeus\\mss_example\\hdl\\BT_echo.v":1446665755
+#numinternalfiles:5
+#defaultlanguage:verilog
+0			"C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\hdl\BT_echo.v" verilog
+#Dependency Lists(Uses List)
+0 -1
+#Dependency Lists(Users Of)
+0 -1
+#Design Unit to File Association
+module work BT_module 0
+#Unbound instances to file Association.

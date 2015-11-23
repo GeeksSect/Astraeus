@@ -29,6 +29,7 @@
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/CMSIS/startup_gcc}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/CoreI2C}"/>
+<listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/CorePWM}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/CoreUARTapb}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/mss_hpdma}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/mss_nvm}"/>
@@ -79,7 +80,7 @@
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="main_old.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 </sourceEntries>
 </configuration>
 </storageModule>
@@ -472,6 +473,7 @@
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/CMSIS/startup_gcc}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/CoreI2C}"/>
+<listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/CorePWM}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/CoreUARTapb}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/mss_hpdma}"/>
 <listOptionValue builtIn="false" value="${workspace_loc:/mss_top_sb_MSS_CM3_hw_platform/drivers/mss_nvm}"/>

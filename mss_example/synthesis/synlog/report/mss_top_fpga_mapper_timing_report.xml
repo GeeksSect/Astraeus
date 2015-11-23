@@ -5,7 +5,7 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 *******************************************************************************************-->
 <report_table display_priority="2" name="Timing Summary">
 <report_link name="Detailed report">
-<data>C:\Users\kruci_000\Desktop\SoC\mss_cemetery\mss_example\synthesis\synlog\mss_top_fpga_mapper.srr</data>
+<data>C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synlog\mss_top_fpga_mapper.srr</data>
 <title>START OF TIMING REPORT</title>
 </report_link>
 <row>
@@ -17,8 +17,8 @@ Max Top 5 critical clocks will be reported. For rest user needs to refer to Deta
 <row>
 <data>mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock</data>
 <data>100.0 MHz</data>
-<data>103.5 MHz</data>
-<data>0.341</data>
+<data>85.0 MHz</data>
+<data>-1.766</data>
 </row>
 <row>
 <data>System</data>

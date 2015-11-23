@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon Oct 05 23:57:55 2015
+-- Created by SmartDesign Sun Oct 25 01:31:25 2015
 -- Version: v11.5 SP3 11.5.3.10
 ----------------------------------------------------------------------
 
@@ -16,6 +16,9 @@ use COREAPB3_LIB.all;
 use COREAPB3_LIB.components.all;
 library COREI2C_LIB;
 use COREI2C_LIB.all;
+library COREPWM_LIB;
+use COREPWM_LIB.all;
+use COREPWM_LIB.components.all;
 library COREUARTAPB_LIB;
 use COREUARTAPB_LIB.all;
 use COREUARTAPB_LIB.mss_top_sb_CoreUARTapb_0_0_components.all;
@@ -29,12 +32,14 @@ entity mss_top_sb is
         DEVRST_N           : in    std_logic;
         FAB_RESET_N        : in    std_logic;
         RX                 : in    std_logic;
+        TACHIN             : in    std_logic_vector(1 to 1);
         -- Outputs
         FAB_CCC_GL0        : out   std_logic;
         FAB_CCC_LOCK       : out   std_logic;
         INIT_DONE          : out   std_logic;
         MSS_READY          : out   std_logic;
         POWER_ON_RESET_N   : out   std_logic;
+        PWM                : out   std_logic_vector(4 downto 1);
         TX                 : out   std_logic;
         -- Inouts
         COREI2C_0_0_SCL_IO : inout std_logic;
@@ -119,6 +124,167 @@ component COREI2C
         SMBA_INT    : out std_logic_vector(0 to 0);
         SMBSUS_NO   : out std_logic_vector(0 to 0);
         SMBS_INT    : out std_logic_vector(0 to 0)
+        );
+end component;
+-- corepwm   -   Actel:DirectCore:corepwm:4.1.106
+component corepwm
+    generic( 
+        APB_DWIDTH          : integer := 32 ;
+        CONFIG_MODE         : integer := 0 ;
+        DAC_MODE1           : integer := 0 ;
+        DAC_MODE2           : integer := 0 ;
+        DAC_MODE3           : integer := 0 ;
+        DAC_MODE4           : integer := 0 ;
+        DAC_MODE5           : integer := 0 ;
+        DAC_MODE6           : integer := 0 ;
+        DAC_MODE7           : integer := 0 ;
+        DAC_MODE8           : integer := 0 ;
+        DAC_MODE9           : integer := 0 ;
+        DAC_MODE10          : integer := 0 ;
+        DAC_MODE11          : integer := 0 ;
+        DAC_MODE12          : integer := 0 ;
+        DAC_MODE13          : integer := 0 ;
+        DAC_MODE14          : integer := 0 ;
+        DAC_MODE15          : integer := 0 ;
+        DAC_MODE16          : integer := 0 ;
+        FAMILY              : integer := 15 ;
+        FIXED_PERIOD        : integer := 1000 ;
+        FIXED_PERIOD_EN     : integer := 1 ;
+        FIXED_PRESCALE      : integer := 1 ;
+        FIXED_PRESCALE_EN   : integer := 1 ;
+        FIXED_PWM_NEG_EN1   : integer := 0 ;
+        FIXED_PWM_NEG_EN2   : integer := 0 ;
+        FIXED_PWM_NEG_EN3   : integer := 0 ;
+        FIXED_PWM_NEG_EN4   : integer := 0 ;
+        FIXED_PWM_NEG_EN5   : integer := 0 ;
+        FIXED_PWM_NEG_EN6   : integer := 0 ;
+        FIXED_PWM_NEG_EN7   : integer := 0 ;
+        FIXED_PWM_NEG_EN8   : integer := 0 ;
+        FIXED_PWM_NEG_EN9   : integer := 0 ;
+        FIXED_PWM_NEG_EN10  : integer := 0 ;
+        FIXED_PWM_NEG_EN11  : integer := 0 ;
+        FIXED_PWM_NEG_EN12  : integer := 0 ;
+        FIXED_PWM_NEG_EN13  : integer := 0 ;
+        FIXED_PWM_NEG_EN14  : integer := 0 ;
+        FIXED_PWM_NEG_EN15  : integer := 0 ;
+        FIXED_PWM_NEG_EN16  : integer := 0 ;
+        FIXED_PWM_NEGEDGE1  : integer := 0 ;
+        FIXED_PWM_NEGEDGE2  : integer := 0 ;
+        FIXED_PWM_NEGEDGE3  : integer := 0 ;
+        FIXED_PWM_NEGEDGE4  : integer := 0 ;
+        FIXED_PWM_NEGEDGE5  : integer := 0 ;
+        FIXED_PWM_NEGEDGE6  : integer := 0 ;
+        FIXED_PWM_NEGEDGE7  : integer := 0 ;
+        FIXED_PWM_NEGEDGE8  : integer := 0 ;
+        FIXED_PWM_NEGEDGE9  : integer := 0 ;
+        FIXED_PWM_NEGEDGE10 : integer := 0 ;
+        FIXED_PWM_NEGEDGE11 : integer := 0 ;
+        FIXED_PWM_NEGEDGE12 : integer := 0 ;
+        FIXED_PWM_NEGEDGE13 : integer := 0 ;
+        FIXED_PWM_NEGEDGE14 : integer := 0 ;
+        FIXED_PWM_NEGEDGE15 : integer := 0 ;
+        FIXED_PWM_NEGEDGE16 : integer := 0 ;
+        FIXED_PWM_POS_EN1   : integer := 1 ;
+        FIXED_PWM_POS_EN2   : integer := 1 ;
+        FIXED_PWM_POS_EN3   : integer := 1 ;
+        FIXED_PWM_POS_EN4   : integer := 1 ;
+        FIXED_PWM_POS_EN5   : integer := 1 ;
+        FIXED_PWM_POS_EN6   : integer := 1 ;
+        FIXED_PWM_POS_EN7   : integer := 1 ;
+        FIXED_PWM_POS_EN8   : integer := 1 ;
+        FIXED_PWM_POS_EN9   : integer := 1 ;
+        FIXED_PWM_POS_EN10  : integer := 1 ;
+        FIXED_PWM_POS_EN11  : integer := 1 ;
+        FIXED_PWM_POS_EN12  : integer := 1 ;
+        FIXED_PWM_POS_EN13  : integer := 1 ;
+        FIXED_PWM_POS_EN14  : integer := 1 ;
+        FIXED_PWM_POS_EN15  : integer := 1 ;
+        FIXED_PWM_POS_EN16  : integer := 1 ;
+        FIXED_PWM_POSEDGE1  : integer := 0 ;
+        FIXED_PWM_POSEDGE2  : integer := 0 ;
+        FIXED_PWM_POSEDGE3  : integer := 0 ;
+        FIXED_PWM_POSEDGE4  : integer := 0 ;
+        FIXED_PWM_POSEDGE5  : integer := 0 ;
+        FIXED_PWM_POSEDGE6  : integer := 0 ;
+        FIXED_PWM_POSEDGE7  : integer := 0 ;
+        FIXED_PWM_POSEDGE8  : integer := 0 ;
+        FIXED_PWM_POSEDGE9  : integer := 0 ;
+        FIXED_PWM_POSEDGE10 : integer := 0 ;
+        FIXED_PWM_POSEDGE11 : integer := 0 ;
+        FIXED_PWM_POSEDGE12 : integer := 0 ;
+        FIXED_PWM_POSEDGE13 : integer := 0 ;
+        FIXED_PWM_POSEDGE14 : integer := 0 ;
+        FIXED_PWM_POSEDGE15 : integer := 0 ;
+        FIXED_PWM_POSEDGE16 : integer := 0 ;
+        PWM_NUM             : integer := 4 ;
+        PWM_STRETCH_VALUE1  : integer := 0 ;
+        PWM_STRETCH_VALUE2  : integer := 0 ;
+        PWM_STRETCH_VALUE3  : integer := 0 ;
+        PWM_STRETCH_VALUE4  : integer := 0 ;
+        PWM_STRETCH_VALUE5  : integer := 0 ;
+        PWM_STRETCH_VALUE6  : integer := 0 ;
+        PWM_STRETCH_VALUE7  : integer := 0 ;
+        PWM_STRETCH_VALUE8  : integer := 0 ;
+        PWM_STRETCH_VALUE9  : integer := 0 ;
+        PWM_STRETCH_VALUE10 : integer := 0 ;
+        PWM_STRETCH_VALUE11 : integer := 0 ;
+        PWM_STRETCH_VALUE12 : integer := 0 ;
+        PWM_STRETCH_VALUE13 : integer := 0 ;
+        PWM_STRETCH_VALUE14 : integer := 0 ;
+        PWM_STRETCH_VALUE15 : integer := 0 ;
+        PWM_STRETCH_VALUE16 : integer := 0 ;
+        SHADOW_REG_EN1      : integer := 0 ;
+        SHADOW_REG_EN2      : integer := 0 ;
+        SHADOW_REG_EN3      : integer := 0 ;
+        SHADOW_REG_EN4      : integer := 0 ;
+        SHADOW_REG_EN5      : integer := 0 ;
+        SHADOW_REG_EN6      : integer := 0 ;
+        SHADOW_REG_EN7      : integer := 0 ;
+        SHADOW_REG_EN8      : integer := 0 ;
+        SHADOW_REG_EN9      : integer := 0 ;
+        SHADOW_REG_EN10     : integer := 0 ;
+        SHADOW_REG_EN11     : integer := 0 ;
+        SHADOW_REG_EN12     : integer := 0 ;
+        SHADOW_REG_EN13     : integer := 0 ;
+        SHADOW_REG_EN14     : integer := 0 ;
+        SHADOW_REG_EN15     : integer := 0 ;
+        SHADOW_REG_EN16     : integer := 0 ;
+        TACH_EDGE1          : integer := 0 ;
+        TACH_EDGE2          : integer := 0 ;
+        TACH_EDGE3          : integer := 0 ;
+        TACH_EDGE4          : integer := 0 ;
+        TACH_EDGE5          : integer := 0 ;
+        TACH_EDGE6          : integer := 0 ;
+        TACH_EDGE7          : integer := 0 ;
+        TACH_EDGE8          : integer := 0 ;
+        TACH_EDGE9          : integer := 0 ;
+        TACH_EDGE10         : integer := 0 ;
+        TACH_EDGE11         : integer := 0 ;
+        TACH_EDGE12         : integer := 0 ;
+        TACH_EDGE13         : integer := 0 ;
+        TACH_EDGE14         : integer := 0 ;
+        TACH_EDGE15         : integer := 0 ;
+        TACH_EDGE16         : integer := 0 ;
+        TACH_NUM            : integer := 1 ;
+        TACHINT_ACT_LEVEL   : integer := 0 
+        );
+    -- Port list
+    port(
+        -- Inputs
+        PADDR   : in  std_logic_vector(7 downto 0);
+        PCLK    : in  std_logic;
+        PENABLE : in  std_logic;
+        PRESETN : in  std_logic;
+        PSEL    : in  std_logic;
+        PWDATA  : in  std_logic_vector(31 downto 0);
+        PWRITE  : in  std_logic;
+        TACHIN  : in  std_logic_vector(1 to 1);
+        -- Outputs
+        PRDATA  : out std_logic_vector(31 downto 0);
+        PREADY  : out std_logic;
+        PSLVERR : out std_logic;
+        PWM     : out std_logic_vector(4 downto 1);
+        TACHINT : out std_logic
         );
 end component;
 -- CoreResetP   -   Actel:DirectCore:CoreResetP:7.0.104
@@ -335,9 +501,14 @@ signal CoreAPB3_0_APBmslave0_PWRITE                       : std_logic;
 signal CoreAPB3_0_APBmslave1_PREADY                       : std_logic;
 signal CoreAPB3_0_APBmslave1_PSELx                        : std_logic;
 signal CoreAPB3_0_APBmslave1_PSLVERR                      : std_logic;
+signal CoreAPB3_0_APBmslave2_PRDATA                       : std_logic_vector(31 downto 0);
+signal CoreAPB3_0_APBmslave2_PREADY                       : std_logic;
+signal CoreAPB3_0_APBmslave2_PSELx                        : std_logic;
+signal CoreAPB3_0_APBmslave2_PSLVERR                      : std_logic;
 signal COREI2C_0_0_INT                                    : std_logic_vector(0 to 0);
 signal COREI2C_0_0_SCLO                                   : std_logic_vector(0 to 0);
 signal COREI2C_0_0_SDAO                                   : std_logic_vector(0 to 0);
+signal corepwm_0_0_TACHINT                                : std_logic;
 signal CORERESETP_0_RESET_N_F2M                           : std_logic;
 signal CoreUARTapb_0_0_FRAMING_ERR                        : std_logic;
 signal CoreUARTapb_0_0_intr_or_0_Y                        : std_logic;
@@ -364,12 +535,14 @@ signal mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PWRITE       : std_logic;
 signal mss_top_sb_MSS_TMP_0_FIC_2_APB_M_PRESET_N          : std_logic;
 signal mss_top_sb_MSS_TMP_0_MSS_RESET_N_M2F               : std_logic;
 signal POWER_ON_RESET_N_net_0                             : std_logic;
+signal PWM_net_0                                          : std_logic_vector(4 downto 1);
 signal TX_net_0                                           : std_logic;
 signal POWER_ON_RESET_N_net_1                             : std_logic;
 signal INIT_DONE_net_1                                    : std_logic;
 signal FAB_CCC_GL0_net_1                                  : std_logic;
 signal FAB_CCC_LOCK_net_1                                 : std_logic;
 signal MSS_READY_net_1                                    : std_logic;
+signal PWM_net_1                                          : std_logic_vector(4 downto 1);
 signal TX_net_1                                           : std_logic;
 signal MSS_INT_F2M_net_0                                  : std_logic_vector(15 downto 0);
 ----------------------------------------------------------------------
@@ -384,7 +557,6 @@ signal SDIF0_PRDATA_const_net_0                           : std_logic_vector(31 
 signal SDIF1_PRDATA_const_net_0                           : std_logic_vector(31 downto 0);
 signal SDIF2_PRDATA_const_net_0                           : std_logic_vector(31 downto 0);
 signal SDIF3_PRDATA_const_net_0                           : std_logic_vector(31 downto 0);
-signal PRDATAS2_const_net_0                               : std_logic_vector(31 downto 0);
 signal PRDATAS3_const_net_0                               : std_logic_vector(31 downto 0);
 signal PRDATAS4_const_net_0                               : std_logic_vector(31 downto 0);
 signal PRDATAS5_const_net_0                               : std_logic_vector(31 downto 0);
@@ -413,6 +585,8 @@ signal CoreAPB3_0_APBmslave0_PADDR_0_8to0                 : std_logic_vector(8 d
 signal CoreAPB3_0_APBmslave0_PADDR_0                      : std_logic_vector(8 downto 0);
 signal CoreAPB3_0_APBmslave0_PADDR_1_4to0                 : std_logic_vector(4 downto 0);
 signal CoreAPB3_0_APBmslave0_PADDR_1                      : std_logic_vector(4 downto 0);
+signal CoreAPB3_0_APBmslave0_PADDR_2_7to0                 : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave0_PADDR_2                      : std_logic_vector(7 downto 0);
 
 signal CoreAPB3_0_APBmslave0_PRDATA_0_31to8               : std_logic_vector(31 downto 8);
 signal CoreAPB3_0_APBmslave0_PRDATA_0_7to0                : std_logic_vector(7 downto 0);
@@ -444,7 +618,6 @@ begin
  SDIF1_PRDATA_const_net_0       <= B"00000000000000000000000000000000";
  SDIF2_PRDATA_const_net_0       <= B"00000000000000000000000000000000";
  SDIF3_PRDATA_const_net_0       <= B"00000000000000000000000000000000";
- PRDATAS2_const_net_0           <= B"00000000000000000000000000000000";
  PRDATAS3_const_net_0           <= B"00000000000000000000000000000000";
  PRDATAS4_const_net_0           <= B"00000000000000000000000000000000";
  PRDATAS5_const_net_0           <= B"00000000000000000000000000000000";
@@ -478,12 +651,14 @@ begin
  FAB_CCC_LOCK           <= FAB_CCC_LOCK_net_1;
  MSS_READY_net_1        <= MSS_READY_net_0;
  MSS_READY              <= MSS_READY_net_1;
+ PWM_net_1              <= PWM_net_0;
+ PWM(4 downto 1)        <= PWM_net_1;
  TX_net_1               <= TX_net_0;
  TX                     <= TX_net_1;
 ----------------------------------------------------------------------
 -- Concatenation assignments
 ----------------------------------------------------------------------
- MSS_INT_F2M_net_0 <= ( '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & CoreUARTapb_0_0_intr_or_2_Y & COREI2C_0_0_INT(0) );
+ MSS_INT_F2M_net_0 <= ( '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & corepwm_0_0_TACHINT & CoreUARTapb_0_0_intr_or_2_Y & COREI2C_0_0_INT(0) );
 ----------------------------------------------------------------------
 -- Bus Interface Nets Assignments - Unequal Pin Widths
 ----------------------------------------------------------------------
@@ -491,6 +666,8 @@ begin
  CoreAPB3_0_APBmslave0_PADDR_0 <= ( CoreAPB3_0_APBmslave0_PADDR_0_8to0(8 downto 0) );
  CoreAPB3_0_APBmslave0_PADDR_1_4to0(4 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(4 downto 0);
  CoreAPB3_0_APBmslave0_PADDR_1 <= ( CoreAPB3_0_APBmslave0_PADDR_1_4to0(4 downto 0) );
+ CoreAPB3_0_APBmslave0_PADDR_2_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(7 downto 0);
+ CoreAPB3_0_APBmslave0_PADDR_2 <= ( CoreAPB3_0_APBmslave0_PADDR_2_7to0(7 downto 0) );
 
  CoreAPB3_0_APBmslave0_PRDATA_0_31to8(31 downto 8) <= B"000000000000000000000000";
  CoreAPB3_0_APBmslave0_PRDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PRDATA(7 downto 0);
@@ -545,7 +722,7 @@ CoreAPB3_0 : entity COREAPB3_LIB.CoreAPB3
         APB_DWIDTH      => ( 32 ),
         APBSLOT0ENABLE  => ( 1 ),
         APBSLOT1ENABLE  => ( 1 ),
-        APBSLOT2ENABLE  => ( 0 ),
+        APBSLOT2ENABLE  => ( 1 ),
         APBSLOT3ENABLE  => ( 0 ),
         APBSLOT4ENABLE  => ( 0 ),
         APBSLOT5ENABLE  => ( 0 ),
@@ -595,9 +772,9 @@ CoreAPB3_0 : entity COREAPB3_LIB.CoreAPB3
         PRDATAS1   => CoreAPB3_0_APBmslave1_PRDATA_0,
         PREADYS1   => CoreAPB3_0_APBmslave1_PREADY,
         PSLVERRS1  => CoreAPB3_0_APBmslave1_PSLVERR,
-        PRDATAS2   => PRDATAS2_const_net_0, -- tied to X"0" from definition
-        PREADYS2   => VCC_net, -- tied to '1' from definition
-        PSLVERRS2  => GND_net, -- tied to '0' from definition
+        PRDATAS2   => CoreAPB3_0_APBmslave2_PRDATA,
+        PREADYS2   => CoreAPB3_0_APBmslave2_PREADY,
+        PSLVERRS2  => CoreAPB3_0_APBmslave2_PSLVERR,
         PRDATAS3   => PRDATAS3_const_net_0, -- tied to X"0" from definition
         PREADYS3   => VCC_net, -- tied to '1' from definition
         PSLVERRS3  => GND_net, -- tied to '0' from definition
@@ -651,7 +828,7 @@ CoreAPB3_0 : entity COREAPB3_LIB.CoreAPB3
         PWDATAS    => CoreAPB3_0_APBmslave0_PWDATA,
         PSELS0     => CoreAPB3_0_APBmslave0_PSELx,
         PSELS1     => CoreAPB3_0_APBmslave1_PSELx,
-        PSELS2     => OPEN,
+        PSELS2     => CoreAPB3_0_APBmslave2_PSELx,
         PSELS3     => OPEN,
         PSELS4     => OPEN,
         PSELS5     => OPEN,
@@ -708,6 +885,165 @@ COREI2C_0_0 : COREI2C
         SMBA_INT       => OPEN,
         SMBSUS_NO      => OPEN,
         SMBS_INT       => OPEN 
+        );
+-- corepwm_0_0   -   Actel:DirectCore:corepwm:4.1.106
+corepwm_0_0 : corepwm
+    generic map( 
+        APB_DWIDTH          => ( 32 ),
+        CONFIG_MODE         => ( 0 ),
+        DAC_MODE1           => ( 0 ),
+        DAC_MODE2           => ( 0 ),
+        DAC_MODE3           => ( 0 ),
+        DAC_MODE4           => ( 0 ),
+        DAC_MODE5           => ( 0 ),
+        DAC_MODE6           => ( 0 ),
+        DAC_MODE7           => ( 0 ),
+        DAC_MODE8           => ( 0 ),
+        DAC_MODE9           => ( 0 ),
+        DAC_MODE10          => ( 0 ),
+        DAC_MODE11          => ( 0 ),
+        DAC_MODE12          => ( 0 ),
+        DAC_MODE13          => ( 0 ),
+        DAC_MODE14          => ( 0 ),
+        DAC_MODE15          => ( 0 ),
+        DAC_MODE16          => ( 0 ),
+        FAMILY              => ( 15 ),
+        FIXED_PERIOD        => ( 1000 ),
+        FIXED_PERIOD_EN     => ( 1 ),
+        FIXED_PRESCALE      => ( 1 ),
+        FIXED_PRESCALE_EN   => ( 1 ),
+        FIXED_PWM_NEG_EN1   => ( 0 ),
+        FIXED_PWM_NEG_EN2   => ( 0 ),
+        FIXED_PWM_NEG_EN3   => ( 0 ),
+        FIXED_PWM_NEG_EN4   => ( 0 ),
+        FIXED_PWM_NEG_EN5   => ( 0 ),
+        FIXED_PWM_NEG_EN6   => ( 0 ),
+        FIXED_PWM_NEG_EN7   => ( 0 ),
+        FIXED_PWM_NEG_EN8   => ( 0 ),
+        FIXED_PWM_NEG_EN9   => ( 0 ),
+        FIXED_PWM_NEG_EN10  => ( 0 ),
+        FIXED_PWM_NEG_EN11  => ( 0 ),
+        FIXED_PWM_NEG_EN12  => ( 0 ),
+        FIXED_PWM_NEG_EN13  => ( 0 ),
+        FIXED_PWM_NEG_EN14  => ( 0 ),
+        FIXED_PWM_NEG_EN15  => ( 0 ),
+        FIXED_PWM_NEG_EN16  => ( 0 ),
+        FIXED_PWM_NEGEDGE1  => ( 0 ),
+        FIXED_PWM_NEGEDGE2  => ( 0 ),
+        FIXED_PWM_NEGEDGE3  => ( 0 ),
+        FIXED_PWM_NEGEDGE4  => ( 0 ),
+        FIXED_PWM_NEGEDGE5  => ( 0 ),
+        FIXED_PWM_NEGEDGE6  => ( 0 ),
+        FIXED_PWM_NEGEDGE7  => ( 0 ),
+        FIXED_PWM_NEGEDGE8  => ( 0 ),
+        FIXED_PWM_NEGEDGE9  => ( 0 ),
+        FIXED_PWM_NEGEDGE10 => ( 0 ),
+        FIXED_PWM_NEGEDGE11 => ( 0 ),
+        FIXED_PWM_NEGEDGE12 => ( 0 ),
+        FIXED_PWM_NEGEDGE13 => ( 0 ),
+        FIXED_PWM_NEGEDGE14 => ( 0 ),
+        FIXED_PWM_NEGEDGE15 => ( 0 ),
+        FIXED_PWM_NEGEDGE16 => ( 0 ),
+        FIXED_PWM_POS_EN1   => ( 1 ),
+        FIXED_PWM_POS_EN2   => ( 1 ),
+        FIXED_PWM_POS_EN3   => ( 1 ),
+        FIXED_PWM_POS_EN4   => ( 1 ),
+        FIXED_PWM_POS_EN5   => ( 1 ),
+        FIXED_PWM_POS_EN6   => ( 1 ),
+        FIXED_PWM_POS_EN7   => ( 1 ),
+        FIXED_PWM_POS_EN8   => ( 1 ),
+        FIXED_PWM_POS_EN9   => ( 1 ),
+        FIXED_PWM_POS_EN10  => ( 1 ),
+        FIXED_PWM_POS_EN11  => ( 1 ),
+        FIXED_PWM_POS_EN12  => ( 1 ),
+        FIXED_PWM_POS_EN13  => ( 1 ),
+        FIXED_PWM_POS_EN14  => ( 1 ),
+        FIXED_PWM_POS_EN15  => ( 1 ),
+        FIXED_PWM_POS_EN16  => ( 1 ),
+        FIXED_PWM_POSEDGE1  => ( 0 ),
+        FIXED_PWM_POSEDGE2  => ( 0 ),
+        FIXED_PWM_POSEDGE3  => ( 0 ),
+        FIXED_PWM_POSEDGE4  => ( 0 ),
+        FIXED_PWM_POSEDGE5  => ( 0 ),
+        FIXED_PWM_POSEDGE6  => ( 0 ),
+        FIXED_PWM_POSEDGE7  => ( 0 ),
+        FIXED_PWM_POSEDGE8  => ( 0 ),
+        FIXED_PWM_POSEDGE9  => ( 0 ),
+        FIXED_PWM_POSEDGE10 => ( 0 ),
+        FIXED_PWM_POSEDGE11 => ( 0 ),
+        FIXED_PWM_POSEDGE12 => ( 0 ),
+        FIXED_PWM_POSEDGE13 => ( 0 ),
+        FIXED_PWM_POSEDGE14 => ( 0 ),
+        FIXED_PWM_POSEDGE15 => ( 0 ),
+        FIXED_PWM_POSEDGE16 => ( 0 ),
+        PWM_NUM             => ( 4 ),
+        PWM_STRETCH_VALUE1  => ( 0 ),
+        PWM_STRETCH_VALUE2  => ( 0 ),
+        PWM_STRETCH_VALUE3  => ( 0 ),
+        PWM_STRETCH_VALUE4  => ( 0 ),
+        PWM_STRETCH_VALUE5  => ( 0 ),
+        PWM_STRETCH_VALUE6  => ( 0 ),
+        PWM_STRETCH_VALUE7  => ( 0 ),
+        PWM_STRETCH_VALUE8  => ( 0 ),
+        PWM_STRETCH_VALUE9  => ( 0 ),
+        PWM_STRETCH_VALUE10 => ( 0 ),
+        PWM_STRETCH_VALUE11 => ( 0 ),
+        PWM_STRETCH_VALUE12 => ( 0 ),
+        PWM_STRETCH_VALUE13 => ( 0 ),
+        PWM_STRETCH_VALUE14 => ( 0 ),
+        PWM_STRETCH_VALUE15 => ( 0 ),
+        PWM_STRETCH_VALUE16 => ( 0 ),
+        SHADOW_REG_EN1      => ( 0 ),
+        SHADOW_REG_EN2      => ( 0 ),
+        SHADOW_REG_EN3      => ( 0 ),
+        SHADOW_REG_EN4      => ( 0 ),
+        SHADOW_REG_EN5      => ( 0 ),
+        SHADOW_REG_EN6      => ( 0 ),
+        SHADOW_REG_EN7      => ( 0 ),
+        SHADOW_REG_EN8      => ( 0 ),
+        SHADOW_REG_EN9      => ( 0 ),
+        SHADOW_REG_EN10     => ( 0 ),
+        SHADOW_REG_EN11     => ( 0 ),
+        SHADOW_REG_EN12     => ( 0 ),
+        SHADOW_REG_EN13     => ( 0 ),
+        SHADOW_REG_EN14     => ( 0 ),
+        SHADOW_REG_EN15     => ( 0 ),
+        SHADOW_REG_EN16     => ( 0 ),
+        TACH_EDGE1          => ( 0 ),
+        TACH_EDGE2          => ( 0 ),
+        TACH_EDGE3          => ( 0 ),
+        TACH_EDGE4          => ( 0 ),
+        TACH_EDGE5          => ( 0 ),
+        TACH_EDGE6          => ( 0 ),
+        TACH_EDGE7          => ( 0 ),
+        TACH_EDGE8          => ( 0 ),
+        TACH_EDGE9          => ( 0 ),
+        TACH_EDGE10         => ( 0 ),
+        TACH_EDGE11         => ( 0 ),
+        TACH_EDGE12         => ( 0 ),
+        TACH_EDGE13         => ( 0 ),
+        TACH_EDGE14         => ( 0 ),
+        TACH_EDGE15         => ( 0 ),
+        TACH_EDGE16         => ( 0 ),
+        TACH_NUM            => ( 1 ),
+        TACHINT_ACT_LEVEL   => ( 0 )
+        )
+    port map( 
+        -- Inputs
+        PADDR   => CoreAPB3_0_APBmslave0_PADDR_2,
+        PCLK    => FAB_CCC_GL0_net_0,
+        PENABLE => CoreAPB3_0_APBmslave0_PENABLE,
+        PRESETN => MSS_READY_net_0,
+        PSEL    => CoreAPB3_0_APBmslave2_PSELx,
+        PWDATA  => CoreAPB3_0_APBmslave0_PWDATA,
+        TACHIN  => TACHIN,
+        PWRITE  => CoreAPB3_0_APBmslave0_PWRITE,
+        -- Outputs
+        PRDATA  => CoreAPB3_0_APBmslave2_PRDATA,
+        PREADY  => CoreAPB3_0_APBmslave2_PREADY,
+        PSLVERR => CoreAPB3_0_APBmslave2_PSLVERR,
+        TACHINT => corepwm_0_0_TACHINT,
+        PWM     => PWM_net_0 
         );
 -- CORERESETP_0   -   Actel:DirectCore:CoreResetP:7.0.104
 CORERESETP_0 : CoreResetP

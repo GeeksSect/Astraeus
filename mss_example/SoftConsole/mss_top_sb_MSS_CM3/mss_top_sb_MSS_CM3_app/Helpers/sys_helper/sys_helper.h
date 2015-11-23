@@ -15,13 +15,13 @@ extern "C" {
 
 
 /*
- * time in ms
+ * time in us
  * frequency in MHz
  */
 void delay
 (
-	uint8_t time,
-	uint8_t frequency
+	uint32_t time,
+	uint32_t frequency
 );
 
 #ifdef __cplusplus
