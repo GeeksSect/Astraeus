@@ -42,3 +42,8 @@ void itoa
 			p2--;
 	}
 }
+
+uint16_t twobtoi(uint8_t *buf)
+{
+	return (buf[0] << 8) | buf[1];
+}
