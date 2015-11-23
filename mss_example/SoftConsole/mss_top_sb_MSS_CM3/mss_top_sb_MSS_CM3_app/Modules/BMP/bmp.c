@@ -1,24 +1,25 @@
 #include "bmp.h"
+#include "math.h"
 
 #define BUFFER_SIZE    32u
 
+int64_t BMP180_get_true_temperature(int16_t UT);
+
 uint8_t BMP_calibrate()
 {
-	populateBMPCalRegister();
 	i2c_status_t status;
-	uint8_t tx_rx_length = 1;
 
-	status 	= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.ac1, tx_rx_length, g_bmp_cal_values.ac1, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.ac2, tx_rx_length, g_bmp_cal_values.ac2, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.ac3, tx_rx_length, g_bmp_cal_values.ac3, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.ac4, tx_rx_length, g_bmp_cal_values.ac4, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.ac5, tx_rx_length, g_bmp_cal_values.ac5, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.ac6, tx_rx_length, g_bmp_cal_values.ac6, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.b1, tx_rx_length, g_bmp_cal_values.b1, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.b2, tx_rx_length, g_bmp_cal_values.b2, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.mb, tx_rx_length, g_bmp_cal_values.mb, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.mc, tx_rx_length, g_bmp_cal_values.mc, tx_rx_length, 0);
-	status |= i2c_write_read(BMP180_SERIAL_ADDRESS, g_bmp_cal_register.md, tx_rx_length, g_bmp_cal_values.md, tx_rx_length, 0);
+	status 	= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_AC1, &(g_bmp_cal_values.ac1), 0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_AC2, &(g_bmp_cal_values.ac2), 0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_AC3, &(g_bmp_cal_values.ac3), 0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_AC4, &(g_bmp_cal_values.ac4), 0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_AC5, &(g_bmp_cal_values.ac5), 0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_AC6, &(g_bmp_cal_values.ac6), 0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_B1,  &(g_bmp_cal_values.b1),  0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_B1,  &(g_bmp_cal_values.b2),  0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_MB,  &(g_bmp_cal_values.mb),  0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_MC,  &(g_bmp_cal_values.mc),  0);
+	status |= i2c_readInt_from_reg(BMP180_SERIAL_ADDRESS, BMP180_MD,  &(g_bmp_cal_values.md),  0);
 	return status;
 }
 
@@ -43,22 +44,17 @@ i2c_status_t BMP_get_temperature(uint16_t* temperature)
 
 	status |= i2c_writeBytes(BMP180_SERIAL_ADDRESS, tx_buf, tx_length, 0);
 	status |= i2c_readInt(BMP180_SERIAL_ADDRESS, temperature, 0);
+	*temperature = (uint16_t)BMP180_get_true_temperature(*temperature);
 
 	return status;
 }
 
-// Region private methods
-void populateBMPCalRegister()
+// Region private function
+int64_t BMP180_get_true_temperature(int16_t UT)
 {
-	g_bmp_cal_register.ac1[0] = 0xAA;
-	g_bmp_cal_register.ac2[0] = 0xAC;
-	g_bmp_cal_register.ac3[0] = 0xAE;
-	g_bmp_cal_register.ac4[0] = 0xB0;
-	g_bmp_cal_register.ac5[0] = 0xB2;
-	g_bmp_cal_register.ac6[0] = 0xB4;
-	g_bmp_cal_register.b1[0]  = 0xB6;
-	g_bmp_cal_register.b2[0]  = 0xB8;
-	g_bmp_cal_register.mb[0]  = 0xBA;
-	g_bmp_cal_register.mc[0]  = 0xBC;
-	g_bmp_cal_register.md[0]  = 0xBE;
+	uint64_t X1 = (UT - g_bmp_cal_values.ac6) * g_bmp_cal_values.ac5 / pow(2, 15);
+	uint64_t X2 = g_bmp_cal_values.mc * pow(2, 11) / (X1 + g_bmp_cal_values.md);
+	uint64_t B5 = X1 + X2;
+	return (B5 + 8) / pow(2, 4);
 }
+

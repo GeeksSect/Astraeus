@@ -14,37 +14,33 @@
 
 #define BMP180_SERIAL_ADDRESS 0x77
 
+#define BMP180_AC1	0xAA
+#define BMP180_AC2	0xAC
+#define BMP180_AC3	0xAE
+#define BMP180_AC4	0xB0
+#define BMP180_AC5	0xB2
+#define BMP180_AC6	0xB4
+#define BMP180_B1	0xB6
+#define BMP180_B2	0xB8
+#define BMP180_MB	0xBA
+#define BMP180_MC	0xBC
+#define BMP180_MD	0xBE
+
 struct Cal_values
 {
     // Calibration values
-    int8_t ac1[2];
-    int8_t ac2[2];
-    int8_t ac3[2];
-    uint8_t ac4[2];
-    uint8_t ac5[2];
-    uint8_t ac6[2];
-    int8_t b1[2];
-    int8_t b2[2];
-    int8_t mb[2];
-    int8_t mc[2];
-    int8_t md[2];
+    int16_t ac1;
+    int16_t ac2;
+    int16_t ac3;
+    uint16_t ac4;
+    uint16_t ac5;
+    uint16_t ac6;
+    int16_t b1;
+    int16_t b2;
+    int16_t mb;
+    int16_t mc;
+    int16_t md;
 } g_bmp_cal_values;
-
-struct Cal_register
-{
-	// Calibration registers
-	uint8_t ac1[2];
-	uint8_t ac2[2];
-	uint8_t ac3[2];
-	uint8_t ac4[2];
-	uint8_t ac5[2];
-	uint8_t ac6[2];
-	uint8_t b1[2];
-	uint8_t b2[2];
-	uint8_t mb[2];
-	uint8_t mc[2];
-	uint8_t md[2];
-} g_bmp_cal_register;
 
 /************************************
  * @return: 0 if calibration completed successful.
