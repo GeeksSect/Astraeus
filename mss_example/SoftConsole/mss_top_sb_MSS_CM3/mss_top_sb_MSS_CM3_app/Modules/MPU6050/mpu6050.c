@@ -141,5 +141,30 @@ void MPU6050_calibration(){
 
 }
 
+/** Get full-scale gyroscope range.
+ * The FS_SEL parameter allows setting the full-scale range of the gyro sensors,
+ * as described in the table below.
+ *
+ * <pre>
+ * 0 = +/- 250 degrees/sec
+ * 1 = +/- 500 degrees/sec
+ * 2 = +/- 1000 degrees/sec
+ * 3 = +/- 2000 degrees/sec
+ * </pre>
+ *
+
+ */
+
+/** Set full-scale gyroscope range.
+ * @param range New full-scale gyroscope range value
+ * @see getFullScaleRange()
+ * @see MPU6050_GYRO_FS_250
+ * @see MPU6050_RA_GYRO_CONFIG
+ * @see MPU6050_GCONFIG_FS_SEL_BIT
+ * @see MPU6050_GCONFIG_FS_SEL_LENGTH
+ */
+
+
+
 
 
