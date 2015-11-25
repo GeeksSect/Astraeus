@@ -12,9 +12,11 @@
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers_config/sys_config/sys_config.h"
 #include "drivers/mss_timer/mss_timer.h"
+#include "drivers/CorePWM/core_pwm.h"
 
 #include <stdlib.h>
 #include <math.h>
+
 /******************************************************************************
  * Baud value to achieve a 115200 baud rate with a 50 MHz system clock.
  * This value is calculated using the following equation:
@@ -22,22 +24,21 @@
  *****************************************************************************/
 #define BAUD_VALUE_115200    26
 
-/******************************************************************************
- * Maximum receiver buffer size.
- *****************************************************************************/
-#define MAX_RX_DATA_SIZE    256
-
 /*-----------------------------------------------------------------------------
  * Receive buffer size.
  */
 #define BUFFER_SIZE    32u
-#define ENTER          13u
 
-/*-----------------------------------------------------------------------------
- * Local functions.
- */
-//i2c_slave_handler_ret_t slave_write_handler(i2c_instance_t *, uint8_t *, uint16_t);
-//void report_bytes_written(uint8_t * p_rx_data, uint16_t rx_size);
+/******************************************************************************
+ * For 50 KHz PWM_FREQ with 50 MHz CLK.
+ *
+ * PWM_PRESCALE = 1
+ * PWM_PERIOD = (CLK / PWM_FREQ) = 1000
+ *****************************************************************************/
+#define PWM_PRESCALE 1
+#define PWM_PERIOD 1000
+
+
 static void display_greeting(void);
 static void select_command(void);
 //uint8_t get_data(void);
@@ -58,6 +59,7 @@ static uint8_t g_master_tx_buf[BUFFER_SIZE];
 
 // Core instances
 UART_instance_t g_uart;
+pwm_instance_t  g_pwm;
 
 // ================== ACEL DEFINES
 #define k 65.53  // 2 bytes is range [-500;500] degrees
@@ -91,6 +93,7 @@ void pwm_auto();
 
 void setup()
 {
+	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
 	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
@@ -232,10 +235,8 @@ int main(void)
 
                 case '3':
                 {
-                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r Copter test mode \n\r\n\r");
-
-                    copter_control();
-
+                    UART_polled_tx_string(&g_uart, (const uint8_t *)"\n\r PWM test mode \n\r\n\r");
+                    pwm_control();
                     press_any_key_to_continue();
                     break;
                 }
@@ -267,7 +268,7 @@ int main(void)
     return 0;
 }
 
-void copter_control()
+void pwm_control()
 {
 	MSS_TIM1_load_background(SystemCoreClock / 1000); // generate irq with 1 kHz
 	MSS_TIM1_start();
@@ -295,18 +296,74 @@ void copter_control()
 		rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
 		if (rx_size > 0)
 		{
-			index = rx_buff[0] - '0';
-			switch(rx_buff[1]) {
-			case 'w':
-				copter_increase_capacity(index);
-				break;
-			case 's':
-				copter_decrease_capacity(index);
-				break;
-			case 'q':
-				work_flag = 0;
-			default:
-				break;
+			switch (rx_buff[0])
+			{
+				case '1':
+				{
+					if (pwm_enabled & pwm_1_mask)
+					{
+						PWM_disable(&g_pwm, PWM_1);
+						pwm_enabled &= ~(pwm_1_mask);
+					} else {
+						PWM_enable(&g_pwm, PWM_1);
+						pwm_enabled |= pwm_1_mask;
+					}
+					break;
+				}
+				case '2':
+				{
+					if (pwm_enabled & pwm_2_mask)
+					{
+						PWM_disable(&g_pwm, PWM_2);
+						pwm_enabled &= ~(pwm_2_mask);
+					} else {
+						PWM_enable(&g_pwm, PWM_2);
+						pwm_enabled |= pwm_2_mask;
+					}
+					break;
+				}
+				case '3':
+				{
+					if (pwm_enabled & pwm_3_mask)
+					{
+						PWM_disable(&g_pwm, PWM_3);
+						pwm_enabled &= ~(pwm_3_mask);
+					} else {
+						PWM_enable(&g_pwm, PWM_3);
+						pwm_enabled |= pwm_3_mask;
+					}
+					break;
+				}
+				case '4':
+				{
+					if (pwm_enabled & pwm_4_mask)
+					{
+						PWM_disable(&g_pwm, PWM_4);
+						pwm_enabled &= ~(pwm_4_mask);
+					} else {
+						PWM_enable(&g_pwm, PWM_4);
+						pwm_enabled |= pwm_4_mask;
+					}
+					break;
+				}
+				case 'w':
+				{
+					duty_cycle = (duty_step + duty_cycle <= duty_max) ?
+								 duty_step + duty_cycle :
+								 duty_cycle;
+					break;
+				}
+				case 's':
+				{
+					duty_cycle = (duty_cycle - duty_step >= 0) ?
+								  duty_cycle - duty_step:
+								  duty_cycle;
+					break;
+				}
+				case 'q':
+					work_flag = 0;
+				default:
+					break;
 			}
 		}
 
@@ -347,92 +404,92 @@ void pwm_auto()
 	uint8_t i;
 	for (i = 0; i < calibration_step; ++i)
 	{
-		MPU6050_getMotion6(&t_az, &t_ay, &t_ax, &t_gz, &t_gy, &t_gx);
-		c_ax = (c_ax + t_ax) / 2;
-		c_ay = (c_ay + t_ay) / 2;
-		c_az = (c_az + t_az) / 2;
-		c_gx = (c_gx + t_gx) / 2;
-		c_gy = (c_gy + t_gy) / 2;
-		c_gz = (c_gz + t_gz) / 2;
-	}
+        MPU6050_getMotion6(&t_az, &t_ay, &t_ax, &t_gz, &t_gy, &t_gx);
+        c_ax = (c_ax + t_ax) / 2;
+        c_ay = (c_ay + t_ay) / 2;
+        c_az = (c_az + t_az) / 2;
+        c_gx = (c_gx + t_gx) / 2;
+        c_gy = (c_gy + t_gy) / 2;
+        c_gz = (c_gz + t_gz) / 2;
+    }
 
-	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
-	PWM_disable(&g_pwm, PWM_1);
-	PWM_disable(&g_pwm, PWM_2);
-	PWM_disable(&g_pwm, PWM_3);
-	PWM_disable(&g_pwm, PWM_4);
+    PWM_disable(&g_pwm, PWM_1);
+    PWM_disable(&g_pwm, PWM_2);
+    PWM_disable(&g_pwm, PWM_3);
+    PWM_disable(&g_pwm, PWM_4);
 
-	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
+    PWM_enable(&g_pwm, PWM_1);
+    PWM_enable(&g_pwm, PWM_2);
+    PWM_enable(&g_pwm, PWM_3);
+    PWM_enable(&g_pwm, PWM_4);
 
-	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
-	while(work_flag)
-	{
-		rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
-		if (rx_size > 0)
-		{
-			switch (rx_buff[0])
-			{
-				case 'w':
-				{
-					force = (force + force_delta <= 65000) ?
-							 force + force_delta:
-							 force;
-					break;
-				}
-				case 's':
-				{
-					force = (force - force_delta >= 0) ?
-							 force - force_delta:
-							 force;
-					break;
-				}
-				case 'q':
-				{
-					work_flag = 0;
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			} // end switch
-		}
+    while(work_flag)
+    {
+        rx_size = UART_get_rx( &g_uart, rx_buff, sizeof(rx_buff) );
+        if (rx_size > 0)
+        {
+            switch (rx_buff[0])
+            {
+                case 'w':
+                {
+                    force = (force + force_delta <= 65000) ?
+                             force + force_delta:
+                             force;
+                    break;
+                }
+                case 's':
+                {
+                    force = (force - force_delta >= 0) ?
+                             force - force_delta:
+                             force;
+                    break;
+                }
+                case 'q':
+                {
+                    work_flag = 0;
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            } // end switch
+        }
 
-		MPU6050_getMotion6(&g_az, &g_ay, &g_ax, &g_gz, &g_gy, &g_gx);
+        MPU6050_getMotion6(&g_az, &g_ay, &g_ax, &g_gz, &g_gy, &g_gx);
 
-		// calibrate values
-		g_ax -= c_ax;
-		g_ay -= c_ay;
-		g_az -= c_az;
-		g_gx -= c_gx;
-		g_gy -= c_gy;
-		g_gz -= c_gz;
+        // calibrate values
+        g_ax -= c_ax;
+        g_ay -= c_ay;
+        g_az -= c_az;
+        g_gx -= c_gx;
+        g_gy -= c_gy;
+        g_gz -= c_gz;
 
-		my_ESC();
+        my_ESC();
 
-		duty_1 = (pow1) / 66;
-		duty_3 = (pow2) / 66;
-		duty_4 = (pow3) / 66;
-		duty_2 = (pow4) / 66;
+        duty_1 = (pow1) / 66;
+        duty_3 = (pow2) / 66;
+        duty_4 = (pow3) / 66;
+        duty_2 = (pow4) / 66;
 
-		PWM_set_duty_cycle(&g_pwm, PWM_1, duty_1);
-		PWM_set_duty_cycle(&g_pwm, PWM_2, duty_2);
-		PWM_set_duty_cycle(&g_pwm, PWM_3, duty_3);
-		PWM_set_duty_cycle(&g_pwm, PWM_4, duty_4);
-	}
+        PWM_set_duty_cycle(&g_pwm, PWM_1, duty_1);
+        PWM_set_duty_cycle(&g_pwm, PWM_2, duty_2);
+        PWM_set_duty_cycle(&g_pwm, PWM_3, duty_3);
+        PWM_set_duty_cycle(&g_pwm, PWM_4, duty_4);
+    }
 
-	MSS_TIM1_disable_irq();
+    MSS_TIM1_disable_irq();
 }
 
 /*------------------------------------------------------------------------------
@@ -485,7 +542,7 @@ void SysTick_Handler(void)
 
 void FabricIrq0_IRQHandler(void)
 {
-	I2C_isr(&g_core_i2c0);
+    I2C_isr(&g_core_i2c0);
 }
 
 
@@ -537,7 +594,7 @@ void my_angle( )
 }
 void my_ESC()
 {
-	my_angle();
+    my_angle();
   if(force < low_trottle)
   {
     pow1 = 0;
@@ -565,12 +622,12 @@ void my_ESC()
 
 uint64_t millis()
 {
-	return t_milis;
+    return t_milis;
 }
 
 // Timer 1 irq handler
 void Timer1_IRQHandler()
 {
-	t_milis++;
-	MSS_TIM1_clear_irq();
+    t_milis++;
+    MSS_TIM1_clear_irq();
 }
