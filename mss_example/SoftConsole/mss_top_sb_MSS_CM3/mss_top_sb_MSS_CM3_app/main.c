@@ -2,6 +2,7 @@
 #include "Modules/I2C/i2c.h"
 #include "Modules/MPU6050/mpu6050.h"
 #include "Modules/PID/PID.h"
+#include "Modules/micros/micros.h"
 #include "Helpers/converter/converter.h"
 
 #include "hal.h"
@@ -9,12 +10,9 @@
 #include "core_uart_apb.h"
 #include "CMSIS/m2sxxx.h"
 
-#include "system_m2sxxx.h"
-
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers/CorePWM/core_pwm.h"
 #include "drivers_config/sys_config/sys_config.h"
-#include "drivers/mss_timer/mss_timer.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -37,16 +35,7 @@
 #define BUFFER_SIZE    32u
 #define ENTER          13u
 
-/*-----------------------------------------------------------------------------
- * Local functions.
- */
-//i2c_slave_handler_ret_t slave_write_handler(i2c_instance_t *, uint8_t *, uint16_t);
-//void report_bytes_written(uint8_t * p_rx_data, uint16_t rx_size);
-
-//uint8_t get_data(void);
 void press_any_key_to_continue(void);
-uint64_t millis();
-static uint64_t t_milis = 0;
 
 /*------------------------------------------------------------------------------
  * I2C buffers. These are the buffers where data written transferred via I2C
@@ -59,6 +48,11 @@ static uint8_t g_master_tx_buf[BUFFER_SIZE];
 
 #define PWM_PRESCALE 1
 #define PWM_PERIOD 1000
+
+
+
+
+#define t0 30 //   threshold voltage TODO it's not real value. must be define by experiment
 
 // Core instances
 UART_instance_t g_uart;
@@ -134,7 +128,7 @@ int main(void)
 	int16_t pow[4] = { 0,0,0,0 };
 	int16_t acell_pitch, acell_roll;
 	int16_t pitch, roll;
-	int16_t force = 0;
+	int16_t force = 250;
 	
 	PWM_enable(&g_pwm, PWM_1);
 	PWM_enable(&g_pwm, PWM_2);
@@ -158,12 +152,9 @@ int main(void)
 	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate force!\n\r");
 	press_any_key_to_continue();
 
-
-	MSS_TIM1_load_background(SystemCoreClock / 1000); // generate irq with 1 kHz
-	MSS_TIM1_start();
-	MSS_TIM1_enable_irq();
-	uint64_t t_prev = millis();
-	uint16_t d_t;
+	init_timer();
+	uint64_t t_prev = micros();
+	uint32_t d_t;
 	uint8_t print_buf[6];
 
 	int i =0;
@@ -198,13 +189,15 @@ int main(void)
 		}
 		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
-		d_t = millis() - t_prev;
-		t_prev = millis();
+		d_t = micros() - t_prev;
+		t_prev = micros();
 		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
-		my_ESC(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
+		my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
 		
 
-		for(i=0; i<6; i++)
+//------------------ debug code
+
+/*		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
 		itoa((char *)&print_buf, 'd', pow[0]*10);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
@@ -219,13 +212,32 @@ int main(void)
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+*/
+//------------------ debug code end
 
-		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)sqrt(pow[0])*31);
-//		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)sqrt(pow[1])*31);
-//		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)sqrt(pow[2])*31);
-//		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)sqrt(pow[3])*31);
+//		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*25);
+//		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*25);
+//		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*25);
+//		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*25);
 	
-	
+
+		i++;
+
+		if(i=500)
+		{
+			for(i=0; i<6; i++)
+				print_buf[i] = NULL;
+			itoa((char *)&print_buf, 'd', d_t);
+			UART_polled_tx_string(&g_uart, (const uint8_t *)"d_t is:");
+			UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+			UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+			i=0;
+		}
+
+
+
+
+
 	
 	}
     
@@ -260,19 +272,4 @@ void SysTick_Handler(void)
 void FabricIrq0_IRQHandler(void)
 {
 	I2C_isr(&g_core_i2c0);
-}
-
-
-// ============ ACEL FUNCTIONS
-
-uint64_t millis()
-{
-	return t_milis;
-}
-
-// Timer 1 irq handler
-void Timer1_IRQHandler()
-{
-	t_milis++;
-	MSS_TIM1_clear_irq();
 }
