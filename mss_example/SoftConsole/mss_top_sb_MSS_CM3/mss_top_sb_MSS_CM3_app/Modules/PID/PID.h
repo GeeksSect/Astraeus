@@ -31,7 +31,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-static float Kp = 0.03, Ki= 0.03, Kd= 0.03;
+static int16_t Kp_u = 2, Kp_d = 100,
+				Ki_u= 2, Ki_d = 100,
+				Kd_u= 0, Kd_d = 100;
 
 static int64_t I_p=0, I_r=0;
 

@@ -52,7 +52,7 @@ static uint8_t g_master_tx_buf[BUFFER_SIZE];
 
 
 
-#define t0 30 //   threshold voltage TODO it's not real value. must be define by experiment
+#define t0 25 //   threshold voltage TODO it's not real value. must be define by experiment
 
 // Core instances
 UART_instance_t g_uart;
@@ -128,7 +128,7 @@ int main(void)
 	int16_t pow[4] = { 0,0,0,0 };
 	int16_t acell_pitch, acell_roll;
 	int16_t pitch, roll;
-	int16_t force = 250;
+	int16_t force = 0;
 	
 	PWM_enable(&g_pwm, PWM_1);
 	PWM_enable(&g_pwm, PWM_2);
@@ -155,7 +155,7 @@ int main(void)
 	init_timer();
 	uint64_t t_prev = micros();
 	uint32_t d_t;
-	uint8_t print_buf[6];
+	uint8_t print_buf[12];
 
 	int i =0;
 
@@ -196,43 +196,38 @@ int main(void)
 		
 
 //------------------ debug code
-
-/*		for(i=0; i<6; i++)
+		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pow[0]*10);
+		itoa((char *)&print_buf, 'd', d_t);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', pow[2]*10);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-		force = 200;
+
 
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pow[3]*10);
+		itoa((char *)&print_buf, 'd', pow[0]*10);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-*/
+
 //------------------ debug code end
 
-//		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*25);
-//		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*25);
-//		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*25);
-//		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*25);
+		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*20);
 	
 
-		i++;
 
-		if(i=500)
-		{
-			for(i=0; i<6; i++)
-				print_buf[i] = NULL;
-			itoa((char *)&print_buf, 'd', d_t);
-			UART_polled_tx_string(&g_uart, (const uint8_t *)"d_t is:");
-			UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-			UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-			i=0;
-		}
 
 
 
