@@ -31,11 +31,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-static int16_t Kp_u = 2, Kp_d = 100,
-				Ki_u= 2, Ki_d = 100,
-				Kd_u= 0, Kd_d = 100;
+static int16_t Kp_u = 8, Kp_d = 100,
+				Kd_u= 2, Kd_d = 100;
+static int64_t Ki_u= 3, Ki_d = 100000000;
 
 static int64_t I_p=0, I_r=0;
+static int16_t tmp1, tmp2;
 
 void acell_angle( int16_t * ax,
 				  int16_t * ay,
@@ -58,7 +59,10 @@ void my_PID(int16_t * pitch,
 			int16_t * gy,
 			uint32_t d_t);
 
+int8_t change_coef(int8_t _type);
 
+int64_t get_i_p2(void);
+int64_t get_i_r2(void);
 
 
 

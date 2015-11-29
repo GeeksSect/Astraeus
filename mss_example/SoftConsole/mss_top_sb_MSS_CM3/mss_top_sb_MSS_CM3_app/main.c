@@ -183,6 +183,13 @@ int main(void)
 			}
 			default:
 			{
+				for(i=0; i<6; i++)
+					print_buf[i] = NULL;
+				itoa((char *)&print_buf, 'd', change_coef(rx_buff[0]));
+				UART_polled_tx_string(&g_uart, (const uint8_t *)"Now val is:");
+				UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+				UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
 				break;
 			}
 			}
@@ -191,11 +198,16 @@ int main(void)
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
 		d_t = micros() - t_prev;
 		t_prev = micros();
+		if(d_t>10000)
+		{
+			d_t=0;
+		}
 		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
 		my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
 		
 
 //------------------ debug code
+
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
 		itoa((char *)&print_buf, 'd', d_t);
@@ -203,20 +215,20 @@ int main(void)
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-		for(i=0; i<6; i++)
+		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pow[2]*10);
+		itoa((char *)&print_buf, 'd', (int32_t)get_i_p2());
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_send(&g_uart, (const uint8_t *)print_buf, 12);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 
 
-		for(i=0; i<6; i++)
+		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pow[0]*10);
+		itoa((char *)&print_buf, 'd', (int32_t)get_i_r2()/100);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_send(&g_uart, (const uint8_t *)print_buf, 12);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 //------------------ debug code end

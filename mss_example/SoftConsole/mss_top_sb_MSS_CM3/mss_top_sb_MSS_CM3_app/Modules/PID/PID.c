@@ -60,6 +60,7 @@ void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_pitch, i
 
 void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * force, int16_t * gx, int16_t * gy, uint32_t d_t)
 {
+
   if(*force < low_trottle)
   {
     pow[0] = 0;
@@ -76,12 +77,21 @@ void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * force, int
     }
   }
   {
-	I_p += *pitch * d_t;
-	I_r += *roll * d_t;
-	pow[0] = *force + (int16_t)(Kp_u*(*pitch + *roll) /Kp_d) + (int16_t)(Kd_u*(*gx + (-*gy)) /Kd_d);
-    pow[1] = *force + (int16_t)(Kp_u*(-*pitch + *roll)/Kp_d) + (int16_t)(Kd_u*(-*gx + (-*gy))/Kd_d);
-    pow[2] = *force + (int16_t)(Kp_u*(-*pitch - *roll)/Kp_d) + (int16_t)(Kd_u*(-*gx - (-*gy))/Kd_d);
-    pow[3] = *force + (int16_t)(Kp_u*(*pitch - *roll) /Kp_d) + (int16_t)(Kd_u*(*gx - (-*gy)) /Kd_d);
+	I_p = I_p+(int64_t)(*pitch * (int16_t)(d_t));
+	I_r = I_r+(int64_t)(*roll  * (int16_t)(d_t));
+	tmp1 = (int16_t)(Ki_u*I_p/Ki_d);
+	tmp2 = (int16_t)(Ki_u*I_r/Ki_d);
+
+	/*
+	pow[0] = *force + (int16_t)(Kp_u*(*pitch + *roll) /Kp_d) + (int16_t)(Kd_u*(*gx + (-*gy)) /Kd_d) + (int16_t)(((int64_t)(Ki_u * ( I_p + I_r) /Ki_d)));
+    pow[1] = *force + (int16_t)(Kp_u*(-*pitch + *roll)/Kp_d) + (int16_t)(Kd_u*(-*gx + (-*gy))/Kd_d) + (int16_t)(((int64_t)(Ki_u * (-I_p + I_r) /Ki_d)));
+    pow[2] = *force + (int16_t)(Kp_u*(-*pitch - *roll)/Kp_d) + (int16_t)(Kd_u*(-*gx - (-*gy))/Kd_d) + (int16_t)(((int64_t)(Ki_u * (-I_p - I_r) /Ki_d)));
+    pow[3] = *force + (int16_t)(Kp_u*(*pitch - *roll) /Kp_d) + (int16_t)(Kd_u*(*gx - (-*gy)) /Kd_d) + (int16_t)(((int64_t)(Ki_u * ( I_p - I_r) /Ki_d)));
+	 */
+	pow[0] = *force + (int16_t)(Kp_u*(*pitch + *roll) /Kp_d) + (int16_t)(Kd_u*(*gx + (-*gy)) /Kd_d) + tmp1 + tmp2;
+    pow[1] = *force + (int16_t)(Kp_u*(-*pitch + *roll)/Kp_d) + (int16_t)(Kd_u*(-*gx + (-*gy))/Kd_d) - tmp1 + tmp2;
+    pow[2] = *force + (int16_t)(Kp_u*(-*pitch - *roll)/Kp_d) + (int16_t)(Kd_u*(-*gx - (-*gy))/Kd_d) - tmp1 - tmp2;
+    pow[3] = *force + (int16_t)(Kp_u*(*pitch - *roll) /Kp_d) + (int16_t)(Kd_u*(*gx - (-*gy)) /Kd_d) + tmp1 - tmp2;
 
     //check low_trottle
     if(pow[0]< low_trottle2)
@@ -120,4 +130,53 @@ void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * force, int
 
   }
 }
+int8_t change_coef(int8_t _type)
+{
+	switch (_type)
+		{
+		case 'P':
+		{
+			Kp_u++;
+			return Kp_u;
+		}
+		case 'p':
+		{
+			Kp_u--;
+			return Kp_u;
+		}
+		case 'I':
+		{
+			Ki_u++;
+			return Ki_u;
+		}
+		case 'i':
+		{
+			Ki_u--;
+			return Ki_u;
+		}
+		case 'D':
+		{
+			Kd_u++;
+			return Kd_u;
+		}
+		case 'd':
+		{
+			Kd_u--;
+			return Kd_u;
+		}
+		default:
+		{
+			return -1;
+		}
+		}
+}
 
+int64_t get_i_p2(void)
+{
+
+	return tmp1;
+}
+int64_t get_i_r2(void)
+{
+	return tmp2;
+}
