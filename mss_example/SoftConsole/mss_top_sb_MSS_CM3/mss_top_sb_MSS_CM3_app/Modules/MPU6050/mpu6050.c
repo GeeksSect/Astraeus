@@ -82,7 +82,7 @@ void MPU6050_setDLPFMode(uint8_t mode)
                   0);
 }
 
-void MPU6050_getMotion6(int16_t* ax,
+inline void MPU6050_getMotion6(int16_t* ax,
                         int16_t* ay,
                         int16_t* az,
                         int16_t* gx,

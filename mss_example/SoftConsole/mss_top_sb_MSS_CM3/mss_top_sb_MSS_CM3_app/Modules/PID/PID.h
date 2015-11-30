@@ -13,6 +13,9 @@
 
 #define k 65.53  // 2 bytes is range [-500;500] degrees
 #define k1 57.29 // radians to degrees
+#define D_lim 4000 //TODO calib
+#define I_lim 4000 //TODO calib
+#define P_lim 4000 //TODO calib
 
 
 // power range is 0 to 1000
@@ -31,12 +34,14 @@
 #include <stdlib.h>
 #include <math.h>
 
-static int16_t Kp_u = 8, Kp_d = 100,
-				Kd_u= 2, Kd_d = 100;
-static int64_t Ki_u= 3, Ki_d = 100000000;
+static int16_t Kp_u = 7, Kp_d = 100,
+				Kd_u= 3, Kd_d = 100;
+static int32_t Ki_u= 3, Ki_d = 100000;//TODO calib
 
-static int64_t I_p=0, I_r=0;
-static int16_t tmp1, tmp2;
+static int32_t Integr_pitch=0, Integr_roll=0;
+static int16_t Itmp_p, Itmp_r;
+static int16_t Dtmp_p, Dtmp_r;
+static int16_t Ptmp_p, Ptmp_r;
 
 void acell_angle( int16_t * ax,
 				  int16_t * ay,
@@ -50,20 +55,27 @@ void my_angle(int16_t * gx,
 				int16_t * acell_roll,
 				int16_t * _pitch_curr,
 				int16_t * _roll_curr,
-				uint32_t d_t);
+				uint16_t d_t);
 void my_PID(int16_t * pitch,
 			int16_t * roll,
 			int16_t * pow,
 			int16_t * force,
 			int16_t * gx,
 			int16_t * gy,
-			uint32_t d_t);
+			uint16_t d_t);
 
 int8_t change_coef(int8_t _type);
 
-int64_t get_i_p2(void);
-int64_t get_i_r2(void);
 
+void set_I(uint8_t val);
+void set_P(uint8_t val);
+void set_D(uint8_t val);
 
+int16_t get_I_p(void);
+int16_t get_I_r(void);
+int16_t get_P_p(void);
+int16_t get_P_r(void);
+int16_t get_D_p(void);
+int16_t get_D_r(void);
 
 #endif /* PID_H_ */
