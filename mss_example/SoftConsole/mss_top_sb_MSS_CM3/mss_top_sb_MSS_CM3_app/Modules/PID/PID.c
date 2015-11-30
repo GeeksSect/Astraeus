@@ -43,17 +43,19 @@ inline void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_p
 		int16_t * _pitch_curr, int16_t * _roll_curr, uint16_t d_t)
 {
 
-	static int16_t pitch_prev, pitch_curr;
-	static int16_t roll_prev, roll_curr;
-	pitch_prev = pitch_curr;
-	roll_prev = roll_curr;
-	Itmp_p = (int16_t)((int32_t)((*gx)*d_t)/1000000);
-	Itmp_r = (int16_t)((int32_t)((*gy)*(-1))*d_t/1000000);
-	pitch_curr = ((49*(Itmp_p + pitch_prev))+(*acell_pitch)) / 50;
-	roll_curr  = ((49*(Itmp_r + roll_prev ))+(*acell_roll )) / 50;
+	static int pitch_prev, pitch_curr;
+	 	static int roll_prev, roll_curr;
+	 	pitch_prev = pitch_curr;
+	 	roll_prev = roll_curr;
+	 	pitch_curr = ((49*(((int64_t)(*gx)*(int64_t)d_t/1000000)+ pitch_prev))+(*acell_pitch)) / 50;
+	 	roll_curr = ((49*(((int64_t)(*gy)*(-1)*(int64_t)d_t/1000000)+ roll_prev))+(*acell_roll)) / 50;
 
-	*_pitch_curr = pitch_curr;
-	*_roll_curr = roll_curr;
+
+
+
+
+	 	*_pitch_curr = pitch_curr;
+	 	*_roll_curr = roll_curr;
 }
 
 inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * force, int16_t * gx, int16_t * gy, uint16_t d_t)
@@ -79,7 +81,7 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * for
 	Itmp_p = (int16_t)(Ki_u*Integr_pitch/Ki_d);
 	Itmp_r = (int16_t)(Ki_u*Integr_roll/Ki_d);
 	Dtmp_p = Kd_u * (*gx) / Kd_d;
-	Dtmp_r = Kd_u *(-1) * (*gx) / Kd_d;
+	Dtmp_r = Kd_u *(-1) * (*gy) / Kd_d;
 	Ptmp_p = Kp_u * (*pitch) / Kp_d;
 	Ptmp_r = Kp_u * (*roll) / Kp_d;
 // integral limit
