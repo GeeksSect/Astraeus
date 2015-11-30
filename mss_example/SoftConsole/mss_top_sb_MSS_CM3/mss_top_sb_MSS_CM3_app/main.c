@@ -280,7 +280,7 @@ int main(void)
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pitch*3);
+		itoa((char *)&print_buf, 'd', pitch);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 12);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
@@ -289,17 +289,17 @@ int main(void)
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', roll*3);
+		itoa((char *)&print_buf, 'd', roll);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 12);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 //------------------ debug code end
 
-//		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
-//		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
-//		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*20);
-//		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*20);
+		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*20);
 	
 
 

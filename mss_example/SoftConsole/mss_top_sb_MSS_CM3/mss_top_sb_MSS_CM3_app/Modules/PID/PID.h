@@ -55,7 +55,7 @@ void my_angle(int16_t * gx,
 				int16_t * acell_roll,
 				int16_t * _pitch_curr,
 				int16_t * _roll_curr,
-				uint16_t d_t);
+				uint32_t d_t);
 void my_PID(int16_t * pitch,
 			int16_t * roll,
 			int16_t * pow,
