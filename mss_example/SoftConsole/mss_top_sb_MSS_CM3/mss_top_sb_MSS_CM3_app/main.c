@@ -273,28 +273,27 @@ int main(void)
 
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', d_t);
+		itoa((char *)&print_buf, 'd', get_I_p()*30);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pitch);
+		itoa((char *)&print_buf, 'd', get_P_p()*30);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 12);
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', roll);
+		itoa((char *)&print_buf, 'd', get_D_p()*30);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 12);
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-//------------------ debug code end
+
+		//------------------ debug code end
 
 		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
 		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);

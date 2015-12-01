@@ -13,9 +13,9 @@
 
 #define k 65.53  // 2 bytes is range [-500;500] degrees
 #define k1 57.29 // radians to degrees
-#define D_lim 4000 //TODO calib
-#define I_lim 4000 //TODO calib
-#define P_lim 4000 //TODO calib
+#define D_lim 500 //TODO calib
+#define I_lim 500 //TODO calib
+#define P_lim 500 //TODO calib
 
 
 // power range is 0 to 1000
@@ -34,8 +34,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-static int16_t Kp_u = 7, Kp_d = 100,
-				Kd_u= 3, Kd_d = 100;
+static int16_t Kp_u = 12, Kp_d = 100,
+				Kd_u= 4, Kd_d = 100;
 static int32_t Ki_u= 3, Ki_d = 100000;//TODO calib
 
 static int32_t Integr_pitch=0, Integr_roll=0;
