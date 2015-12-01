@@ -82,12 +82,13 @@ void MPU6050_setDLPFMode(uint8_t mode)
                   0);
 }
 
-void MPU6050_getMotion6(int16_t* ax,
+inline void MPU6050_getMotion6(int16_t* ax,
                         int16_t* ay,
                         int16_t* az,
                         int16_t* gx,
                         int16_t* gy,
-                        int16_t* gz)
+                        int16_t* gz,
+                        int use_calib)
 {
     uint8_t tx_buf[1]; uint8_t tx_len;
     tx_buf[0] = MPU6050_RA_ACCEL_XOUT_H;
@@ -105,6 +106,39 @@ void MPU6050_getMotion6(int16_t* ax,
     *gx = (((int16_t)rx_buf[8]) << 8) | rx_buf[9];
     *gy = (((int16_t)rx_buf[10]) << 8) | rx_buf[11];
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
+    if(use_calib == 1)
+    {
+    	*ax -= ax0;
+    	*ay -= ay0;
+		*az -= az0;
+		*gx -= gx0;
+		*gy -= gy0;
+		*gz -= gz0;
+
+    }
+
+}
+void MPU6050_calibration(){
+	int i =0;
+	uint16_t tmp[6];
+	for(i=0; i<1000; i++)
+	{
+		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
+		ax0 += tmp[0];
+		ay0 += tmp[1];
+		az0 += tmp[2];
+		gx0 += tmp[3];
+		gy0 += tmp[4];
+		gz0 += tmp[5];
+	}
+	ax0 /= 1000;
+	ay0 /= 1000;
+	az0 /= 1000;
+	gx0 /= 1000;
+	gy0 /= 1000;
+	gz0 /= 1000;
+	ax0 -= 16384;
+
 }
 
 void MPU6050_getMotion9(int16_t* ax,
@@ -136,3 +170,25 @@ void MPU6050_getMotion9(int16_t* ax,
 
     HMC_getData(mx, my, mz);
 }
+/** Get full-scale gyroscope range.
+ * The FS_SEL parameter allows setting the full-scale range of the gyro sensors,
+ * as described in the table below.
+ *
+ * <pre>
+ * 0 = +/- 250 degrees/sec
+ * 1 = +/- 500 degrees/sec
+ * 2 = +/- 1000 degrees/sec
+ * 3 = +/- 2000 degrees/sec
+ * </pre>
+ *
+
+ */
+
+/** Set full-scale gyroscope range.
+ * @param range New full-scale gyroscope range value
+ * @see getFullScaleRange()
+ * @see MPU6050_GYRO_FS_250
+ * @see MPU6050_RA_GYRO_CONFIG
+ * @see MPU6050_GCONFIG_FS_SEL_BIT
+ * @see MPU6050_GCONFIG_FS_SEL_LENGTH
+ */
