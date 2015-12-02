@@ -145,16 +145,29 @@ i2c_status_t i2c_readInt_from_reg(uint8_t serial_addr,
 }
 
 i2c_status_t i2c_write_read(uint8_t serial_addr,
-							uint8_t* tx_buffer,
-							uint8_t write_length,
-							uint8_t* rx_buffer,
-							uint8_t read_length,
-							uint8_t chanel)
+                            uint8_t* tx_buffer,
+                            uint8_t write_length,
+                            uint8_t* rx_buffer,
+                            uint8_t read_length,
+                            uint8_t chanel)
 {
-	i2c_status_t status;
-	status = i2c_writeBytes(serial_addr, tx_buffer, write_length, chanel);
-	if (I2C_SUCCESS == status) {
-		status = i2c_readBytes(serial_addr, rx_buffer, read_length, chanel);
-	}
-	return status;
+    i2c_status_t status;
+    status = i2c_writeBytes(serial_addr, tx_buffer, write_length, chanel);
+    if (I2C_SUCCESS == status) {
+        status = i2c_readBytes(serial_addr, rx_buffer, read_length, chanel);
+    }
+    return status;
+}
+
+/******************************************
+ * Service the I2C timeout functionality. *
+ ******************************************/
+void SysTick_Handler(void)
+{
+    I2C_system_tick(&g_core_i2c0, 10);
+}
+
+void FabricIrq0_IRQHandler(void)
+{
+    I2C_isr(&g_core_i2c0);
 }

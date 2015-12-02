@@ -2,10 +2,10 @@
 
 void delay
 (
-	uint32_t time,
-	uint32_t frequency
+    uint32_t time_us,
+    uint32_t frequency_mhz
 )
 {
-	int i = 0;
-	for (i = 0; i < frequency * time; i++);
+    int i = 0;
+    for (i = 0; i < frequency_mhz * time_us; i++);
 }

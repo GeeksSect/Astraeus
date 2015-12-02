@@ -20,8 +20,8 @@ extern "C" {
  */
 void delay
 (
-	uint32_t time,
-	uint32_t frequency
+	uint32_t time_us,
+	uint32_t frequency_mhz
 );
 
 #ifdef __cplusplus
