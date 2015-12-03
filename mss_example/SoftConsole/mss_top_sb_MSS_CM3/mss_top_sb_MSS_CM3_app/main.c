@@ -71,7 +71,7 @@ void setup()
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(2);
+	MPU6050_setDLPFMode(5);
 	MPU6050_setFullScaleGyroRange(1);
 
 	PWM_enable(&g_pwm, PWM_1);
@@ -270,7 +270,7 @@ int main(void)
 		
 
 //------------------ debug code
-
+/*
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
 		itoa((char *)&print_buf, 'd', get_I_p()*30);
@@ -294,7 +294,7 @@ int main(void)
 
 
 		//------------------ debug code end
-
+*/
 		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
 		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
 		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*20);

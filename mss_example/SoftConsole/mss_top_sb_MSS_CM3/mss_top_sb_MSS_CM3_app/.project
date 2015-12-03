@@ -3,11 +3,12 @@
 	<name>mss_top_sb_MSS_CM3_app</name>
 	<comment></comment>
 	<projects>
-        <project> mss_top_sb_MSS_CM3_hw_platform </project>
+		<project>mss_top_sb_MSS_CM3_hw_platform</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
 					<key>?name?</key>
