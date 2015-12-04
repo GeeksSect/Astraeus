@@ -115,4 +115,19 @@ i2c_status_t i2c_writeBit(uint8_t dev_addr,
         return status;
     }
     return status;
- }
+}
+i2c_status_t i2c_readBits(uint8_t dev_addr,
+                               uint8_t reg_addr,
+                               uint8_t bit_start,
+                               uint8_t length,
+                               uint8_t * data,
+                               uint8_t channel)
+{
+	i2c_status_t status;
+	uint8_t rx_buff = 0;
+	status = i2c_readBytes(dev_addr, &rx_buff, 1, channel);
+	data[0] = rx_buff >> bit_start & (0xff >> length);
+	return status;
+}
+
+

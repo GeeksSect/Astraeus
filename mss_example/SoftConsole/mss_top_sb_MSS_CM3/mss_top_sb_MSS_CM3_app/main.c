@@ -2,6 +2,7 @@
 #include "Modules/I2C/i2c.h"
 #include "Modules/MPU6050/mpu6050.h"
 #include "Modules/PID/PID.h"
+#include "Modules/HMC/hmc.h"
 #include "Modules/micros/micros.h"
 #include "Helpers/converter/converter.h"
 
@@ -125,185 +126,48 @@ int main(void)
 	int16_t ax = 0x0000;
 	int16_t ay = 0x0000;
 	int16_t az = 0x0000;
-	int16_t gx = 0x0000;
-	int16_t gy = 0x0000;
-	int16_t gz = 0x0000;
-	int16_t pow[4] = { 0,0,0,0 };
-	int16_t acell_pitch, acell_roll;
-	int16_t pitch, roll;
-	int16_t pitch0 = 0, roll0 = 0;
-	int16_t force = 0;
-	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
-
-	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
 	
 	
-	
-	
-	
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Press any key for calibration!\n\r");
-	press_any_key_to_continue();
-	MPU6050_calibration();
 
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate force!\n\r");
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey!\n\r");
 	press_any_key_to_continue();
 
 	init_timer();
-	uint64_t t_prev = micros();
-	uint32_t d_t;
 	uint8_t print_buf[12];
 
-	int i =0;
+	HMC_initialize();
+	uint32_t i =0;
+
+	int8_t rx_buf;
 
 	while (1 == 1)
 	{
-		rx_size = UART_get_rx(&g_uart, rx_buff, sizeof(rx_buff));
-				if (rx_size > 0)
-				{
-					switch (rx_buff[0])
-					{
-					case 'w':
-					{
-						force = force + 30;
-						break;
-					}
-					case 's':
-					{
-						force = force - 30;
-						break;
-					}
-					case 'q':
-					{
-						force = 0;
-						break;
-					}
-					default:
-					{
-						break;
-					}
-					}
-				}
-		/*
-		rx_size = UART_get_rx(&g_uart, rx_buff+pos, sizeof(rx_buff) - pos);
-		if (pos>8)
+		while(i!=1000000u)
 		{
-			if(rx_buff[1] == ':' && rx_buff[7] == 0x0d && rx_buff[8] == 0x0a)
-			{
-				pos=0;
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"Valid mess -");
-				UART_send(&g_uart, (const uint8_t *)rx_buff, 7);
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"- resived\n");
-				switch (rx_buff[0])
-				{
-				case 'F':
-				{
-					force = my_atoi(rx_buff+2, 5);
-					break;
-				}
-				case 'p':
-				{
-					set_P(my_atoi(rx_buff+2, 5));
-					break;
-				}
-				case 'i':
-				{
-					set_I(my_atoi(rx_buff+2, 5));
-					break;
-				}
-				case 'd':
-				{
-					set_D(my_atoi(rx_buff+2, 5));
-					break;
-				}
-				case 'P':
-				{
-					pitch0 = my_atoi(rx_buff+2, 5);
-					break;
-				}
-				case 'R':
-				{
-					roll = my_atoi(rx_buff+2, 5);
-					break;
-				}
-				default:
-				{
-					break;
-				}
-				}
-
-			}
-			else
-			{
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"Invalid mess -");
-				UART_send(&g_uart, (const uint8_t *)rx_buff, 9);
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"- resived\n");
-			}
-
-
-
-
-
+			i++;
 		}
-		*/
-		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
-		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
-		d_t = micros() - t_prev;
-		t_prev = micros();
-		if(d_t>10000)
-		{
-			d_t=5000;
-		}
-		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
-
-		//driving by joystic
-//		pitch += pitch0;
-//		roll += roll0;
-
-		my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
-		
-
-//------------------ debug code
-/*
+		HMC_getHeading(&ax, &ay, &az);
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_I_p()*30);
+		itoa((char *)&print_buf, 'd', get_I_p()*10);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_P_p()*30);
+		itoa((char *)&print_buf, 'd', get_P_p()*10);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_D_p()*30);
+		itoa((char *)&print_buf, 'd', get_D_p()*10);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-
-		//------------------ debug code end
-*/
-		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
-		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
-		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*20);
-		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*20);
-	
-
-
-
-
 
 
 
