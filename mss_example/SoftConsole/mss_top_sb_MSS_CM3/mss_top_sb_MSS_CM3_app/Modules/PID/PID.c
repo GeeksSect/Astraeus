@@ -5,6 +5,16 @@
  *      Author: vetal
  */
 #include "PID.h"
+
+inline void magnet_orient(int16_t * mx, int16_t * my, int16_t * mz, int16_t * magn_yaw)
+{
+	*magn_yaw = (int16_t)atan(*mx/(*my))*k*k1;
+	if(*mx<0)
+	{
+		*magn_yaw+=180*k;
+	}
+
+}
 inline void acell_angle(int16_t * ax, int16_t * ay, int16_t * az, int16_t * acell_pitch, int16_t * acell_roll)
 {
   if (*az > 1000) // if down is down
@@ -39,16 +49,20 @@ inline void acell_angle(int16_t * ax, int16_t * ay, int16_t * az, int16_t * acel
   }
 }
 
-void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_pitch, int16_t * acell_roll,
-		int16_t * _pitch_curr, int16_t * _roll_curr, uint32_t d_t)
+void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_pitch, int16_t * acell_roll, int16_t * magn_yaw,
+		int16_t * _pitch_curr, int16_t * _roll_curr, int16_t * _yaw_curr, uint32_t d_t)
 {
 
 	static int pitch_prev, pitch_curr;
 	static int roll_prev, roll_curr;
+	static int yaw_prev, yaw_curr;
 	pitch_prev = pitch_curr;
 	roll_prev = roll_curr;
+	yaw_prev = yaw_curr;
+
 	pitch_curr = ((49*(((int64_t)(*gy)*d_t/1000000)+ pitch_prev))+(*acell_pitch)) / 50;
 	roll_curr = ((49*(((int64_t)(*gx)*(-1)*d_t/1000000)+ roll_prev))+(*acell_roll)) / 50;
+	yaw_curr = ((49*(((int64_t)(*gz)*d_t/1000000)+ yaw_prev))+(*magn_yaw)) / 50;
 
 
 
@@ -56,9 +70,10 @@ void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_pitch, i
 
 	*_pitch_curr = pitch_curr;
 	*_roll_curr = roll_curr;
+	*_yaw_curr = yaw_curr;
 }
 
-inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * force, int16_t * gx, int16_t * gy, uint16_t d_t)
+inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow, int16_t * force, int16_t * gx, int16_t * gy, int16_t * gz, uint16_t d_t)
 {
 	if(*force < low_trottle)
 	{
@@ -73,18 +88,27 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * for
 			*force = high_trottle;
 
 
-//	if(*pitch<10*k && *pitch> -10*k && *roll<10*k && *roll>-10*k) // don't integrate if orientation is fatal
-//	{
+	// don't integrate if orientation is fatal
+	if(*pitch<15*k && *pitch> -15*k && *roll<15*k && *roll>-15*k && *yaw<15*k && *yaw>-15*k)
+	{
 		Integr_pitch = Integr_pitch+((int32_t)(*pitch * d_t) / 1000);
 		Integr_roll = Integr_roll+((int32_t)(*roll  * d_t) / 1000);
-//	}
+		Integr_yaw = Integr_yaw+((int32_t)(*yaw  * d_t) / 1000);
+	}
 	Itmp_p = (int16_t)(Ki_u*Integr_pitch/Ki_d);
 	Itmp_r = (int16_t)(Ki_u*Integr_roll/Ki_d);
+	Itmp_r = (int16_t)(Ki_u*Integr_yaw/Ki_d);
+
 	Dtmp_p = Kd_u * (*gy) / Kd_d;
 	Dtmp_r = Kd_u *(-1) * (*gx) / Kd_d;
+	Dtmp_r = Kd_u * (*gz) / Kd_d;
+
+
 	Ptmp_p = Kp_u * (*pitch) / Kp_d;
 	Ptmp_r = Kp_u * (*roll) / Kp_d;
-// integral limit
+	Ptmp_r = Kp_u * (*yaw) / Kp_d;
+
+	// integral limit
 	if(Itmp_p > I_lim)
 		Itmp_p = I_lim;
 	else
@@ -96,6 +120,13 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * for
 	else
 		if(Itmp_r< -I_lim)
 			Itmp_r = I_lim;
+
+	if(Itmp_y > I_lim)
+		Itmp_y = I_lim;
+	else
+		if(Itmp_y< -I_lim)
+			Itmp_y = I_lim;
+
 // proportional limit
 	if(Ptmp_p > P_lim)
 		Ptmp_p = P_lim;
@@ -108,6 +139,12 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * for
 	else
 		if(Ptmp_r< -P_lim)
 			Ptmp_r = P_lim;
+
+	if(Ptmp_y > P_lim)
+		Ptmp_y = P_lim;
+	else
+		if(Ptmp_y< -P_lim)
+			Ptmp_y = P_lim;
 
 // differential limit
 	if(Dtmp_p > D_lim)
@@ -122,10 +159,16 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * for
 		if(Dtmp_r< -D_lim)
 			Dtmp_r = D_lim;
 
-	pow[0] = *force + Dtmp_p + Dtmp_r + Ptmp_p + Ptmp_r + Itmp_p + Itmp_r;
-    pow[1] = *force - Dtmp_p + Dtmp_r - Ptmp_p + Ptmp_r - Itmp_p + Itmp_r;
-    pow[2] = *force - Dtmp_p - Dtmp_r - Ptmp_p - Ptmp_r - Itmp_p - Itmp_r;
-    pow[3] = *force + Dtmp_p - Dtmp_r + Ptmp_p - Ptmp_r + Itmp_p - Itmp_r;
+	if(Dtmp_y > D_lim)
+		Dtmp_y = D_lim;
+	else
+		if(Dtmp_y< -D_lim)
+			Dtmp_y = D_lim;
+
+	pow[0] = *force + Dtmp_p + Dtmp_r + Ptmp_p + Ptmp_r + Itmp_p + Itmp_r + (Dtmp_y + Ptmp_y + Itmp_y);//FL
+    pow[1] = *force - Dtmp_p + Dtmp_r - Ptmp_p + Ptmp_r - Itmp_p + Itmp_r - (Dtmp_y + Ptmp_y + Itmp_y);//BL
+    pow[2] = *force - Dtmp_p - Dtmp_r - Ptmp_p - Ptmp_r - Itmp_p - Itmp_r + (Dtmp_y + Ptmp_y + Itmp_y);//BR
+    pow[3] = *force + Dtmp_p - Dtmp_r + Ptmp_p - Ptmp_r + Itmp_p - Itmp_r - (Dtmp_y + Ptmp_y + Itmp_y);//FR
 
     if(pow[0]< low_trottle2)
      {
