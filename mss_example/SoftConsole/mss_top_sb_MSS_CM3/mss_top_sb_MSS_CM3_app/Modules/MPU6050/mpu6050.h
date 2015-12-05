@@ -366,37 +366,37 @@
 #define MPU6050_DMP_MEMORY_BANK_SIZE    256
 #define MPU6050_DMP_MEMORY_CHUNK_SIZE   16
 
-static uint8_t mpu6050_dev_addr;
+ #define CALIBR_ITER (1000)
 
-static int32_t ax0 =0 , ay0=0, az0=0, gx0=0, gy0=0, gz0=0;
+static int16_t  ax_0 = 0, 
+                ay_0 = 0, 
+                az_0 = 0, 
+                gx_0 = 0, 
+                gy_0 = 0, 
+                gz_0 = 0;
 
 void MPU6050_initialize();
 
 void MPU6050_setClockSource(uint8_t source);
-
 void MPU6050_setFullScaleGyroRange(uint8_t range);
-
 void MPU6050_setFullScaleAccelRange(uint8_t range);
-
 void MPU6050_setSleepEnabled(uint8_t enabled);
-
 void MPU6050_setBypassMode();
-
 void MPU6050_setDLPFMode(uint8_t mode);
+void MPU6050_calibration();
+void MPU6050_getRawMotion6(int16_t* ax,
+                           int16_t* ay,
+                           int16_t* az,
+                           int16_t* gx,
+                           int16_t* gy,
+                           int16_t* gz);
 
 void MPU6050_getMotion6(int16_t* ax,
                         int16_t* ay,
                         int16_t* az,
                         int16_t* gx,
                         int16_t* gy,
-                        int16_t* gz,
-                        int use_calib);
-
-// calibration is not tested!
-void MPU6050_calibration();
-
-
-
+                        int16_t* gz);
 
 void MPU6050_getMotion9(int16_t* ax,
                         int16_t* ay,

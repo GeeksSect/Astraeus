@@ -4,6 +4,7 @@
 #include "Modules/MPU6050/mpu6050.h"
 #include "Modules/PID/PID.h"
 #include "Modules/micros/micros.h"
+#include "Modules/HMC/hmc.h"
 #include "Helpers/converter/converter.h"
 
 #include "hal.h"
@@ -85,11 +86,16 @@ int main(void)
     int16_t gx = 0x0000;
     int16_t gy = 0x0000;
     int16_t gz = 0x0000;
+    int16_t mx = 0x0000;
+    int16_t my = 0x0000;
+    int16_t mz = 0x0000;
+
     int16_t pow[4] = { 0,0,0,0 };
     int16_t acell_pitch, acell_roll;
     int16_t pitch, roll;
     int16_t pitch0 = 0, roll0 = 0;
     int16_t force = 0;
+
     PWM_enable(&g_pwm, PWM_1);
     PWM_enable(&g_pwm, PWM_2);
     PWM_enable(&g_pwm, PWM_3);
@@ -117,10 +123,10 @@ int main(void)
     while (1 == 1)
     {
         rx_size = UART_get_rx(&g_uart, rx_buff, sizeof(rx_buff));
-                if (rx_size > 0)
+            if (rx_size > 0)
+            {
+                switch (rx_buff[0])
                 {
-                    switch (rx_buff[0])
-                    {
                     case 'w':
                     {
                         force = force + 30;
@@ -140,102 +146,59 @@ int main(void)
                     {
                         break;
                     }
-                    }
                 }
-        /*
-        rx_size = UART_get_rx(&g_uart, rx_buff+pos, sizeof(rx_buff) - pos);
-        if (pos>8)
-        {
-            if(rx_buff[1] == ':' && rx_buff[7] == 0x0d && rx_buff[8] == 0x0a)
-            {
-
-                pos=0;
-                UART_polled_tx_string(&g_uart, (const uint8_t *)"Valid mess -");
-                UART_send(&g_uart, (const uint8_t *)rx_buff, 7);
-                UART_polled_tx_string(&g_uart, (const uint8_t *)"- resived\n");
-                switch (rx_buff[0])
-                {
-                case 'F':
-                {
-                    force = my_atoi(rx_buff+2, 5);
-                    break;
-                }
-                case 'p':
-                {
-                    set_P(my_atoi(rx_buff+2, 5));
-                    break;
-                }
-                case 'i':
-                {
-                    set_I(my_atoi(rx_buff+2, 5));
-                    break;
-                }
-                case 'd':
-                {
-                    set_D(my_atoi(rx_buff+2, 5));
-                    break;
-                }
-                case 'P':
-                {
-                    pitch0 = my_atoi(rx_buff+2, 5);
-                    break;
-                }
-                case 'R':
-                {
-                    roll = my_atoi(rx_buff+2, 5);
-                    break;
-                }
-                default:
-                {
-                    break;
-                }
-                }
-
             }
-            else
-            {
-                UART_polled_tx_string(&g_uart, (const uint8_t *)"Invalid mess -");
-                UART_send(&g_uart, (const uint8_t *)rx_buff, 9);
-                UART_polled_tx_string(&g_uart, (const uint8_t *)"- resived\n");
-            }
-        }
-        */
-        MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
+        MPU6050_getMotion9(&az, &ay, &ax, &gz, &gy, &gx, &mz, &my, &mx);
         acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
         d_t = micros() - t_prev;
         t_prev = micros();
-        if(d_t>10000)
+        if (d_t > 10000)
         {
-            d_t=5000;
+            d_t = 5000;
         }
         my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
 
-        //driving by joystic
-//        pitch += pitch0;
-//        roll += roll0;
+        // driving by joystic
+        // pitch += pitch0;
+        // roll += roll0;
 
         my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
 
 
 //------------------ debug code
 
-        for(i=0; i<6; i++)
+        float declination_angle = 0.133; // Magnetic error from http://www.magnetic-declination.com/Belarus/Minsk/323684.html
+        float heading = atan2(my, mx);
+        heading += declination_angle;
+
+        // Correct for when signs are reversed.
+        if(heading < 0)
+           heading += 2 * M_PI;
+          
+        // Check for wrap due to addition of declination.
+        if(heading > 2 * M_PI)
+           heading -= 2 * M_PI;
+         
+        // Convert radians to degrees for readability.
+        float heading_degrees = heading * 180 / M_PI; 
+
+        for(i = 0; i < 12; i++)
             print_buf[i] = NULL;
-        itoa((char *)&print_buf, 'd', get_I_p()*30);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
+        itoa((char *)&print_buf, 'd', (int16_t)(heading * 1000));
+        UART_polled_tx_string(&g_uart, (const uint8_t *)"heading (RAD):");
         UART_send(&g_uart, (const uint8_t *)print_buf, 6);
         UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-        for(i=0; i<12; i++)
+        for(i = 0; i < 12; i++)
             print_buf[i] = NULL;
-        itoa((char *)&print_buf, 'd', get_P_p()*30);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
+        itoa((char *)&print_buf, 'd', (int16_t)heading_degrees);
+        UART_polled_tx_string(&g_uart, (const uint8_t *)"heading (DEG):");
         UART_send(&g_uart, (const uint8_t *)print_buf, 6);
         UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-        for(i=0; i<12; i++)
+        for(i = 0; i < 12; i++)
             print_buf[i] = NULL;
-        itoa((char *)&print_buf, 'd', get_D_p()*30);
+        itoa((char *)&print_buf, 'd', mz);
         UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
         UART_send(&g_uart, (const uint8_t *)print_buf, 6);
         UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
@@ -258,11 +221,7 @@ void press_any_key_to_continue(void)
 {
     size_t rx_size;
     uint8_t rx_char;
-//    uint8_t press_any_key_msg[] = "\n\rPress any key to continue.";
-
-//    UART_send(&g_uart, press_any_key_msg, sizeof(press_any_key_msg));
     do {
         rx_size = UART_get_rx(&g_uart, &rx_char, sizeof(rx_char));
     } while(rx_size == 0);
-
 }

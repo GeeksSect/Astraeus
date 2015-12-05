@@ -12,8 +12,7 @@
 #include "../I2C/i2c.h"
 #include "../../Helpers/sys_helper/sys_helper.h"
 
-#define HMC_WRITE_ADDR 0x3C
-#define HMC_READ_ADDR  0x3D
+#define HMC_SERIAL_ADDR 0x1E
 
 #define HMC_CFG_A_REG  0x00
 #define HMC_CFG_B_REG  0x01
@@ -29,8 +28,19 @@
 #define HMC_IDNT_B_REG 0x0B
 #define HMC_IDNT_C_REG 0x0C
 
+
+#define MEASURE_CONTIN 0x00
+#define MEASURE_SINGLE 0x01
+#define MEASURE_IDLE   0x03
+
+static float m_scale;
+
 void HMC_init();
 
-void HMC_getData(uint16_t* mx, uint16_t* my, uint16_t* mz);
+void HMC_getData(int16_t* mx, int16_t* my, int16_t* mz);
+void HMC_getScaledData(int16_t* mx, int16_t* my, int16_t* mz);
+
+int8_t HMC_setMode(uint8_t mode);
+int8_t HMC_setScale(float gauss);
 
 #endif /* HMC_H_ */
