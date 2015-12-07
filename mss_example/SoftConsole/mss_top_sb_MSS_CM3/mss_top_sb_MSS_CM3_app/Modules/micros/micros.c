@@ -21,6 +21,7 @@ void Timer1_IRQHandler()
 	t_h += 10;
 	MSS_TIM1_clear_irq();
 }
+
 int16_t my_atoi (uint8_t *buf, uint8_t l)
 {
 	int16_t tmp=0;

@@ -111,8 +111,11 @@ int8_t HMC_setScale(float gauss)
     else 
         error_code = -1;
     
-    // Setting is in the top 3 bits of the register.
-    reg_value = reg_value << 5;
-    i2c_writeBytes(HMC_CFG_B_REG, reg_value, 1, 0);
+    if (!error_code)
+    {
+        // Setting is in the top 3 bits of the register.
+        reg_value = reg_value << 5;
+        i2c_writeBytes(HMC_CFG_B_REG, reg_value, 1, 0);
+    }
     return error_code;
 }

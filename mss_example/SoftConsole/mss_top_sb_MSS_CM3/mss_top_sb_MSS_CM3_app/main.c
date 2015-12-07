@@ -5,7 +5,10 @@
 #include "Modules/PID/PID.h"
 #include "Modules/micros/micros.h"
 #include "Modules/HMC/hmc.h"
+#include "Modules/PWM/pwm.h"
+
 #include "Helpers/converter/converter.h"
+#include "Helpers/debug/logger.h"
 
 #include "hal.h"
 #include "mss_top_hw_platform.h"
@@ -15,7 +18,6 @@
 #include "drivers/corei2c/core_i2c.h"
 #include "drivers_config/sys_config/sys_config.h"
 #include "drivers/mss_timer/mss_timer.h"
-#include "drivers/CorePWM/core_pwm.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -23,20 +25,11 @@
 
 void press_any_key_to_continue(void);
 
-#define PWM_PRESCALE 1
-#define PWM_PERIOD 1000
-
 #define t0 25 //   threshold voltage TODO it's not real value. must be define by experiment
-
-// Core instances
-pwm_instance_t  g_pwm;
-
-void pwm_auto();
-// =========================== ACEL DEFINES
 
 void setup()
 {
-    PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
+    pwm_init();
     uart_init();
     i2c_init(1); // argument no matter
     BMP_calibrate();
@@ -45,24 +38,12 @@ void setup()
     MPU6050_setFullScaleGyroRange(1);
 
     MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
-
-    PWM_enable(&g_pwm, PWM_1);
-    PWM_enable(&g_pwm, PWM_2);
-    PWM_enable(&g_pwm, PWM_3);
-    PWM_enable(&g_pwm, PWM_4);
-
-    PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-    PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-    PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-    PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
-
-    MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
 }
 
 int main(void)
 {
     uint8_t rx_size = 0;
-    uint8_t rx_buff[9];
+    uint8_t rx_buff[8];
 
     setup();
 
@@ -74,11 +55,8 @@ int main(void)
     SysTick_Config(MSS_SYS_M3_CLK_FREQ / 100);
 
     press_any_key_to_continue();
-    UART_polled_tx_string(&g_uart, (const uint8_t *)"Hi, I am copter!\n\r");
+    uart_print((const uint8_t *)"Hi, I am copter!\n\r");
     press_any_key_to_continue();
-
-
-
 
     int16_t ax = 0x0000;
     int16_t ay = 0x0000;
@@ -96,33 +74,22 @@ int main(void)
     int16_t pitch0 = 0, roll0 = 0;
     int16_t force = 0;
 
-    PWM_enable(&g_pwm, PWM_1);
-    PWM_enable(&g_pwm, PWM_2);
-    PWM_enable(&g_pwm, PWM_3);
-    PWM_enable(&g_pwm, PWM_4);
-
-    PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-    PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-    PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-    PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
-
-    UART_polled_tx_string(&g_uart, (const uint8_t *)"Press any key for calibration!\n\r");
+    uart_print((const uint8_t *)"Press any key for calibration!\n\r");
     press_any_key_to_continue();
     MPU6050_calibration();
 
-    UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate force!\n\r");
+    uart_print((const uint8_t *)"Okey, now you can variate force!\n\r");
     press_any_key_to_continue();
 
     init_timer();
     uint64_t t_prev = micros();
     uint32_t d_t;
-    uint8_t print_buf[12];
 
     int i = 0;
 
     while (1 == 1)
     {
-        rx_size = UART_get_rx(&g_uart, rx_buff, sizeof(rx_buff));
+        rx_size = uart_get(rx_buff, sizeof(rx_buff));
             if (rx_size > 0)
             {
                 switch (rx_buff[0])
@@ -149,6 +116,8 @@ int main(void)
                 }
             }
         MPU6050_getMotion9(&az, &ay, &ax, &gz, &gy, &gx, &mz, &my, &mx);
+
+        // Calculate Pitch, Roll and Powers
         acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
         d_t = micros() - t_prev;
         t_prev = micros();
@@ -163,7 +132,6 @@ int main(void)
         // roll += roll0;
 
         my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
-
 
 //------------------ debug code
 
@@ -182,28 +150,9 @@ int main(void)
         // Convert radians to degrees for readability.
         float heading_degrees = heading * 180 / M_PI; 
 
-        for(i = 0; i < 12; i++)
-            print_buf[i] = NULL;
-        itoa((char *)&print_buf, 'd', (int16_t)(heading * 1000));
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"heading (RAD):");
-        UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-        for(i = 0; i < 12; i++)
-            print_buf[i] = NULL;
-        itoa((char *)&print_buf, 'd', (int16_t)heading_degrees);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"heading (DEG):");
-        UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-        for(i = 0; i < 12; i++)
-            print_buf[i] = NULL;
-        itoa((char *)&print_buf, 'd', mz);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
-        UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-        UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-
+        log_variable("mx", mx);
+        log_variable("my", my);
+        log_variable("mz", mz);
         //------------------ debug code end
 
         PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
@@ -222,6 +171,6 @@ void press_any_key_to_continue(void)
     size_t rx_size;
     uint8_t rx_char;
     do {
-        rx_size = UART_get_rx(&g_uart, &rx_char, sizeof(rx_char));
+        rx_size = uart_get(&rx_char, sizeof(rx_char));
     } while(rx_size == 0);
 }
