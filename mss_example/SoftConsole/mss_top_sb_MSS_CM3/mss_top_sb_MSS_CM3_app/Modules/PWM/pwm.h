@@ -11,4 +11,6 @@ pwm_instance_t  g_pwm;
 
 void pwm_init();
 
+void pwm_setDutyCycle(pwm_id_t pwm_id, uint32_t duty_cycle);
+
 #endif // PWM_H_

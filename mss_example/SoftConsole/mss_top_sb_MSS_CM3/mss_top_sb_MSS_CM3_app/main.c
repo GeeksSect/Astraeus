@@ -29,6 +29,7 @@ void press_any_key_to_continue(void);
 
 void setup()
 {
+    init_timer();
     pwm_init();
     uart_init();
     i2c_init(1); // argument no matter
@@ -81,7 +82,7 @@ int main(void)
     uart_print((const uint8_t *)"Okey, now you can variate force!\n\r");
     press_any_key_to_continue();
 
-    init_timer();
+    start_timer();
     uint64_t t_prev = micros();
     uint32_t d_t;
 
@@ -150,15 +151,15 @@ int main(void)
         // Convert radians to degrees for readability.
         float heading_degrees = heading * 180 / M_PI; 
 
-        log_variable("mx", mx);
-        log_variable("my", my);
-        log_variable("mz", mz);
+        log_variable((const uint8_t *)"mx", mx);
+        log_variable((const uint8_t *)"my", my);
+        log_variable((const uint8_t *)"mz", mz);
         //------------------ debug code end
 
-        PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
-        PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
-        PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*20);
-        PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*20);
+        pwm_setDutyCycle(PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
+        pwm_setDutyCycle(PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
+        pwm_setDutyCycle(PWM_4, (int16_t)t0 + sqrt(pow[2])*20);
+        pwm_setDutyCycle(PWM_3, (int16_t)t0 + sqrt(pow[3])*20);
     }
 
     return 0;

@@ -7,15 +7,15 @@ void uart_init()
 
 void uart_print(const uint8_t* message)
 {
-	UART_polled_tx_string(&g_uart, message);
+    UART_polled_tx_string(&g_uart, message);
 }
 
 void uart_send(const uint8_t* data, size_t size)
 {
-	UART_send(&g_uart, data, size);
+    UART_send(&g_uart, data, size);
 }
 
 size_t uart_get(uint8_t* buffer, size_t size)
 {
-	return UART_get_rx(&g_uart, buffer, size);
+    return UART_get_rx(&g_uart, buffer, size);
 }
