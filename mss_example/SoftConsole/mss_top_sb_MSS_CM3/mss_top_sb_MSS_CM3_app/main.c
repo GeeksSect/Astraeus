@@ -49,20 +49,13 @@ static uint8_t g_master_tx_buf[BUFFER_SIZE];
 #define PWM_PRESCALE 1
 #define PWM_PERIOD 1000
 
-
-
-
-#define t0 25 //   threshold voltage TODO it's not real value. must be define by experiment
+#define t0 25
 
 // Core instances
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
 
 
-
-
-void pwm_auto();
-// =========================== ACEL DEFINES
 
 void setup()
 {
@@ -92,11 +85,9 @@ void setup()
 
 int main(void)
 {
-    i2c_status_t status;
+
     uint8_t rx_size = 0;
     uint8_t rx_buff[9];
-
-    uint8_t pos=0;
     uint8_t loop_count;
 
     setup();
@@ -133,15 +124,7 @@ int main(void)
 	int16_t pitch, roll;
 	int16_t pitch0 = 0, roll0 = 0;
 	int16_t force = 0;
-	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
 
-	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
 	
 	
@@ -190,82 +173,19 @@ int main(void)
 					}
 					}
 				}
-		/*
-		rx_size = UART_get_rx(&g_uart, rx_buff+pos, sizeof(rx_buff) - pos);
-		if (pos>8)
-		{
-			if(rx_buff[1] == ':' && rx_buff[7] == 0x0d && rx_buff[8] == 0x0a)
-			{
-				pos=0;
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"Valid mess -");
-				UART_send(&g_uart, (const uint8_t *)rx_buff, 7);
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"- resived\n");
-				switch (rx_buff[0])
-				{
-				case 'F':
-				{
-					force = my_atoi(rx_buff+2, 5);
-					break;
-				}
-				case 'p':
-				{
-					set_P(my_atoi(rx_buff+2, 5));
-					break;
-				}
-				case 'i':
-				{
-					set_I(my_atoi(rx_buff+2, 5));
-					break;
-				}
-				case 'd':
-				{
-					set_D(my_atoi(rx_buff+2, 5));
-					break;
-				}
-				case 'P':
-				{
-					pitch0 = my_atoi(rx_buff+2, 5);
-					break;
-				}
-				case 'R':
-				{
-					roll = my_atoi(rx_buff+2, 5);
-					break;
-				}
-				default:
-				{
-					break;
-				}
-				}
 
-			}
-			else
-			{
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"Invalid mess -");
-				UART_send(&g_uart, (const uint8_t *)rx_buff, 9);
-				UART_polled_tx_string(&g_uart, (const uint8_t *)"- resived\n");
-			}
-
-
-
-
-
-		}
-		*/
 		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
+
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
+
 		d_t = micros() - t_prev;
 		t_prev = micros();
+
 		if(d_t>10000)
 		{
 			d_t=5000;
 		}
 		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
-
-		//driving by joystic
-//		pitch += pitch0;
-//		roll += roll0;
-
 		my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
 		
 
@@ -320,9 +240,6 @@ void press_any_key_to_continue(void)
 {
     size_t rx_size;
     uint8_t rx_char;
-//    uint8_t press_any_key_msg[] = "\n\rPress any key to continue.";
-
-//    UART_send(&g_uart, press_any_key_msg, sizeof(press_any_key_msg));
     do {
         rx_size = UART_get_rx(&g_uart, &rx_char, sizeof(rx_char));
     } while(rx_size == 0);

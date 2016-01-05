@@ -73,11 +73,11 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * pow, int16_t * for
 			*force = high_trottle;
 
 
-//	if(*pitch<10*k && *pitch> -10*k && *roll<10*k && *roll>-10*k) // don't integrate if orientation is fatal
-//	{
+	if(*pitch<20*k && *pitch> -20*k && *roll<20*k && *roll>-20*k) // don't integrate if orientation is fatal
+	{
 		Integr_pitch = Integr_pitch+((int32_t)(*pitch * d_t) / 1000);
 		Integr_roll = Integr_roll+((int32_t)(*roll  * d_t) / 1000);
-//	}
+	}
 	Itmp_p = (int16_t)(Ki_u*Integr_pitch/Ki_d);
 	Itmp_r = (int16_t)(Ki_u*Integr_roll/Ki_d);
 	Dtmp_p = Kd_u * (*gy) / Kd_d;
