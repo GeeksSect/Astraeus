@@ -188,13 +188,13 @@ int main(void)
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
 		d_t = micros() - t_prev;
 		t_prev = micros();
+		if(d_t>40000)
+		{
+			d_t = 40000;
+		}
 		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
 		my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
-
-
-
-		mx = mx0 + 5130 * tan(my_degree_to_float(pitch));
-		my = my0 + 5130 * tan(my_degree_to_float(roll));
+		my_yaw(&mx0, &my0, &yaw, &pitch, &roll);
 
 
 //------------------ debug code
@@ -214,7 +214,7 @@ int main(void)
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', 0);
+		itoa((char *)&print_buf, 'd', yaw);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
