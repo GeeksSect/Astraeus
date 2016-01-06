@@ -26,10 +26,11 @@ void itoa
 			int remainder = ud % divisor;
 
 			*p++ = (remainder < 10) ? remainder + '0' : remainder + 'a' - 10;
-	} while (ud /= divisor);
+			ud /= divisor;
+	} while (ud);
 
-	/* Terminate BUF.  */
-	*p = 0;
+
+
 
 	/* Reverse BUF.  */
 	p1 = buf;

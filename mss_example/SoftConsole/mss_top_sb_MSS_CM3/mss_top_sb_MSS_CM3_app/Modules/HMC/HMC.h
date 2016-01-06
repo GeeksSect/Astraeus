@@ -28,11 +28,48 @@
 #define MEASURE_SINGLE 0x01
 #define MEASURE_IDLE   0x03
 
+//calibrion defines
+
+/*
+	bias = {-108.979064 ; 27.997480 ; 43.288363}
+
+	A = {{  31.575157 ; -0.069780 ; 0.171385};
+	{ -0.069780 ; 30.976586; -0.014672};
+	{ 0.171385; -0.014672; 32.284786}}
+ */
+
+#define bias_x -109
+#define bias_y 28
+#define bias_z 43
+
+#define a11_u 505
+#define a12_u -9
+#define a13_u 11
+#define a21_u -9
+#define a22_u 1332
+#define a23_u -15
+#define a31_u 11
+#define a32_u -15
+#define a33_u 226
+
+#define a11_d 16
+#define a12_d 128
+#define a13_d 64
+#define a21_d 128
+#define a22_d 43
+#define a23_d 1024
+#define a31_d 64
+#define a32_d 1024
+#define a33_d 7
+
+
+
 static float m_scale;
 
 void HMC_init();
 
-void HMC_getData(int16_t* mx, int16_t* my, int16_t* mz);
+void HMC_get_raw_Data(int16_t* mx, int16_t* my, int16_t* mz);
+void HMC_get_true_Data(int16_t* mx, int16_t* my, int16_t* mz);
 void HMC_getScaledData(int16_t* mx, int16_t* my, int16_t* mz);
 
 int8_t HMC_setMode(uint8_t mode);
