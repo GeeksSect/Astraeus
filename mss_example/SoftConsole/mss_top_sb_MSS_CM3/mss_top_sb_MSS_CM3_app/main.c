@@ -114,9 +114,24 @@ int main(void)
 	
 	
 	
+	int16_t mx0 = 0x0000;
+	int16_t my0 = 0x0000;
+	int16_t mz0 = 0x0000;
 	int16_t mx = 0x0000;
 	int16_t my = 0x0000;
 	int16_t mz = 0x0000;
+
+	int16_t ax = 0x0000;
+	int16_t ay = 0x0000;
+	int16_t az = 0x0000;
+	int16_t gx = 0x0000;
+	int16_t gy = 0x0000;
+	int16_t gz = 0x0000;
+	int16_t pow[4] = { 0,0,0,0 };
+	int16_t acell_pitch, acell_roll;
+	int16_t pitch, roll, yaw;
+	int16_t pitch0 = 0, roll0 = 0;
+	int16_t force = 0;
 
 
 	
@@ -164,15 +179,23 @@ int main(void)
 					}
 				}
 		 */
-		HMC_get_true_Data(&mx, &my, &mz);
+		HMC_get_true_Data(&mz0, &my0, &mx0);
 		d_t = micros() - t_prev;
 		t_prev = micros();
 
-		if(d_t>10000)
-		{
-			d_t=5000;
-		}
-		
+		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
+
+		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
+		d_t = micros() - t_prev;
+		t_prev = micros();
+		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &pitch, &roll, d_t);
+		my_PID(&pitch, &roll, &pow, &force, &gx, &gy, d_t);
+
+
+
+		mx = mx0 + 5130 * tan(my_degree_to_float(pitch));
+		my = my0 + 5130 * tan(my_degree_to_float(roll));
+
 
 //------------------ debug code
 		for(i=0; i<6; i++)
@@ -191,7 +214,7 @@ int main(void)
 
 		for(i=0; i<12; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', mz);
+		itoa((char *)&print_buf, 'd', 0);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");

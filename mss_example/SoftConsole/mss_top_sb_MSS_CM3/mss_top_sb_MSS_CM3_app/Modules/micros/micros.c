@@ -41,3 +41,4 @@ int16_t my_atoi (uint8_t *buf, uint8_t l)
 	return tmp;
 
 }
+

@@ -77,5 +77,6 @@ int16_t get_P_p(void);
 int16_t get_P_r(void);
 int16_t get_D_p(void);
 int16_t get_D_r(void);
-
+double my_degree_to_float (int16_t val);
+void my_yaw(int16_t * mx, int16_t * my, int16_t *yaw, int16_t * pitch, int16_t *roll);
 #endif /* PID_H_ */

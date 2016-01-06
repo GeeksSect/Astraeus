@@ -239,3 +239,14 @@ int16_t get_D_r(void)
 {
 	return Dtmp_r;
 }
+double my_degree_to_float (int16_t val)
+{
+	return (double)val/k1/k;
+
+}
+
+void my_yaw(int16_t * mx, int16_t * my, int16_t *yaw, int16_t * pitch, int16_t *roll)
+{
+	*yaw = atan2 (*mx + 5130 * tan(my_degree_to_float(pitch)), *my + 5130 * tan(my_degree_to_float(roll))) * k * k1;
+
+}

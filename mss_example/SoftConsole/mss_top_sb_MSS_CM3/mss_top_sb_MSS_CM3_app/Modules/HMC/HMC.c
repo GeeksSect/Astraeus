@@ -41,7 +41,7 @@ void HMC_get_raw_Data(int16_t* mx, int16_t* my, int16_t* mz)
     *mz = (rx_buf[2] << 8) | rx_buf[3];
 
     // for next measurement
-//    delay(70, 50); // delay for 70 ms on 50 MHz freq
+//    delay(500, 50); // delay for 70 ms on 50 MHz freq
 }
 
 void HMC_get_true_Data(int16_t* mx, int16_t* my, int16_t* mz)
