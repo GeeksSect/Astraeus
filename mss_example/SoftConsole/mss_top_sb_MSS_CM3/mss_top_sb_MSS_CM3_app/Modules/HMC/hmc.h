@@ -76,38 +76,38 @@
 #define HMC5883L_STATUS_LOCK_BIT    1
 #define HMC5883L_STATUS_READY_BIT   0
 
+    void HMC_init();
+
+    uint8_t HMC_getSampleAveraging();
+    void HMC_setSampleAveraging(uint8_t averaging);
+    uint8_t HMC_getDataRate();
+    void HMC_setDataRate(uint8_t rate);
+    uint8_t HMC_getMeasurementBias();
+    void HMC_setMeasurementBias(uint8_t bias);
+
+    // CONFIG_B register
+    uint8_t HMC_getGain();
+    void HMC_setGain(uint8_t gain);
+
+    // MODE register
+    uint8_t HMC_getMode();
+    void HMC_setMode(uint8_t mode);
+
+    // DATA* registers
+    void HMC_getHeading(int16_t *x, int16_t *y, int16_t *z);
 
 
-		uint8_t HMC_getSampleAveraging();
-		void HMC_setSampleAveraging(uint8_t averaging);
-		uint8_t HMC_getDataRate();
-		void HMC_setDataRate(uint8_t rate);
-		uint8_t HMC_getMeasurementBias();
-		void HMC_setMeasurementBias(uint8_t bias);
+    // STATUS register
+    uint8_t HMC_getLockStatus();
+    uint8_t HMC_getReadyStatus();
 
-		// CONFIG_B register
-		uint8_t HMC_getGain();
-		void HMC_setGain(uint8_t gain);
+    // ID_* registers
+    uint8_t HMC_getIDA();
+    uint8_t HMC_getIDB();
+    uint8_t HMC_getIDC();
 
-		// MODE register
-		uint8_t HMC_getMode();
-		void HMC_setMode(uint8_t mode);
-
-		// DATA* registers
-		void HMC_getHeading(int16_t *x, int16_t *y, int16_t *z);
-
-
-		// STATUS register
-		uint8_t getLockStatus();
-		uint8_t getReadyStatus();
-
-		// ID_* registers
-		uint8_t getIDA();
-		uint8_t getIDB();
-		uint8_t getIDC();
-
-	static uint8_t devAddr = HMC5883L_ADDRESS;
-	static uint8_t buffer[6];
-	static uint8_t mode;
+    static uint8_t devAddr = HMC5883L_ADDRESS;
+    static uint8_t buffer[6];
+    static uint8_t mode;
 
 #endif /* HMC_H_ */

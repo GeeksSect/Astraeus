@@ -74,7 +74,7 @@ void MPU6050_setBypassMode()
     tx_buf[0] = 0x6B; // register address
     tx_buf[1] = 0x00; // needed value
 
-    i2c_writeBytes(mpu6050_dev_addr, tx_buf, tx_len, 0);
+    i2c_writeBytes(MPU6050_DEFAULT_ADDRESS, tx_buf, tx_len, 0);
 
 
 }

@@ -115,18 +115,20 @@ i2c_status_t i2c_writeBit(uint8_t dev_addr,
         return status;
     }
     return status;
- i2c_status_t i2c_readBits(uint8_t dev_addr,
-                               uint8_t reg_addr,
-                               uint8_t bit_start,
-                               uint8_t length,
-                               uint8_t * data,
-                               uint8_t channel)
+}
+
+i2c_status_t i2c_readBits(uint8_t dev_addr,
+                          uint8_t reg_addr,
+                          uint8_t bit_start,
+                          uint8_t length,
+                          uint8_t * data,
+                          uint8_t channel)
 {
-	i2c_status_t status;
-	uint8_t rx_buff = 0;
-	status = i2c_readBytes(dev_addr, &rx_buff, 1, channel);
-	data[0] = rx_buff >> bit_start & (0xff >> length);
-	return status;
+    i2c_status_t status;
+    uint8_t rx_buff = 0;
+    status = i2c_readBytes(dev_addr, &rx_buff, 1, channel);
+    data[0] = rx_buff >> bit_start & (0xff >> length);
+    return status;
 }
 
 i2c_status_t i2c_read_from_reg(uint8_t serial_addr,
@@ -135,9 +137,9 @@ i2c_status_t i2c_read_from_reg(uint8_t serial_addr,
                                uint8_t read_length,
                                uint8_t chanel)
 {
-	uint8_t tx_buf[1];
-	tx_buf[0] = reg;
-	return i2c_write_read(serial_addr, tx_buf, sizeof(tx_buf), rx_buffer, read_length, chanel);
+    uint8_t tx_buf[1];
+    tx_buf[0] = reg;
+    return i2c_write_read(serial_addr, tx_buf, sizeof(tx_buf), rx_buffer, read_length, chanel);
 }
 
 i2c_status_t i2c_readInt_from_reg(uint8_t serial_addr,
@@ -145,15 +147,15 @@ i2c_status_t i2c_readInt_from_reg(uint8_t serial_addr,
                                   uint16_t* out_int,
                                   uint8_t chanel)
 {
-	uint8_t tx_buf[1];
-	tx_buf[0] = reg;
+    uint8_t tx_buf[1];
+    tx_buf[0] = reg;
 
-	i2c_status_t status;
-	status = i2c_writeBytes(serial_addr, tx_buf, sizeof(tx_buf), chanel);
-	if (I2C_SUCCESS == status) {
-		status = i2c_readInt(serial_addr, out_int, chanel);
-	}
-	return status;
+    i2c_status_t status;
+    status = i2c_writeBytes(serial_addr, tx_buf, sizeof(tx_buf), chanel);
+    if (I2C_SUCCESS == status) {
+        status = i2c_readInt(serial_addr, out_int, chanel);
+    }
+    return status;
 }
 
 i2c_status_t i2c_write_read(uint8_t serial_addr,

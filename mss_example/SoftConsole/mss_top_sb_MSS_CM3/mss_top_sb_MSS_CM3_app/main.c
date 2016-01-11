@@ -85,37 +85,16 @@ int main(void)
     uint64_t t_prev = micros();
     uint32_t d_t;
 
-	HMC_initialize();
-
 	int8_t rx_buf;
 
 	while (1 == 1)
 	{
-		while(i!=1000000u)
-		{
-			i++;
-		}
+		delay(20000, 50);
 		HMC_getHeading(&ax, &ay, &az);
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_I_p()*10);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-		for(i=0; i<12; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_P_p()*10);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<12; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_D_p()*10);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+        log_variable("I_p x10", get_I_p() * 10);
+        log_variable("P_p x10", get_P_p() * 10);
+        log_variable("D_p x10", get_I_p() * 10);
     }
     
 
