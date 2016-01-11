@@ -1,0 +1,10 @@
+KEY IDE_DES_TOOL "Ide"
+KEY IDE_DES_ADB_PATH "C:\Users\kruci_000\Desktop\SoC\git\Wall-e\Wall-e\designer\impl1\MSS_top.adb"
+LIST SOURCE_FILES
+VALUE "C:\Users\kruci_000\Desktop\SoC\git\Wall-e\Wall-e\constraint\io\MSS_top.io.pdc;pdc"
+ENDLIST
+LIST OPTIONAL_FILES
+VALUE "C:\Users\kruci_000\Desktop\SoC\git\Wall-e\Wall-e\synthesis\MSS_top_sdc.sdc;Skipped"
+ENDLIST
+LIST VCD_FILES
+ENDLIST

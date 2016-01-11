@@ -1,6 +1,0 @@
-#1000 define_clock {n:FCCC_0.GL0_net} -name {top_FCCC_0_FCCC|GL0_net_inferred_clock} -ref_rise {0.000000} -ref_fall {5.000000} -uncertainty {0.000000} -period {10.000000} -clockgroup {Inferred_clkgroup_0} -rise {0.000000} -fall {5.000000}
-define_attribute {i:COREABC_0.URAM.UR.UG4.UR8.ram_r1c0}  {syn_noprune} 1
-define_attribute {i:COREABC_0.URAM.UR}  {syn_noprune} 1
-define_attribute {i:OSC_0}  {syn_noprune} 1
-define_attribute {i:FCCC_0}  {syn_noprune} 1
-define_attribute {i:COREABC_0}  {syn_noprune} 1

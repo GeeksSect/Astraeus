@@ -24,11 +24,10 @@ static uint32_t t_h = 0;
 uint64_t micros();
 
 void init_timer();
+void start_timer();
 void stop_timer();
-//overflow
+
 void Timer1_IRQHandler();
-int16_t my_atoi(uint8_t *buf,
-			uint8_t l);
 
 #endif /* MICROS_H_ */
 
