@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include "../I2C/i2c.h"
+#include "../micros/micros.h"
 #include "../../Helpers/sys_helper/sys_helper.h"
 
 #define HMC_SERIAL_ADDR 0x1E
@@ -28,14 +29,32 @@
 #define HMC_IDNT_B_REG 0x0B
 #define HMC_IDNT_C_REG 0x0C
 
-
 #define MEASURE_CONTIN 0x00
 #define MEASURE_SINGLE 0x01
 #define MEASURE_IDLE   0x03
 
-static float m_scale;
+#define HMC_XY_excitation 1160 // The magnetic field excitation in X and Y direction during Self Test (Calibration)
+#define HMC_Z_excitation 1080  // The magnetic field excitation in Z direction during Self Test (Calibration)
+#define HMC_rad2degree 57.3
+
+extern float m_scale;
+
+extern float bearing;
+
+extern float hmc_x_scalled,
+             hmc_y_scalled,
+             hmc_z_scalled;
+
+extern float hmc_x_offset,
+             hmc_y_offset,
+             hmc_z_offset;
+
+extern float hmc_x_gainError,
+             hmc_y_gainError,
+             hmc_z_gainError;
 
 void HMC_init();
+void HMC_offset_calibration();
 
 void HMC_getData(int16_t* mx, int16_t* my, int16_t* mz);
 void HMC_getScaledData(int16_t* mx, int16_t* my, int16_t* mz);

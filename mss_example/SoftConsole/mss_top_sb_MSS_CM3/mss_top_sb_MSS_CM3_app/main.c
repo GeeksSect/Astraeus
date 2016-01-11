@@ -151,31 +151,11 @@ int main(void)
         // Convert radians to degrees for readability.
         float heading_degrees = heading * 180 / M_PI; 
 
-        size_t i;
-        for(i = 0; i < LOGGER_BUFFER_SIZE; i++)
-            log_buf[i] = 0;
-        itoa((char *)&log_buf, 'd', mx);
-        uart_send(log_buf, 12);
-        uart_print((const uint8_t *)"-");
-
-        for(i = 0; i < LOGGER_BUFFER_SIZE; i++)
-            log_buf[i] = 0;
-        itoa((char *)&log_buf, 'd', my);
-        uart_send(log_buf, 12);
-        uart_print((const uint8_t *)"-");
-
-        for(i = 0; i < LOGGER_BUFFER_SIZE; i++)
-            log_buf[i] = 0;
-        itoa((char *)&log_buf, 'd', mz);
-        uart_send(log_buf, 12);
-        uart_print((const uint8_t *)"\n");
-
-/*
         log_variable((const uint8_t *)"mx", mx);
         log_variable((const uint8_t *)"my", my);
         log_variable((const uint8_t *)"mz", mz);
-*/
-        //------------------ debug code end
+        log_variable((const uint8_t *)"heading (DEG)", heading_degrees);
+//------------------ debug code end
 
         pwm_setDutyCycle(PWM_1, (int16_t)t0 + sqrt(pow[0])*20);
         pwm_setDutyCycle(PWM_2, (int16_t)t0 + sqrt(pow[1])*20);
