@@ -136,8 +136,9 @@ int main(void)
 	
 	
 	
-	
-
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Are you ready for calibration?\n\r");
+	press_any_key_to_continue();
+	MPU6050_calibration();
 	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate force!\n\r");
 	press_any_key_to_continue();
 
@@ -156,19 +157,75 @@ int main(void)
 				{
 					switch (rx_buff[0])
 					{
-					case 'w':
+					case 'U':
 					{
 						force = force + 30;
 						break;
 					}
-					case 's':
+					case 'D':
 					{
 						force = force - 30;
 						break;
 					}
-					case 'q':
+					case 'w':
+					{
+						pitch0 += 10;
+						break;
+					}
+					case 's':
+					{
+						pitch0 -= 10;
+						break;
+					}
+					case 'a':
+					{
+						roll0 += 10;
+						break;
+					}
+					case 'd':
+					{
+						roll0 -= 10;
+						break;
+					}
+					case 'Q':
 					{
 						force = 0;
+						break;
+					}
+					case 'q':
+					{
+						roll0 = 0;
+						pitch0 =0;
+						break;
+					}
+					case 'B':
+					{
+						inc_P();
+						break;
+					}
+					case 'N':
+					{
+						inc_I();
+						break;
+					}
+					case 'M':
+					{
+						inc_D();
+						break;
+					}
+					case 'b':
+					{
+						dec_P();
+						break;
+					}
+					case 'n':
+					{
+						dec_I();
+						break;
+					}
+					case 'm':
+					{
+						dec_D();
 						break;
 					}
 					default:
@@ -189,62 +246,105 @@ int main(void)
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
 		d_t = micros() - t_prev;
 		t_prev = micros();
-		if(d_t>20000)
+		if(d_t>15000)
 		{
-			d_t = 20000;
+			d_t = 15000;
 		}
 		my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
 		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &magn_yaw, &pitch, &roll, &yaw, d_t);
+		pitch+=pitch0;
+		roll+=roll0;
 		my_PID(&pitch, &roll, &yaw, &pow, &force, &gx, &gy, &gz, d_t);
 
 
 
-//------------------ debug code
+//------------------ send telemetry
 
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pitch*5);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"ax:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<12; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', roll*(-5));
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"ay:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<12; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', yaw*5);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"az:");
+		itoa((char *)&print_buf, 'd', pitch*3);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"A:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', gy);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"gx:");
+		itoa((char *)&print_buf, 'd', roll*3);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"B:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-		for(i=0; i<12; i++)
+		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', gx);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"gy:");
+		itoa((char *)&print_buf, 'd', yaw*3);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"C:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-		for(i=0; i<12; i++)
+
+		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', gz);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"gz:");
+		itoa((char *)&print_buf, 'd', get_P_p()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"D:");
 		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_I_p()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"E:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
 
-		//------------------ debug code end
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_D_p()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"F:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_P_r()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"G:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_I_r()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"H:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_D_r()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"I:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_P_y()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"J:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_I_y()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"K:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', get_D_y()*15);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"L:");
+		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(&g_uart, (const uint8_t *)"\nW:\n");
+		//------------------ send telemetry finished
 
 
 		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*30);

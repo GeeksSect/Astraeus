@@ -12,9 +12,13 @@
 #define k 65.53  // 2 bytes is range [-500;500] degrees
 #define k1 57.29 // radians to degrees
 
-#define D_lim 250 //TODO calib
-#define I_lim 100 //TODO calib
-#define P_lim 250 //TODO calib
+#define D_lim 400 //TODO calib
+#define P_lim 400 //TODO calib
+
+//P.S. this limit is not a power limit! It's how much integral can accumulate.
+#define I_lim 500000 //TODO calib
+
+
 
 
 // power range is 0 to 1000
@@ -35,8 +39,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-static int16_t Kp_u = 12, Kd_u= 4;
-static int32_t Ki_u= 4;//TODO calib
+static int16_t Kp_u = 8, Kd_u= 6;
+static int32_t Ki_u= 12;//TODO calib
 
 static int32_t Integr_pitch=0, Integr_roll=0, Integr_yaw=0;
 static int16_t Itmp_p, Itmp_r, Itmp_y;
@@ -72,16 +76,27 @@ void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw,
 int8_t change_coef(int8_t _type);
 
 
-void set_I(uint8_t val);
-void set_P(uint8_t val);
-void set_D(uint8_t val);
+void inc_I();
+void inc_P();
+void inc_D();
+void dec_I();
+void dec_P();
+void dec_D();
 
 int16_t get_I_p(void);
 int16_t get_I_r(void);
+int16_t get_I_y(void);
 int16_t get_P_p(void);
 int16_t get_P_r(void);
+int16_t get_P_y(void);
 int16_t get_D_p(void);
 int16_t get_D_r(void);
+int16_t get_D_y(void);
+
+int16_t get_Int_p(void);
+int16_t get_Int_r(void);
+int16_t get_Int_y(void);
+
 double my_degree_to_float (int16_t val);
 void my_yaw(int16_t * mx, int16_t * my, int16_t * mz, int16_t *yaw, int16_t * pitch, int16_t *roll);
 #endif /* PID_H_ */
