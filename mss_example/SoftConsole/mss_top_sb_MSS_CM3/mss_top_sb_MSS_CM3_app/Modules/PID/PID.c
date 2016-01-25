@@ -49,8 +49,19 @@ inline void acell_angle(int16_t * ax, int16_t * ay, int16_t * az, int16_t * acel
   }
 }
 
-void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_pitch, int16_t * acell_roll, int16_t * magn_yaw,
-		int16_t * _pitch_curr, int16_t * _roll_curr, int16_t * _yaw_curr, uint32_t d_t)
+void my_angle(int16_t * gx,
+		int16_t * gy,
+		int16_t * gz,
+
+		int16_t * acell_pitch,
+		int16_t * acell_roll,
+		int16_t * magn_yaw,
+
+		int16_t * _pitch_curr,
+		int16_t * _roll_curr,
+		int16_t * _yaw_curr,
+
+		uint32_t d_t)
 {
 
 	static int pitch_prev, pitch_curr;
@@ -60,14 +71,21 @@ void my_angle(int16_t * gx, int16_t * gy, int16_t * gz, int16_t * acell_pitch, i
 	roll_prev = roll_curr;
 	yaw_prev = yaw_curr;
 
-	pitch_curr = ((49*(((int64_t)(*gy)*d_t/1000000)+ pitch_prev))+(*acell_pitch)) / 50;
-	roll_curr = ((49*(((int64_t)(*gx)*(-1)*d_t/1000000)+ roll_prev))+(*acell_roll)) / 50;
-	yaw_curr = ((49*(((int64_t)(*gz)*d_t/1000000)+ yaw_prev))+(*magn_yaw)) / 50;
+	int16_t intgr_p, intgr_r, intgr_y;
+
+	intgr_p = (int16_t)((int64_t)(*gy)*(int64_t)d_t/1000000);
+	intgr_r = (int16_t)((int64_t)(*gx)*(-1)*(int64_t)d_t/1000000);
+	intgr_y = (int16_t)((int64_t)(*gz)*(int64_t)d_t/1000000);
+
+
+	pitch_curr = ((49*(intgr_p + pitch_prev))+(*acell_pitch)) / 50;
+	roll_curr = ((49*(intgr_r + roll_prev))+(*acell_roll)) / 50;
+	yaw_curr = ((49*(intgr_y + yaw_prev))+(*magn_yaw)) / 50;
 
 
 
 
-
+	*_yaw_curr = yaw_curr;
 	*_pitch_curr = pitch_curr;
 	*_roll_curr = roll_curr;
 	*_yaw_curr = yaw_curr;
@@ -87,45 +105,44 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 		if(*force > high_trottle)
 			*force = high_trottle;
 
-
-	// don't integrate if orientation is fatal
-	if(*pitch<15*k && *pitch> -15*k && *roll<15*k && *roll>-15*k && *yaw<15*k && *yaw>-15*k)
+	if(*pitch<20*k && *pitch> -20*k && *roll<20*k && *roll>-20*k && *yaw<20*k && *yaw>-20*k) // don't integrate if orientation is fatal
 	{
-		Integr_pitch = Integr_pitch+((int32_t)(*pitch * d_t) / 1000);
-		Integr_roll = Integr_roll+((int32_t)(*roll  * d_t) / 1000);
-		Integr_yaw = Integr_yaw+((int32_t)(*yaw  * d_t) / 1000);
+			Integr_pitch = Integr_pitch+((int32_t)(*pitch * d_t) / 1000);
+			Integr_roll = Integr_roll+((int32_t)(*roll  * d_t) / 1000);
+			Integr_yaw = Integr_yaw+((int32_t)(*yaw  * d_t) / 1000);
 	}
 	Itmp_p = (int16_t)(Ki_u*Integr_pitch/Ki_d);
 	Itmp_r = (int16_t)(Ki_u*Integr_roll/Ki_d);
-	Itmp_r = (int16_t)(Ki_u*Integr_yaw/Ki_d);
+	Itmp_y = (int16_t)(Ki_u*Integr_yaw/Ki_d);
 
-	Dtmp_p = Kd_u * (*gy) / Kd_d;
-	Dtmp_r = Kd_u *(-1) * (*gx) / Kd_d;
-	Dtmp_r = Kd_u * (*gz) / Kd_d;
+	Dtmp_p = (int16_t) Kd_u * (int32_t)(*gy) / Kd_d;
+	Dtmp_r = (int16_t) (-1) * Kd_u * (int32_t)(*gx) / Kd_d;
+	Dtmp_y = (int16_t) Kd_u * (int32_t)(*gz) / Kd_d;
+
+	Ptmp_p = (int16_t) Kp_u * (int32_t)(*pitch) / Kp_d;
+	Ptmp_r = (int16_t) Kp_u * (int32_t)(*roll) / Kp_d;
+	Ptmp_y = (int16_t) Kp_u * (int32_t)(*yaw) / Kp_d;
 
 
-	Ptmp_p = Kp_u * (*pitch) / Kp_d;
-	Ptmp_r = Kp_u * (*roll) / Kp_d;
-	Ptmp_r = Kp_u * (*yaw) / Kp_d;
 
-	// integral limit
-	if(Itmp_p > I_lim)
-		Itmp_p = I_lim;
+// differential limit
+	if(Dtmp_p > D_lim)
+		Dtmp_p = D_lim;
 	else
-		if(Itmp_p< - I_lim)
-			Itmp_p = - I_lim;
+		if(Dtmp_p< - D_lim)
+			Dtmp_p = - D_lim;
 
-	if(Itmp_r > I_lim)
-		Itmp_r = I_lim;
+	if(Dtmp_r > D_lim)
+		Dtmp_r = D_lim;
 	else
-		if(Itmp_r< -I_lim)
-			Itmp_r = I_lim;
+		if(Dtmp_r< - D_lim)
+			Dtmp_r = - D_lim;
 
-	if(Itmp_y > I_lim)
-		Itmp_y = I_lim;
+	if(Dtmp_y > D_lim)
+		Dtmp_y = D_lim;
 	else
-		if(Itmp_y< -I_lim)
-			Itmp_y = I_lim;
+		if(Dtmp_y< -D_lim)
+			Dtmp_y = -D_lim;
 
 // proportional limit
 	if(Ptmp_p > P_lim)
@@ -138,37 +155,48 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 		Ptmp_r = P_lim;
 	else
 		if(Ptmp_r< -P_lim)
-			Ptmp_r = P_lim;
+			Ptmp_r = -P_lim;
 
 	if(Ptmp_y > P_lim)
-		Ptmp_y = P_lim;
-	else
-		if(Ptmp_y< -P_lim)
 			Ptmp_y = P_lim;
+		else
+			if(Ptmp_y< -P_lim)
+				Ptmp_y = -P_lim;
 
-// differential limit
-	if(Dtmp_p > D_lim)
-		Dtmp_p = D_lim;
+
+	// integral limit
+	if(Integr_pitch > I_lim)
+		Integr_pitch = I_lim;
 	else
-		if(Dtmp_p< - D_lim)
-			Dtmp_p = - D_lim;
+		if(Integr_pitch< - I_lim)
+			Integr_pitch = - I_lim;
 
-	if(Dtmp_r > D_lim)
-		Dtmp_r = D_lim;
+	if(Integr_roll > I_lim)
+		Integr_roll = I_lim;
+		else
+			if(Integr_roll< - I_lim)
+				Integr_roll = - I_lim;
+
+	if(Integr_yaw > I_lim)
+		Integr_yaw = I_lim;
 	else
-		if(Dtmp_r< -D_lim)
-			Dtmp_r = D_lim;
+		if(Integr_yaw< - I_lim)
+			Integr_yaw = - I_lim;
 
-	if(Dtmp_y > D_lim)
-		Dtmp_y = D_lim;
+
+
+	int16_t sum_p, sum_r, sum_y;
+	sum_p = Dtmp_p + Ptmp_p + Itmp_p;
+	sum_r = Dtmp_r + Ptmp_r + Itmp_r;
+	if(*pitch<10*k && *pitch> -10*k && *roll<10*k && *roll>-10*k)
+		sum_y = (Itmp_y + Ptmp_y + Dtmp_y)/4;
 	else
-		if(Dtmp_y< -D_lim)
-			Dtmp_y = D_lim;
+		sum_y = Itmp_y /4;
 
-	pow[0] = *force + Dtmp_p + Dtmp_r + Ptmp_p + Ptmp_r + Itmp_p + Itmp_r + (Dtmp_y + Ptmp_y + Itmp_y);//FL
-    pow[1] = *force - Dtmp_p + Dtmp_r - Ptmp_p + Ptmp_r - Itmp_p + Itmp_r - (Dtmp_y + Ptmp_y + Itmp_y);//BL
-    pow[2] = *force - Dtmp_p - Dtmp_r - Ptmp_p - Ptmp_r - Itmp_p - Itmp_r + (Dtmp_y + Ptmp_y + Itmp_y);//BR
-    pow[3] = *force + Dtmp_p - Dtmp_r + Ptmp_p - Ptmp_r + Itmp_p - Itmp_r - (Dtmp_y + Ptmp_y + Itmp_y);//FR
+	pow[0] = *force + sum_p + sum_r + sum_y;
+    pow[1] = *force - sum_p + sum_r - sum_y;
+    pow[2] = *force - sum_p - sum_r + sum_y;
+    pow[3] = *force + sum_p - sum_r - sum_y;
 
     if(pow[0]< low_trottle2)
      {
@@ -246,17 +274,29 @@ int8_t change_coef(int8_t _type)
 }
 
 
-void set_I(uint8_t val)
+void inc_I()
 {
-	Ki_u= val;
+	Ki_u++;
 }
-void set_P(uint8_t val)
+void inc_P()
 {
-	Kp_u= val;
+	Kp_u++;
 }
-void set_D(uint8_t val)
+void inc_D()
 {
-	Kd_u= val;
+	Kd_u++;
+}
+void dec_I()
+{
+	Ki_u--;
+}
+void dec_P()
+{
+	Kp_u--;
+}
+void dec_D()
+{
+	Kd_u--;
 }
 int16_t get_I_p(void)
 {
@@ -281,4 +321,54 @@ int16_t get_D_p(void)
 int16_t get_D_r(void)
 {
 	return Dtmp_r;
+}
+int16_t get_P_y(void)
+{
+	return Ptmp_y;
+}
+int16_t get_I_y(void)
+{
+	return Itmp_y;
+}
+int16_t get_D_y(void)
+{
+	return Dtmp_y;
+}
+
+int16_t get_Int_p(void)
+{
+	return Integr_pitch/1000;
+}
+int16_t get_Int_r(void)
+{
+	return Integr_roll/1000;
+}
+int16_t get_Int_y(void)
+{
+	return Integr_yaw/1000;
+}
+
+double my_degree_to_float (int16_t val)
+{
+	return (double)val/k1/k;
+
+}
+
+void my_yaw(int16_t * mx, int16_t * my, int16_t * mz, int16_t *yaw, int16_t * pitch, int16_t *roll)
+{
+	double ptch = my_degree_to_float(*pitch*(-1));
+	double rll = my_degree_to_float(*roll);
+
+	double s_ptch = sin(ptch);
+	double s_rll = sin(rll);
+	double c_ptch = cos(ptch);
+	double c_rll = cos(rll);
+
+
+	double x, y;
+	x = *mx * c_ptch + *my * s_rll * s_ptch + *mz * c_rll * s_ptch;
+	y = *my * c_rll - *mz * s_rll ;
+
+	*yaw = (int16_t)(atan2 (y,x) * k * k1);
+
 }

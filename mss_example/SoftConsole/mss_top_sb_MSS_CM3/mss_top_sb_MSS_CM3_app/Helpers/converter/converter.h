@@ -10,9 +10,9 @@
 /* Convert int to chat */
 void itoa
 (
-	char *buf,
-	int base,
-	int d
+    char *buf,
+    int base,
+    int d
 );
 
 /* Convert uint8_t[2] to uint16_t */

@@ -52,10 +52,6 @@ void MPU6050_setSleepEnabled(uint8_t enabled)
                  0);
 }
 
-/*
- * Just for accessing HMC from MC
- * data got from http://forum.arduino.cc/index.php?topic=223345.msg2142479#msg2142479
- */
 void MPU6050_setBypassMode()
 {
     uint8_t tx_len = 2;
@@ -164,5 +160,5 @@ void MPU6050_getMotion9(int16_t* ax,
                         int16_t* mz)
 {
     MPU6050_getMotion6(ax, ay, az, gx, gy, gz);
-    HMC_getData(mx, my, mz);
+    HMC_getHeading(mx, my, mz);
 }
