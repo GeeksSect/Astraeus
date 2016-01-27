@@ -12,8 +12,8 @@
 #define k 65.53  // 2 bytes is range [-500;500] degrees
 #define k1 57.29 // radians to degrees
 
-#define D_lim 400 //TODO calib
-#define P_lim 400 //TODO calib
+#define D_lim 40 //TODO calib
+#define P_lim 40 //TODO calib
 
 //P.S. this limit is not a power limit! It's how much integral can accumulate.
 #define I_lim 500000 //TODO calib

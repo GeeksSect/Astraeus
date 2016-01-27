@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by Microsemi SmartDesign Mon Jan 25 23:53:22 2016
+-- Created by Microsemi SmartDesign Wed Jan 27 18:28:22 2016
 -- Parameters for CoreUARTapb
 ----------------------------------------------------------------------
 
@@ -10,9 +10,9 @@ LIBRARY ieee;
    USE ieee.numeric_std.all;
 
 package coreparameters is
-    constant BAUD_VAL_FRCTN : integer := 0;
-    constant BAUD_VAL_FRCTN_EN : integer := 0;
-    constant BAUD_VALUE : integer := 37;
+    constant BAUD_VAL_FRCTN : integer := 1;
+    constant BAUD_VAL_FRCTN_EN : integer := 1;
+    constant BAUD_VALUE : integer := 26;
     constant FAMILY : integer := 19;
     constant FIXEDMODE : integer := 1;
     constant HDL_license : string( 1 to 1 ) := "U";

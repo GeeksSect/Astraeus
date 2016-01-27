@@ -9,7 +9,7 @@
 #define MICROS_H_
 
 
-#define frq 70000000 // timer clock speed
+#define frq 50000000 // timer clock speed
 
 #include <stdint.h>
 #include <stdlib.h>

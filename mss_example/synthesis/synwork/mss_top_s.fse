@@ -55,17 +55,17 @@ fsm_state_encoding {142224422242} fsmdet6 {1000000}
 
 fsm_registers {142224422242} {fsmdet[0]}  {fsmdet[1]}  {fsmdet[2]}  {fsmdet[3]}  {fsmdet[4]}  {fsmdet[5]}  {fsmdet[6]} 
 
-fsm_encoding {33337633711} sequential
+fsm_encoding {37337633711} sequential
 
-fsm_state_encoding {33337633711} s0 {00}
+fsm_state_encoding {37337633711} s0 {00}
 
-fsm_state_encoding {33337633711} s1 {01}
+fsm_state_encoding {37337633711} s1 {01}
 
-fsm_state_encoding {33337633711} s2 {10}
+fsm_state_encoding {37337633711} s2 {10}
 
-fsm_state_encoding {33337633711} s3 {11}
+fsm_state_encoding {37337633711} s3 {11}
 
-fsm_registers {33337633711} {rx_state[1]}  {rx_state[0]} 
+fsm_registers {37337633711} {rx_state[1]}  {rx_state[0]} 
 
 fsm_encoding {2012641269} onehot
 
@@ -94,3 +94,43 @@ fsm_state_encoding {21227622710} rx_data_bits {01}
 fsm_state_encoding {21227622710} rx_stop_bit {10}
 
 fsm_registers {21227622710} {rx_state[1]}  {rx_state[0]} 
+
+fsm_encoding {39337633714} sequential
+
+fsm_state_encoding {39337633714} s0 {00}
+
+fsm_state_encoding {39337633714} s1 {01}
+
+fsm_state_encoding {39337633714} s2 {10}
+
+fsm_state_encoding {39337633714} s3 {11}
+
+fsm_registers {39337633714} {rx_state[1]}  {rx_state[0]} 
+
+fsm_encoding {24126412612} onehot
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000000 {0000001}
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000001 {0000010}
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000010 {0000100}
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000011 {0001000}
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000100 {0010000}
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000101 {0100000}
+
+fsm_state_encoding {24126412612} 00000000000000000000000000000110 {1000000}
+
+fsm_registers {24126412612} {xmit_state[0]}  {xmit_state[1]}  {xmit_state[2]}  {xmit_state[3]}  {xmit_state[4]}  {xmit_state[5]}  {xmit_state[6]} 
+
+fsm_encoding {25227622713} sequential
+
+fsm_state_encoding {25227622713} rx_idle {00}
+
+fsm_state_encoding {25227622713} rx_data_bits {01}
+
+fsm_state_encoding {25227622713} rx_stop_bit {10}
+
+fsm_registers {25227622713} {rx_state[1]}  {rx_state[0]} 

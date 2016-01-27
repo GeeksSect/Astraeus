@@ -16,6 +16,7 @@
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":61:7:61:44|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_coreuartapb.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":290:12:290:22|Removed redundant assignment
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":314:12:314:22|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":341:12:341:22|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUART.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_coreuart.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUART.vhd":399:11:399:22|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":35:7:35:43|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_fifo_256x8.translated 
@@ -33,9 +34,17 @@
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Tx_async.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_tx_async.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Tx_async.vhd":286:10:286:18|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":35:7:35:42|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_clock_gen.rtl 
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":99:39:99:47|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":112:38:112:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":125:38:125:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":138:38:138:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":151:38:151:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":164:38:164:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":177:38:177:46|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":61:7:61:44|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuartapb.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":290:12:290:22|Removed redundant assignment
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":314:12:314:22|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":341:12:341:22|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuart.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":399:11:399:22|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":35:7:35:43|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_fifo_256x8.translated 
@@ -49,6 +58,13 @@
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_tx_async.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":286:10:286:18|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":35:7:35:42|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_clock_gen.rtl 
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":99:39:99:47|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":112:38:112:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":125:38:125:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":138:38:138:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":151:38:151:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":164:38:164:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":177:38:177:46|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":27:7:27:16|Synthesizing work.coreresetp.rtl 
 @N: CL177 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sharing sequential element M3_RESET_N_int.
 @N: CL177 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":936:8:936:9|Sharing sequential element sdif2_spll_lock_q1.

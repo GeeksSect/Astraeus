@@ -58,7 +58,7 @@ Available hyper_sources - for debug and ip models
 @N: MO106 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\coreapb3\4.1.100\rtl\vhdl\core\coreapb3.vhd":648:12:648:15|Found ROM, 'CoreAPB3_0.iPSELS_raw_6[3:0]', 16 words by 4 bits 
 @W: MO129 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1331:8:1331:9|Sequential instance mss_top_sb_0.CORERESETP_0.RESET_N_F2M_int reduced to a combinational gate by constant propagation
 
-Finished RTL optimizations (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 138MB)
+Finished RTL optimizations (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 136MB peak: 138MB)
 
 Encoding state machine fsmmod[0:6] (view:corei2c_lib.COREI2CREAL(rtl))
 original code -> new code
@@ -105,7 +105,7 @@ original code -> new code
 @N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_COREUART(translated) inst UG07\.rx_fifo_xhdl80.mss_top_sb_CoreUARTapb_0_0_fifo_128x8_pa4.rd_pointer[6:0]
 @N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_COREUART(translated) inst UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_0_0_fifo_128x8_pa4.wr_pointer[6:0]
 @N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_COREUART(translated) inst UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_0_0_fifo_128x8_pa4.rd_pointer[6:0]
-@N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\clock_gen.vhd":203:11:203:12|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Clock_gen(rtl) inst baud_cntr[12:0]
+@N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\clock_gen.vhd":84:11:84:12|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Clock_gen(rtl) inst baud_cntr[12:0]
 Encoding state machine xmit_state[0:6] (view:coreuartapb_lib.mss_top_sb_CoreUARTapb_0_0_Tx_async(translated))
 original code -> new code
    00000000000000000000000000000000 -> 0000000
@@ -133,7 +133,7 @@ original code -> new code
 @N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_1_0_COREUART(translated) inst UG07\.rx_fifo_xhdl80.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.rd_pointer[6:0]
 @N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_1_0_COREUART(translated) inst UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.wr_pointer[6:0]
 @N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_1_0_COREUART(translated) inst UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.rd_pointer[6:0]
-@N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\clock_gen.vhd":203:11:203:12|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_1_0_Clock_gen(rtl) inst baud_cntr[12:0]
+@N:"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\clock_gen.vhd":84:11:84:12|Found counter in view:coreuartapb_lib.mss_top_sb_CoreUARTapb_1_0_Clock_gen(rtl) inst baud_cntr[12:0]
 Encoding state machine xmit_state[0:6] (view:coreuartapb_lib.mss_top_sb_CoreUARTapb_1_0_Tx_async(translated))
 original code -> new code
    00000000000000000000000000000000 -> 0000000
@@ -150,17 +150,17 @@ original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
-@W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\coreuart.vhd":313:6:313:7|Removing instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_parity_reg0,  because it is equivalent to instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_framing_error_reg0
-@W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\coreuart.vhd":325:6:325:7|Removing instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_framing_error_reg,  because it is equivalent to instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_parity_reg
 @W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\coreuart.vhd":313:6:313:7|Removing instance mss_top_sb_0.CoreUARTapb_1_0.uUART.clear_parity_reg0,  because it is equivalent to instance mss_top_sb_0.CoreUARTapb_1_0.uUART.clear_framing_error_reg0
 @W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\coreuart.vhd":325:6:325:7|Removing instance mss_top_sb_0.CoreUARTapb_1_0.uUART.clear_framing_error_reg,  because it is equivalent to instance mss_top_sb_0.CoreUARTapb_1_0.uUART.clear_parity_reg
+@W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\coreuart.vhd":313:6:313:7|Removing instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_parity_reg0,  because it is equivalent to instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_framing_error_reg0
+@W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\coreuart.vhd":325:6:325:7|Removing instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_framing_error_reg,  because it is equivalent to instance mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_parity_reg
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_0_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_1_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
 
-Finished factoring (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 161MB peak: 163MB)
+Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 169MB peak: 170MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 149MB peak: 163MB)
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 156MB peak: 170MB)
 
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\rx_async.vhd":320:6:320:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_1_0.uUART.make_RX.rx_parity_calc in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\rx_async.vhd":283:6:283:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_1_0.uUART.make_RX.rx_shift[8] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
@@ -168,70 +168,74 @@ Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:03
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":283:6:283:7|Removing sequential instance mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.rx_shift[8] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":1543:4:1543:5|Removing sequential instance mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.fsmsync[0] in hierarchy view:work.mss_top(rtl) because there are no references to its outputs 
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 149MB peak: 163MB)
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 151MB peak: 170MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 149MB peak: 163MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 152MB peak: 170MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 149MB peak: 163MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 164MB peak: 170MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 149MB peak: 163MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 163MB peak: 170MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 149MB peak: 163MB)
+Finished preparing to map (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 164MB peak: 170MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 218MB peak: 220MB)
-
-Pass		 CPU time		Worst Slack		Luts / Registers
-------------------------------------------------------------
-Pass		 CPU time		Worst Slack		Luts / Registers
-------------------------------------------------------------
-   1		0h:00m:08s		   -28.82ns		1182 /       664
-------------------------------------------------------------
-
-
-
+Finished technology mapping (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 203MB peak: 206MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:09s		    -8.96ns		1198 /       664
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:11s		   -28.82ns		1240 /       672
 ------------------------------------------------------------
 
+
+@N: FX271 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd":200:6:200:7|Instance "mss_top_sb_0.CoreUARTapb_1_0.uUART.UG07\.rx_fifo_xhdl80.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.counter[3]" with 4 loads replicated 1 times to improve timing 
+Timing driven replication report
+Added 1 Registers via timing driven replication
+Added 0 LUTs via timing driven replication
 
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:09s		    -8.96ns		1198 /       664
+   1		0h:00m:12s		    -3.71ns		1258 /       673
 ------------------------------------------------------------
 
-@N: FP130 |Promoting Net mss_top_sb_0.MSS_READY on CLKINT  I_119 
+
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:12s		    -3.71ns		1258 /       673
+------------------------------------------------------------
+
+@N: FP130 |Promoting Net mss_top_sb_0.MSS_READY on CLKINT  I_123 
 
 Added 0 Buffers
 Added 0 Cells via replication
 	Added 0 Sequential Cells via replication
 	Added 0 Combinational Cells via replication
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 161MB peak: 220MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:13s; Memory used current: 164MB peak: 206MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 162MB peak: 220MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:13s; Memory used current: 165MB peak: 206MB)
 
 
 
 #### START OF CLOCK OPTIMIZATION REPORT #####[
 
 Clock optimization not enabled
-1 non-gated/non-generated clock tree(s) driving 673 clock pin(s) of sequential element(s)
+1 non-gated/non-generated clock tree(s) driving 682 clock pin(s) of sequential element(s)
 0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
 0 instances converted, 0 sequential instances remain driven by gated/generated clocks
 
 ================================================ Non-Gated/Non-Generated Clocks ================================================
 Clock Tree ID     Driving Element                 Drive Element Type     Fanout     Sample Instance                             
 --------------------------------------------------------------------------------------------------------------------------------
-@K:CKID0001       mss_top_sb_0.CCC_0.GL0_INST     CLKINT                 673        mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST
+@K:CKID0001       mss_top_sb_0.CCC_0.GL0_INST     CLKINT                 682        mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST
 ================================================================================================================================
 
 
@@ -239,18 +243,18 @@ Clock Tree ID     Driving Element                 Drive Element Type     Fanout 
 
 Writing Analyst data base C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\mss_top.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 158MB peak: 220MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:16s; CPU Time elapsed 0h:00m:14s; Memory used current: 160MB peak: 206MB)
 
 Writing Analyst data base C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\synwork\mss_top_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:12s; Memory used current: 158MB peak: 220MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:17s; CPU Time elapsed 0h:00m:15s; Memory used current: 160MB peak: 206MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |Synopsys Constraint File time units using default value of 1ns 
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 I-2014.03M-SP1
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:15s; CPU Time elapsed 0h:00m:13s; Memory used current: 159MB peak: 220MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:18s; CPU Time elapsed 0h:00m:16s; Memory used current: 161MB peak: 206MB)
 
 @W: MT246 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd":1386:0:1386:11|Blackbox SYSRESET is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 @W: MT246 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\ccc_0\mss_top_sb_ccc_0_fccc.vhd":106:4:106:11|Blackbox CCC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
@@ -259,7 +263,7 @@ Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:15s
 
 
 @S |##### START OF TIMING REPORT #####[
-# Timing Report written on Mon Jan 25 23:54:56 2016
+# Timing Report written on Wed Jan 27 18:31:08 2016
 #
 
 
@@ -278,12 +282,12 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -1.520
+Worst slack in design: -1.825
 
                                                  Requested     Estimated     Requested     Estimated                Clock        Clock              
 Starting Clock                                   Frequency     Frequency     Period        Period        Slack      Type         Group              
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     100.0 MHz     86.8 MHz      10.000        11.520        -1.520     inferred     Inferred_clkgroup_0
+mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     100.0 MHz     84.6 MHz      10.000        11.825        -1.825     inferred     Inferred_clkgroup_0
 System                                           100.0 MHz     895.2 MHz     10.000        1.117         8.883      system       system_clkgroup    
 ====================================================================================================================================================
 
@@ -299,7 +303,7 @@ Clocks                                                                          
 Starting                                      Ending                                        |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 System                                        System                                        |  10.000      8.883   |  No paths    -      |  No paths    -      |  No paths    -    
-mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock  mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock  |  10.000      -1.520  |  No paths    -      |  No paths    -      |  No paths    -    
+mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock  mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock  |  10.000      -1.825  |  No paths    -      |  No paths    -      |  No paths    -    
 ===================================================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
@@ -326,16 +330,16 @@ Starting Points with Worst Slack
 Instance                                         Reference                                        Type        Pin                Net                                                 Time        Slack 
                                                  Clock                                                                                                                                                 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[14]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[14]     3.652       -1.520
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[15]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[15]     3.580       -1.491
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[3]      CoreAPB3_0_APBmslave0_PADDR[3]                      3.576       -1.336
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[2]      CoreAPB3_0_APBmslave0_PADDR[2]                      3.576       -1.259
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[5]      CoreAPB3_0_APBmslave0_PADDR[5]                      3.657       -0.981
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[4]      CoreAPB3_0_APBmslave0_PADDR[4]                      3.560       -0.959
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[6]      CoreAPB3_0_APBmslave0_PADDR[6]                      3.746       -0.689
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[7]      CoreAPB3_0_APBmslave0_PADDR[7]                      3.593       -0.576
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[12]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[12]     3.677       -0.375
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[1]      CoreAPB3_0_APBmslave0_PADDR[1]                      3.597       -0.308
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[13]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[13]     3.647       -1.825
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[15]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[15]     3.580       -1.780
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_SEL          mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PSELx         3.488       -1.752
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[8]      CoreAPB3_0_APBmslave0_PADDR[8]                      3.945       -1.617
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[5]      CoreAPB3_0_APBmslave0_PADDR[5]                      3.657       -1.569
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[6]      CoreAPB3_0_APBmslave0_PADDR[6]                      3.746       -1.538
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[7]      CoreAPB3_0_APBmslave0_PADDR[7]                      3.593       -1.473
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[12]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[12]     3.677       -1.252
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[1]      CoreAPB3_0_APBmslave0_PADDR[1]                      3.597       -1.224
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_ADDR[0]      CoreAPB3_0_APBmslave0_PADDR[0]                      3.660       -1.200
 =======================================================================================================================================================================================================
 
 
@@ -346,16 +350,16 @@ Ending Points with Worst Slack
 Instance                                         Reference                                        Type        Pin                 Net                                                  Time         Slack 
                                                  Clock                                                                                                                                                    
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[3]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[3]      9.393        -1.520
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[4]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[4]      9.459        -1.454
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[1]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[1]      9.629        -1.336
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[6]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[6]      9.590        -1.323
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[5]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[5]      9.615        -1.104
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[2]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[2]      9.655        -1.005
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[7]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]      9.722        -0.952
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[0]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[0]      9.551        -0.865
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[9]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[9]      9.522        -0.692
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[23]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[23]     9.534        -0.666
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[7]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]      9.722        -1.825
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[3]      mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[3]      9.393        -1.401
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[11]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[11]     9.589        -1.124
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[22]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[22]     9.591        -1.122
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[21]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[21]     9.597        -1.116
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[17]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[17]     9.618        -1.095
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[20]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[20]     9.621        -1.092
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[24]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[24]     9.622        -1.091
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[14]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[14]     9.633        -1.080
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     MSS_010     F_HM0_RDATA[28]     mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[28]     9.633        -1.080
 ==========================================================================================================================================================================================================
 
 
@@ -366,214 +370,235 @@ Worst Path Information
 
 Path information for path number 1: 
       Requested Period:                      10.000
-    - Setup time:                            0.607
+    - Setup time:                            0.278
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.393
+    = Required time:                         9.722
 
-    - Propagation time:                      10.913
+    - Propagation time:                      11.547
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -1.520
+    = Slack (critical) :                     -1.825
 
-    Number of logic level(s):                5
-    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[14]
-    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[3]
+    Number of logic level(s):                7
+    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[13]
+    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[7]
     The start point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
     The end   point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
 
-Instance / Net                                                      Pin                Pin               Arrival     No. of    
-Name                                                    Type        Name               Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_ADDR[14]     Out     3.652     3.652       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[14]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        A                  In      -         4.769       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        Y                  Out     0.100     4.870       -         
-N_465                                                   Net         -                  -       0.846     -           10        
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        D                  In      -         5.716       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        Y                  Out     0.470     6.185       -         
-CoreAPB3_0_APBmslave2_PSELx                             Net         -                  -       1.087     -           39        
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[3]       CFG4        D                  In      -         7.273       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[3]       CFG4        Y                  Out     0.472     7.745       -         
-N_86                                                    Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[3]     CFG4        D                  In      -         8.301       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[3]     CFG4        Y                  Out     0.470     8.770       -         
-PRDATA_2_d[3]                                           Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[3]         CFG4        D                  In      -         9.326       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[3]         CFG4        Y                  Out     0.470     9.796       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[3]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_RDATA[3]     In      -         10.913      -         
-===============================================================================================================================
-Total path delay (propagation time + setup) of 11.520 is 6.241(54.2%) logic and 5.279(45.8%) route.
+Instance / Net                                                             Pin                Pin               Arrival     No. of    
+Name                                                           Type        Name               Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                   MSS_010     F_HM0_ADDR[13]     Out     3.647     3.647       -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[13]                Net         -                  -       1.141     -           17        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_0[7]     CFG2        A                  In      -         4.788       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_0[7]     CFG2        Y                  Out     0.100     4.889       -         
+PRDATA_3_0_1_a0_0[7]                                           Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_3[7]     CFG4        D                  In      -         5.444       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_3[7]     CFG4        Y                  Out     0.470     5.914       -         
+PRDATA_3_0_1_a0_3[7]                                           Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0[7]       CFG4        B                  In      -         6.470       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0[7]       CFG4        Y                  Out     0.164     6.634       -         
+PRDATA_3_0_1_a0[7]                                             Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_0[7]          CFG4        D                  In      -         7.189       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_0[7]          CFG4        Y                  Out     0.470     7.659       -         
+PRDATA_3_0_0[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]          CFG4        B                  In      -         8.215       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]          CFG4        Y                  Out     0.164     8.379       -         
+PRDATA_3_0_2[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]          CFG4        D                  In      -         8.934       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]          CFG4        Y                  Out     0.470     9.404       -         
+PRDATA_3_0_4[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]            CFG4        D                  In      -         9.960       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]            CFG4        Y                  Out     0.470     10.429      -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]                Net         -                  -       1.117     -           1         
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                   MSS_010     F_HM0_RDATA[7]     In      -         11.547      -         
+======================================================================================================================================
+Total path delay (propagation time + setup) of 11.825 is 6.233(52.7%) logic and 5.592(47.3%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
 Path information for path number 2: 
       Requested Period:                      10.000
-    - Setup time:                            0.607
+    - Setup time:                            0.278
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.393
+    = Required time:                         9.722
 
-    - Propagation time:                      10.884
+    - Propagation time:                      11.502
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -1.491
+    = Slack (non-critical) :                 -1.780
 
-    Number of logic level(s):                5
+    Number of logic level(s):                7
     Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[15]
-    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[3]
+    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[7]
     The start point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
     The end   point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
 
-Instance / Net                                                      Pin                Pin               Arrival     No. of    
-Name                                                    Type        Name               Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_ADDR[15]     Out     3.580     3.580       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[15]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        B                  In      -         4.697       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        Y                  Out     0.143     4.840       -         
-N_465                                                   Net         -                  -       0.846     -           10        
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        D                  In      -         5.686       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        Y                  Out     0.470     6.156       -         
-CoreAPB3_0_APBmslave2_PSELx                             Net         -                  -       1.087     -           39        
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[3]       CFG4        D                  In      -         7.244       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[3]       CFG4        Y                  Out     0.472     7.716       -         
-N_86                                                    Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[3]     CFG4        D                  In      -         8.272       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[3]     CFG4        Y                  Out     0.470     8.741       -         
-PRDATA_2_d[3]                                           Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[3]         CFG4        D                  In      -         9.297       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[3]         CFG4        Y                  Out     0.470     9.767       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[3]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_RDATA[3]     In      -         10.884      -         
-===============================================================================================================================
-Total path delay (propagation time + setup) of 11.491 is 6.212(54.1%) logic and 5.279(45.9%) route.
+Instance / Net                                                             Pin                Pin               Arrival     No. of    
+Name                                                           Type        Name               Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                   MSS_010     F_HM0_ADDR[15]     Out     3.580     3.580       -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[15]                Net         -                  -       1.134     -           7         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PSELSBUS_0_a2_0_0[1]     CFG2        A                  In      -         4.714       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PSELSBUS_0_a2_0_0[1]     CFG2        Y                  Out     0.100     4.814       -         
+PSELSBUS_0_a2_0_0[1]                                           Net         -                  -       0.846     -           10        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_3[7]     CFG4        C                  In      -         5.660       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_3[7]     CFG4        Y                  Out     0.210     5.870       -         
+PRDATA_3_0_1_a0_3[7]                                           Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0[7]       CFG4        B                  In      -         6.425       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0[7]       CFG4        Y                  Out     0.164     6.590       -         
+PRDATA_3_0_1_a0[7]                                             Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_0[7]          CFG4        D                  In      -         7.145       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_0[7]          CFG4        Y                  Out     0.470     7.615       -         
+PRDATA_3_0_0[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]          CFG4        B                  In      -         8.170       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]          CFG4        Y                  Out     0.164     8.335       -         
+PRDATA_3_0_2[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]          CFG4        D                  In      -         8.890       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]          CFG4        Y                  Out     0.470     9.360       -         
+PRDATA_3_0_4[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]            CFG4        D                  In      -         9.915       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]            CFG4        Y                  Out     0.470     10.385      -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]                Net         -                  -       1.117     -           1         
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                   MSS_010     F_HM0_RDATA[7]     In      -         11.502      -         
+======================================================================================================================================
+Total path delay (propagation time + setup) of 11.780 is 5.906(50.1%) logic and 5.875(49.9%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
 Path information for path number 3: 
       Requested Period:                      10.000
-    - Setup time:                            0.541
+    - Setup time:                            0.278
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.459
+    = Required time:                         9.722
 
-    - Propagation time:                      10.913
+    - Propagation time:                      11.474
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -1.454
+    = Slack (non-critical) :                 -1.752
 
-    Number of logic level(s):                5
-    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[14]
-    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[4]
+    Number of logic level(s):                7
+    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_SEL
+    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[7]
     The start point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
     The end   point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
 
-Instance / Net                                                      Pin                Pin               Arrival     No. of    
-Name                                                    Type        Name               Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_ADDR[14]     Out     3.652     3.652       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[14]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        A                  In      -         4.769       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        Y                  Out     0.100     4.870       -         
-N_465                                                   Net         -                  -       0.846     -           10        
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        D                  In      -         5.716       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        Y                  Out     0.470     6.185       -         
-CoreAPB3_0_APBmslave2_PSELx                             Net         -                  -       1.087     -           39        
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[4]       CFG4        D                  In      -         7.273       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[4]       CFG4        Y                  Out     0.472     7.745       -         
-N_87                                                    Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[4]     CFG4        D                  In      -         8.301       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[4]     CFG4        Y                  Out     0.470     8.770       -         
-PRDATA_2_d[4]                                           Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[4]         CFG4        D                  In      -         9.326       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[4]         CFG4        Y                  Out     0.470     9.796       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[4]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_RDATA[4]     In      -         10.913      -         
-===============================================================================================================================
-Total path delay (propagation time + setup) of 11.454 is 6.175(53.9%) logic and 5.279(46.1%) route.
+Instance / Net                                                             Pin                Pin               Arrival     No. of    
+Name                                                           Type        Name               Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                   MSS_010     F_HM0_SEL          Out     3.488     3.488       -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PSELx                    Net         -                  -       1.134     -           7         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PSELSBUS_0_a2_0_0[1]     CFG2        B                  In      -         4.622       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PSELSBUS_0_a2_0_0[1]     CFG2        Y                  Out     0.164     4.786       -         
+PSELSBUS_0_a2_0_0[1]                                           Net         -                  -       0.846     -           10        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_3[7]     CFG4        C                  In      -         5.632       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0_3[7]     CFG4        Y                  Out     0.210     5.841       -         
+PRDATA_3_0_1_a0_3[7]                                           Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0[7]       CFG4        B                  In      -         6.397       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_1_a0[7]       CFG4        Y                  Out     0.164     6.561       -         
+PRDATA_3_0_1_a0[7]                                             Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_0[7]          CFG4        D                  In      -         7.117       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_0[7]          CFG4        Y                  Out     0.470     7.587       -         
+PRDATA_3_0_0[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]          CFG4        B                  In      -         8.142       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]          CFG4        Y                  Out     0.164     8.306       -         
+PRDATA_3_0_2[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]          CFG4        D                  In      -         8.862       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]          CFG4        Y                  Out     0.470     9.332       -         
+PRDATA_3_0_4[7]                                                Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]            CFG4        D                  In      -         9.887       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]            CFG4        Y                  Out     0.470     10.357      -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]                Net         -                  -       1.117     -           1         
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                   MSS_010     F_HM0_RDATA[7]     In      -         11.474      -         
+======================================================================================================================================
+Total path delay (propagation time + setup) of 11.752 is 5.877(50.0%) logic and 5.875(50.0%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
 Path information for path number 4: 
       Requested Period:                      10.000
-    - Setup time:                            0.541
+    - Setup time:                            0.278
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.459
+    = Required time:                         9.722
 
-    - Propagation time:                      10.884
+    - Propagation time:                      11.339
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -1.425
+    = Slack (non-critical) :                 -1.617
 
-    Number of logic level(s):                5
-    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[15]
-    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[4]
+    Number of logic level(s):                6
+    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[8]
+    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[7]
     The start point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
     The end   point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
 
-Instance / Net                                                      Pin                Pin               Arrival     No. of    
-Name                                                    Type        Name               Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_ADDR[15]     Out     3.580     3.580       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PADDR[15]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        B                  In      -         4.697       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw_6_0_a2_0[0]          CFG2        Y                  Out     0.143     4.840       -         
-N_465                                                   Net         -                  -       0.846     -           10        
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        D                  In      -         5.686       -         
-mss_top_sb_0.CoreAPB3_0.iPSELS_raw[2]                   CFG4        Y                  Out     0.470     6.156       -         
-CoreAPB3_0_APBmslave2_PSELx                             Net         -                  -       1.087     -           39        
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[4]       CFG4        D                  In      -         7.244       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_0[4]       CFG4        Y                  Out     0.472     7.716       -         
-N_87                                                    Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[4]     CFG4        D                  In      -         8.272       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_2_d[4]     CFG4        Y                  Out     0.470     8.741       -         
-PRDATA_2_d[4]                                           Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[4]         CFG4        D                  In      -         9.297       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[4]         CFG4        Y                  Out     0.470     9.767       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[4]         Net         -                  -       1.117     -           1         
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST            MSS_010     F_HM0_RDATA[4]     In      -         10.884      -         
-===============================================================================================================================
-Total path delay (propagation time + setup) of 11.425 is 6.146(53.8%) logic and 5.279(46.2%) route.
+Instance / Net                                                           Pin                Pin               Arrival     No. of    
+Name                                                         Type        Name               Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                 MSS_010     F_HM0_ADDR[8]      Out     3.945     3.945       -         
+CoreAPB3_0_APBmslave0_PADDR[8]                               Net         -                  -       1.117     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_5[2]     CFG4        C                  In      -         5.062       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_5[2]     CFG4        Y                  Out     0.209     5.271       -         
+N_1134                                                       Net         -                  -       0.846     -           10        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_3[2]     CFG2        A                  In      -         6.118       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_3[2]     CFG2        Y                  Out     0.077     6.195       -         
+N_1138                                                       Net         -                  -       0.861     -           11        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_m2_e_1          CFG4        D                  In      -         7.056       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_m2_e_1          CFG4        Y                  Out     0.472     7.529       -         
+N_1742                                                       Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]        CFG4        A                  In      -         8.084       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]        CFG4        Y                  Out     0.087     8.171       -         
+PRDATA_3_0_2[7]                                              Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]        CFG4        D                  In      -         8.727       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]        CFG4        Y                  Out     0.470     9.197       -         
+PRDATA_3_0_4[7]                                              Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]          CFG4        D                  In      -         9.752       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]          CFG4        Y                  Out     0.470     10.222      -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]              Net         -                  -       1.117     -           1         
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                 MSS_010     F_HM0_RDATA[7]     In      -         11.339      -         
+====================================================================================================================================
+Total path delay (propagation time + setup) of 11.617 is 6.009(51.7%) logic and 5.608(48.3%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
 Path information for path number 5: 
       Requested Period:                      10.000
-    - Setup time:                            0.371
+    - Setup time:                            0.278
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.629
+    = Required time:                         9.722
 
-    - Propagation time:                      10.965
+    - Propagation time:                      11.291
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -1.336
+    = Slack (non-critical) :                 -1.569
 
     Number of logic level(s):                6
-    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[3]
-    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[1]
+    Starting point:                          mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_ADDR[5]
+    Ending point:                            mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST / F_HM0_RDATA[7]
     The start point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
     The end   point is clocked by            mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock [rising] on pin CLK_BASE
 
-Instance / Net                                                                              Pin                Pin               Arrival     No. of    
-Name                                                                            Type        Name               Dir     Delay     Time        Fan Out(s)
--------------------------------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                                    MSS_010     F_HM0_ADDR[3]      Out     3.576     3.576       -         
-CoreAPB3_0_APBmslave0_PADDR[3]                                                  Net         -                  -       1.148     -           36        
-mss_top_sb_0.CoreUARTapb_0_0.p_CtrlReg2Seq\.un13_psel_0_0                       CFG2        B                  In      -         4.724       -         
-mss_top_sb_0.CoreUARTapb_0_0.p_CtrlReg2Seq\.un13_psel_0_0                       CFG2        Y                  Out     0.164     4.888       -         
-un13_psel_0_0                                                                   Net         -                  -       0.770     -           6         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.m6                                 CFG4        D                  In      -         5.658       -         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.m6                                 CFG4        Y                  Out     0.470     6.128       -         
-un97_psel                                                                       Net         -                  -       1.046     -           31        
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_generated_2[1]              CFG3        B                  In      -         7.173       -         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_generated_2[1]              CFG3        Y                  Out     0.165     7.338       -         
-N_281                                                                           Net         -                  -       0.556     -           1         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_generated_3[1]              CFG3        B                  In      -         7.893       -         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_generated_3[1]              CFG3        Y                  Out     0.164     8.057       -         
-N_315                                                                           Net         -                  -       0.556     -           1         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_generated_3_RNIU4E82[1]     CFG4        D                  In      -         8.613       -         
-mss_top_sb_0.corepwm_0_0.xhdl58\.reg_if_inst.PRDATA_generated_3_RNIU4E82[1]     CFG4        Y                  Out     0.470     9.083       -         
-CoreAPB3_0_APBmslave2_PRDATA[1]                                                 Net         -                  -       0.556     -           1         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[1]                                 CFG4        C                  In      -         9.638       -         
-mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA[1]                                 CFG4        Y                  Out     0.210     9.848       -         
-mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[1]                                 Net         -                  -       1.117     -           1         
-mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                                    MSS_010     F_HM0_RDATA[1]     In      -         10.965      -         
-=======================================================================================================================================================
-Total path delay (propagation time + setup) of 11.336 is 5.589(49.3%) logic and 5.747(50.7%) route.
+Instance / Net                                                           Pin                Pin               Arrival     No. of    
+Name                                                         Type        Name               Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------------------------------------------------------
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                 MSS_010     F_HM0_ADDR[5]      Out     3.657     3.657       -         
+CoreAPB3_0_APBmslave0_PADDR[5]                               Net         -                  -       1.139     -           13        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_5[2]     CFG4        D                  In      -         4.796       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_5[2]     CFG4        Y                  Out     0.428     5.224       -         
+N_1134                                                       Net         -                  -       0.846     -           10        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_3[2]     CFG2        A                  In      -         6.070       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_o2_3[2]     CFG2        Y                  Out     0.077     6.147       -         
+N_1138                                                       Net         -                  -       0.861     -           11        
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_m2_e_1          CFG4        D                  In      -         7.008       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_m2_e_1          CFG4        Y                  Out     0.472     7.481       -         
+N_1742                                                       Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]        CFG4        A                  In      -         8.036       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_2[7]        CFG4        Y                  Out     0.087     8.123       -         
+PRDATA_3_0_2[7]                                              Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]        CFG4        D                  In      -         8.679       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0_4[7]        CFG4        Y                  Out     0.470     9.149       -         
+PRDATA_3_0_4[7]                                              Net         -                  -       0.556     -           1         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]          CFG4        D                  In      -         9.704       -         
+mss_top_sb_0.CoreAPB3_0.u_mux_p_to_b3.PRDATA_3_0[7]          CFG4        Y                  Out     0.470     10.174      -         
+mss_top_sb_MSS_TMP_0_FIC_0_APB_MASTER_PRDATA[7]              Net         -                  -       1.117     -           1         
+mss_top_sb_0.mss_top_sb_MSS_0.MSS_ADLIB_INST                 MSS_010     F_HM0_RDATA[7]     In      -         11.291      -         
+====================================================================================================================================
+Total path delay (propagation time + setup) of 11.569 is 5.939(51.3%) logic and 5.630(48.7%) route.
 Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
 
 
@@ -655,17 +680,17 @@ INV             4 uses
 MSS_010         1 use
 OR3             6 uses
 RCOSC_25_50MHZ  1 use
-CFG1           32 uses
-CFG2           144 uses
-CFG3           310 uses
-CFG4           457 uses
+CFG1           31 uses
+CFG2           223 uses
+CFG3           203 uses
+CFG4           542 uses
 
 Carry primitives used for arithmetic functions:
-ARI1           264 uses
+ARI1           266 uses
 
 
 Sequential Cells: 
-SLE            664 uses
+SLE            673 uses
 
 DSP Blocks:    0
 
@@ -683,7 +708,7 @@ Global Clock Buffers: 2
 RAM/ROM usage summary
 Block Rams (RAM64x18) : 4
 
-Total LUTs:    1207
+Total LUTs:    1265
 
 Extra resources required for RAM and MACC interface logic during P&R:
 
@@ -691,14 +716,14 @@ RAM64x18 Interface Logic : SLEs = 144; LUTs = 144;
 RAM1K18  Interface Logic : SLEs = 0; LUTs = 0;
 MACC     Interface Logic : SLEs = 0; LUTs = 0;
 
-Total number of SLEs after P&R:  664 + 144 + 0 + 0 = 808;
-Total number of LUTs after P&R:  1207 + 144 + 0 + 0 = 1351;
+Total number of SLEs after P&R:  673 + 144 + 0 + 0 = 817;
+Total number of LUTs after P&R:  1265 + 144 + 0 + 0 = 1409;
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:16s; CPU Time elapsed 0h:00m:14s; Memory used current: 56MB peak: 220MB)
+At Mapper Exit (Real Time elapsed 0h:00m:18s; CPU Time elapsed 0h:00m:17s; Memory used current: 58MB peak: 206MB)
 
-Process took 0h:00m:16s realtime, 0h:00m:14s cputime
-# Mon Jan 25 23:54:56 2016
+Process took 0h:00m:18s realtime, 0h:00m:17s cputime
+# Wed Jan 27 18:31:09 2016
 
 ###########################################################]

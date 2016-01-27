@@ -2,7 +2,7 @@
 <device>
   <name>mss_top</name>
   <version>1.0</version>
-  <description>CMSIS description for mss_top.  Created by Microsemi SmartDesign on Mon Jan 25 23:59:36 2016</description>
+  <description>CMSIS description for mss_top.  Created by Microsemi SmartDesign on Wed Jan 27 18:37:05 2016</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>
@@ -356,8 +356,12 @@
       <baseAddress>0x50001000%0x30001000</baseAddress>
     </peripheral>
     <peripheral>
-      <name>corepwm_0_0</name>
+      <name>CoreUARTapb_1_0</name>
       <baseAddress>0x50002000%0x30002000</baseAddress>
+    </peripheral>
+    <peripheral>
+      <name>corepwm_0_0</name>
+      <baseAddress>0x50003000%0x30003000</baseAddress>
       <addressBlock>
         <offset>0x00000000</offset>
         <size>0x100</size>
@@ -935,10 +939,6 @@
           </fields>
         </register>
       </registers>
-    </peripheral>
-    <peripheral>
-      <name>CoreUARTapb_1_0</name>
-      <baseAddress>0x50003000%0x30003000</baseAddress>
     </peripheral>
     <peripheral>
       <name>CACHE_BACKDOOR</name>

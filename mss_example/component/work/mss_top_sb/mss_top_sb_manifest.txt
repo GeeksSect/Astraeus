@@ -1,6 +1,6 @@
 Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)
 
-Date      :  Mon Jan 25 23:53:31 2016
+Date      :  Wed Jan 27 18:28:32 2016
 Project   :  C:\Users\vetal\Documents\copter\Astraeus\mss_example
 Component :  mss_top_sb
 Family    :  SmartFusion2

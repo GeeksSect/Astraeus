@@ -1,7 +1,7 @@
 
 
 @S |##### START OF TIMING REPORT #####[
-# Timing Report written on Mon Jan 25 23:54:56 2016
+# Timing Report written on Wed Jan 27 18:31:08 2016
 #
 
 
@@ -25,7 +25,7 @@ Worst slack in design: 0.362
                                                  Requested     Estimated     Requested     Estimated                Clock        Clock              
 Starting Clock                                   Frequency     Frequency     Period        Period        Slack      Type         Group              
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     100.0 MHz     86.8 MHz      10.000        11.520        -1.520     inferred     Inferred_clkgroup_0
+mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     100.0 MHz     84.6 MHz      10.000        11.825        -1.825     inferred     Inferred_clkgroup_0
 System                                           100.0 MHz     895.2 MHz     10.000        1.117         8.883      system       system_clkgroup    
 ====================================================================================================================================================
 
@@ -69,13 +69,13 @@ Instance                                                                        
 mss_top_sb_0.CORERESETP_0.FIC_2_APB_M_PRESET_N_q1                                                                       mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       FIC_2_APB_M_PRESET_N_q1     0.061       0.362
 mss_top_sb_0.CORERESETP_0.POWER_ON_RESET_N_q1                                                                           mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       POWER_ON_RESET_N_q1         0.061       0.362
 mss_top_sb_0.CORERESETP_0.RESET_N_M2F_q1                                                                                mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       RESET_N_M2F_q1              0.061       0.362
-mss_top_sb_0.CoreUARTapb_1_0.uUART.clear_framing_error_reg0                                                             mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       clear_parity_reg0           0.061       0.362
 mss_top_sb_0.CoreUARTapb_0_0.uUART.clear_framing_error_reg0                                                             mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       clear_parity_reg0           0.061       0.362
+mss_top_sb_0.CoreUARTapb_1_0.uUART.clear_framing_error_reg0                                                             mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       clear_parity_reg0           0.061       0.362
 mss_top_sb_0.CoreUARTapb_0_0.uUART.make_RX.clear_parity_en_xhdl3                                                        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       clear_parity_en             0.061       0.362
 mss_top_sb_0.CoreUARTapb_1_0.uUART.make_RX.clear_parity_en_xhdl3                                                        mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       clear_parity_en             0.061       0.362
-mss_top_sb_0.CoreUARTapb_1_0.uUART.UG07\.rx_fifo_xhdl80.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.data_out_xhdl1[0]     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       rx_dout[0]                  0.061       0.362
-mss_top_sb_0.CoreUARTapb_1_0.uUART.UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.data_out_xhdl1[0]     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       tx_dout_reg[0]              0.061       0.362
 mss_top_sb_0.CoreUARTapb_0_0.uUART.UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_0_0_fifo_128x8_pa4.data_out_xhdl1[0]     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       tx_dout_reg[0]              0.061       0.362
+mss_top_sb_0.CoreUARTapb_1_0.uUART.UG06\.tx_fifo_xhdl79.mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4.data_out_xhdl1[0]     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       tx_dout_reg[0]              0.061       0.362
+mss_top_sb_0.CoreUARTapb_0_0.uUART.UG07\.rx_fifo_xhdl80.mss_top_sb_CoreUARTapb_0_0_fifo_128x8_pa4.data_out_xhdl1[0]     mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     SLE      Q       rx_dout[0]                  0.061       0.362
 =======================================================================================================================================================================================================================================
 
 

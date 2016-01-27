@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon Jan 25 23:54:22 2016
+-- Created by SmartDesign Wed Jan 27 18:30:35 2016
 -- Version: v11.5 SP3 11.5.3.10
 ----------------------------------------------------------------------
 
@@ -127,18 +127,18 @@ mss_top_sb_0 : mss_top_sb
         -- Inputs
         FAB_RESET_N        => VCC_net,
         DEVRST_N           => DEVRST_N,
-        TACHIN(1)          => VCC_net,
         RX                 => RX,
         RX_0               => RX2,
+        TACHIN(1)          => VCC_net,
         -- Outputs
         POWER_ON_RESET_N   => OPEN,
         INIT_DONE          => OPEN,
         FAB_CCC_GL0        => OPEN,
         FAB_CCC_LOCK       => OPEN,
         MSS_READY          => OPEN,
-        PWM                => mss_top_sb_0_PWM,
         TX                 => TX_net_0,
         TX_0               => TX2_net_0,
+        PWM                => mss_top_sb_0_PWM,
         -- Inouts
         COREI2C_0_0_SDA_IO => COREI2C_0_0_SDA_IO,
         COREI2C_0_0_SCL_IO => COREI2C_0_0_SCL_IO 

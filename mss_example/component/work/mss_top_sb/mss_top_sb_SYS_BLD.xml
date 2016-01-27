@@ -2071,7 +2071,7 @@
 </row>
 <row>
  <cell>GL0_OUT_0_FREQ</cell>
- <cell>70</cell>
+ <cell>50</cell>
 </row>
 <row>
  <cell>GL1_IS_USED</cell>
@@ -2099,7 +2099,7 @@
 </row>
 <row>
  <cell>M3CLK_FREQUENCY</cell>
- <cell>70</cell>
+ <cell>50</cell>
 </row>
 <row>
  <cell>MDDRCLK_RATIO</cell>
@@ -3087,7 +3087,7 @@
 </row>
 <row>
  <cell>BAUD_RATE_VALUE</cell>
- <cell>0</cell>
+ <cell>3</cell>
 </row>
 <row>
  <cell>BCLK_ENABLED</cell>
@@ -3170,15 +3170,15 @@
 </header>
 <row>
  <cell>BAUD_VAL_FRCTN</cell>
- <cell>0</cell>
+ <cell>1</cell>
 </row>
 <row>
  <cell>BAUD_VAL_FRCTN_EN</cell>
- <cell>false</cell>
+ <cell>true</cell>
 </row>
 <row>
  <cell>BAUD_VALUE</cell>
- <cell>37</cell>
+ <cell>26</cell>
 </row>
 <row>
  <cell>FAMILY</cell>
@@ -3249,15 +3249,15 @@
 </header>
 <row>
  <cell>BAUD_VAL_FRCTN</cell>
- <cell>0</cell>
+ <cell>1</cell>
 </row>
 <row>
  <cell>BAUD_VAL_FRCTN_EN</cell>
- <cell>false</cell>
+ <cell>true</cell>
 </row>
 <row>
  <cell>BAUD_VALUE</cell>
- <cell>37</cell>
+ <cell>26</cell>
 </row>
 <row>
  <cell>FAMILY</cell>
@@ -3909,12 +3909,12 @@
  <cell>TXRDY, RXRDY, PARITY_ERR, OVERFLOW, FRAMING_ERR</cell>
 </row>
 <row>
- <cell>mss_top_sb_MSS_0:MSS_INT_F2M[3]</cell>
+ <cell>mss_top_sb_MSS_0:MSS_INT_F2M[2]</cell>
  <cell>CoreUARTapb_1_0</cell>
  <cell>TXRDY, RXRDY, PARITY_ERR, OVERFLOW, FRAMING_ERR</cell>
 </row>
 <row>
- <cell>mss_top_sb_MSS_0:MSS_INT_F2M[2]</cell>
+ <cell>mss_top_sb_MSS_0:MSS_INT_F2M[3]</cell>
  <cell>corepwm_0_0</cell>
  <cell>TACHINT</cell>
 </row>

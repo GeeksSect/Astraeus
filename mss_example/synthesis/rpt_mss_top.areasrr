@@ -11,9 +11,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      664                100 %                
+SLE      673                100 %                
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top:	664 (31.80 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top:	673 (31.23 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -21,12 +21,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           943                100 %                
-ARI1          264                100 %                
+CFG           999                100 %                
+ARI1          266                100 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     131                100 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top:	1338 (64.08 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top:	1396 (64.78 % Utilization)
 
 
 DSP
@@ -57,7 +57,7 @@ Name       Total elements     Utilization     Notes
 ---------------------------------------------------
 GLOBAL     2                  100 %                
 ===================================================
-Total GLOBAL BUFFERS in the block mss_top:	2 (0.10 % Utilization)
+Total GLOBAL BUFFERS in the block mss_top:	2 (0.09 % Utilization)
 
 
 IO PADS
@@ -67,7 +67,7 @@ Name     Total elements     Utilization     Notes
 -------------------------------------------------
 IO       12                 100 %                
 =================================================
-Total IO PADS in the block mss_top:	12 (0.57 % Utilization)
+Total IO PADS in the block mss_top:	12 (0.56 % Utilization)
 
 ----------------------------------------------------------------
 ########   Utilization report for  cell:   mss_top_sb   ########
@@ -79,9 +79,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      664                100 %                
+SLE      673                100 %                
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top.mss_top_sb:	664 (31.80 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top.mss_top_sb:	673 (31.23 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -89,12 +89,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           943                100 %                
-ARI1          264                100 %                
+CFG           999                100 %                
+ARI1          266                100 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     131                100 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top.mss_top_sb:	1338 (64.08 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top.mss_top_sb:	1396 (64.78 % Utilization)
 
 
 DSP
@@ -125,7 +125,7 @@ Name       Total elements     Utilization     Notes
 ---------------------------------------------------
 GLOBAL     2                  100 %                
 ===================================================
-Total GLOBAL BUFFERS in the block mss_top.mss_top_sb:	2 (0.10 % Utilization)
+Total GLOBAL BUFFERS in the block mss_top.mss_top_sb:	2 (0.09 % Utilization)
 
 
 IO PADS
@@ -147,9 +147,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      86                 13. %                
+SLE      86                 12.8 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.COREI2C:	86 (4.12 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.COREI2C:	86 (3.99 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -157,12 +157,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           340                36.1 %               
+CFG           335                33.5 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     4                  3.05 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.COREI2C:	344 (16.48 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.COREI2C:	339 (15.73 % Utilization)
 
 
 DSP
@@ -215,9 +215,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      86                 13. %                
+SLE      86                 12.8 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block COREI2C.COREI2CREAL:	86 (4.12 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block COREI2C.COREI2CREAL:	86 (3.99 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -225,12 +225,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           337                35.7 %               
+CFG           335                33.5 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     4                  3.05 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block COREI2C.COREI2CREAL:	341 (16.33 % Utilization)
+Total COMBINATIONAL LOGIC in the block COREI2C.COREI2CREAL:	339 (15.73 % Utilization)
 
 
 DSP
@@ -293,12 +293,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           63                 6.68 %               
+CFG           207                20.7 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreAPB3:	63 (3.02 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreAPB3:	207 (9.61 % Utilization)
 
 
 DSP
@@ -361,12 +361,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           58                 6.15 %               
+CFG           207                20.7 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block CoreAPB3.COREAPB3_MUXPTOB3:	58 (2.78 % Utilization)
+Total COMBINATIONAL LOGIC in the block CoreAPB3.COREAPB3_MUXPTOB3:	207 (9.61 % Utilization)
 
 
 DSP
@@ -419,9 +419,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      9                  1.36 %               
+SLE      9                  1.34 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.CoreResetP:	9 (0.43 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.CoreResetP:	9 (0.42 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -429,12 +429,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           2                  0.2120 %             
+CFG           2                  0.20 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     96                 73.3 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreResetP:	98 (4.69 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.CoreResetP:	98 (4.55 % Utilization)
 
 
 DSP
@@ -487,9 +487,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      205                30.9 %               
+SLE      205                30.5 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.corepwm:	205 (9.82 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.corepwm:	205 (9.51 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -497,12 +497,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           287                30.4 %               
-ARI1          152                57.6 %               
+CFG           154                15.4 %               
+ARI1          152                57.1 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.corepwm:	439 (21.02 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.corepwm:	306 (14.20 % Utilization)
 
 
 DSP
@@ -555,7 +555,7 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      4                  0.6020 %             
+SLE      4                  0.5940 %             
 =================================================
 Total SEQUENTIAL ELEMENTS in the block corepwm.pwm_gen:	4 (0.19 % Utilization)
 
@@ -565,12 +565,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           65                 6.89 %               
-ARI1          64                 24.2 %               
+CFG           60                 6.01 %               
+ARI1          64                 24.1 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block corepwm.pwm_gen:	129 (6.18 % Utilization)
+Total COMBINATIONAL LOGIC in the block corepwm.pwm_gen:	124 (5.75 % Utilization)
 
 
 DSP
@@ -623,9 +623,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      133                20. %                
+SLE      133                19.8 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block corepwm.reg_if:	133 (6.37 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block corepwm.reg_if:	133 (6.17 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -633,12 +633,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           136                14.4 %               
+CFG           7                  0.7010 %             
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block corepwm.reg_if:	136 (6.51 % Utilization)
+Total COMBINATIONAL LOGIC in the block corepwm.reg_if:	7 (0.32 % Utilization)
 
 
 DSP
@@ -691,9 +691,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      64                 9.64 %               
+SLE      64                 9.51 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block corepwm.timebase:	64 (3.07 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block corepwm.timebase:	64 (2.97 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -701,12 +701,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           81                 8.59 %               
-ARI1          88                 33.3 %               
+CFG           86                 8.61 %               
+ARI1          88                 33.1 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block corepwm.timebase:	169 (8.09 % Utilization)
+Total COMBINATIONAL LOGIC in the block corepwm.timebase:	174 (8.07 % Utilization)
 
 
 DSP
@@ -774,7 +774,7 @@ ARI1          0                  0.0 %
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CCC_0_FCCC:	2 (0.10 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CCC_0_FCCC:	2 (0.09 % Utilization)
 
 
 DSP
@@ -827,9 +827,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      182                27.4 %               
+SLE      186                27.6 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	182 (8.72 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	186 (8.63 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -837,12 +837,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           134                14.2 %               
-ARI1          56                 21.2 %               
+CFG           150                15. %                
+ARI1          57                 21.4 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     11                 8.4 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	201 (9.63 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CoreUARTapb_0_0_CoreUARTapb:	218 (10.12 % Utilization)
 
 
 DSP
@@ -895,9 +895,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      158                23.8 %               
+SLE      159                23.6 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	158 (7.57 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	159 (7.38 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -905,12 +905,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           112                11.9 %               
-ARI1          56                 21.2 %               
+CFG           121                12.1 %               
+ARI1          57                 21.4 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     11                 8.4 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	179 (8.57 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_CoreUARTapb.mss_top_sb_CoreUARTapb_0_0_COREUART:	189 (8.77 % Utilization)
 
 
 DSP
@@ -963,9 +963,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      19                 2.86 %               
+SLE      20                 2.97 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	19 (0.91 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	20 (0.93 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -973,12 +973,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           14                 1.48 %               
-ARI1          14                 5.3 %                
+CFG           28                 2.8 %                
+ARI1          15                 5.64 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	28 (1.34 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Clock_gen:	43 (2.00 % Utilization)
 
 
 DSP
@@ -1031,9 +1031,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      34                 5.12 %               
+SLE      34                 5.05 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	34 (1.63 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	34 (1.58 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1041,12 +1041,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           46                 4.88 %               
+CFG           38                 3.8 %                
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     4                  3.05 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	50 (2.39 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Rx_async:	42 (1.95 % Utilization)
 
 
 DSP
@@ -1099,9 +1099,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      21                 3.16 %               
+SLE      21                 3.12 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	21 (1.01 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	21 (0.97 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1109,12 +1109,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           24                 2.55 %               
+CFG           23                 2.3 %                
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	26 (1.25 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_Tx_async:	25 (1.16 % Utilization)
 
 
 DSP
@@ -1167,9 +1167,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      30                 4.46 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8:	30 (1.39 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1177,12 +1177,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           6                  0.6360 %             
-ARI1          21                 7.95 %               
+CFG           6                  0.6010 %             
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8:	29 (1.39 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8:	29 (1.35 % Utilization)
 
 
 DSP
@@ -1235,9 +1235,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      30                 4.46 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128:	30 (1.39 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1245,12 +1245,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           6                  0.6360 %             
-ARI1          21                 7.95 %               
+CFG           6                  0.6010 %             
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128:	29 (1.39 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128:	29 (1.35 % Utilization)
 
 
 DSP
@@ -1318,7 +1318,7 @@ ARI1          0                  0.0 %
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128.mss_top_sb_CoreUARTapb_0_0_ram128x8_pa4:	2 (0.10 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128.mss_top_sb_CoreUARTapb_0_0_ram128x8_pa4:	2 (0.09 % Utilization)
 
 
 DSP
@@ -1371,9 +1371,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      30                 4.46 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0:	30 (1.39 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1381,12 +1381,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           9                  0.9540 %             
-ARI1          21                 7.95 %               
+CFG           11                 1.1 %                
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0:	32 (1.53 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_COREUART.mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0:	34 (1.58 % Utilization)
 
 
 DSP
@@ -1439,9 +1439,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      30                 4.46 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128_0:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128_0:	30 (1.39 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1449,12 +1449,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           9                  0.9540 %             
-ARI1          21                 7.95 %               
+CFG           11                 1.1 %                
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128_0:	32 (1.53 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128_0:	34 (1.58 % Utilization)
 
 
 DSP
@@ -1517,12 +1517,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           0                  0.0 %                
+CFG           1                  0.10 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128_0.mss_top_sb_CoreUARTapb_0_0_ram128x8_pa4_0:	2 (0.10 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_0_0_fifo_ctrl_128_0.mss_top_sb_CoreUARTapb_0_0_ram128x8_pa4_0:	3 (0.14 % Utilization)
 
 
 DSP
@@ -1575,9 +1575,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      182                27.4 %               
+SLE      187                27.8 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb.mss_top_sb_CoreUARTapb_1_0_CoreUARTapb:	182 (8.72 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb.mss_top_sb_CoreUARTapb_1_0_CoreUARTapb:	187 (8.68 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1585,12 +1585,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           117                12.4 %               
-ARI1          56                 21.2 %               
+CFG           151                15.1 %               
+ARI1          57                 21.4 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     11                 8.4 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CoreUARTapb_1_0_CoreUARTapb:	184 (8.81 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb.mss_top_sb_CoreUARTapb_1_0_CoreUARTapb:	219 (10.16 % Utilization)
 
 
 DSP
@@ -1643,9 +1643,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      158                23.8 %               
+SLE      160                23.8 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_CoreUARTapb.mss_top_sb_CoreUARTapb_1_0_COREUART:	158 (7.57 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_CoreUARTapb.mss_top_sb_CoreUARTapb_1_0_COREUART:	160 (7.42 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1653,12 +1653,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           100                10.6 %               
-ARI1          56                 21.2 %               
+CFG           125                12.5 %               
+ARI1          57                 21.4 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     11                 8.4 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_CoreUARTapb.mss_top_sb_CoreUARTapb_1_0_COREUART:	167 (8.00 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_CoreUARTapb.mss_top_sb_CoreUARTapb_1_0_COREUART:	193 (8.96 % Utilization)
 
 
 DSP
@@ -1711,9 +1711,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      19                 2.86 %               
+SLE      20                 2.97 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Clock_gen:	19 (0.91 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Clock_gen:	20 (0.93 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1721,12 +1721,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           14                 1.48 %               
-ARI1          14                 5.3 %                
+CFG           28                 2.8 %                
+ARI1          15                 5.64 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     0                  0.0 %                
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Clock_gen:	28 (1.34 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Clock_gen:	43 (2.00 % Utilization)
 
 
 DSP
@@ -1779,9 +1779,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      34                 5.12 %               
+SLE      34                 5.05 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Rx_async:	34 (1.63 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Rx_async:	34 (1.58 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1789,12 +1789,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           34                 3.61 %               
+CFG           37                 3.7 %                
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     4                  3.05 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Rx_async:	38 (1.82 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Rx_async:	41 (1.90 % Utilization)
 
 
 DSP
@@ -1847,9 +1847,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      21                 3.16 %               
+SLE      21                 3.12 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Tx_async:	21 (1.01 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Tx_async:	21 (0.97 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1857,12 +1857,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           24                 2.55 %               
+CFG           23                 2.3 %                
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Tx_async:	26 (1.25 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_Tx_async:	25 (1.16 % Utilization)
 
 
 DSP
@@ -1915,9 +1915,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      30                 4.46 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8:	30 (1.39 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1925,12 +1925,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           6                  0.6360 %             
-ARI1          21                 7.95 %               
+CFG           6                  0.6010 %             
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8:	29 (1.39 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8:	29 (1.35 % Utilization)
 
 
 DSP
@@ -1983,9 +1983,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      30                 4.46 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128:	30 (1.39 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -1993,12 +1993,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           6                  0.6360 %             
-ARI1          21                 7.95 %               
+CFG           6                  0.6010 %             
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128:	29 (1.39 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128:	29 (1.35 % Utilization)
 
 
 DSP
@@ -2066,7 +2066,7 @@ ARI1          0                  0.0 %
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128.mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4:	2 (0.10 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128.mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4:	2 (0.09 % Utilization)
 
 
 DSP
@@ -2119,9 +2119,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      31                 4.61 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0:	31 (1.44 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -2129,12 +2129,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           9                  0.9540 %             
-ARI1          21                 7.95 %               
+CFG           14                 1.4 %                
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0:	32 (1.53 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_COREUART.mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0:	37 (1.72 % Utilization)
 
 
 DSP
@@ -2187,9 +2187,9 @@ SEQUENTIAL ELEMENTS
 
 Name     Total elements     Utilization     Notes
 -------------------------------------------------
-SLE      30                 4.52 %               
+SLE      31                 4.61 %               
 =================================================
-Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128_0:	30 (1.44 % Utilization)
+Total SEQUENTIAL ELEMENTS in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128_0:	31 (1.44 % Utilization)
 
 
 COMBINATIONAL LOGIC
@@ -2197,12 +2197,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           9                  0.9540 %             
-ARI1          21                 7.95 %               
+CFG           14                 1.4 %                
+ARI1          21                 7.89 %               
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128_0:	32 (1.53 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_256x8_0.mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128_0:	37 (1.72 % Utilization)
 
 
 DSP
@@ -2265,12 +2265,12 @@ COMBINATIONAL LOGIC
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-CFG           0                  0.0 %                
+CFG           1                  0.10 %               
 ARI1          0                  0.0 %                
 BUFFER        0                  0.0 %                
 BLACK BOX     2                  1.53 %               
 ======================================================
-Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128_0.mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4_0:	2 (0.10 % Utilization)
+Total COMBINATIONAL LOGIC in the block mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128_0.mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4_0:	3 (0.14 % Utilization)
 
 
 DSP

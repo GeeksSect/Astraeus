@@ -18,7 +18,7 @@ Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0
 Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 109MB peak: 112MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 109MB peak: 112MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 110MB peak: 112MB)
 
 @W: BN132 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance mss_top_sb_0.CORERESETP_0.MDDR_DDR_AXI_S_CORE_RESET_N_int,  because it is equivalent to instance mss_top_sb_0.CORERESETP_0.FDDR_CORE_RESET_N_int
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\coreresetp\7.0.104\rtl\vhdl\core\coreresetp.vhd":1059:8:1059:9|Removing sequential instance DDR_READY_int of view:PrimLib.dffre(prim) in hierarchy view:work.CoreResetP(rtl) because there are no references to its outputs 
@@ -110,15 +110,15 @@ System                                           1.0 MHz       1000.000      sys
 mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock     100.0 MHz     10.000        inferred     Inferred_clkgroup_0
 =============================================================================================================
 
-@W: MT530 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":2045:4:2045:5|Found inferred clock mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock which controls 688 sequential elements including mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.fsmsta[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+@W: MT530 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\actel\directcore\corei2c\7.0.102\rtl\vhdl\core\corei2creal.vhd":2045:4:2045:5|Found inferred clock mss_top_sb_CCC_0_FCCC|GL0_net_inferred_clock which controls 696 sequential elements including mss_top_sb_0.COREI2C_0_0.G0a\.0\.ui2c.fsmsta[4:0]. This clock has no specified timing constraint which may adversely impact design performance. 
 
 Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\mss_top.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 73MB peak: 139MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 73MB peak: 139MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:01s cputime
-# Mon Jan 25 23:54:39 2016
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Wed Jan 27 18:30:50 2016
 
 ###########################################################]

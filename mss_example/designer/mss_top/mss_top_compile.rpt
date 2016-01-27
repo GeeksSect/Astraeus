@@ -1,6 +1,6 @@
 Compile Report
 Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)
-Date: Mon Jan 25 23:55:10 2016
+Date: Wed Jan 27 18:31:27 2016
 
 Device Selection
 +--------------------------------+----------------+
@@ -38,8 +38,8 @@ Resource Usage
 +---------------------------+------+-------+------------+
 | Type                      | Used | Total | Percentage |
 +---------------------------+------+-------+------------+
-| 4LUT                      | 1361 | 12084 | 11.26      |
-| DFF                       | 808  | 12084 | 6.69       |
+| 4LUT                      | 1418 | 12084 | 11.73      |
+| DFF                       | 817  | 12084 | 6.76       |
 | I/O Register              | 0    | 252   | 0.00       |
 | User I/O                  | 10   | 84    | 11.90      |
 | -- Single-ended I/O       | 10   | 84    | 11.90      |
@@ -59,11 +59,11 @@ Detailed Logic Resource Usage
 +--------------------------+------+-----+
 | Type                     | 4LUT | DFF |
 +--------------------------+------+-----+
-| Fabric Logic             | 1217 | 664 |
+| Fabric Logic             | 1274 | 673 |
 | RAM64x18 Interface Logic | 144  | 144 |
 | RAM1K18 Interface Logic  | 0    | 0   |
 | MACC Interface Logic     | 0    | 0   |
-| Total Used               | 1361 | 808 |
+| Total Used               | 1418 | 817 |
 +--------------------------+------+-----+
 
 MSS Resource Usage
@@ -90,13 +90,14 @@ MSS Resource Usage
 Detailed Carry Chains Resource Usage
 +--------+------+
 | Length | Used |
-| 7      | 12   |
+| 7      | 14   |
+| 8      | 2    |
 | 9      | 2    |
 | 11     | 2    |
 | 13     | 2    |
-| 14     | 4    |
+| 14     | 2    |
 | 17     | 4    |
-| Total  | 26   |
+| Total  | 28   |
 +--------+------+
 
 I/O Function
@@ -130,10 +131,10 @@ Nets assigned to chip global resources
 +--------+---------+----------------------------------------------------------------------+
 | Fanout | Type    | Name                                                                 |
 +--------+---------+----------------------------------------------------------------------+
-| 673    | INT_NET | Net   : mss_top_sb_0/FAB_CCC_GL0                                     |
+| 682    | INT_NET | Net   : mss_top_sb_0/FAB_CCC_GL0                                     |
 |        |         | Driver: mss_top_sb_0/CCC_0/GL0_INST/U0_RGB1                          |
 |        |         | Source: NETLIST                                                      |
-| 627    | INT_NET | Net   : mss_top_sb_0/MSS_READY                                       |
+| 636    | INT_NET | Net   : mss_top_sb_0/MSS_READY                                       |
 |        |         | Driver: mss_top_sb_0/CORERESETP_0/MSS_HPMS_READY_int_RNINJS6/U0_RGB1 |
 |        |         | Source: NETLIST                                                      |
 +--------+---------+----------------------------------------------------------------------+
@@ -145,54 +146,54 @@ Nets assigned to row global resources
 +--------+------+------+
 
 High fanout nets
-+--------+---------+------------------------------------------------------------------------------------------------------------------------------+
-| Fanout | Type    | Name                                                                                                                         |
-+--------+---------+------------------------------------------------------------------------------------------------------------------------------+
-| 45     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[4]                                                                          |
-|        |         | Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST                                                                         |
-| 39     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave2_PSELx                                                                             |
-|        |         | Driver: mss_top_sb_0/CoreAPB3_0/iPSELS_raw[2]                                                                                |
-| 37     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[2]                                                                          |
-|        |         | Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST                                                                         |
-| 37     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/N_114                                                                                       |
-|        |         | Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/prescale_cnt_RNICIEF8[0]                                                  |
-| 36     | INT_NET | Net   : mss_top_sb_0/N_26_0                                                                                                  |
-|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/m25_0                                                                    |
-| 36     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[3]                                                                          |
-|        |         | Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST                                                                         |
-| 36     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]                                                                        |
-|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]                                                                        |
-| 34     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                                                        |
-|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                                                        |
-| 34     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/N_204                                                                                       |
-|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl63.pwm_gen_inst/PWM_output_select.1.PWM_output_generation.un14_pwm_enable_reg_NE_i_i_o2 |
-| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                                                        |
-|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                                                        |
-+--------+---------+------------------------------------------------------------------------------------------------------------------------------+
++--------+---------+------------------------------------------------------------------------------------------+
+| Fanout | Type    | Name                                                                                     |
++--------+---------+------------------------------------------------------------------------------------------+
+| 40     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/N_2065                                                  |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/prescale_cnt_RNICIEF8[0]              |
+| 36     | INT_NET | Net   : mss_top_sb_0/PRDATA_0_0_a2_5_out                                                 |
+|        |         | Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_0_0_a2_5_s[9]                       |
+| 35     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0_INT[0]                                                  |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/sercon[3]                                    |
+| 34     | INT_NET | Net   : mss_top_sb_0/PRDATA_m1_e_1                                                       |
+|        |         | Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_3_0_o2_2_s_RNI83HG_0[2]             |
+| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                    |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                    |
+| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]                                    |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]                                    |
+| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                    |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                    |
+| 33     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/N_2006                                |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/period_cnt_int7_i_a2                  |
+| 32     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa             |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_0_a2_0_a2   |
+| 32     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1           |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1_0_a2_0_a2 |
++--------+---------+------------------------------------------------------------------------------------------+
 
 High fanout nets (through buffer trees)
-+--------+---------+------------------------------------------------------------------------------------------------------------------------------+
-| Fanout | Type    | Name                                                                                                                         |
-+--------+---------+------------------------------------------------------------------------------------------------------------------------------+
-| 45     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[4]                                                                          |
-|        |         | Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST                                                                         |
-| 39     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave2_PSELx                                                                             |
-|        |         | Driver: mss_top_sb_0/CoreAPB3_0/iPSELS_raw[2]                                                                                |
-| 37     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[2]                                                                          |
-|        |         | Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST                                                                         |
-| 37     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/N_114                                                                                       |
-|        |         | Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/prescale_cnt_RNICIEF8[0]                                                  |
-| 36     | INT_NET | Net   : mss_top_sb_0/N_26_0                                                                                                  |
-|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/m25_0                                                                    |
-| 36     | INT_NET | Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[3]                                                                          |
-|        |         | Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST                                                                         |
-| 36     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]                                                                        |
-|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]                                                                        |
-| 34     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                                                        |
-|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                                                        |
-| 34     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/N_204                                                                                       |
-|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl63.pwm_gen_inst/PWM_output_select.1.PWM_output_generation.un14_pwm_enable_reg_NE_i_i_o2 |
-| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                                                        |
-|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                                                        |
-+--------+---------+------------------------------------------------------------------------------------------------------------------------------+
++--------+---------+------------------------------------------------------------------------------------------+
+| Fanout | Type    | Name                                                                                     |
++--------+---------+------------------------------------------------------------------------------------------+
+| 40     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/N_2065                                                  |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/prescale_cnt_RNICIEF8[0]              |
+| 36     | INT_NET | Net   : mss_top_sb_0/PRDATA_0_0_a2_5_out                                                 |
+|        |         | Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_0_0_a2_5_s[9]                       |
+| 35     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0_INT[0]                                                  |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/sercon[3]                                    |
+| 34     | INT_NET | Net   : mss_top_sb_0/PRDATA_m1_e_1                                                       |
+|        |         | Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_3_0_o2_2_s_RNI83HG_0[2]             |
+| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                    |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]                                    |
+| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]                                    |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]                                    |
+| 33     | INT_NET | Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                    |
+|        |         | Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]                                    |
+| 33     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/N_2006                                |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/period_cnt_int7_i_a2                  |
+| 32     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa             |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_0_a2_0_a2   |
+| 32     | INT_NET | Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1           |
+|        |         | Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1_0_a2_0_a2 |
++--------+---------+------------------------------------------------------------------------------------------+
 

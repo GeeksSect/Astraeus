@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by SmartDesign Mon Jan 25 23:53:24 2016
+-- Created by SmartDesign Wed Jan 27 18:28:25 2016
 -- Version: v11.5 SP3 11.5.3.10
 ----------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ component COREI2C
     generic( 
         ADD_SLAVE1_ADDRESS_EN   : integer := 0 ;
         BAUD_RATE_FIXED         : integer := 1 ;
-        BAUD_RATE_VALUE         : integer := 0 ;
+        BAUD_RATE_VALUE         : integer := 3 ;
         BCLK_ENABLED            : integer := 0 ;
         FIXED_SLAVE0_ADDR_EN    : integer := 1 ;
         FIXED_SLAVE0_ADDR_VALUE : integer := 16#42# ;
@@ -390,9 +390,9 @@ end component;
 -- mss_top_sb_CoreUARTapb_0_0_CoreUARTapb   -   Actel:DirectCore:CoreUARTapb:5.2.2
 component mss_top_sb_CoreUARTapb_0_0_CoreUARTapb
     generic( 
-        BAUD_VAL_FRCTN    : integer := 0 ;
-        BAUD_VAL_FRCTN_EN : integer := 0 ;
-        BAUD_VALUE        : integer := 37 ;
+        BAUD_VAL_FRCTN    : integer := 1 ;
+        BAUD_VAL_FRCTN_EN : integer := 1 ;
+        BAUD_VALUE        : integer := 26 ;
         FAMILY            : integer := 19 ;
         FIXEDMODE         : integer := 1 ;
         PRG_BIT8          : integer := 1 ;
@@ -439,9 +439,9 @@ end component;
 -- mss_top_sb_CoreUARTapb_1_0_CoreUARTapb   -   Actel:DirectCore:CoreUARTapb:5.2.2
 component mss_top_sb_CoreUARTapb_1_0_CoreUARTapb
     generic( 
-        BAUD_VAL_FRCTN    : integer := 0 ;
-        BAUD_VAL_FRCTN_EN : integer := 0 ;
-        BAUD_VALUE        : integer := 37 ;
+        BAUD_VAL_FRCTN    : integer := 1 ;
+        BAUD_VAL_FRCTN_EN : integer := 1 ;
+        BAUD_VALUE        : integer := 26 ;
         FAMILY            : integer := 19 ;
         FIXEDMODE         : integer := 1 ;
         PRG_BIT8          : integer := 1 ;
@@ -540,10 +540,10 @@ signal CoreAPB3_0_APBmslave0_PWRITE                       : std_logic;
 signal CoreAPB3_0_APBmslave1_PREADY                       : std_logic;
 signal CoreAPB3_0_APBmslave1_PSELx                        : std_logic;
 signal CoreAPB3_0_APBmslave1_PSLVERR                      : std_logic;
-signal CoreAPB3_0_APBmslave2_PRDATA                       : std_logic_vector(31 downto 0);
 signal CoreAPB3_0_APBmslave2_PREADY                       : std_logic;
 signal CoreAPB3_0_APBmslave2_PSELx                        : std_logic;
 signal CoreAPB3_0_APBmslave2_PSLVERR                      : std_logic;
+signal CoreAPB3_0_APBmslave3_PRDATA                       : std_logic_vector(31 downto 0);
 signal CoreAPB3_0_APBmslave3_PREADY                       : std_logic;
 signal CoreAPB3_0_APBmslave3_PSELx                        : std_logic;
 signal CoreAPB3_0_APBmslave3_PSLVERR                      : std_logic;
@@ -631,38 +631,38 @@ signal E_IN_POST_INV1_0                                   : std_logic;
 ----------------------------------------------------------------------
 -- Bus Interface Nets Declarations - Unequal Pin Widths
 ----------------------------------------------------------------------
+signal CoreAPB3_0_APBmslave0_PADDR_2_4to0                 : std_logic_vector(4 downto 0);
+signal CoreAPB3_0_APBmslave0_PADDR_2                      : std_logic_vector(4 downto 0);
+signal CoreAPB3_0_APBmslave0_PADDR                        : std_logic_vector(31 downto 0);
+signal CoreAPB3_0_APBmslave0_PADDR_3_7to0                 : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave0_PADDR_3                      : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave0_PADDR_1_4to0                 : std_logic_vector(4 downto 0);
 signal CoreAPB3_0_APBmslave0_PADDR_1                      : std_logic_vector(4 downto 0);
-signal CoreAPB3_0_APBmslave0_PADDR_3_4to0                 : std_logic_vector(4 downto 0);
-signal CoreAPB3_0_APBmslave0_PADDR_3                      : std_logic_vector(4 downto 0);
-signal CoreAPB3_0_APBmslave0_PADDR_2_7to0                 : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave0_PADDR_2                      : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave0_PADDR_0_8to0                 : std_logic_vector(8 downto 0);
 signal CoreAPB3_0_APBmslave0_PADDR_0                      : std_logic_vector(8 downto 0);
-signal CoreAPB3_0_APBmslave0_PADDR                        : std_logic_vector(31 downto 0);
 
-signal CoreAPB3_0_APBmslave0_PRDATA                       : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave0_PRDATA_0_31to8               : std_logic_vector(31 downto 8);
 signal CoreAPB3_0_APBmslave0_PRDATA_0_7to0                : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave0_PRDATA_0                     : std_logic_vector(31 downto 0);
+signal CoreAPB3_0_APBmslave0_PRDATA                       : std_logic_vector(7 downto 0);
 
-signal CoreAPB3_0_APBmslave0_PWDATA_0_7to0                : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave0_PWDATA_0                     : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave0_PWDATA_1_7to0                : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave0_PWDATA_1                     : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave0_PWDATA                       : std_logic_vector(31 downto 0);
 signal CoreAPB3_0_APBmslave0_PWDATA_2_7to0                : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave0_PWDATA_2                     : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave0_PWDATA                       : std_logic_vector(31 downto 0);
+signal CoreAPB3_0_APBmslave0_PWDATA_1_7to0                : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave0_PWDATA_1                     : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave0_PWDATA_0_7to0                : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave0_PWDATA_0                     : std_logic_vector(7 downto 0);
 
-signal CoreAPB3_0_APBmslave1_PRDATA                       : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave1_PRDATA_0_31to8               : std_logic_vector(31 downto 8);
 signal CoreAPB3_0_APBmslave1_PRDATA_0_7to0                : std_logic_vector(7 downto 0);
 signal CoreAPB3_0_APBmslave1_PRDATA_0                     : std_logic_vector(31 downto 0);
+signal CoreAPB3_0_APBmslave1_PRDATA                       : std_logic_vector(7 downto 0);
 
-signal CoreAPB3_0_APBmslave3_PRDATA                       : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave3_PRDATA_0_31to8               : std_logic_vector(31 downto 8);
-signal CoreAPB3_0_APBmslave3_PRDATA_0_7to0                : std_logic_vector(7 downto 0);
-signal CoreAPB3_0_APBmslave3_PRDATA_0                     : std_logic_vector(31 downto 0);
+signal CoreAPB3_0_APBmslave2_PRDATA                       : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave2_PRDATA_0_31to8               : std_logic_vector(31 downto 8);
+signal CoreAPB3_0_APBmslave2_PRDATA_0_7to0                : std_logic_vector(7 downto 0);
+signal CoreAPB3_0_APBmslave2_PRDATA_0                     : std_logic_vector(31 downto 0);
 
 
 begin
@@ -719,16 +719,16 @@ begin
 ----------------------------------------------------------------------
 -- Concatenation assignments
 ----------------------------------------------------------------------
- MSS_INT_F2M_net_0 <= ( '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & CoreUARTapb_1_0_intr_or_2_Y & corepwm_0_0_TACHINT & CoreUARTapb_0_0_intr_or_2_Y & COREI2C_0_0_INT(0) );
+ MSS_INT_F2M_net_0 <= ( '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & corepwm_0_0_TACHINT & CoreUARTapb_1_0_intr_or_2_Y & CoreUARTapb_0_0_intr_or_2_Y & COREI2C_0_0_INT(0) );
 ----------------------------------------------------------------------
 -- Bus Interface Nets Assignments - Unequal Pin Widths
 ----------------------------------------------------------------------
+ CoreAPB3_0_APBmslave0_PADDR_2_4to0(4 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(4 downto 0);
+ CoreAPB3_0_APBmslave0_PADDR_2 <= ( CoreAPB3_0_APBmslave0_PADDR_2_4to0(4 downto 0) );
+ CoreAPB3_0_APBmslave0_PADDR_3_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(7 downto 0);
+ CoreAPB3_0_APBmslave0_PADDR_3 <= ( CoreAPB3_0_APBmslave0_PADDR_3_7to0(7 downto 0) );
  CoreAPB3_0_APBmslave0_PADDR_1_4to0(4 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(4 downto 0);
  CoreAPB3_0_APBmslave0_PADDR_1 <= ( CoreAPB3_0_APBmslave0_PADDR_1_4to0(4 downto 0) );
- CoreAPB3_0_APBmslave0_PADDR_3_4to0(4 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(4 downto 0);
- CoreAPB3_0_APBmslave0_PADDR_3 <= ( CoreAPB3_0_APBmslave0_PADDR_3_4to0(4 downto 0) );
- CoreAPB3_0_APBmslave0_PADDR_2_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(7 downto 0);
- CoreAPB3_0_APBmslave0_PADDR_2 <= ( CoreAPB3_0_APBmslave0_PADDR_2_7to0(7 downto 0) );
  CoreAPB3_0_APBmslave0_PADDR_0_8to0(8 downto 0) <= CoreAPB3_0_APBmslave0_PADDR(8 downto 0);
  CoreAPB3_0_APBmslave0_PADDR_0 <= ( CoreAPB3_0_APBmslave0_PADDR_0_8to0(8 downto 0) );
 
@@ -736,20 +736,20 @@ begin
  CoreAPB3_0_APBmslave0_PRDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PRDATA(7 downto 0);
  CoreAPB3_0_APBmslave0_PRDATA_0 <= ( CoreAPB3_0_APBmslave0_PRDATA_0_31to8(31 downto 8) & CoreAPB3_0_APBmslave0_PRDATA_0_7to0(7 downto 0) );
 
- CoreAPB3_0_APBmslave0_PWDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PWDATA(7 downto 0);
- CoreAPB3_0_APBmslave0_PWDATA_0 <= ( CoreAPB3_0_APBmslave0_PWDATA_0_7to0(7 downto 0) );
- CoreAPB3_0_APBmslave0_PWDATA_1_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PWDATA(7 downto 0);
- CoreAPB3_0_APBmslave0_PWDATA_1 <= ( CoreAPB3_0_APBmslave0_PWDATA_1_7to0(7 downto 0) );
  CoreAPB3_0_APBmslave0_PWDATA_2_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PWDATA(7 downto 0);
  CoreAPB3_0_APBmslave0_PWDATA_2 <= ( CoreAPB3_0_APBmslave0_PWDATA_2_7to0(7 downto 0) );
+ CoreAPB3_0_APBmslave0_PWDATA_1_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PWDATA(7 downto 0);
+ CoreAPB3_0_APBmslave0_PWDATA_1 <= ( CoreAPB3_0_APBmslave0_PWDATA_1_7to0(7 downto 0) );
+ CoreAPB3_0_APBmslave0_PWDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave0_PWDATA(7 downto 0);
+ CoreAPB3_0_APBmslave0_PWDATA_0 <= ( CoreAPB3_0_APBmslave0_PWDATA_0_7to0(7 downto 0) );
 
  CoreAPB3_0_APBmslave1_PRDATA_0_31to8(31 downto 8) <= B"000000000000000000000000";
  CoreAPB3_0_APBmslave1_PRDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave1_PRDATA(7 downto 0);
  CoreAPB3_0_APBmslave1_PRDATA_0 <= ( CoreAPB3_0_APBmslave1_PRDATA_0_31to8(31 downto 8) & CoreAPB3_0_APBmslave1_PRDATA_0_7to0(7 downto 0) );
 
- CoreAPB3_0_APBmslave3_PRDATA_0_31to8(31 downto 8) <= B"000000000000000000000000";
- CoreAPB3_0_APBmslave3_PRDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave3_PRDATA(7 downto 0);
- CoreAPB3_0_APBmslave3_PRDATA_0 <= ( CoreAPB3_0_APBmslave3_PRDATA_0_31to8(31 downto 8) & CoreAPB3_0_APBmslave3_PRDATA_0_7to0(7 downto 0) );
+ CoreAPB3_0_APBmslave2_PRDATA_0_31to8(31 downto 8) <= B"000000000000000000000000";
+ CoreAPB3_0_APBmslave2_PRDATA_0_7to0(7 downto 0) <= CoreAPB3_0_APBmslave2_PRDATA(7 downto 0);
+ CoreAPB3_0_APBmslave2_PRDATA_0 <= ( CoreAPB3_0_APBmslave2_PRDATA_0_31to8(31 downto 8) & CoreAPB3_0_APBmslave2_PRDATA_0_7to0(7 downto 0) );
 
 ----------------------------------------------------------------------
 -- Component instances
@@ -841,10 +841,10 @@ CoreAPB3_0 : entity COREAPB3_LIB.CoreAPB3
         PRDATAS1   => CoreAPB3_0_APBmslave1_PRDATA_0,
         PREADYS1   => CoreAPB3_0_APBmslave1_PREADY,
         PSLVERRS1  => CoreAPB3_0_APBmslave1_PSLVERR,
-        PRDATAS2   => CoreAPB3_0_APBmslave2_PRDATA,
+        PRDATAS2   => CoreAPB3_0_APBmslave2_PRDATA_0,
         PREADYS2   => CoreAPB3_0_APBmslave2_PREADY,
         PSLVERRS2  => CoreAPB3_0_APBmslave2_PSLVERR,
-        PRDATAS3   => CoreAPB3_0_APBmslave3_PRDATA_0,
+        PRDATAS3   => CoreAPB3_0_APBmslave3_PRDATA,
         PREADYS3   => CoreAPB3_0_APBmslave3_PREADY,
         PSLVERRS3  => CoreAPB3_0_APBmslave3_PSLVERR,
         PRDATAS4   => PRDATAS4_const_net_0, -- tied to X"0" from definition
@@ -918,7 +918,7 @@ COREI2C_0_0 : COREI2C
     generic map( 
         ADD_SLAVE1_ADDRESS_EN   => ( 0 ),
         BAUD_RATE_FIXED         => ( 1 ),
-        BAUD_RATE_VALUE         => ( 0 ),
+        BAUD_RATE_VALUE         => ( 3 ),
         BCLK_ENABLED            => ( 0 ),
         FIXED_SLAVE0_ADDR_EN    => ( 1 ),
         FIXED_SLAVE0_ADDR_VALUE => ( 16#42# ),
@@ -1099,18 +1099,18 @@ corepwm_0_0 : corepwm
         )
     port map( 
         -- Inputs
-        PADDR   => CoreAPB3_0_APBmslave0_PADDR_2,
+        PADDR   => CoreAPB3_0_APBmslave0_PADDR_3,
         PCLK    => FAB_CCC_GL0_net_0,
         PENABLE => CoreAPB3_0_APBmslave0_PENABLE,
         PRESETN => MSS_READY_net_0,
-        PSEL    => CoreAPB3_0_APBmslave2_PSELx,
+        PSEL    => CoreAPB3_0_APBmslave3_PSELx,
         PWDATA  => CoreAPB3_0_APBmslave0_PWDATA,
         TACHIN  => TACHIN,
         PWRITE  => CoreAPB3_0_APBmslave0_PWRITE,
         -- Outputs
-        PRDATA  => CoreAPB3_0_APBmslave2_PRDATA,
-        PREADY  => CoreAPB3_0_APBmslave2_PREADY,
-        PSLVERR => CoreAPB3_0_APBmslave2_PSLVERR,
+        PRDATA  => CoreAPB3_0_APBmslave3_PRDATA,
+        PREADY  => CoreAPB3_0_APBmslave3_PREADY,
+        PSLVERR => CoreAPB3_0_APBmslave3_PSLVERR,
         TACHINT => corepwm_0_0_TACHINT,
         PWM     => PWM_net_0 
         );
@@ -1213,9 +1213,9 @@ CORERESETP_0 : CoreResetP
 -- CoreUARTapb_0_0   -   Actel:DirectCore:CoreUARTapb:5.2.2
 CoreUARTapb_0_0 : mss_top_sb_CoreUARTapb_0_0_CoreUARTapb
     generic map( 
-        BAUD_VAL_FRCTN    => ( 0 ),
-        BAUD_VAL_FRCTN_EN => ( 0 ),
-        BAUD_VALUE        => ( 37 ),
+        BAUD_VAL_FRCTN    => ( 1 ),
+        BAUD_VAL_FRCTN_EN => ( 1 ),
+        BAUD_VALUE        => ( 26 ),
         FAMILY            => ( 19 ),
         FIXEDMODE         => ( 1 ),
         PRG_BIT8          => ( 1 ),
@@ -1278,9 +1278,9 @@ CoreUARTapb_0_0_intr_or_2 : OR3
 -- CoreUARTapb_1_0   -   Actel:DirectCore:CoreUARTapb:5.2.2
 CoreUARTapb_1_0 : mss_top_sb_CoreUARTapb_1_0_CoreUARTapb
     generic map( 
-        BAUD_VAL_FRCTN    => ( 0 ),
-        BAUD_VAL_FRCTN_EN => ( 0 ),
-        BAUD_VALUE        => ( 37 ),
+        BAUD_VAL_FRCTN    => ( 1 ),
+        BAUD_VAL_FRCTN_EN => ( 1 ),
+        BAUD_VALUE        => ( 26 ),
         FAMILY            => ( 19 ),
         FIXEDMODE         => ( 1 ),
         PRG_BIT8          => ( 1 ),
@@ -1293,21 +1293,21 @@ CoreUARTapb_1_0 : mss_top_sb_CoreUARTapb_1_0_CoreUARTapb
         -- Inputs
         PCLK        => FAB_CCC_GL0_net_0,
         PRESETN     => MSS_READY_net_0,
-        PADDR       => CoreAPB3_0_APBmslave0_PADDR_3,
-        PSEL        => CoreAPB3_0_APBmslave3_PSELx,
+        PADDR       => CoreAPB3_0_APBmslave0_PADDR_2,
+        PSEL        => CoreAPB3_0_APBmslave2_PSELx,
         PENABLE     => CoreAPB3_0_APBmslave0_PENABLE,
         PWRITE      => CoreAPB3_0_APBmslave0_PWRITE,
         PWDATA      => CoreAPB3_0_APBmslave0_PWDATA_2,
         RX          => RX_0,
         -- Outputs
-        PRDATA      => CoreAPB3_0_APBmslave3_PRDATA,
+        PRDATA      => CoreAPB3_0_APBmslave2_PRDATA,
         TXRDY       => CoreUARTapb_1_0_TXRDY,
         RXRDY       => CoreUARTapb_1_0_RXRDY,
         PARITY_ERR  => CoreUARTapb_1_0_PARITY_ERR,
         OVERFLOW    => CoreUARTapb_1_0_OVERFLOW,
         TX          => TX_0_net_0,
-        PREADY      => CoreAPB3_0_APBmslave3_PREADY,
-        PSLVERR     => CoreAPB3_0_APBmslave3_PSLVERR,
+        PREADY      => CoreAPB3_0_APBmslave2_PREADY,
+        PSLVERR     => CoreAPB3_0_APBmslave2_PSLVERR,
         FRAMING_ERR => CoreUARTapb_1_0_FRAMING_ERR 
         );
 -- CoreUARTapb_1_0_intr_or_0

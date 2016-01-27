@@ -2,7 +2,7 @@
 #define mss_top_HW_PLATFORM_H_
 /*****************************************************************************
 *
-*Created by Microsemi SmartDesign  Mon Jan 25 23:59:36 2016
+*Created by Microsemi SmartDesign  Wed Jan 27 18:37:05 2016
 *
 *Memory map specification for peripherals in mss_top
 */
@@ -13,8 +13,8 @@
 *---------------------------------------------------------------------------*/
 #define COREI2C_0_0                     0x50000000U
 #define COREUARTAPB_0_0                 0x50001000U
-#define COREPWM_0_0                     0x50002000U
-#define COREUARTAPB_1_0                 0x50003000U
+#define COREUARTAPB_1_0                 0x50002000U
+#define COREPWM_0_0                     0x50003000U
 
 
 #endif /* mss_top_HW_PLATFORM_H_*/

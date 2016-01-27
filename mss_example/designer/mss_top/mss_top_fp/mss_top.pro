@@ -14,12 +14,12 @@
     <SerializationOption>
         Skip
     </SerializationOption>
-    <programmer status="enable" type="FlashPro5" revision="UndefRev" connection="usb2.0">
+    <programmer status="enable" type="FlashPro4" revision="UndefRev" connection="usb2.0">
         <name>
-            01YQFBBC
+            93920
         </name>
         <id>
-            01YQFBBC
+            93920
         </id>
     </programmer>
     <configuration>

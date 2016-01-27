@@ -3,7 +3,7 @@
 <doc>
 <title>Compile Report</title>
 <text>Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)</text>
-<text>Date: Mon Jan 25 23:55:10 2016
+<text>Date: Wed Jan 27 18:31:27 2016
 </text>
 <section><name>Device Selection</name></section>
 <table>
@@ -110,15 +110,15 @@
 </header>
 <row>
  <cell>4LUT</cell>
- <cell>1361</cell>
+ <cell>1418</cell>
  <cell>12084</cell>
- <cell>11.26</cell>
+ <cell>11.73</cell>
 </row>
 <row>
  <cell>DFF</cell>
- <cell>808</cell>
+ <cell>817</cell>
  <cell>12084</cell>
- <cell>6.69</cell>
+ <cell>6.76</cell>
 </row>
 <row>
  <cell>I/O Register</cell>
@@ -208,8 +208,8 @@
 </header>
 <row>
  <cell>Fabric Logic</cell>
- <cell>1217</cell>
- <cell>664</cell>
+ <cell>1274</cell>
+ <cell>673</cell>
 </row>
 <row>
  <cell>RAM64x18 Interface Logic</cell>
@@ -228,8 +228,8 @@
 </row>
 <row>
  <cell>Total Used</cell>
- <cell>1361</cell>
- <cell>808</cell>
+ <cell>1418</cell>
+ <cell>817</cell>
 </row>
 </table>
 <section><name>MSS Resource Usage</name></section>
@@ -317,7 +317,11 @@
 </row>
 <row>
  <cell>7</cell>
- <cell>12</cell>
+ <cell>14</cell>
+</row>
+<row>
+ <cell>8</cell>
+ <cell>2</cell>
 </row>
 <row>
  <cell>9</cell>
@@ -333,7 +337,7 @@
 </row>
 <row>
  <cell>14</cell>
- <cell>4</cell>
+ <cell>2</cell>
 </row>
 <row>
  <cell>17</cell>
@@ -341,7 +345,7 @@
 </row>
 <row>
  <cell>Total</cell>
- <cell>26</cell>
+ <cell>28</cell>
 </row>
 </table>
 <section><name>I/O Function</name></section>
@@ -433,7 +437,7 @@
  <cell>Name</cell>
 </header>
 <row>
- <cell>673</cell>
+ <cell>682</cell>
  <cell>INT_NET</cell>
  <cell>Net   : mss_top_sb_0/FAB_CCC_GL0</cell>
 </row>
@@ -448,7 +452,7 @@
  <cell>Source: NETLIST</cell>
 </row>
 <row>
- <cell>627</cell>
+ <cell>636</cell>
  <cell>INT_NET</cell>
  <cell>Net   : mss_top_sb_0/MSS_READY</cell>
 </row>
@@ -479,39 +483,9 @@
  <cell>Name</cell>
 </header>
 <row>
- <cell>45</cell>
+ <cell>40</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[4]</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST</cell>
-</row>
-<row>
- <cell>39</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave2_PSELx</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/CoreAPB3_0/iPSELS_raw[2]</cell>
-</row>
-<row>
- <cell>37</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[2]</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST</cell>
-</row>
-<row>
- <cell>37</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/corepwm_0_0/N_114</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/N_2065</cell>
 </row>
 <row>
  <cell></cell>
@@ -521,35 +495,35 @@
 <row>
  <cell>36</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/N_26_0</cell>
+ <cell>Net   : mss_top_sb_0/PRDATA_0_0_a2_5_out</cell>
 </row>
 <row>
  <cell></cell>
  <cell></cell>
- <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/m25_0</cell>
+ <cell>Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_0_0_a2_5_s[9]</cell>
 </row>
 <row>
- <cell>36</cell>
+ <cell>35</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[3]</cell>
+ <cell>Net   : mss_top_sb_0/COREI2C_0_0_INT[0]</cell>
 </row>
 <row>
  <cell></cell>
  <cell></cell>
- <cell>Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST</cell>
-</row>
-<row>
- <cell>36</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]</cell>
+ <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/sercon[3]</cell>
 </row>
 <row>
  <cell>34</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/PRDATA_m1_e_1</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_3_0_o2_2_s_RNI83HG_0[2]</cell>
+</row>
+<row>
+ <cell>33</cell>
  <cell>INT_NET</cell>
  <cell>Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]</cell>
 </row>
@@ -559,14 +533,14 @@
  <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]</cell>
 </row>
 <row>
- <cell>34</cell>
+ <cell>33</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/corepwm_0_0/N_204</cell>
+ <cell>Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]</cell>
 </row>
 <row>
  <cell></cell>
  <cell></cell>
- <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl63.pwm_gen_inst/PWM_output_select.1.PWM_output_generation.un14_pwm_enable_reg_NE_i_i_o2</cell>
+ <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]</cell>
 </row>
 <row>
  <cell>33</cell>
@@ -577,6 +551,36 @@
  <cell></cell>
  <cell></cell>
  <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]</cell>
+</row>
+<row>
+ <cell>33</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/N_2006</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/period_cnt_int7_i_a2</cell>
+</row>
+<row>
+ <cell>32</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_0_a2_0_a2</cell>
+</row>
+<row>
+ <cell>32</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1_0_a2_0_a2</cell>
 </row>
 </table>
 <section><name>High fanout nets (through buffer trees)</name></section>
@@ -587,39 +591,9 @@
  <cell>Name</cell>
 </header>
 <row>
- <cell>45</cell>
+ <cell>40</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[4]</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST</cell>
-</row>
-<row>
- <cell>39</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave2_PSELx</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/CoreAPB3_0/iPSELS_raw[2]</cell>
-</row>
-<row>
- <cell>37</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[2]</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST</cell>
-</row>
-<row>
- <cell>37</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/corepwm_0_0/N_114</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/N_2065</cell>
 </row>
 <row>
  <cell></cell>
@@ -629,35 +603,35 @@
 <row>
  <cell>36</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/N_26_0</cell>
+ <cell>Net   : mss_top_sb_0/PRDATA_0_0_a2_5_out</cell>
 </row>
 <row>
  <cell></cell>
  <cell></cell>
- <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/m25_0</cell>
+ <cell>Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_0_0_a2_5_s[9]</cell>
 </row>
 <row>
- <cell>36</cell>
+ <cell>35</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/CoreAPB3_0_APBmslave0_PADDR[3]</cell>
+ <cell>Net   : mss_top_sb_0/COREI2C_0_0_INT[0]</cell>
 </row>
 <row>
  <cell></cell>
  <cell></cell>
- <cell>Driver: mss_top_sb_0/mss_top_sb_MSS_0/MSS_ADLIB_INST</cell>
-</row>
-<row>
- <cell>36</cell>
- <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]</cell>
-</row>
-<row>
- <cell></cell>
- <cell></cell>
- <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[4]</cell>
+ <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/sercon[3]</cell>
 </row>
 <row>
  <cell>34</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/PRDATA_m1_e_1</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/CoreAPB3_0/u_mux_p_to_b3/PRDATA_3_0_o2_2_s_RNI83HG_0[2]</cell>
+</row>
+<row>
+ <cell>33</cell>
  <cell>INT_NET</cell>
  <cell>Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]</cell>
 </row>
@@ -667,14 +641,14 @@
  <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[1]</cell>
 </row>
 <row>
- <cell>34</cell>
+ <cell>33</cell>
  <cell>INT_NET</cell>
- <cell>Net   : mss_top_sb_0/corepwm_0_0/N_204</cell>
+ <cell>Net   : mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]</cell>
 </row>
 <row>
  <cell></cell>
  <cell></cell>
- <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl63.pwm_gen_inst/PWM_output_select.1.PWM_output_generation.un14_pwm_enable_reg_NE_i_i_o2</cell>
+ <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[2]</cell>
 </row>
 <row>
  <cell>33</cell>
@@ -685,6 +659,36 @@
  <cell></cell>
  <cell></cell>
  <cell>Driver: mss_top_sb_0/COREI2C_0_0/G0a.0.ui2c/fsmsta[3]</cell>
+</row>
+<row>
+ <cell>33</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/N_2006</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/corepwm_0_0/G0b.timebase_inst/period_cnt_int7_i_a2</cell>
+</row>
+<row>
+ <cell>32</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_0_a2_0_a2</cell>
+</row>
+<row>
+ <cell>32</cell>
+ <cell>INT_NET</cell>
+ <cell>Net   : mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1</cell>
+</row>
+<row>
+ <cell></cell>
+ <cell></cell>
+ <cell>Driver: mss_top_sb_0/corepwm_0_0/xhdl58.reg_if_inst/psh_negedge_reg_1_sqmuxa_1_0_a2_0_a2</cell>
 </row>
 </table>
 </doc>

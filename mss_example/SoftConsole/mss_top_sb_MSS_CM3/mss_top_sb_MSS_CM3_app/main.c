@@ -17,11 +17,11 @@
 #include <stdlib.h>
 #include <math.h>
 /******************************************************************************
- * Baud value to achieve a 115200 baud rate with a 70 MHz system clock.
+ * Baud value to achieve a 115200 baud rate with a 50 MHz system clock.
  * This value is calculated using the following equation:
  *      BAUD_VALUE = (CLOCK / (16 * BAUD_RATE)) - 1
  *****************************************************************************/
-#define BAUD_VALUE_115200    37
+#define BAUD_VALUE_115200    26
 
 /******************************************************************************
  * Maximum receiver buffer size.
@@ -139,7 +139,7 @@ int main(void)
 	UART_polled_tx_string(&g_uart, (const uint8_t *)"Are you ready for calibration?\n\r");
 	press_any_key_to_continue();
 	MPU6050_calibration();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate force!\n\r");
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate/\n\r");
 	press_any_key_to_continue();
 
 	init_timer();
@@ -162,12 +162,12 @@ int main(void)
 				{
 					case 'p':
 					{
-						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*40;
+						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
 						break;
 					}
 					case 'r':
 					{
-						roll0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*40;
+						roll0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
 						break;
 					}
 					case 'y':
@@ -322,12 +322,12 @@ int main(void)
 			telemetry_pass++;
 		//------------------ send telemetry finished
 
-/*
+
 		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*30);
 		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*30);
 		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*30);
 		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*30);
-*/
+
 
 
 

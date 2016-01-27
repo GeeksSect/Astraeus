@@ -4,7 +4,41 @@ Copyright (C) 1994-2014 Synopsys, Inc. This software and the associated document
 
 @N: CD720 :"C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
 @N:"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Top entity is set to mss_top.
-Options changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CCC_0\mss_top_sb_CCC_0_FCCC.vhd changed - recompiling
+File C:\Microsemi\Libero_v11.5\Synopsys\synplify_I201403MSP1\lib\generic\smartfusion2.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp_pcie_hotreset.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS_syn.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_muxptob3.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3_iaddr_reg.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2creal.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\reg_if.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\timebase.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\tach_if.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\pwm_gen.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Rx_async.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Tx_async.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Rx_async.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\fifo_256x8_smartfusion2.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\components.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\components.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\components.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\hdl\PWM_separator.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\FABOSC_0\mss_top_sb_FABOSC_0_OSC.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb_MSS\mss_top_sb_MSS.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreAPB3\4.1.100\rtl\vhdl\core\coreapb3.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\COREI2C\7.0.102\rtl\vhdl\core\corei2c.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\corepwm\4.1.106\rtl\vhdl\core\corepwm.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUART.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top\mss_top.vhd changed - recompiling
 VHDL syntax check successful!
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top\mss_top.vhd":17:7:17:13|Synthesizing work.mss_top.rtl 
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\hdl\PWM_separator.vhd":5:7:5:19|Synthesizing work.pwm_separator.bh 
@@ -35,7 +69,7 @@ Post processing for smartfusion2.or3.syn_black_box
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":61:7:61:44|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_coreuartapb.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":290:12:290:22|Removed redundant assignment
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":314:12:314:22|Removed redundant assignment
-@W: CD638 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Signal controlreg3 is undriven 
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":341:12:341:22|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUART.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_coreuart.translated 
 @W: CD604 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUART.vhd":358:9:358:22|OTHERS clause is not synthesized 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUART.vhd":399:11:399:22|Removed redundant assignment
@@ -71,17 +105,21 @@ Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_1_0_rx_async.translat
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Tx_async.vhd":286:10:286:18|Removed redundant assignment
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_1_0_tx_async.translated
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":35:7:35:42|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_1_0_clock_gen.rtl 
-@W: CD638 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":55:7:55:19|Signal baud_cntr_one is undriven 
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":99:39:99:47|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":112:38:112:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":125:38:125:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":138:38:138:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":151:38:151:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":164:38:164:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":177:38:177:46|Removed redundant assignment
+@W: CD604 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":188:20:188:33|OTHERS clause is not synthesized 
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_1_0_clock_gen.rtl
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_1_0_coreuart.translated
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_1_0_coreuartapb.translated
-@W: CL252 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Bit 0 of signal controlReg3 is floating -- simulation mismatch possible.
-@W: CL252 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Bit 1 of signal controlReg3 is floating -- simulation mismatch possible.
-@W: CL252 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Bit 2 of signal controlReg3 is floating -- simulation mismatch possible.
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":61:7:61:44|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuartapb.translated 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":290:12:290:22|Removed redundant assignment
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":314:12:314:22|Removed redundant assignment
-@W: CD638 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Signal controlreg3 is undriven 
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":341:12:341:22|Removed redundant assignment
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":33:7:33:41|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuart.translated 
 @W: CD604 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":358:9:358:22|OTHERS clause is not synthesized 
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUART.vhd":399:11:399:22|Removed redundant assignment
@@ -109,13 +147,17 @@ Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_0_0_rx_async.translat
 @N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":286:10:286:18|Removed redundant assignment
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_0_0_tx_async.translated
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":35:7:35:42|Synthesizing coreuartapb_lib.mss_top_sb_coreuartapb_0_0_clock_gen.rtl 
-@W: CD638 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":55:7:55:19|Signal baud_cntr_one is undriven 
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":99:39:99:47|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":112:38:112:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":125:38:125:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":138:38:138:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":151:38:151:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":164:38:164:46|Removed redundant assignment
+@N: CD364 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":177:38:177:46|Removed redundant assignment
+@W: CD604 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":188:20:188:33|OTHERS clause is not synthesized 
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_0_0_clock_gen.rtl
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuart.translated
 Post processing for coreuartapb_lib.mss_top_sb_coreuartapb_0_0_coreuartapb.translated
-@W: CL252 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Bit 0 of signal controlReg3 is floating -- simulation mismatch possible.
-@W: CL252 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Bit 1 of signal controlReg3 is floating -- simulation mismatch possible.
-@W: CL252 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":149:10:149:20|Bit 2 of signal controlReg3 is floating -- simulation mismatch possible.
 @N: CD630 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":27:7:27:16|Synthesizing work.coreresetp.rtl 
 @W: CD434 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":477:8:477:25|Signal soft_ext_reset_out in the sensitivity list is not used in the process
 @W: CD434 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":478:8:478:21|Signal soft_reset_f2m in the sensitivity list is not used in the process
@@ -435,7 +477,6 @@ State machine has 7 reachable states with original encodings of:
 @W: CL159 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":186:4:186:24|Input SOFT_SDIF3_CORE_RESET is unused
 @W: CL159 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":190:4:190:26|Input SOFT_SDIF0_0_CORE_RESET is unused
 @W: CL159 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\Actel\DirectCore\CoreResetP\7.0.104\rtl\vhdl\core\coreresetp.vhd":191:4:191:26|Input SOFT_SDIF0_1_CORE_RESET is unused
-@W: CL159 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Clock_gen.vhd":41:13:41:29|Input BAUD_VAL_FRACTION is unused
 @N: CL201 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\Tx_async.vhd":126:4:126:5|Trying to extract state machine for register xmit_state
 Extracted state machine for register xmit_state
 State machine has 7 reachable states with original encodings of:
@@ -468,7 +509,6 @@ State machine has 4 reachable states with original encodings of:
    10
    11
 @W: CL246 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_0_0\rtl\vhdl\core\CoreUARTapb.vhd":82:6:82:10|Input port bits 1 to 0 of paddr(4 downto 0) are unused 
-@W: CL159 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Clock_gen.vhd":41:13:41:29|Input BAUD_VAL_FRACTION is unused
 @N: CL201 :"C:\Users\vetal\Documents\copter\Astraeus\mss_example\component\work\mss_top_sb\CoreUARTapb_1_0\rtl\vhdl\core\Tx_async.vhd":126:4:126:5|Trying to extract state machine for register xmit_state
 Extracted state machine for register xmit_state
 State machine has 7 reachable states with original encodings of:
@@ -507,6 +547,6 @@ State machine has 4 reachable states with original encodings of:
 At c_vhdl Exit (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 103MB peak: 122MB)
 
 Process took 0h:00m:04s realtime, 0h:00m:04s cputime
-# Mon Jan 25 23:54:34 2016
+# Wed Jan 27 18:30:46 2016
 
 ###########################################################]
