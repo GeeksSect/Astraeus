@@ -6,7 +6,7 @@
 -- ACCORDANCE WITH THE ACTEL LICENSE AGREEMENT AND MUST BE APPROVED
 -- IN ADVANCE IN WRITING.
 --
--- Description: mss_top_COREUART_0_COREUART/ CoreUARTapb UART core
+-- Description: mss_top_sb_CoreUARTapb_1_0_COREUART/ CoreUARTapb UART core
 --
 --
 --  Revision Information:
@@ -29,9 +29,8 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
 USE IEEE.std_logic_arith.all;
 USE IEEE.std_logic_unsigned.all;
-use work.mss_top_COREUART_0_coreuart_pkg.all;
 
-ENTITY mss_top_COREUART_0_COREUART IS
+ENTITY mss_top_sb_CoreUARTapb_1_0_COREUART IS
    GENERIC (
       FAMILY                         :  INTEGER := 15;    -- DEVICE FAMILY
       -- TX PARAMETERS
@@ -40,7 +39,7 @@ ENTITY mss_top_COREUART_0_COREUART IS
       RX_FIFO                        :  INTEGER := 0;     -- 0=WITHOUT RX FIFO, 1=WITH RX FIFO
       RX_LEGACY_MODE                 :  INTEGER := 0;
       --BAUD FRACTION PARAMETER
-      BAUD_VAL_FRCTN_EN              :  INTEGER := 0     -- 0=DISABLE BAUD FRACTION, 1=ENABLE BAUD FRACTION
+      BAUD_VAL_FRCTN_EN              :  INTEGER := 0      -- 0=DISABLE BAUD FRACTION, 1=ENABLE BAUD FRACTION
       );
    PORT (
       RESET_N                 : IN STD_LOGIC;
@@ -62,18 +61,96 @@ ENTITY mss_top_COREUART_0_COREUART IS
       DATA_OUT                : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       TX                      : OUT STD_LOGIC;
       FRAMING_ERR             : OUT STD_LOGIC);
-END ENTITY mss_top_COREUART_0_COREUART;
+END ENTITY mss_top_sb_CoreUARTapb_1_0_COREUART;
 
-ARCHITECTURE translated OF mss_top_COREUART_0_COREUART IS
+ARCHITECTURE translated OF mss_top_sb_CoreUARTapb_1_0_COREUART IS
+
+   COMPONENT mss_top_sb_CoreUARTapb_1_0_Rx_async
+      GENERIC (
+         -- RX Parameters
+         RX_FIFO                        :  integer := 0);  --  0=without rx fifo       
+      PORT (
+         clk                     : IN  std_logic;
+         baud_clock              : IN  std_logic;
+         reset_n                 : IN  std_logic;
+         bit8                    : IN  std_logic;
+         parity_en               : IN  std_logic;
+         odd_n_even              : IN  std_logic;
+         read_rx_byte            : IN  std_logic;
+         clear_parity            : IN  std_logic;
+         clear_framing_error     : IN  std_logic;
+         rx                      : IN  std_logic;
+         overflow                : OUT std_logic;
+         parity_err              : OUT std_logic;
+         framing_error           : OUT std_logic;
+         rx_idle_out             : OUT std_logic;       -- AS: added this signal to sync framing error properly
+         stop_strobe             : OUT std_logic;
+         clear_parity_en         : OUT std_logic;
+         clear_framing_error_en  : OUT std_logic;
+         receive_full            : OUT std_logic;
+         rx_byte                 : OUT std_logic_vector(7 DOWNTO 0);
+         fifo_write              : OUT std_logic
+    );
+   END COMPONENT;
+
+
+   COMPONENT mss_top_sb_CoreUARTapb_1_0_Tx_async
+      GENERIC (
+         -- TX Parameters
+         TX_FIFO                        :  integer := 0);    --  0=without tx fifo
+      PORT (
+         clk                     : IN  std_logic;
+         xmit_pulse              : IN  std_logic;
+         reset_n                 : IN  std_logic;
+         rst_tx_empty            : IN  std_logic;
+         tx_hold_reg             : IN  std_logic_vector(7 DOWNTO 0);
+         tx_dout_reg             : IN  std_logic_vector(7 DOWNTO 0);
+         fifo_empty              : IN  std_logic;
+         fifo_full               : IN  std_logic;
+         bit8                    : IN  std_logic;
+         parity_en               : IN  std_logic;
+         odd_n_even              : IN  std_logic;
+         txrdy                   : OUT std_logic;
+         tx                      : OUT std_logic;
+         fifo_read_tx            : OUT std_logic);
+   END COMPONENT;
+
+
+   COMPONENT mss_top_sb_CoreUARTapb_1_0_Clock_gen  
+      GENERIC( 
+        --BAUD FRACTION Parameter
+        BAUD_VAL_FRCTN_EN                          :  integer := 0 );  -- 0=disable baud fraction  
+      port (
+             clk                : in   std_logic;                      -- system clock
+             reset_n            : in   std_logic;                      -- active low async reset
+             baud_val           : in   std_logic_vector(12 downto 0);  -- value loaded into cntr
+             BAUD_VAL_FRACTION  : in   std_logic_vector(2 downto 0);   -- handles fractional part of baud value 
+ 
+             baud_clock         : out  std_logic;                      -- 8x baud clock pulse
+             xmit_pulse         : out  std_logic                       -- transmit pulse
+            );
+   END COMPONENT;
+
+   COMPONENT mss_top_sb_CoreUARTapb_1_0_fifo_256x8 IS
+    PORT (
+      DO                      : OUT std_logic_vector(7 DOWNTO 0);
+      RCLOCK                  : IN std_logic;
+      WCLOCK                  : IN std_logic;
+      DI                      : IN std_logic_vector(7 DOWNTO 0);
+      WRB                     : IN std_logic;
+      RDB                     : IN std_logic;
+      RESET                   : IN std_logic;
+      FULL                    : OUT std_logic;
+      EMPTY                   : OUT std_logic);
+   END COMPONENT;
+
 
    -- State name constant definitions
    CONSTANT S0  : std_logic_vector(1 DOWNTO 0) := "00";
    CONSTANT S1  : std_logic_vector(1 DOWNTO 0) := "01";
    CONSTANT S2  : std_logic_vector(1 DOWNTO 0) := "10";
    CONSTANT S3  : std_logic_vector(1 DOWNTO 0) := "11";
-   
-  -- Sync/Async Mode Select
-  CONSTANT SYNC_RESET : INTEGER := SYNC_MODE_SEL(FAMILY);
+
 
    --  Configuration bits
    --  Status bits
@@ -135,95 +212,8 @@ ARCHITECTURE translated OF mss_top_COREUART_0_COREUART IS
    SIGNAL rx_dout_reg_empty        :  std_logic;
    SIGNAL rx_state                 :  std_logic_vector(1 DOWNTO 0);
    SIGNAL next_rx_state            :  std_logic_vector(1 DOWNTO 0);
-   SIGNAL aresetn  : std_logic;
-   SIGNAL sresetn  : std_logic;
-   
-   COMPONENT mss_top_COREUART_0_Rx_async
-      GENERIC (
-         -- RX Parameters
-         RX_FIFO    :  integer := 0;  --  0=without rx fifo   
-		 SYNC_RESET :  integer := 0);    
-      PORT (
-         clk                     : IN  std_logic;
-         baud_clock              : IN  std_logic;
-         reset_n                 : IN  std_logic;
-         bit8                    : IN  std_logic;
-         parity_en               : IN  std_logic;
-         odd_n_even              : IN  std_logic;
-         read_rx_byte            : IN  std_logic;
-         clear_parity            : IN  std_logic;
-         clear_framing_error     : IN  std_logic;
-         rx                      : IN  std_logic;
-         overflow                : OUT std_logic;
-         parity_err              : OUT std_logic;
-         framing_error           : OUT std_logic;
-         rx_idle_out             : OUT std_logic;       -- AS: added this signal to sync framing error properly
-         stop_strobe             : OUT std_logic;
-         clear_parity_en         : OUT std_logic;
-         clear_framing_error_en  : OUT std_logic;
-         receive_full            : OUT std_logic;
-         rx_byte                 : OUT std_logic_vector(7 DOWNTO 0);
-         fifo_write              : OUT std_logic
-    );
-   END COMPONENT;
 
-
-   COMPONENT mss_top_COREUART_0_Tx_async
-      GENERIC (
-         -- TX Parameters
-         TX_FIFO    :  integer := 0;    --  0=without tx fifo
-		 SYNC_RESET :  integer := 0);
-      PORT (
-         clk                     : IN  std_logic;
-         xmit_pulse              : IN  std_logic;
-         reset_n                 : IN  std_logic;
-         rst_tx_empty            : IN  std_logic;
-         tx_hold_reg             : IN  std_logic_vector(7 DOWNTO 0);
-         tx_dout_reg             : IN  std_logic_vector(7 DOWNTO 0);
-         fifo_empty              : IN  std_logic;
-         fifo_full               : IN  std_logic;
-         bit8                    : IN  std_logic;
-         parity_en               : IN  std_logic;
-         odd_n_even              : IN  std_logic;
-         txrdy                   : OUT std_logic;
-         tx                      : OUT std_logic;
-         fifo_read_tx            : OUT std_logic);
-   END COMPONENT;
-
-
-   COMPONENT mss_top_COREUART_0_Clock_gen  
-      GENERIC( 
-        --BAUD FRACTION Parameter
-        BAUD_VAL_FRCTN_EN              :  integer := 0; -- 0=disable baud fraction  
-		SYNC_RESET                     :  integer := 0); 
-      port (
-             clk                : in   std_logic;                      -- system clock
-             reset_n            : in   std_logic;                      -- active low async reset
-             baud_val           : in   std_logic_vector(12 downto 0);  -- value loaded into cntr
-             BAUD_VAL_FRACTION  : in   std_logic_vector(2 downto 0);   -- handles fractional part of baud value 
- 
-             baud_clock         : out  std_logic;                      -- 8x baud clock pulse
-             xmit_pulse         : out  std_logic                       -- transmit pulse
-            );
-   END COMPONENT;
-
-   COMPONENT mss_top_COREUART_0_fifo_256x8 IS     
-   GENERIC ( SYNC_RESET :  integer := 0);
-    PORT (
-      DO                      : OUT std_logic_vector(7 DOWNTO 0);
-      RCLOCK                  : IN std_logic;
-      WCLOCK                  : IN std_logic;
-      DI                      : IN std_logic_vector(7 DOWNTO 0);
-      WRB                     : IN std_logic;
-      RDB                     : IN std_logic;
-      RESET                   : IN std_logic;
-      FULL                    : OUT std_logic;
-      EMPTY                   : OUT std_logic);
-   END COMPONENT;
-   
 BEGIN
-   aresetn <= '1' WHEN (SYNC_RESET=1) ELSE RESET_N;
-   sresetn <= RESET_N WHEN (SYNC_RESET=1) ELSE '1';
    FRAMING_ERR <= framing_err_i;
    PARITY_ERR <= parity_err_xhdl1;
    OVERFLOW <= overflow_xhdl2;
@@ -240,22 +230,17 @@ BEGIN
    --  cpu writes to UART registers
    -- ----------------------------------------------------------------------------
 
-   reg_write : PROCESS (CLK, aresetn)
+   reg_write : PROCESS (CLK, reset_n)
    BEGIN
-      IF (aresetn = '0') THEN
+      IF (reset_n = '0') THEN
          tx_hold_reg <= '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0';
          fifo_write_tx <= '1';
       ELSIF (CLK'EVENT AND CLK = '1') THEN
-          IF (sresetn = '0') THEN
-             tx_hold_reg <= '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0';
-             fifo_write_tx <= '1';
-          ELSE
-             fifo_write_tx <= '1';
-             IF (csn = '0' AND WEn = '0') THEN
-                tx_hold_reg <= DATA_IN;
-                fifo_write_tx <= '0';
-             END IF;
-          END IF;
+         fifo_write_tx <= '1';
+         IF (csn = '0' AND WEn = '0') THEN
+            tx_hold_reg <= DATA_IN;
+            fifo_write_tx <= '0';
+         END IF;
       END IF;
    END PROCESS reg_write;
    temp_xhdl7 <= '1' WHEN (WEn = '0' AND csn = '0') ELSE '0';
@@ -286,8 +271,7 @@ BEGIN
    clear_parity <= temp_xhdl13 ;
    temp_xhdl14 <= rx_byte WHEN (parity_err_xhdl1 = '0') ELSE "00000000";
    rx_byte_in <= temp_xhdl14 ;
-   --clear_framing_error <= clear_framing_error_reg WHEN RX_FIFO /= 0 ELSE (temp_xhdl12);
-   clear_framing_error <= temp_xhdl12 WHEN (RX_FIFO = 0) ELSE '1' WHEN (temp_xhdl12 = '1') ELSE clear_framing_error_reg;
+   clear_framing_error <= clear_framing_error_reg WHEN RX_FIFO /= 0 ELSE (temp_xhdl12);
    clear_overflow <= '1' WHEN (csn = '0' AND OEn = '0') ELSE '0';
 
 
@@ -306,72 +290,54 @@ BEGIN
 
    -- AS, added 11/17/08
    RXRDY_NEW: IF (RX_LEGACY_MODE = 0) GENERATE
-    PROCESS (CLK, aresetn)
+    PROCESS (CLK, RESET_N)
     BEGIN
-      IF (aresetn = '0') THEN
+      IF (RESET_N = '0') THEN
         rxrdy_xhdl4 <= '0';
       ELSIF (clk'EVENT AND clk = '1') THEN
-        IF (sresetn = '0') THEN
-          rxrdy_xhdl4 <= '0';
-	    ELSE
-          IF (RX_FIFO = 0) THEN
-            IF (stop_strobe = '1' OR receive_full = '0') THEN
-              rxrdy_xhdl4 <= receive_full;
-            END IF;
-          ELSE
-            IF (stop_strobe = '1' OR rx_dout_reg_empty = '1' or (rx_dout_reg_empty = '0' and rx_idle = '1')) THEN
-              rxrdy_xhdl4 <= NOT rx_dout_reg_empty;
-            END IF;
+        IF (RX_FIFO = 0) THEN
+          IF (stop_strobe = '1' OR receive_full = '0') THEN
+            rxrdy_xhdl4 <= receive_full;
+          END IF;
+        ELSE
+          IF (stop_strobe = '1' OR rx_dout_reg_empty = '1' or (rx_dout_reg_empty = '0' and rx_idle = '1')) THEN
+            rxrdy_xhdl4 <= NOT rx_dout_reg_empty;
           END IF;
         END IF;
       END IF;
     END PROCESS;
    END GENERATE;
 
-   PROCESS (CLK, aresetn)
+   PROCESS (CLK, RESET_N)
    BEGIN
-      IF (aresetn = '0') THEN
+      IF (RESET_N = '0') THEN
          clear_parity_reg <= '0';
          clear_parity_reg0 <= '0';
       ELSIF (CLK'EVENT AND CLK = '1') THEN
-         IF (sresetn = '0') THEN
-            clear_parity_reg <= '0';
-            clear_parity_reg0 <= '0';
-	     ELSE
-            clear_parity_reg0 <= clear_parity_en;
-            clear_parity_reg <= clear_parity_reg0;
-         END IF;
+         clear_parity_reg0 <= clear_parity_en;
+         clear_parity_reg <= clear_parity_reg0;
       END IF;
    END PROCESS;
 
    -- AS: added self-clearing framing error
-   PROCESS (CLK, aresetn)
+   PROCESS (CLK, RESET_N)
    BEGIN
-      IF (aresetn = '0') THEN
+      IF (RESET_N = '0') THEN
          clear_framing_error_reg <= '0';
          clear_framing_error_reg0 <= '0';
       ELSIF (CLK'EVENT AND CLK = '1') THEN
-          IF (sresetn = '0') THEN
-             clear_framing_error_reg <= '0';
-             clear_framing_error_reg0 <= '0';
-	      ELSE
-             clear_framing_error_reg0 <= clear_framing_error_en;
-             clear_framing_error_reg <= clear_framing_error_reg0;
-          END IF;
+         clear_framing_error_reg0 <= clear_framing_error_en;
+         clear_framing_error_reg <= clear_framing_error_reg0;
       END IF;
    END PROCESS;
 
    -- state machine to control reading from the rx fifo
-   PROCESS (CLK, aresetn)
+   PROCESS (CLK, RESET_N)
    BEGIN
-      IF (aresetn = '0') THEN
+      IF (reset_n = '0') THEN
          rx_state <= S0;
       ELSIF (CLK'EVENT AND CLK = '1') THEN
-         IF (sresetn = '0') THEN
-            rx_state <= S0;
-	     ELSE
-            rx_state <= next_rx_state;
-         END IF;
+         rx_state <= next_rx_state;
       END IF;
    END PROCESS;
 
@@ -382,8 +348,8 @@ BEGIN
       data_en <= '0';
       CASE rx_state IS
          WHEN S0 => IF (rx_dout_reg_empty = '1' AND fifo_empty_rx = '0') THEN
-							next_rx_state <= S1;
-							fifo_read_rx <= '0';
+                       next_rx_state <= S1;
+                       fifo_read_rx <= '0';
                     END IF;
          WHEN S1 => next_rx_state <= S2;
          WHEN S2 => next_rx_state <= S3;
@@ -394,61 +360,43 @@ BEGIN
    END PROCESS;
 
 
-   PROCESS (CLK, aresetn)
+   PROCESS (CLK, RESET_N)
    BEGIN
-      IF (aresetn = '0') THEN
+      IF (RESET_N = '0') THEN
          rx_dout_reg <= "00000000";
       ELSIF (CLK'EVENT AND CLK = '1') THEN
-         IF (sresetn = '0') THEN
-            rx_dout_reg <= "00000000";
-	     ELSE
-            IF (data_en = '1') THEN
-                rx_dout_reg <= rx_dout;
-            END IF;
+         IF (data_en = '1') THEN
+             rx_dout_reg <= rx_dout;
          END IF;
       END IF;
    END PROCESS;
 
-   PROCESS (CLK, aresetn)
+   PROCESS (CLK, RESET_N)
    BEGIN
-       IF (aresetn = '0') THEN
+       IF (RESET_N = '0') THEN
            rx_dout_reg_empty <= '1';
        ELSIF (CLK'EVENT AND CLK = '1') THEN
-           IF (sresetn = '0') THEN
-               rx_dout_reg_empty <= '1';
-	       ELSE
-               IF (data_en = '1') THEN
-                   rx_dout_reg_empty <= '0';
-               ELSE
-                   IF (csn = '0' AND OEn = '0') THEN
-		    	       IF (RX_FIFO = 1) THEN
-		    	           IF(parity_err_xhdl1 = '0') THEN
-		    	               rx_dout_reg_empty <= '1';
-		    	           END IF;
-		    		   ELSE
-		    	           rx_dout_reg_empty <= '1';
-		    		   END IF;
-                   END IF;
+           IF (data_en = '1') THEN
+               rx_dout_reg_empty <= '0';
+           ELSE
+               IF (csn = '0' AND OEn = '0') THEN
+                   rx_dout_reg_empty <= '1';
                END IF;
            END IF;
        END IF;
    END PROCESS;
 
-   PROCESS (CLK, aresetn)
+   PROCESS (CLK, RESET_N)
    BEGIN
-       IF (aresetn = '0') THEN
+       IF (RESET_N = '0') THEN
          overflow_reg <= '0';
        ELSIF (CLK'EVENT AND CLK = '1') THEN
-         IF (sresetn = '0') THEN
+         IF (fifo_write = '0' AND fifo_full_rx = '1') THEN
+           overflow_reg <= '1';
+         ELSIF (clear_overflow = '1') THEN
            overflow_reg <= '0';
-	     ELSE
-           IF (fifo_write = '0' AND fifo_full_rx = '1') THEN
-             overflow_reg <= '1';
-           ELSIF (clear_overflow = '1') THEN
-             overflow_reg <= '0';
-           ELSE
-             overflow_reg <= overflow_reg;
-           END IF;
+         ELSE
+           overflow_reg <= overflow_reg;
          END IF;
        END IF;
    END PROCESS;
@@ -463,10 +411,9 @@ BEGIN
 
    fifo_write_rx <= temp_xhdl17 ;
 
-      make_mss_top_COREUART_0_Clock_gen : mss_top_COREUART_0_Clock_gen
+      make_mss_top_sb_CoreUARTapb_1_0_Clock_gen : mss_top_sb_CoreUARTapb_1_0_Clock_gen
           GENERIC MAP (
-            BAUD_VAL_FRCTN_EN => BAUD_VAL_FRCTN_EN,
-			SYNC_RESET => SYNC_RESET)
+            BAUD_VAL_FRCTN_EN => BAUD_VAL_FRCTN_EN)
          PORT MAP (
             clk => CLK,
             reset_n => RESET_N,
@@ -475,10 +422,9 @@ BEGIN
             baud_clock => baud_clock,
             xmit_pulse => xmit_pulse);
 
-      make_TX : mss_top_COREUART_0_Tx_async
+      make_TX : mss_top_sb_CoreUARTapb_1_0_Tx_async
          GENERIC MAP (
-            TX_FIFO => TX_FIFO,
-			SYNC_RESET => SYNC_RESET)
+            TX_FIFO => TX_FIFO)
          PORT MAP (
             clk => CLK,
             xmit_pulse => xmit_pulse,
@@ -495,10 +441,9 @@ BEGIN
             tx => tx_xhdl6,
             fifo_read_tx => fifo_read_tx);
 
-      make_RX : mss_top_COREUART_0_Rx_async
+      make_RX : mss_top_sb_CoreUARTapb_1_0_Rx_async
          GENERIC MAP (
-            RX_FIFO => RX_FIFO,
-			SYNC_RESET => SYNC_RESET)
+            RX_FIFO => RX_FIFO)
          PORT MAP (
             clk => CLK,
             baud_clock => baud_clock,
@@ -521,9 +466,8 @@ BEGIN
             rx_idle_out => rx_idle,
             stop_strobe => stop_strobe);
 
-   UG06a:IF (TX_FIFO = 2#1#) GENERATE
-      tx_fifo_xhdl79 : mss_top_COREUART_0_fifo_256x8
-         GENERIC MAP ( SYNC_RESET => SYNC_RESET)
+   UG06:IF (TX_FIFO = 2#1#) GENERATE
+      tx_fifo_xhdl79 : mss_top_sb_CoreUARTapb_1_0_fifo_256x8
          PORT MAP (
             DO => tx_dout_reg,
             RCLOCK => clk,
@@ -537,16 +481,9 @@ BEGIN
             FULL => fifo_full_tx,
             EMPTY => fifo_empty_tx);
    END GENERATE;
-   
-   UG06b:IF (TX_FIFO = 2#0#) GENERATE
-             tx_dout_reg <= "00000000";
-             fifo_full_tx <='0';
-             fifo_empty_tx <='0';
-   END GENERATE;
 
    UG07:IF (RX_FIFO = 2#1#) GENERATE
-      rx_fifo_xhdl80 : mss_top_COREUART_0_fifo_256x8
-         GENERIC MAP ( SYNC_RESET => SYNC_RESET)
+      rx_fifo_xhdl80 : mss_top_sb_CoreUARTapb_1_0_fifo_256x8
          PORT MAP (
             DO => rx_dout,
             RCLOCK => clk,
@@ -557,12 +494,6 @@ BEGIN
             RESET => reset_n,
             FULL => fifo_full_rx,
             EMPTY => fifo_empty_rx);
-   END GENERATE;
-   
-   UG07b:IF (RX_FIFO = 2#0#) GENERATE
-             rx_dout <= "00000000";
-             fifo_full_rx <='0';
-             fifo_empty_rx <='0';
    END GENERATE;
 
 END ARCHITECTURE translated;

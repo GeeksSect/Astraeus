@@ -2,7 +2,7 @@
 <device>
   <name>mss_top</name>
   <version>1.0</version>
-  <description>CMSIS description for mss_top.  Created by Microsemi SmartDesign on Sat Nov 07 18:17:57 2015</description>
+  <description>CMSIS description for mss_top.  Created by Microsemi SmartDesign on Mon Jan 25 23:59:36 2016</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>
@@ -935,6 +935,10 @@
           </fields>
         </register>
       </registers>
+    </peripheral>
+    <peripheral>
+      <name>CoreUARTapb_1_0</name>
+      <baseAddress>0x50003000%0x30003000</baseAddress>
     </peripheral>
     <peripheral>
       <name>CACHE_BACKDOOR</name>

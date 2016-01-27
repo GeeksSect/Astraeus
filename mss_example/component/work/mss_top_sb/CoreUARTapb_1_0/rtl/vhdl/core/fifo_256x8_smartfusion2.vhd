@@ -32,8 +32,7 @@ library smartfusion2;
                                                         
                                                          
 --smartfusion2 uses a fifo_128x8 
-ENTITY mss_top_COREUART_0_fifo_256x8 IS
-   GENERIC ( SYNC_RESET :  integer := 0);
+ENTITY mss_top_sb_CoreUARTapb_1_0_fifo_256x8 IS
    PORT (
       DO                      : OUT std_logic_vector(7 DOWNTO 0);   
       RCLOCK                  : IN std_logic;   
@@ -44,13 +43,12 @@ ENTITY mss_top_COREUART_0_fifo_256x8 IS
       RESET                   : IN std_logic;   
       FULL                    : OUT std_logic;   
       EMPTY                   : OUT std_logic);   
-END ENTITY mss_top_COREUART_0_fifo_256x8;
+END ENTITY mss_top_sb_CoreUARTapb_1_0_fifo_256x8;
 
-ARCHITECTURE translated OF mss_top_COREUART_0_fifo_256x8 IS
+ARCHITECTURE translated OF mss_top_sb_CoreUARTapb_1_0_fifo_256x8 IS
 
-   COMPONENT mss_top_COREUART_0_fifo_ctrl_128
+   COMPONENT mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128
       GENERIC (
-          SYNC_RESET                     :  integer := 0;
           FIFO_BITS                      :  integer := 7;    --  Number of bits required to
           FIFO_WIDTH                     :  integer := 8;    --  Width of FIFO data
           FIFO_DEPTH                     :  integer := 128);    --  Depth of FIFO (number of bytes)
@@ -80,8 +78,7 @@ BEGIN
    DO <= DO_xhdl1;
    FULL <= FULL_xhdl2;
    EMPTY <= EMPTY_xhdl3;
-   mss_top_COREUART_0_fifo_128x8_pa4 : mss_top_COREUART_0_fifo_ctrl_128
-      GENERIC MAP(SYNC_RESET => SYNC_RESET)
+   mss_top_sb_CoreUARTapb_1_0_fifo_128x8_pa4 : mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128
       PORT MAP (
          data_in => DI,
          data_out => DO_xhdl1,
@@ -119,9 +116,8 @@ use ieee.std_logic_arith.all;
 library smartfusion2;
                        
 
-ENTITY mss_top_COREUART_0_fifo_ctrl_128 IS
+ENTITY mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128 IS
    GENERIC (
-      SYNC_RESET                     :  integer := 0;
       FIFO_DEPTH                     :  integer := 128;    --  Depth of FIFO (number of bytes)
       FIFO_BITS                      :  integer := 7;    --  Number of bits required to
       FIFO_WIDTH                     :  integer := 8);    --  Width of FIFO data
@@ -140,11 +136,11 @@ ENTITY mss_top_COREUART_0_fifo_ctrl_128 IS
       full                    : OUT std_logic;   --  FIFO is full
       empty                   : OUT std_logic;   --  FIFO is empty
       half                    : OUT std_logic);   --  FIFO is half full
-END ENTITY mss_top_COREUART_0_fifo_ctrl_128;
+END ENTITY mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128;
 
-ARCHITECTURE translated OF mss_top_COREUART_0_fifo_ctrl_128 IS
+ARCHITECTURE translated OF mss_top_sb_CoreUARTapb_1_0_fifo_ctrl_128 IS
 
-   COMPONENT mss_top_COREUART_0_ram128x8_pa4
+   COMPONENT mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4
       PORT (
          Data                    : IN  std_logic_vector(7 DOWNTO 0);
          Q                       : OUT std_logic_vector(7 DOWNTO 0);
@@ -182,12 +178,8 @@ ARCHITECTURE translated OF mss_top_COREUART_0_fifo_ctrl_128 IS
    SIGNAL full_xhdl2               :  std_logic;   
    SIGNAL empty_xhdl3              :  std_logic;   
    SIGNAL half_xhdl4               :  std_logic;   
-   SIGNAL aresetn                  :  std_logic;
-   SIGNAL sresetn                  :  std_logic;
 
 BEGIN
-   aresetn <= '1' WHEN (SYNC_RESET=1) ELSE reset_n;
-   sresetn <= reset_n WHEN (SYNC_RESET=1) ELSE '1';
    data_out <= data_out_xhdl1;
    full <= full_xhdl2;
    empty <= empty_xhdl3;
@@ -203,85 +195,74 @@ BEGIN
    -- This block contains all devices affected by the clock 
    -- and reset inputs
    
-   PROCESS (clock, aresetn)
+   PROCESS (clock, reset_n)
    BEGIN
-      IF (NOT aresetn = '1') THEN
+      IF (NOT reset_n = '1') THEN
          -- Reset the FIFO pointer
+         
          rd_pointer <= (OTHERS => '0');    
          wr_pointer <= (OTHERS => '0');    
          counter <= (OTHERS => '0');    
       ELSIF (clock'EVENT AND clock = '1') THEN
-        IF (NOT sresetn = '1') THEN
-           -- Reset the FIFO pointer
-           rd_pointer <= (OTHERS => '0');    
-           wr_pointer <= (OTHERS => '0');    
-           counter <= (OTHERS => '0');    
-	    ELSE
-	    
-           IF (NOT read_n = '1') THEN
-              -- If we are doing a simultaneous read and write,
-              -- there is no change to the counter
-              
-              IF (write_n = '1') THEN
-                 -- Decrement the FIFO counter
-                 
-                 counter <= counter - "0000001";    
-              END IF;
-              -- Increment the read pointer
-              -- Check if the read pointer has gone beyond the
-              -- depth of the FIFO. If so, set it back to the
-              -- beginning of the FIFO
-              
-              IF (rd_pointer = CONV_STD_LOGIC_VECTOR(FIFO_DEPTH - 1, 7)) 
-              THEN
-                 rd_pointer <= (OTHERS => '0');    
-              ELSE
-                 rd_pointer <= rd_pointer + "0000001";    
-              END IF;
-           END IF;
-           IF (NOT write_n = '1') THEN
-              -- If we are doing a simultaneous read and write,
-              -- there is no change to the counter
-              
-              IF (read_n = '1') THEN
-                 -- Increment the FIFO counter
-                 
-                 counter <= counter + "0000001";    
-              END IF;
-              -- Increment the write pointer
-              -- Check if the write pointer has gone beyond the
-              -- depth of the FIFO. If so, set it back to the
-              -- beginning of the FIFO
-              
-              IF (wr_pointer = CONV_STD_LOGIC_VECTOR(FIFO_DEPTH - 1, 7)) 
-              THEN
-                 wr_pointer <= (OTHERS => '0');    
-              ELSE
-                 wr_pointer <= wr_pointer + "0000001";    
-              END IF;
-           END IF;
-        END IF;
-      END IF;
-   END PROCESS;
-
-   PROCESS (clock, aresetn)
-   BEGIN
-      IF (NOT aresetn = '1') THEN
-         read_n_hold <= '0';    
-      ELSIF (clock'EVENT AND clock = '1') THEN
-         IF (NOT sresetn = '1') THEN
-            read_n_hold <= '0';    
-	     ELSE
-            read_n_hold <= read_n;    
-            IF (read_n_hold = '0') THEN
-               data_out_xhdl1 <= data_out_0;    
+         IF (NOT read_n = '1') THEN
+            -- If we are doing a simultaneous read and write,
+            -- there is no change to the counter
+            
+            IF (write_n = '1') THEN
+               -- Decrement the FIFO counter
+               
+               counter <= counter - "0000001";    
+            END IF;
+            -- Increment the read pointer
+            -- Check if the read pointer has gone beyond the
+            -- depth of the FIFO. If so, set it back to the
+            -- beginning of the FIFO
+            
+            IF (rd_pointer = CONV_STD_LOGIC_VECTOR(FIFO_DEPTH - 1, 7)) 
+            THEN
+               rd_pointer <= (OTHERS => '0');    
             ELSE
-               data_out_xhdl1 <= data_out_xhdl1;    
+               rd_pointer <= rd_pointer + "0000001";    
+            END IF;
+         END IF;
+         IF (NOT write_n = '1') THEN
+            -- If we are doing a simultaneous read and write,
+            -- there is no change to the counter
+            
+            IF (read_n = '1') THEN
+               -- Increment the FIFO counter
+               
+               counter <= counter + "0000001";    
+            END IF;
+            -- Increment the write pointer
+            -- Check if the write pointer has gone beyond the
+            -- depth of the FIFO. If so, set it back to the
+            -- beginning of the FIFO
+            
+            IF (wr_pointer = CONV_STD_LOGIC_VECTOR(FIFO_DEPTH - 1, 7)) 
+            THEN
+               wr_pointer <= (OTHERS => '0');    
+            ELSE
+               wr_pointer <= wr_pointer + "0000001";    
             END IF;
          END IF;
       END IF;
    END PROCESS;
-   ram128_8_pa4 : mss_top_COREUART_0_ram128x8_pa4 
+
+   PROCESS (clock, reset_n)
+   BEGIN
+      IF (NOT reset_n = '1') THEN
+         read_n_hold <= '0';    
+      ELSIF (clock'EVENT AND clock = '1') THEN
+         read_n_hold <= read_n;    
+         IF (read_n_hold = '0') THEN
+            data_out_xhdl1 <= data_out_0;    
+         ELSE
+            data_out_xhdl1 <= data_out_xhdl1;    
+         END IF;
+      END IF;
+   END PROCESS;
+   ram128_8_pa4 : mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4 
       PORT MAP (
          Data => data_in,
          Q => data_out_0,
@@ -300,7 +281,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 library smartfusion2;        
 
-ENTITY mss_top_COREUART_0_ram128x8_pa4 IS
+ENTITY mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4 IS
    PORT (
       Data                    : IN std_logic_vector(7 DOWNTO 0);   
       Q                       : OUT std_logic_vector(7 DOWNTO 0);   
@@ -310,9 +291,9 @@ ENTITY mss_top_COREUART_0_ram128x8_pa4 IS
       reset_n                 : IN  std_logic;  
       WClock                  : IN std_logic;   
       RClock                  : IN std_logic);   
-END ENTITY mss_top_COREUART_0_ram128x8_pa4;
+END ENTITY mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4;
 
-ARCHITECTURE translated OF mss_top_COREUART_0_ram128x8_pa4 IS
+ARCHITECTURE translated OF mss_top_sb_CoreUARTapb_1_0_ram128x8_pa4 IS
 
     component INV
         port(A : in std_logic := 'U'; Y : out std_logic) ;
@@ -408,7 +389,7 @@ RAM_128x8_Q_0_inst : RAM64x18
                 A_DOUT_CLK => VCC_0,
                 A_ADDR_SRST_N => VCC_0,
                 A_DOUT_SRST_N => VCC_0, 
-                A_ADDR_ARST_N => VCC_0, 
+                A_ADDR_ARST_N => reset_n, 
                 A_DOUT_ARST_N => VCC_0,
                 A_ADDR_EN => VCC_0, 
                 A_DOUT_EN => VCC_0,

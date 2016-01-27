@@ -263,6 +263,21 @@ int8_t change_coef(int8_t _type)
 		}
 }
 
+void set_P(uint8_t i)
+{
+	Kp_u = i;
+}
+void set_I(uint8_t i)
+{
+	Ki_u = i;
+}
+void set_D(uint8_t i)
+{
+	Kd_u = i;
+}
+
+
+
 
 void inc_I()
 {

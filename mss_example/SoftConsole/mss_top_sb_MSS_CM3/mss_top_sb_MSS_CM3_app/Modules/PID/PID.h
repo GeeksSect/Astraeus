@@ -82,7 +82,9 @@ void inc_D();
 void dec_I();
 void dec_P();
 void dec_D();
-
+void set_P(uint8_t i);
+void set_I(uint8_t i);
+void set_D(uint8_t i);
 int16_t get_I_p(void);
 int16_t get_I_r(void);
 int16_t get_I_y(void);

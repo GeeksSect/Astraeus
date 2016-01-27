@@ -1,5 +1,5 @@
 DESIGN=mss_top
-DESDIR=C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\designer\mss_top
+DESDIR=C:\Users\vetal\Documents\copter\Astraeus\mss_example\designer\mss_top
 FAM=SmartFusion2
 DIE=PA4M1000_N
 PACKAGE=tq144
@@ -12,7 +12,7 @@ VCCI_1.5_VOLTR=COM
 VCCI_1.8_VOLTR=COM
 VCCI_2.5_VOLTR=COM
 VCCI_3.3_VOLTR=COM
-RESTRICTPROBEPINS=1
+RESTRICTPROBEPINS=0
 DSW_VCCA_VOLTAGE_RAMP_RATE=100_MS
 PLL_SUPPLY=PLL_SUPPLY_33
 SYSTEM_CONTROLLER_SUSPEND_MODE=0

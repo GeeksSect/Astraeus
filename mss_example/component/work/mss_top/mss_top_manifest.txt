@@ -1,14 +1,14 @@
 Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)
 
-Date      :  Sun Oct 25 01:39:22 2015
-Project   :  C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example
+Date      :  Mon Jan 25 23:54:24 2016
+Project   :  C:\Users\vetal\Documents\copter\Astraeus\mss_example
 Component :  mss_top
 Family    :  SmartFusion2
 
 
 HDL source files for all Synthesis and Simulation tools:
-    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top/mss_top.vhd
+    C:/Users/vetal/Documents/copter/Astraeus/mss_example/component/work/mss_top/mss_top.vhd
 
 Stimulus files for all Simulation tools:
-    C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/component/work/mss_top/subsystem.bfm
+    C:/Users/vetal/Documents/copter/Astraeus/mss_example/component/work/mss_top/subsystem.bfm
 

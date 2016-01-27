@@ -2,5 +2,5 @@
 <SynplifyOutput>
 	<result>Success</result>
 	<design>mss_top</design>
-	<target_edif>C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\mss_top.edn</target_edif>
+	<target_edif>C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\mss_top.edn</target_edif>
 </SynplifyOutput>

@@ -2,8 +2,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-package mss_top_COREUART_0_components is
-component mss_top_COREUART_0_CoreUARTapb 
+package mss_top_sb_CoreUARTapb_1_0_components is
+component mss_top_sb_CoreUARTapb_1_0_CoreUARTapb 
    GENERIC (
       RX_LEGACY_MODE                 :  integer := 0;
       -- DEVICE FAMILY 
@@ -14,9 +14,9 @@ component mss_top_COREUART_0_CoreUARTapb
       BAUD_VALUE                     :  integer := 0;    --  Baud value is set only when fixed buad rate is selected 
       FIXEDMODE                      :  integer := 0;    --  fixed or programmable mode, 0: programmable; 1:fixed
       PRG_BIT8                       :  integer := 0;    --  This bit value is selected only when FIXEDMODE is set to 1 
-      PRG_PARITY                     :  integer := 0;    --  This bit value is selected only when FIXEDMODE is set to 1 
+      PRG_PARITY                     :  integer := 0;     --  This bit value is selected only when FIXEDMODE is set to 1 
       BAUD_VAL_FRCTN                 :  integer := 0;    --  0 = +0.0, 1 = +0.125, 2 = +0.25, 3 = +0.375, 4 = +0.5, 5 = +0.625, 6 = +0.75, 7 = +0.875,
-      BAUD_VAL_FRCTN_EN              :  integer := 0    --  1 = enable baud fraction, 0 = disable baud fraction
+      BAUD_VAL_FRCTN_EN              :  integer := 0     --  1 = enable baud fraction, 0 = disable baud fraction
 );    
    PORT (
       -- Inputs and Outputs
@@ -51,4 +51,4 @@ component mss_top_COREUART_0_CoreUARTapb
 );   
 end component;
 
-end mss_top_COREUART_0_components;
+end mss_top_sb_CoreUARTapb_1_0_components;

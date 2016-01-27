@@ -30,10 +30,10 @@ USE IEEE.std_logic_1164.all;
 USE IEEE.std_logic_arith.all;
 USE IEEE.std_logic_unsigned.all;
 
-ENTITY mss_top_COREUART_0_Tx_async IS
-  GENERIC ( SYNC_RESET       : integer := 0;
+ENTITY mss_top_sb_CoreUARTapb_1_0_Tx_async IS
+  GENERIC (
             -- TX Parameters
-            TX_FIFO          : integer := 0);    --  0=without tx fifo
+            TX_FIFO                        :  integer := 0);    --  0=without tx fifo
   PORT (
          --  1=with tx fifo
 
@@ -51,9 +51,9 @@ ENTITY mss_top_COREUART_0_Tx_async IS
          txrdy                   : OUT std_logic;
          tx                      : OUT std_logic;
          fifo_read_tx            : OUT std_logic);
-END ENTITY mss_top_COREUART_0_Tx_async;
+END ENTITY mss_top_sb_CoreUARTapb_1_0_Tx_async;
 
-ARCHITECTURE translated OF mss_top_COREUART_0_Tx_async IS
+ARCHITECTURE translated OF mss_top_sb_CoreUARTapb_1_0_Tx_async IS
 
 
   CONSTANT  tx_idle               :  integer := 0;
@@ -75,8 +75,6 @@ ARCHITECTURE translated OF mss_top_COREUART_0_Tx_async IS
   SIGNAL txrdy_xhdl1              :  std_logic;
   SIGNAL tx_xhdl2                 :  std_logic;
   --SIGNAL fifo_read_tx_xhdl3       :  std_logic;
-  SIGNAL aresetn                  :  std_logic;
-  SIGNAL sresetn                  :  std_logic;
 
   FUNCTION to_integer (
   val      : std_logic_vector) RETURN integer IS
@@ -93,8 +91,6 @@ ARCHITECTURE translated OF mss_top_COREUART_0_Tx_async IS
   END to_integer;
 
 BEGIN
-  aresetn <= '1' WHEN (SYNC_RESET=1) ELSE reset_n;
-  sresetn <= reset_n WHEN (SYNC_RESET=1) ELSE '1';
   txrdy <= txrdy_xhdl1;
   tx <= tx_xhdl2;
 
@@ -102,26 +98,22 @@ BEGIN
   -- ----------------------------------------------------------
   -- AS, Sep10: synchronized to start bit, rather than load bit
   -- since txload now happens on start bit state
-  make_txrdy : PROCESS (clk, aresetn)
+  make_txrdy : PROCESS (clk, reset_n)
   BEGIN
-    IF (NOT aresetn = '1') THEN
+    IF (NOT reset_n = '1') THEN
       txrdy_int <= '1';
     ELSIF (clk'EVENT AND clk = '1') THEN
-      IF (NOT sresetn = '1') THEN
-        txrdy_int <= '1';
-	  ELSE
-        IF (TX_FIFO = 2#0#) THEN
-          IF (xmit_pulse = '1') THEN
-            IF (xmit_state = start_bit) THEN
-              txrdy_int <= '1';
-            END IF;
+      IF (TX_FIFO = 2#0#) THEN
+        IF (xmit_pulse = '1') THEN
+          IF (xmit_state = start_bit) THEN
+            txrdy_int <= '1';
           END IF;
-          IF (rst_tx_empty = '1') THEN
-            txrdy_int <= '0';
-          END IF;
-        ELSE
-          txrdy_int <= NOT fifo_full;
         END IF;
+        IF (rst_tx_empty = '1') THEN
+          txrdy_int <= '0';
+        END IF;
+      ELSE
+        txrdy_int <= NOT fifo_full;
       END IF;
     END IF;
   END PROCESS make_txrdy;
@@ -129,84 +121,78 @@ BEGIN
   -- Modified Sep10, AS
   -- FIFO load state transitions and outputs register on system clock
   -- (clk) instead of baud clock
-  xmit_sm : PROCESS (clk, aresetn)
+  xmit_sm : PROCESS (clk, reset_n)
   BEGIN
-    IF (NOT aresetn = '1') THEN
+    IF (NOT reset_n = '1') THEN
       xmit_state <= tx_idle;
       tx_byte <= "00000000";
       fifo_read_en0 <= '1';
     ELSIF (clk'EVENT AND clk = '1') THEN
-      IF (NOT sresetn = '1') THEN
-        xmit_state <= tx_idle;
-        tx_byte <= "00000000";
+      -- AS:
+      -- (1) state on sysclk for tx_idle, tx_load, delay_state since these operations run
+      -- off the system clock, not the baud clock
+      -- (2) perform tx byte load on start bit state to ensure that data is
+      -- valid at that point
+      IF (xmit_pulse = '1' OR xmit_state = tx_idle OR xmit_state = delay_state OR xmit_state = tx_load) THEN
         fifo_read_en0 <= '1';
-	  ELSE
-        -- AS:
-        -- (1) state on sysclk for tx_idle, tx_load, delay_state since these operations run
-        -- off the system clock, not the baud clock
-        -- (2) perform tx byte load on start bit state to ensure that data is
-        -- valid at that point
-        IF (xmit_pulse = '1' OR xmit_state = tx_idle OR xmit_state = delay_state OR xmit_state = tx_load) THEN
-          fifo_read_en0 <= '1';
-          CASE xmit_state IS
-            WHEN tx_idle =>
-              IF (TX_FIFO = 2#0#) THEN
-                IF (NOT txrdy_int = '1') THEN
-                  xmit_state <= tx_load;
+        CASE xmit_state IS
+          WHEN tx_idle =>
+            IF (TX_FIFO = 2#0#) THEN
+              IF (NOT txrdy_int = '1') THEN
+                xmit_state <= tx_load;
+              ELSE
+                xmit_state <= tx_idle;
+              END IF;
+            ELSE
+              IF (fifo_empty = '0') THEN
+                fifo_read_en0 <= '0';
+                xmit_state <= delay_state;
+              ELSE
+                xmit_state <= tx_idle;
+                fifo_read_en0 <= '1';
+              END IF;
+            END IF;
+          WHEN tx_load =>
+            xmit_state <= start_bit;
+          WHEN start_bit =>
+            IF (TX_FIFO = 2#0#) THEN
+              tx_byte <= tx_hold_reg;
+            ELSE
+              tx_byte <= tx_dout_reg;
+            END IF;
+            xmit_state <= tx_data_bits;
+          WHEN tx_data_bits =>
+            IF (bit8 = '1') THEN
+              IF (xmit_bit_sel = "0111") THEN
+                IF (parity_en = '1') THEN
+                  xmit_state <= parity_bit;
                 ELSE
-                  xmit_state <= tx_idle;
+                  xmit_state <= tx_stop_bit;
                 END IF;
               ELSE
-                IF (fifo_empty = '0') THEN
-                  fifo_read_en0 <= '0';
-                  xmit_state <= delay_state;
-                ELSE
-                  xmit_state <= tx_idle;
-                  fifo_read_en0 <= '1';
-                END IF;
+                xmit_state <= tx_data_bits;
               END IF;
-            WHEN tx_load =>
-              xmit_state <= start_bit;
-            WHEN start_bit =>
-              IF (TX_FIFO = 2#0#) THEN
-                tx_byte <= tx_hold_reg;
-              ELSE
-                tx_byte <= tx_dout_reg;
-              END IF;
-              xmit_state <= tx_data_bits;
-            WHEN tx_data_bits =>
-              IF (bit8 = '1') THEN
-                IF (xmit_bit_sel = "0111") THEN
-                  IF (parity_en = '1') THEN
-                    xmit_state <= parity_bit;
-                  ELSE
-                    xmit_state <= tx_stop_bit;
-                  END IF;
+            ELSE
+              IF (xmit_bit_sel = "0110") THEN
+                IF (parity_en = '1') THEN
+                  xmit_state <= parity_bit;
                 ELSE
-                  xmit_state <= tx_data_bits;
+                  xmit_state <= tx_stop_bit;
                 END IF;
               ELSE
-                IF (xmit_bit_sel = "0110") THEN
-                  IF (parity_en = '1') THEN
-                    xmit_state <= parity_bit;
-                  ELSE
-                    xmit_state <= tx_stop_bit;
-                  END IF;
-                ELSE
-                  xmit_state <= tx_data_bits;
-                END IF;
+                xmit_state <= tx_data_bits;
               END IF;
-            WHEN parity_bit =>
-              xmit_state <= tx_stop_bit;
-            WHEN tx_stop_bit =>
-              xmit_state <= tx_idle;
-            WHEN delay_state =>
-              xmit_state <= tx_load;
-            WHEN OTHERS  =>
-              xmit_state <= tx_idle;
-      
-          END CASE;
-        END IF;
+            END IF;
+          WHEN parity_bit =>
+            xmit_state <= tx_stop_bit;
+          WHEN tx_stop_bit =>
+            xmit_state <= tx_idle;
+          WHEN delay_state =>
+            xmit_state <= tx_load;
+          WHEN OTHERS  =>
+            xmit_state <= tx_idle;
+
+        END CASE;
       END IF;
     END IF;
   END PROCESS xmit_sm;
@@ -233,87 +219,75 @@ BEGIN
     --  fifo_read_en <= NOT fifo_read_en1 OR fifo_read_en0 ;
   fifo_read_tx <= fifo_read_en0;
 
-  xmit_cnt : PROCESS (clk, aresetn)
+  xmit_cnt : PROCESS (clk, reset_n)
   BEGIN
-    IF (NOT aresetn = '1') THEN
+    IF (NOT reset_n = '1') THEN
       xmit_bit_sel <= "0000";
     ELSIF (clk'EVENT AND clk = '1') THEN
-      IF (NOT sresetn = '1') THEN
-        xmit_bit_sel <= "0000";
-	  ELSE
-        IF (xmit_pulse = '1') THEN
-          IF (xmit_state /= tx_data_bits) THEN
-            xmit_bit_sel <= "0000";
-          ELSE
-            xmit_bit_sel <= xmit_bit_sel + "0001";
-          END IF;
+      IF (xmit_pulse = '1') THEN
+        IF (xmit_state /= tx_data_bits) THEN
+          xmit_bit_sel <= "0000";
+        ELSE
+          xmit_bit_sel <= xmit_bit_sel + "0001";
         END IF;
       END IF;
     END IF;
   END PROCESS xmit_cnt;
 
-  xmit_sel : PROCESS (clk, aresetn)
+  xmit_sel : PROCESS (clk, reset_n)
   BEGIN
-    IF (NOT aresetn = '1') THEN
+    IF (NOT reset_n = '1') THEN
       tx_xhdl2 <= '1';
     ELSIF (clk'EVENT AND clk = '1') THEN
-      IF (NOT sresetn = '1') THEN
-        tx_xhdl2 <= '1';
-	  ELSE
-        -- AS:
-        -- state on sysclk for tx_idle, tx_load, delay_state since these operations run
-        -- off the system clock, not the baud clock
-        IF (xmit_pulse = '1' OR xmit_state = tx_idle OR xmit_state = delay_state OR xmit_state = tx_load) THEN
-          CASE xmit_state IS
-            WHEN tx_idle =>
-              tx_xhdl2 <= '1';
-            WHEN tx_load =>
-              tx_xhdl2 <= '1';
-            WHEN start_bit =>
-              tx_xhdl2 <= '0';
-            WHEN tx_data_bits =>
-              --tx <= tx_byte[conv_integer(xmit_bit_sel)] ;
-      
-              tx_xhdl2 <= tx_byte(to_integer(xmit_bit_sel));
-            WHEN parity_bit =>
-              tx_xhdl2 <= odd_n_even XOR tx_parity;
-            --when parity_bit    => if(ODD_N_EVEN = '1') then
-            --                        tx <= not tx_parity;
-            --                      else
-            --                        tx <= tx_parity;
-            --                      end if;
-      
-            WHEN tx_stop_bit =>
-              tx_xhdl2 <= '1';
-            WHEN OTHERS  =>
-              tx_xhdl2 <= '1';
-      
-          END CASE;
-        END IF;
+      -- AS:
+      -- state on sysclk for tx_idle, tx_load, delay_state since these operations run
+      -- off the system clock, not the baud clock
+      IF (xmit_pulse = '1' OR xmit_state = tx_idle OR xmit_state = delay_state OR xmit_state = tx_load) THEN
+        CASE xmit_state IS
+          WHEN tx_idle =>
+            tx_xhdl2 <= '1';
+          WHEN tx_load =>
+            tx_xhdl2 <= '1';
+          WHEN start_bit =>
+            tx_xhdl2 <= '0';
+          WHEN tx_data_bits =>
+            --tx <= tx_byte[conv_integer(xmit_bit_sel)] ;
+
+            tx_xhdl2 <= tx_byte(to_integer(xmit_bit_sel));
+          WHEN parity_bit =>
+            tx_xhdl2 <= odd_n_even XOR tx_parity;
+          --when parity_bit    => if(ODD_N_EVEN = '1') then
+          --                        tx <= not tx_parity;
+          --                      else
+          --                        tx <= tx_parity;
+          --                      end if;
+
+          WHEN tx_stop_bit =>
+            tx_xhdl2 <= '1';
+          WHEN OTHERS  =>
+            tx_xhdl2 <= '1';
+
+        END CASE;
       END IF;
     END IF;
   END PROCESS xmit_sel;
 
-  xmit_par_calc : PROCESS (clk, aresetn)
+  xmit_par_calc : PROCESS (clk, reset_n)
   BEGIN
-    IF (NOT aresetn = '1') THEN
+    IF (NOT reset_n = '1') THEN
       tx_parity <= '0';
     ELSIF (clk'EVENT AND clk = '1') THEN
-      IF (NOT sresetn = '1') THEN
+      IF ((xmit_pulse AND parity_en) = '1') THEN
+        IF (xmit_state = tx_data_bits) THEN
+          --tx_parity <= tx_parity ^ tx_byte[conv_integer(xmit_bit_sel)] ;
+
+          tx_parity <= tx_parity XOR tx_byte(to_integer(xmit_bit_sel));
+        ELSE
+          tx_parity <= tx_parity;
+        END IF;
+      END IF;
+      IF (xmit_state = tx_stop_bit) THEN
         tx_parity <= '0';
-	  ELSE
-        IF ((xmit_pulse AND parity_en) = '1') THEN
-          IF (xmit_state = tx_data_bits) THEN
-            --tx_parity <= tx_parity ^ tx_byte[conv_integer(xmit_bit_sel)] ;
-      
-            tx_parity <= tx_parity XOR tx_byte(to_integer(xmit_bit_sel));
-          ELSE
-            tx_parity <= tx_parity;
-          END IF;
-        END IF;
-        IF (xmit_state = tx_stop_bit) THEN
-          tx_parity <= '0';
-        END IF;
       END IF;
     END IF;
   END PROCESS xmit_par_calc;
