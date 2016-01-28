@@ -47,17 +47,11 @@ static int16_t Itmp_p, Itmp_r, Itmp_y;
 static int16_t Dtmp_p, Dtmp_r, Dtmp_y;
 static int16_t Ptmp_p, Ptmp_r, Ptmp_y;
 
-inline void magnet_orient(int16_t * mx,
-							int16_t * my,
-							int16_t * mz,
-							int16_t * magn_yaw);
-
-void acell_angle(int16_t * ax,
-				int16_t * ay,
-				int16_t * az,
-				int16_t * acell_pitch,
-				int16_t * acell_roll);
-
+void acell_angle( int16_t * ax,
+				  int16_t * ay,
+				  int16_t * az,
+				  int16_t * acell_pitch,
+				  int16_t * acell_roll);
 void my_angle(int16_t * gx,
 		int16_t * gy,
 		int16_t * gz,
@@ -71,7 +65,6 @@ void my_angle(int16_t * gx,
 		int16_t * _yaw_curr,
 
 		uint32_t d_t);
-
 void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw,
 
 			int16_t * pow, int16_t * force,
@@ -80,11 +73,6 @@ void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw,
 
 			uint16_t d_t);
 
-<<<<<<< HEAD
-
-int8_t change_coef(int8_t _type);
-=======
->>>>>>> compass
 
 
 

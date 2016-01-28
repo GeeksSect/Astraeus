@@ -2,67 +2,45 @@
 
 void itoa
 (
-    char *buf,
-    int base,
-    int d
+	char *buf,
+	int base,
+	int d
 )
 {
-    char *p = buf;
-    char *p1, *p2;
-    unsigned long ud = d;
-    int divisor = 10;
+	char *p = buf;
+	char *p1, *p2;
+	unsigned long ud = d;
+	int divisor = 10;
 
-    /* If %d is specified and D is minus, put `-' in the head.  */
-    if (base == 'd' && d < 0) {
-        *p++ = '-';
-        buf++;
-        ud = -d;
-    } else if (base == 'x') {
-        divisor = 16;
-    }
+	/* If %d is specified and D is minus, put `-' in the head.  */
+	if (base == 'd' && d < 0) {
+			*p++ = '-';
+			buf++;
+			ud = -d;
+	} else if (base == 'x') {
+			divisor = 16;
+	}
 
-    /* Divide UD by DIVISOR until UD == 0.  */
-    do {
-        int remainder = ud % divisor;
-        *p++ = (remainder < 10) ? remainder + '0' : remainder + 'a' - 10;
-    } while (ud /= divisor);
+	/* Divide UD by DIVISOR until UD == 0.  */
+	do {
+			int remainder = ud % divisor;
 
-    /* Terminate BUF.  */
-    *p = 0;
+			*p++ = (remainder < 10) ? remainder + '0' : remainder + 'a' - 10;
+			ud /= divisor;
+	} while (ud);
 
-    /* Reverse BUF.  */
-    p1 = buf;
-    p2 = p - 1;
-    while (p1 < p2) {
-        char tmp = *p1;
-        *p1 = *p2;
-        *p2 = tmp;
-        p1++;
-        p2--;
-    }
-}
 
-uint16_t twobtoi(uint8_t buf[2])
-{
-    return (buf[0] << 8) | buf[1];
-}
 
-int16_t my_atoi(uint8_t* buf, uint8_t l)
-{
-    int16_t tmp = 0;
-    uint8_t i = 0;
-    for(i = 1; i < l; i++)
-    {
-        if(buf[i] >= '0' && buf[i] <= '9')
-        {
-            tmp = tmp * 10 + buf[i] - 48;
-        }
-        else
-            return 0;
-    }
-    if(buf[0] == '-')
-    {
-        tmp = -tmp;
-    }
-    return tmp;
-}
+
+	/* Reverse BUF.  */
+	p1 = buf;
+	p2 = p - 1;
+	while (p1 < p2) {
+			char tmp = *p1;
+			*p1 = *p2;
+			*p2 = tmp;
+			p1++;
+			p2--;
+	}
+};
+

@@ -1,17 +1,10 @@
 #include "Modules/BMP/bmp.h"
 #include "Modules/I2C/i2c.h"
-#include "Modules/UART/uart.h"
 #include "Modules/MPU6050/mpu6050.h"
 #include "Modules/PID/PID.h"
-#include "Modules/HMC/hmc.h"
 #include "Modules/micros/micros.h"
-#include "Modules/PWM/pwm.h"
 #include "Helpers/converter/converter.h"
-<<<<<<< HEAD
-#include "Helpers/debug/logger.h"
-=======
 #include "Modules/telemetry/telemetry.h"
->>>>>>> compass
 
 #include "hal.h"
 #include "mss_top_hw_platform.h"
@@ -19,26 +12,11 @@
 #include "CMSIS/m2sxxx.h"
 
 #include "drivers/corei2c/core_i2c.h"
+#include "drivers/CorePWM/core_pwm.h"
 #include "drivers_config/sys_config/sys_config.h"
-#include "drivers/mss_timer/mss_timer.h"
 
 #include <stdlib.h>
 #include <math.h>
-<<<<<<< HEAD
-
-
-void press_any_key_to_continue(void);
-
-/*------------------------------------------------------------------------------
- * I2C buffers. These are the buffers where data written transferred via I2C
- * will be stored. RX
- */
-static uint8_t g_slave_rx_buffer[BUFFER_SIZE];
-static uint8_t g_slave_tx_buffer[BUFFER_SIZE] = "<<-------Slave Tx data ------->>";
-static uint8_t g_master_rx_buf[BUFFER_SIZE];
-static uint8_t g_master_tx_buf[BUFFER_SIZE];
-=======
->>>>>>> compass
 
 #define BAUD_VALUE_115200    26
 #define PWM_PRESCALE 1
@@ -52,39 +30,6 @@ void press_any_key_to_continue(void);
 void setup();
 
 
-<<<<<<< HEAD
-void setup()
-{
-	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
-	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
-	i2c_init(1); // argument no matter
-	BMP_calibrate();
-	MPU6050_initialize();
-	MPU6050_setDLPFMode(5);
-	MPU6050_setFullScaleGyroRange(1);
-	HMC_init();
-
-	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
-
-	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
-
-	MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
-}
-
-int main(void)
-{
-    uint8_t rx_size = 0;
-    uint8_t rx_buff[9];
-    uint8_t loop_count;
-
-    setup();
-=======
 
 int main(void)
 {
@@ -101,16 +46,9 @@ int main(void)
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
 	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
->>>>>>> compass
 
 
-<<<<<<< HEAD
-    press_any_key_to_continue();
-    uart_print((const uint8_t *)"Hi, I am copter!\n\r");
-    press_any_key_to_continue();
-=======
     setup();
->>>>>>> compass
 
 	press_any_key_to_continue();
 	UART_polled_tx_string(&g_uart, (const uint8_t *)"Hello, I am quadrocopter!\n\r");
@@ -123,18 +61,6 @@ int main(void)
 	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okay, let's burn it!\n\r");
 	press_any_key_to_continue();
 
-<<<<<<< HEAD
-    start_timer();
-    uint64_t t_prev = micros();
-    uint32_t d_t;
-
-	int8_t rx_buf;
-
-	while (1 == 1)
-	{
-		rx_size = UART_get_rx(&g_uart, rx_buff, sizeof(rx_buff));
-				if (rx_size > 0)
-=======
 	t_prev = micros();
 	while (1 == 1)
 	{
@@ -146,7 +72,6 @@ int main(void)
 			if(rx_buff[rd_pos+3] == 10)
 			{
 				switch (rx_buff[rd_pos])
->>>>>>> compass
 				{
 					case 'p':
 					{
@@ -257,6 +182,8 @@ int main(void)
 
 	
 	}
+    
+
     return 0;
 }
 
@@ -267,10 +194,8 @@ void press_any_key_to_continue(void)
     size_t rx_size;
     uint8_t rx_char;
     do {
-        rx_size = uart_get(&rx_char, sizeof(rx_char));
+        rx_size = UART_get_rx(&g_uart, &rx_char, sizeof(rx_char));
     } while(rx_size == 0);
-<<<<<<< HEAD
-=======
 
 }
 /*------------------------------------------------------------------------------
@@ -283,7 +208,6 @@ void SysTick_Handler(void)
 void FabricIrq0_IRQHandler(void)
 {
 	I2C_isr(&g_core_i2c0);
->>>>>>> compass
 }
 void setup()
 {

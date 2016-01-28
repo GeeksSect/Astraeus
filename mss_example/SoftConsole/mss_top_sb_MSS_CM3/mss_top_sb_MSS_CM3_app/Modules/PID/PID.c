@@ -5,16 +5,6 @@
  *      Author: vetal
  */
 #include "PID.h"
-
-inline void magnet_orient(int16_t * mx, int16_t * my, int16_t * mz, int16_t * magn_yaw)
-{
-	*magn_yaw = (int16_t)atan(*mx/(*my))*k*k1;
-	if(*mx<0)
-	{
-		*magn_yaw+=180*k;
-	}
-
-}
 inline void acell_angle(int16_t * ax, int16_t * ay, int16_t * az, int16_t * acell_pitch, int16_t * acell_roll)
 {
   if (*az > 1000) // if down is down
@@ -91,7 +81,6 @@ void my_angle(int16_t * gx,
 	*_yaw_curr = yaw_curr;
 	*_pitch_curr = pitch_curr;
 	*_roll_curr = roll_curr;
-	*_yaw_curr = yaw_curr;
 }
 
 inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow, int16_t * force, int16_t * gx, int16_t * gy, int16_t * gz, uint16_t d_t)
@@ -107,6 +96,7 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 	else
 		if(*force > high_trottle)
 			*force = high_trottle;
+
 
 	if(*pitch<20*k && *pitch> -20*k && *roll<20*k && *roll>-20*k && *yaw<20*k && *yaw>-20*k) // don't integrate if orientation is fatal
 	{

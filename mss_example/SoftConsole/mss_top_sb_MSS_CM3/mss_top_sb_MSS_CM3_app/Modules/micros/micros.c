@@ -1,32 +1,27 @@
+
 #include "micros.h"
 
 
 inline uint64_t micros()
 {
-<<<<<<< HEAD
-    return (t_h + 10) * frq / 50 - MSS_TIM1_get_current_value() / 50;
-=======
 	return (1000000*t_h) + ((frq*10) - MSS_TIM1_get_current_value())/(frq/1000000); //checked
->>>>>>> compass
 }
-
 void init_timer()
 {
-    MSS_TIM1_load_background(frq * 10);
+	MSS_TIM1_load_background(frq*10);
+	MSS_TIM1_start();
+	MSS_TIM1_enable_irq();
 }
-
-void start_timer()
-{
-    MSS_TIM1_start();
-    MSS_TIM1_enable_irq();
-}
-
 void stop_timer()
 {
-    MSS_TIM1_disable_irq();
+	MSS_TIM1_disable_irq();
 }
-<<<<<<< HEAD
-=======
+
+void Timer1_IRQHandler()
+{
+	t_h += 10;
+	MSS_TIM1_clear_irq();
+}
 int16_t my_atoi (uint8_t *buf, uint8_t l)
 {
 	int16_t tmp=0;
@@ -39,12 +34,7 @@ int16_t my_atoi (uint8_t *buf, uint8_t l)
 			return 0;
 	}
 	return tmp;
->>>>>>> compass
 
-void Timer1_IRQHandler()
-{
-    t_h += 10;
-    MSS_TIM1_clear_irq();
 }
 
 
