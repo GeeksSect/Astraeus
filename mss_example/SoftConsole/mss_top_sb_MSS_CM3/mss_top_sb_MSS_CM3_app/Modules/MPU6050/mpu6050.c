@@ -88,7 +88,7 @@ inline void MPU6050_getMotion6(int16_t* ax,
                         int16_t* gx,
                         int16_t* gy,
                         int16_t* gz,
-                        int use_calib)
+                        uint8_t use_calib)
 {
     uint8_t tx_buf[1]; uint8_t tx_len;
     tx_buf[0] = MPU6050_RA_ACCEL_XOUT_H;
@@ -120,7 +120,7 @@ inline void MPU6050_getMotion6(int16_t* ax,
 }
 void MPU6050_calibration(){
 	int i =0;
-	uint16_t tmp[6];
+	int16_t tmp[6];
 	for(i=0; i<1000; i++)
 	{
 		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
