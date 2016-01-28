@@ -3087,7 +3087,7 @@
 </row>
 <row>
  <cell>BAUD_RATE_VALUE</cell>
- <cell>0</cell>
+ <cell>3</cell>
 </row>
 <row>
  <cell>BCLK_ENABLED</cell>
@@ -3170,11 +3170,11 @@
 </header>
 <row>
  <cell>BAUD_VAL_FRCTN</cell>
- <cell>0</cell>
+ <cell>1</cell>
 </row>
 <row>
  <cell>BAUD_VAL_FRCTN_EN</cell>
- <cell>false</cell>
+ <cell>true</cell>
 </row>
 <row>
  <cell>BAUD_VALUE</cell>
@@ -3202,7 +3202,7 @@
 </row>
 <row>
  <cell>RX_FIFO</cell>
- <cell>0</cell>
+ <cell>1</cell>
 </row>
 <row>
  <cell>RX_LEGACY_MODE</cell>
@@ -3214,7 +3214,86 @@
 </row>
 <row>
  <cell>TX_FIFO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>USE_SOFT_FIFO</cell>
  <cell>0</cell>
+</row>
+</table>
+</cdata>
+</data>
+<separator/>
+<data>
+<name>CoreUARTapb_1</name>
+<table>
+<header>
+ <cell>Name</cell>
+ <cell>Subsystem</cell>
+ <cell>Vendor</cell>
+ <cell>Version</cell>
+</header>
+<row>
+ <cell>CoreUARTapb</cell>
+ <cell>MSS FIC_0 - MSS Master Subsystem</cell>
+ <cell>Actel</cell>
+ <cell>5.2.2</cell>
+</row>
+</table>
+<cdata>
+<name>Configuration</name>
+<table>
+<header>
+ <cell>Parameter</cell>
+ <cell>Value</cell>
+</header>
+<row>
+ <cell>BAUD_VAL_FRCTN</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>BAUD_VAL_FRCTN_EN</cell>
+ <cell>true</cell>
+</row>
+<row>
+ <cell>BAUD_VALUE</cell>
+ <cell>26</cell>
+</row>
+<row>
+ <cell>FAMILY</cell>
+ <cell>19</cell>
+</row>
+<row>
+ <cell>FIXEDMODE</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>HDL_license</cell>
+ <cell>U</cell>
+</row>
+<row>
+ <cell>PRG_BIT8</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>PRG_PARITY</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>RX_FIFO</cell>
+ <cell>1</cell>
+</row>
+<row>
+ <cell>RX_LEGACY_MODE</cell>
+ <cell>0</cell>
+</row>
+<row>
+ <cell>testbench</cell>
+ <cell>User</cell>
+</row>
+<row>
+ <cell>TX_FIFO</cell>
+ <cell>1</cell>
 </row>
 <row>
  <cell>USE_SOFT_FIFO</cell>
@@ -3831,6 +3910,11 @@
 </row>
 <row>
  <cell>mss_top_sb_MSS_0:MSS_INT_F2M[2]</cell>
+ <cell>CoreUARTapb_1_0</cell>
+ <cell>TXRDY, RXRDY, PARITY_ERR, OVERFLOW, FRAMING_ERR</cell>
+</row>
+<row>
+ <cell>mss_top_sb_MSS_0:MSS_INT_F2M[3]</cell>
  <cell>corepwm_0_0</cell>
  <cell>TACHINT</cell>
 </row>
@@ -3909,6 +3993,16 @@
 </row>
 <row>
  <cell>TX</cell>
+ <cell>OUT</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>RX_0</cell>
+ <cell>IN</cell>
+ <cell>-</cell>
+</row>
+<row>
+ <cell>TX_0</cell>
  <cell>OUT</cell>
  <cell>-</cell>
 </row>

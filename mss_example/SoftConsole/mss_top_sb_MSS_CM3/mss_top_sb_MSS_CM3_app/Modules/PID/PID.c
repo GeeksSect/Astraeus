@@ -80,7 +80,10 @@ void my_angle(int16_t * gx,
 
 	pitch_curr = ((49*(intgr_p + pitch_prev))+(*acell_pitch)) / 50;
 	roll_curr = ((49*(intgr_r + roll_prev))+(*acell_roll)) / 50;
-	yaw_curr = ((49*(intgr_y + yaw_prev))+(*magn_yaw)) / 50;
+	if(pitch_curr<5*k && pitch_curr> -5*k && roll_curr<5*k && roll_curr>-5*k)
+		yaw_curr = ((49*(intgr_y + yaw_prev))+(*magn_yaw)) / 50;
+	else
+		yaw_curr = intgr_y + yaw_prev;
 
 
 
@@ -126,42 +129,42 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 
 
 // differential limit
-	if(Dtmp_p > D_lim)
-		Dtmp_p = D_lim;
+	if(Dtmp_p > D_lim*10)
+		Dtmp_p = D_lim*10;
 	else
-		if(Dtmp_p< - D_lim)
-			Dtmp_p = - D_lim;
+		if(Dtmp_p< - D_lim*10*10)
+			Dtmp_p = - D_lim*10;
 
-	if(Dtmp_r > D_lim)
-		Dtmp_r = D_lim;
+	if(Dtmp_r > D_lim*10)
+		Dtmp_r = D_lim*10;
 	else
-		if(Dtmp_r< - D_lim)
-			Dtmp_r = - D_lim;
+		if(Dtmp_r< - D_lim*10)
+			Dtmp_r = - D_lim*10;
 
-	if(Dtmp_y > D_lim)
-		Dtmp_y = D_lim;
+	if(Dtmp_y > D_lim*10)
+		Dtmp_y = D_lim*10;
 	else
-		if(Dtmp_y< -D_lim)
-			Dtmp_y = -D_lim;
+		if(Dtmp_y< -D_lim*10)
+			Dtmp_y = -D_lim*10;
 
 // proportional limit
-	if(Ptmp_p > P_lim)
-		Ptmp_p = P_lim;
+	if(Ptmp_p > P_lim*10)
+		Ptmp_p = P_lim*10;
 	else
-		if(Ptmp_p< - P_lim)
-			Ptmp_p = - P_lim;
+		if(Ptmp_p< - P_lim*10)
+			Ptmp_p = - P_lim*10;
 
-	if(Ptmp_r > P_lim)
-		Ptmp_r = P_lim;
+	if(Ptmp_r > P_lim*10)
+		Ptmp_r = P_lim*10;
 	else
-		if(Ptmp_r< -P_lim)
-			Ptmp_r = -P_lim;
+		if(Ptmp_r< -P_lim*10)
+			Ptmp_r = -P_lim*10;
 
-	if(Ptmp_y > P_lim)
-			Ptmp_y = P_lim;
+	if(Ptmp_y > P_lim*10)
+			Ptmp_y = P_lim*10;
 		else
-			if(Ptmp_y< -P_lim)
-				Ptmp_y = -P_lim;
+			if(Ptmp_y< -P_lim*10)
+				Ptmp_y = -P_lim*10;
 
 
 	// integral limit
@@ -188,10 +191,7 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 	int16_t sum_p, sum_r, sum_y;
 	sum_p = Dtmp_p + Ptmp_p + Itmp_p;
 	sum_r = Dtmp_r + Ptmp_r + Itmp_r;
-	if(*pitch<10*k && *pitch> -10*k && *roll<10*k && *roll>-10*k)
-		sum_y = (Itmp_y + Ptmp_y + Dtmp_y)/4;
-	else
-		sum_y = Itmp_y /4;
+	sum_y = Itmp_y + Ptmp_y + Dtmp_y;
 
 	pow[0] = *force + sum_p + sum_r + sum_y;
     pow[1] = *force - sum_p + sum_r - sum_y;
@@ -232,72 +232,32 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
      }
 
 }
-int8_t change_coef(int8_t _type)
+
+
+void set_P(uint8_t i)
 {
-	switch (_type)
-		{
-		case 'P':
-		{
-			Kp_u++;
-			return Kp_u;
-		}
-		case 'p':
-		{
-			Kp_u--;
-			return Kp_u;
-		}
-		case 'I':
-		{
-			Ki_u++;
-			return Ki_u;
-		}
-		case 'i':
-		{
-			Ki_u--;
-			return Ki_u;
-		}
-		case 'D':
-		{
-			Kd_u++;
-			return Kd_u;
-		}
-		case 'd':
-		{
-			Kd_u--;
-			return Kd_u;
-		}
-		default:
-		{
-			return -1;
-		}
-		}
+	Kp_u = i;
+}
+void set_I(uint8_t i)
+{
+	Ki_u = i;
+}
+void set_D(uint8_t i)
+{
+	Kd_u = i;
+}
+
+void setLim_P(uint8_t i)
+{
+	P_lim = i;
+}
+void setLim_D(uint8_t i)
+{
+	D_lim = i;
 }
 
 
-void inc_I()
-{
-	Ki_u++;
-}
-void inc_P()
-{
-	Kp_u++;
-}
-void inc_D()
-{
-	Kd_u++;
-}
-void dec_I()
-{
-	Ki_u--;
-}
-void dec_P()
-{
-	Kp_u--;
-}
-void dec_D()
-{
-	Kd_u--;
-}
+
 int16_t get_I_p(void)
 {
 	return Itmp_p;

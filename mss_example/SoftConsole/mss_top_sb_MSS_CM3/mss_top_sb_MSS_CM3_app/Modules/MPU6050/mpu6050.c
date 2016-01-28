@@ -85,12 +85,22 @@ void MPU6050_setDLPFMode(uint8_t mode)
                   0);
 }
 
+<<<<<<< HEAD
 void MPU6050_getRawMotion6(int16_t* ax,
                            int16_t* ay,
                            int16_t* az,
                            int16_t* gx,
                            int16_t* gy,
                            int16_t* gz)
+=======
+inline void MPU6050_getMotion6(int16_t* ax,
+                        int16_t* ay,
+                        int16_t* az,
+                        int16_t* gx,
+                        int16_t* gy,
+                        int16_t* gz,
+                        uint8_t use_calib)
+>>>>>>> compass
 {
     uint8_t tx_buf[1]; uint8_t tx_len;
     tx_buf[0] = MPU6050_RA_ACCEL_XOUT_H;
@@ -109,6 +119,29 @@ void MPU6050_getRawMotion6(int16_t* ax,
     *gy = (((int16_t)rx_buf[10]) << 8) | rx_buf[11];
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
 }
+<<<<<<< HEAD
+=======
+void MPU6050_calibration(){
+	int i =0;
+	int16_t tmp[6];
+	for(i=0; i<1000; i++)
+	{
+		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
+		ax0 += tmp[0];
+		ay0 += tmp[1];
+		az0 += tmp[2];
+		gx0 += tmp[3];
+		gy0 += tmp[4];
+		gz0 += tmp[5];
+	}
+	ax0 /= 1000;
+	ay0 /= 1000;
+	az0 /= 1000;
+	gx0 /= 1000;
+	gy0 /= 1000;
+	gz0 /= 1000;
+	ax0 -= 16384;
+>>>>>>> compass
 
 void MPU6050_getMotion6(int16_t* ax,
                         int16_t* ay,

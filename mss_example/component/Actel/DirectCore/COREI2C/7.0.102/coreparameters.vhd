@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Created by Microsemi SmartDesign Sun Oct 25 01:31:21 2015
+-- Created by Microsemi SmartDesign Wed Jan 27 18:28:21 2016
 -- Parameters for COREI2C
 ----------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ LIBRARY ieee;
 package coreparameters is
     constant ADD_SLAVE1_ADDRESS_EN : integer := 0;
     constant BAUD_RATE_FIXED : integer := 1;
-    constant BAUD_RATE_VALUE : integer := 0;
+    constant BAUD_RATE_VALUE : integer := 3;
     constant BCLK_ENABLED : integer := 0;
     constant FIXED_SLAVE0_ADDR_EN : integer := 1;
     constant FIXED_SLAVE0_ADDR_VALUE : std_logic_vector(31 downto 0) := x"42";

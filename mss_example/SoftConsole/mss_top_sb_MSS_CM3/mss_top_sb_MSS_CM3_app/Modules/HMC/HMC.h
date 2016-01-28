@@ -64,7 +64,7 @@
 
 
 
-static float m_scale;
+
 
 void HMC_init();
 

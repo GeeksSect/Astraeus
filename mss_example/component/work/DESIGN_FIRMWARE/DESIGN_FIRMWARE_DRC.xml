@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="drcss.xsl"?>
+<drcreport>
+  <header>DESIGN_FIRMWARE</header>
+  <drc>
+    <status>C:\Microsemi\Libero_v11.5\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Inconsistent Version</message>
+    <detail>CoreUARTapb_Driver_0, instances in a design must use the same version of a core</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/DESIGN_FIRMWARE/instances/CoreUARTapb_Driver_0</crossprobe>
+  </drc>
+  <drc>
+    <status>C:\Microsemi\Libero_v11.5\Designer/data/drcreport\error.png</status>
+    <StatusMessage>Error</StatusMessage>
+    <message>Inconsistent Version</message>
+    <detail>CoreUARTapb_Driver_1, instances in a design must use the same version of a core</detail>
+    <crossprobe>liberoaction://cross_probe/smartdesign/DESIGN_FIRMWARE/instances/CoreUARTapb_Driver_1</crossprobe>
+  </drc>
+</drcreport>

@@ -1,5 +1,5 @@
 *****************************************************************
-Pin Report - Date: Sat Nov 07 17:51:56 2015 Pinchecksum: NOT-AVAILABLE
+Pin Report - Date: Wed Jan 27 18:33:18 2016 Pinchecksum: NOT-AVAILABLE
 Product: Designer
 Release: v11.5 SP3
 Version: 11.5.3.10
@@ -56,10 +56,10 @@ Number |Port               |Function                     |State      |I/O Std  |
 43      pwm_out_2           MSIO102PB4                    Fixed       LVCMOS33  Output     TRISTATE                        None           No                                  ---              ---         ---            ---             ---          ---   ---           4                  5                 
 44                          MSIO102NB4/CCC_NE1_CLKI0      Special     
 45                          VDDI4                         Reserved    
-46                          User Reserved                 Unassigned  
-47                          User Reserved                 Unassigned  
+46                          MSIO103NB4/PROBE_B            Unassigned  
+47      TX2                 MSIO103PB4/PROBE_A            Fixed       LVCMOS33  Output     TRISTATE                        None           No                                  ---              ---         ---            ---             ---          ---   ---           4                  5                 
 48                          MSIO104NB4/GB7                Special     
-49                          MSIO104PB4/GB3                Special     
+49      RX2                 MSIO104PB4/GB3                Special     LVCMOS33  Input      TRISTATE                        None           No                                  Off              ---         ---            Off             Off          ---   ---           ---                ---               
 50                          VDD                           Reserved    
 51                          VSS                           Reserved    
 52                          MSIO105PB4/CCC_NE0_CLKI0      Special     

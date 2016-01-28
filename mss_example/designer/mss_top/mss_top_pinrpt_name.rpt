@@ -1,5 +1,5 @@
 *****************************************************************
-Pin Report - Date: Sat Nov 07 17:51:56 2015 Pinchecksum: NOT-AVAILABLE
+Pin Report - Date: Wed Jan 27 18:33:18 2016 Pinchecksum: NOT-AVAILABLE
 Product: Designer
 Release: v11.5 SP3
 Version: 11.5.3.10
@@ -19,4 +19,6 @@ pwm_out_2           43   Yes    MSIO102PB4                    Bank4     LVCMOS33
 pwm_out_3           101  Yes    MSIO12NB2/SPI_0_SDI/GPIO_5_A  Bank2     LVCMOS33   Output                          TRISTATE                        None                                No                                  ---              ---            ---             ---             ---          ---           ---                4                  5                 
 pwm_out_4           3    Yes    MSIO67NB7                     Bank7     LVCMOS33   Output                          TRISTATE                        None                                No                                  ---              ---            ---             ---             ---          ---           ---                4                  5                 
 RX                  1    Yes    MSIO64NB7                     Bank7     LVCMOS33   Input                           TRISTATE                        None                                No                                  Off              ---            ---             Off             Off          ---           ---                ---                ---               
+RX2                 49   Yes    MSIO104PB4/GB3                Bank4     LVCMOS33   Input                           TRISTATE                        None                                No                                  Off              ---            ---             Off             Off          ---           ---                ---                ---               
 TX                  2    Yes    MSIO64PB7                     Bank7     LVCMOS33   Output                          TRISTATE                        None                                No                                  ---              ---            ---             ---             ---          ---           ---                4                  5                 
+TX2                 47   Yes    MSIO103PB4/PROBE_A            Bank4     LVCMOS33   Output                          TRISTATE                        None                                No                                  ---              ---            ---             ---             ---          ---           ---                4                  5                 

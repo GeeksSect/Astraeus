@@ -59,7 +59,7 @@ void HMC_get_true_Data(int16_t* mx, int16_t* my, int16_t* mz)
 
 }
 
-
+/*
 
 void HMC_getScaledData(int16_t* mx, int16_t* my, int16_t* mz)
 {
@@ -136,3 +136,4 @@ int8_t HMC_setScale(float gauss)
     }
     return error_code;
 }
+*/

@@ -7,7 +7,11 @@
 #include "Modules/micros/micros.h"
 #include "Modules/PWM/pwm.h"
 #include "Helpers/converter/converter.h"
+<<<<<<< HEAD
 #include "Helpers/debug/logger.h"
+=======
+#include "Modules/telemetry/telemetry.h"
+>>>>>>> compass
 
 #include "hal.h"
 #include "mss_top_hw_platform.h"
@@ -20,6 +24,7 @@
 
 #include <stdlib.h>
 #include <math.h>
+<<<<<<< HEAD
 
 
 void press_any_key_to_continue(void);
@@ -32,18 +37,22 @@ static uint8_t g_slave_rx_buffer[BUFFER_SIZE];
 static uint8_t g_slave_tx_buffer[BUFFER_SIZE] = "<<-------Slave Tx data ------->>";
 static uint8_t g_master_rx_buf[BUFFER_SIZE];
 static uint8_t g_master_tx_buf[BUFFER_SIZE];
+=======
+>>>>>>> compass
 
+#define BAUD_VALUE_115200    26
 #define PWM_PRESCALE 1
 #define PWM_PERIOD 1000
+#define threshold 20
 
-#define t0 25
-
-// Core instances
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
 
+void press_any_key_to_continue(void);
+void setup();
 
 
+<<<<<<< HEAD
 void setup()
 {
 	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
@@ -75,59 +84,46 @@ int main(void)
     uint8_t loop_count;
 
     setup();
+=======
 
-    /*-------------------------------------------------------------------------
-     * Initialize the system tick for 10mS operation or 1 tick every 100th of
-     * a second and also make sure it is lower priority than the I2C IRQs.
-     */
-    NVIC_SetPriority(SysTick_IRQn, 0xFFu); /* Lowest possible priority */
-    SysTick_Config(MSS_SYS_M3_CLK_FREQ / 100);
+int main(void)
+{
 
+    uint8_t rx_buff[128];
+    uint8_t rx_size = 0, rd_pos = 0, wr_pos = 0; // used for receiving BT data
+	uint8_t magn_skip = 0, telemetry_skip = 0; // skip doing some operation
+	int16_t ax = 0, ay = 0, az = 0;
+	int16_t gx = 0, gy = 0, gz = 0;
+	int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
+	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
+	int16_t pitch, roll, yaw; // true data
+	int16_t pitch0 = 0, roll0 = 0, yaw0; // отклонение от ориентиров задаваемое с пульта
+	int16_t force = 0;
+	int16_t m_power[4] = {0,0,0,0};
+	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
+>>>>>>> compass
+
+
+<<<<<<< HEAD
     press_any_key_to_continue();
     uart_print((const uint8_t *)"Hi, I am copter!\n\r");
     press_any_key_to_continue();
+=======
+    setup();
+>>>>>>> compass
 
-    for(loop_count=0; loop_count < BUFFER_SIZE; loop_count++)
-    {
-        g_slave_rx_buffer[loop_count] = 0x00;
-        g_master_rx_buf[loop_count] = 0x00;
-        g_master_tx_buf[loop_count] = 0x00;
-    }
 	press_any_key_to_continue();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Hi, I am copter!\n\r");
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Hello, I am quadrocopter!\n\r");
+	press_any_key_to_continue();
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Send anything calibration?\n\r");
 	press_any_key_to_continue();
 	
-	
-	
-	
-
-	int16_t mx = 0x0000;
-	int16_t my = 0x0000;
-	int16_t mz = 0x0000;
-	uint8_t m_pass = 0;
-
-	int16_t ax = 0x0000;
-	int16_t ay = 0x0000;
-	int16_t az = 0x0000;
-	int16_t gx = 0x0000;
-	int16_t gy = 0x0000;
-	int16_t gz = 0x0000;
-	int16_t pow[4] = { 0,0,0,0 };
-	int16_t acell_pitch, acell_roll, magn_yaw;
-	int16_t pitch, roll, yaw;
-	int16_t pitch0 = 0, roll0 = 0;
-	int16_t force = 0;
-
-
-	
-	
-	
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Are you ready for calibration?\n\r");
-	press_any_key_to_continue();
 	MPU6050_calibration();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okey, now you can variate force!\n\r");
+	
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okay, let's burn it!\n\r");
 	press_any_key_to_continue();
 
+<<<<<<< HEAD
     start_timer();
     uint64_t t_prev = micros();
     uint32_t d_t;
@@ -138,203 +134,120 @@ int main(void)
 	{
 		rx_size = UART_get_rx(&g_uart, rx_buff, sizeof(rx_buff));
 				if (rx_size > 0)
+=======
+	t_prev = micros();
+	while (1 == 1)
+	{
+
+		rx_size = UART_get_rx(&g_uart, rx_buff + wr_pos, sizeof(rx_buff) - wr_pos);
+		wr_pos+=rx_size;
+		while(wr_pos - rd_pos >2) // if something ready to read
+		{
+			if(rx_buff[rd_pos+3] == 10)
+			{
+				switch (rx_buff[rd_pos])
+>>>>>>> compass
 				{
-					switch (rx_buff[0])
+					case 'p':
 					{
-					case 'U':
+						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
+						break;
+					}
+					case 'r':
 					{
-						force = force + 30;
+						roll0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
+						break;
+					}
+					case 'y':
+					{
+						yaw0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
+						break;
+					}
+					case 'f':
+					{
+						force = (my_atoi (rx_buff + rd_pos + 1, 2))*10;
+						break;
+					}
+					case 'P':
+					{
+						set_P(my_atoi (rx_buff + rd_pos + 1, 2));
+						break;
+					}
+					case 'I':
+					{
+						set_I(my_atoi (rx_buff + rd_pos + 1, 2));
 						break;
 					}
 					case 'D':
 					{
-						force = force - 30;
+						set_D(my_atoi (rx_buff + rd_pos + 1, 2));
 						break;
 					}
-					case 'w':
+					case 'x':
 					{
-						pitch0 += 10;
+						setLim_P(my_atoi (rx_buff + rd_pos + 1, 2));
 						break;
 					}
-					case 's':
+					case 'z':
 					{
-						pitch0 -= 10;
+						setLim_D(my_atoi (rx_buff + rd_pos + 1, 2));
 						break;
-					}
-					case 'a':
-					{
-						roll0 += 10;
-						break;
-					}
-					case 'd':
-					{
-						roll0 -= 10;
-						break;
-					}
-					case 'Q':
-					{
-						force = 0;
-						break;
-					}
-					case 'q':
-					{
-						roll0 = 0;
-						pitch0 =0;
-						break;
-					}
-					case 'B':
-					{
-						inc_P();
-						break;
-					}
-					case 'N':
-					{
-						inc_I();
-						break;
-					}
-					case 'M':
-					{
-						inc_D();
-						break;
-					}
-					case 'b':
-					{
-						dec_P();
-						break;
-					}
-					case 'n':
-					{
-						dec_I();
-						break;
-					}
-					case 'm':
-					{
-						dec_D();
-						break;
-					}
-					default:
-					{
-						break;
-					}
 					}
 				}
+			}
+			rd_pos++;
+		}
+		if(wr_pos >90) // if read buffer come full
+		{
+			rd_pos=wr_pos = 0;
 
-		if(m_pass>4)
+		}
+		if(magn_skip>10)
 		{
 			HMC_get_true_Data(&mz, &my, &mx);
-			m_pass = 0;
+			magn_skip = 0;
 		}
 		else
-			m_pass++;
-		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
+			magn_skip++;
+		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1); // get raw data
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
 		d_t = micros() - t_prev;
 		t_prev = micros();
-		if(d_t>15000)
+		if(d_t>25000) // if shit happened and delta time is so big
 		{
-			d_t = 15000;
+			d_t = 0;
 		}
-		my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
 		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &magn_yaw, &pitch, &roll, &yaw, d_t);
+		my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
+
 		pitch+=pitch0;
 		roll+=roll0;
-		my_PID(&pitch, &roll, &yaw, &pow, &force, &gx, &gy, &gz, d_t);
-
+		my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
 
 
 //------------------ send telemetry
 
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', pitch*3);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"A:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
+		if(telemetry_skip==3)
+		{
+			telemetry_skip = 0;
 
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', roll*3);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"B:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', yaw*3);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"C:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_P_p()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"D:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_I_p()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"E:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_D_p()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"F:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_P_r()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"G:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_I_r()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"H:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_D_r()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"I:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_P_y()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"J:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_I_y()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"K:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\n");
-
-		for(i=0; i<6; i++)
-			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', get_D_y()*15);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"L:");
-		UART_send(&g_uart, (const uint8_t *)print_buf, 6);
-		UART_polled_tx_string(&g_uart, (const uint8_t *)"\nW:\n");
+			send_telemetry(&g_uart,
+					0b00000111, 0b00000000,
+					pitch, roll, yaw,
+					get_P_p(), get_I_p(), get_D_p(),
+					get_P_r(), get_I_r(), get_D_r(),
+					get_P_y(), get_I_y(), get_D_y(),
+					d_t);
+		}
+		else
+			telemetry_skip++;
 		//------------------ send telemetry finished
 
 
-		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)t0 + sqrt(pow[0])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)t0 + sqrt(pow[1])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)t0 + sqrt(pow[2])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)t0 + sqrt(pow[3])*30);
+		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
+		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
+		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
+		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
 
 
 
@@ -356,4 +269,51 @@ void press_any_key_to_continue(void)
     do {
         rx_size = uart_get(&rx_char, sizeof(rx_char));
     } while(rx_size == 0);
+<<<<<<< HEAD
+=======
+
 }
+/*------------------------------------------------------------------------------
+ * Service the I2C timeout functionality.
+ */
+void SysTick_Handler(void)
+{
+    I2C_system_tick(&g_core_i2c0, 10);
+}
+void FabricIrq0_IRQHandler(void)
+{
+	I2C_isr(&g_core_i2c0);
+>>>>>>> compass
+}
+void setup()
+{
+	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
+	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
+	i2c_init(1); // argument no matter
+	BMP_calibrate();
+	MPU6050_initialize();
+	MPU6050_setDLPFMode(3);
+	MPU6050_setFullScaleGyroRange(1); // it's must set range of gyro's data 	+-500(deg/sec)
+	HMC_init();
+	init_timer();// run timer for micros();
+
+	PWM_enable(&g_pwm, PWM_1);
+	PWM_enable(&g_pwm, PWM_2);
+	PWM_enable(&g_pwm, PWM_3);
+	PWM_enable(&g_pwm, PWM_4);
+
+	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+
+	MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
+    /*-------------------------------------------------------------------------
+     * Initialize the system tick for 10mS operation or 1 tick every 100th of
+     * a second and also make sure it is lower priority than the I2C IRQs.
+     */
+    NVIC_SetPriority(SysTick_IRQn, 0xFFu); /* Lowest possible priority */
+    SysTick_Config(MSS_SYS_M3_CLK_FREQ / 100);
+}
+
+

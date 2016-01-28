@@ -12,11 +12,10 @@
 #define k 65.53  // 2 bytes is range [-500;500] degrees
 #define k1 57.29 // radians to degrees
 
-#define D_lim 400 //TODO calib
-#define P_lim 400 //TODO calib
+
 
 //P.S. this limit is not a power limit! It's how much integral can accumulate.
-#define I_lim 500000 //TODO calib
+#define I_lim 1000000 //TODO calib
 
 
 
@@ -30,8 +29,8 @@
 #define high_trottle2 1000
 
 
-#define Kp_d 128
-#define Kd_d 128
+#define Kp_d 256
+#define Kd_d 256
 #define Ki_d 131072
 
 
@@ -39,9 +38,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-static int16_t Kp_u = 8, Kd_u= 6;
+static int16_t Kp_u = 16, Kd_u= 8;
 static int32_t Ki_u= 12;//TODO calib
-
+static int16_t D_lim = 4; //TODO calib
+static int16_t P_lim = 4; //TODO calib
 static int32_t Integr_pitch=0, Integr_roll=0, Integr_yaw=0;
 static int16_t Itmp_p, Itmp_r, Itmp_y;
 static int16_t Dtmp_p, Dtmp_r, Dtmp_y;
@@ -80,17 +80,19 @@ void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw,
 
 			uint16_t d_t);
 
+<<<<<<< HEAD
 
 int8_t change_coef(int8_t _type);
+=======
+>>>>>>> compass
 
 
-void inc_I();
-void inc_P();
-void inc_D();
-void dec_I();
-void dec_P();
-void dec_D();
 
+void set_P(uint8_t i);
+void set_I(uint8_t i);
+void set_D(uint8_t i);
+void setLim_P(uint8_t i);
+void setLim_D(uint8_t i);
 int16_t get_I_p(void);
 int16_t get_I_r(void);
 int16_t get_I_y(void);
@@ -100,6 +102,7 @@ int16_t get_P_y(void);
 int16_t get_D_p(void);
 int16_t get_D_r(void);
 int16_t get_D_y(void);
+
 
 int16_t get_Int_p(void);
 int16_t get_Int_r(void);

@@ -396,7 +396,18 @@ void MPU6050_getMotion6(int16_t* ax,
                         int16_t* az,
                         int16_t* gx,
                         int16_t* gy,
+<<<<<<< HEAD
                         int16_t* gz);
+=======
+                        int16_t* gz,
+                        uint8_t use_calib);
+
+// calibration is not tested!
+void MPU6050_calibration();
+
+
+
+>>>>>>> compass
 
 void MPU6050_getMotion9(int16_t* ax,
                         int16_t* ay,
