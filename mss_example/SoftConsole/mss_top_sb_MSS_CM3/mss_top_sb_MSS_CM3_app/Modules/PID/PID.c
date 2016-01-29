@@ -119,62 +119,62 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 
 
 // differential limit
-	if(Dtmp_p > D_lim*10)
-		Dtmp_p = D_lim*10;
+	if(Dtmp_p > D_lim)
+		Dtmp_p = D_lim;
 	else
-		if(Dtmp_p< - D_lim*10*10)
-			Dtmp_p = - D_lim*10;
+		if(Dtmp_p< - D_lim)
+			Dtmp_p = - D_lim;
 
-	if(Dtmp_r > D_lim*10)
-		Dtmp_r = D_lim*10;
+	if(Dtmp_r > D_lim)
+		Dtmp_r = D_lim;
 	else
-		if(Dtmp_r< - D_lim*10)
-			Dtmp_r = - D_lim*10;
+		if(Dtmp_r< - D_lim)
+			Dtmp_r = - D_lim;
 
-	if(Dtmp_y > D_lim*10)
-		Dtmp_y = D_lim*10;
+	if(Dtmp_y > D_lim)
+		Dtmp_y = D_lim;
 	else
-		if(Dtmp_y< -D_lim*10)
-			Dtmp_y = -D_lim*10;
+		if(Dtmp_y< -D_lim)
+			Dtmp_y = -D_lim;
 
 // proportional limit
-	if(Ptmp_p > P_lim*10)
-		Ptmp_p = P_lim*10;
+	if(Ptmp_p > P_lim)
+		Ptmp_p = P_lim;
 	else
-		if(Ptmp_p< - P_lim*10)
-			Ptmp_p = - P_lim*10;
+		if(Ptmp_p< - P_lim)
+			Ptmp_p = - P_lim;
 
-	if(Ptmp_r > P_lim*10)
-		Ptmp_r = P_lim*10;
+	if(Ptmp_r > P_lim)
+		Ptmp_r = P_lim;
 	else
-		if(Ptmp_r< -P_lim*10)
-			Ptmp_r = -P_lim*10;
+		if(Ptmp_r< -P_lim)
+			Ptmp_r = -P_lim;
 
-	if(Ptmp_y > P_lim*10)
-			Ptmp_y = P_lim*10;
+	if(Ptmp_y > P_lim)
+			Ptmp_y = P_lim;
 		else
-			if(Ptmp_y< -P_lim*10)
-				Ptmp_y = -P_lim*10;
+			if(Ptmp_y< -P_lim)
+				Ptmp_y = -P_lim;
 
 
 	// integral limit
-	if(Integr_pitch > I_lim)
-		Integr_pitch = I_lim;
+	if(Integr_pitch > I_lim*65536)
+		Integr_pitch = I_lim*65536;
 	else
-		if(Integr_pitch< - I_lim)
-			Integr_pitch = - I_lim;
+		if(Integr_pitch< - I_lim*65536)
+			Integr_pitch = - I_lim*65536;
 
-	if(Integr_roll > I_lim)
-		Integr_roll = I_lim;
+	if(Integr_roll > I_lim*65536)
+		Integr_roll = I_lim*65536;
 		else
-			if(Integr_roll< - I_lim)
-				Integr_roll = - I_lim;
+			if(Integr_roll< - I_lim*65536)
+				Integr_roll = - I_lim*65536;
 
-	if(Integr_yaw > I_lim)
-		Integr_yaw = I_lim;
+	if(Integr_yaw > I_lim*65536)
+		Integr_yaw = I_lim*65536;
 	else
-		if(Integr_yaw< - I_lim)
-			Integr_yaw = - I_lim;
+		if(Integr_yaw< - I_lim*65536)
+			Integr_yaw = - I_lim*65536;
 
 
 
@@ -224,24 +224,28 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
 }
 
 
-void set_P(uint8_t i)
+void set_P(uint16_t i)
 {
 	Kp_u = i;
 }
-void set_I(uint8_t i)
+void set_I(uint16_t i)
 {
 	Ki_u = i;
 }
-void set_D(uint8_t i)
+void set_D(uint16_t i)
 {
 	Kd_u = i;
 }
 
-void setLim_P(uint8_t i)
+void setLim_P(uint16_t i)
 {
 	P_lim = i;
 }
-void setLim_D(uint8_t i)
+void setLim_I(uint16_t i)
+{
+	I_lim = i;
+}
+void setLim_D(uint16_t i)
 {
 	D_lim = i;
 }

@@ -1,5 +1,6 @@
 #include "Modules/BMP/bmp.h"
 #include "Modules/I2C/i2c.h"
+#include "Modules/HMC/HMC.h"
 #include "Modules/MPU6050/mpu6050.h"
 #include "Modules/PID/PID.h"
 #include "Modules/micros/micros.h"
@@ -22,7 +23,7 @@
 #define PWM_PRESCALE 1
 #define PWM_PERIOD 1000
 #define threshold 20
-
+#define magn_skip_val 10
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
 
@@ -36,7 +37,7 @@ int main(void)
 
     uint8_t rx_buff[128];
     uint8_t rx_size = 0, rd_pos = 0, wr_pos = 0; // used for receiving BT data
-	uint8_t magn_skip = 0, telemetry_skip = 0; // skip doing some operation
+	uint8_t magn_skip = 0, telemetry_skip = 1, telemetry_skip_counter = 0; // skip doing some operation
 	int16_t ax = 0, ay = 0, az = 0;
 	int16_t gx = 0, gy = 0, gz = 0;
 	int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
@@ -46,7 +47,8 @@ int main(void)
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
 	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
-
+	uint16_t mask = 0;
+	uint8_t i = 0;
 
     setup();
 
@@ -67,57 +69,72 @@ int main(void)
 
 		rx_size = UART_get_rx(&g_uart, rx_buff + wr_pos, sizeof(rx_buff) - wr_pos);
 		wr_pos+=rx_size;
-		while(wr_pos - rd_pos >2) // if something ready to read
+		while(wr_pos - rd_pos >6) // if something ready to read
 		{
-			if(rx_buff[rd_pos+3] == 10)
+			if(rx_buff[rd_pos+6] == 10)
 			{
 				switch (rx_buff[rd_pos])
 				{
 					case 'p':
 					{
-						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
+						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)*2;
 						break;
 					}
 					case 'r':
 					{
-						roll0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
+						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)*2;
 						break;
 					}
 					case 'y':
 					{
-						yaw0 = (my_atoi (rx_buff + rd_pos + 1, 2) - 50)*15;
+						yaw0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
 						break;
 					}
 					case 'f':
 					{
-						force = (my_atoi (rx_buff + rd_pos + 1, 2))*10;
+						force = (my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
 					case 'P':
 					{
-						set_P(my_atoi (rx_buff + rd_pos + 1, 2));
+						set_P(my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
 					case 'I':
 					{
-						set_I(my_atoi (rx_buff + rd_pos + 1, 2));
+						set_I(my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
 					case 'D':
 					{
-						set_D(my_atoi (rx_buff + rd_pos + 1, 2));
+						set_D(my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
 					case 'x':
 					{
-						setLim_P(my_atoi (rx_buff + rd_pos + 1, 2));
+						setLim_P(my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
 					case 'z':
 					{
-						setLim_D(my_atoi (rx_buff + rd_pos + 1, 2));
+						setLim_D(my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
+					case 'w':
+					{
+						setLim_I(my_atoi (rx_buff + rd_pos + 1, 5));
+						break;
+					}
+					case 'm':
+					{
+						mask = (my_atoi (rx_buff + rd_pos + 1, 5));
+						telemetry_skip = 0;
+						for(i = 0 ; i< 13 ; i++)
+							if(mask & (1<<i))
+								telemetry_skip++;
+						break;
+					}
+
 				}
 			}
 			rd_pos++;
@@ -127,7 +144,10 @@ int main(void)
 			rd_pos=wr_pos = 0;
 
 		}
-		if(magn_skip>10)
+
+
+
+		if(magn_skip > magn_skip_val)
 		{
 			HMC_get_true_Data(&mz, &my, &mx);
 			magn_skip = 0;
@@ -152,12 +172,12 @@ int main(void)
 
 //------------------ send telemetry
 
-		if(telemetry_skip==3)
+		if(telemetry_skip_counter > telemetry_skip)
 		{
-			telemetry_skip = 0;
+			telemetry_skip_counter = 0;
 
 			send_telemetry(&g_uart,
-					0b00000111, 0b00000000,
+					mask,
 					pitch, roll, yaw,
 					get_P_p(), get_I_p(), get_D_p(),
 					get_P_r(), get_I_r(), get_D_r(),
@@ -165,7 +185,7 @@ int main(void)
 					d_t);
 		}
 		else
-			telemetry_skip++;
+			telemetry_skip_counter++;
 		//------------------ send telemetry finished
 
 

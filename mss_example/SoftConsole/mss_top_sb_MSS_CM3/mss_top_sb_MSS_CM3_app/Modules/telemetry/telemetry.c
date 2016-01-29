@@ -8,10 +8,10 @@
 #include "telemetry.h"
 
 
-void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int16_t a, int16_t b, int16_t c, int16_t d, int16_t e, int16_t f, int16_t g, int16_t h, int16_t i, int16_t j, int16_t K, int16_t l, int16_t m)
+void send_telemetry(UART_instance_t * g_uart, uint16_t mask, int16_t a, int16_t b, int16_t c, int16_t d, int16_t e, int16_t f, int16_t g, int16_t h, int16_t i, int16_t j, int16_t K, int16_t l, int16_t m)
 {
 	uint8_t print_buf[8];
-	if((mask1 & (1 << 0)) != 0)
+	if((mask & (1 << 0)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -21,7 +21,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
 
-	if((mask1 & (1 << 1)) != 0)
+	if((mask & (1 << 1)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -30,7 +30,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask1 & (1 << 2)) != 0)
+	if((mask & (1 << 2)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -39,7 +39,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask1 & (1 << 3)) != 0)
+	if((mask & (1 << 3)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -48,7 +48,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask1 & (1 << 4)) != 0)
+	if((mask & (1 << 4)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -57,7 +57,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask1 & (1 << 5)) != 0)
+	if((mask & (1 << 5)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -66,7 +66,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask1 & (1 << 6)) != 0)
+	if((mask & (1 << 6)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -75,7 +75,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask1 & (1 << 7)) != 0)
+	if((mask & (1 << 7)))
 	{
 	for(i=0; i<6; i++)
 		print_buf[i] = NULL;
@@ -84,7 +84,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 	UART_send(g_uart, (const uint8_t *)print_buf, 6);
 	UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask2 & (1 << 0)) != 0)
+	if((mask & (1 << 8)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -93,7 +93,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask2 & (1 << 1)) != 0)
+	if((mask & (1 << 9)))
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
@@ -102,7 +102,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask2 & (1 << 2)) != 0)
+	if((mask & (1 << 10)))
 	{
 	for(i=0; i<6; i++)
 		print_buf[i] = NULL;
@@ -111,7 +111,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 	UART_send(g_uart, (const uint8_t *)print_buf, 6);
 	UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask2 & (1 << 3)) != 0)
+	if((mask & (1 << 11)))
 	{
 	for(i=0; i<6; i++)
 		print_buf[i] = NULL;
@@ -120,7 +120,7 @@ void send_telemetry(UART_instance_t * g_uart, uint8_t mask1, uint8_t mask2, int1
 	UART_send(g_uart, (const uint8_t *)print_buf, 6);
 	UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-	if((mask2 & (1 << 4)) != 0)
+	if((mask & (1 << 12)))
 	{
 	for(i=0; i<6; i++)
 		print_buf[i] = NULL;
