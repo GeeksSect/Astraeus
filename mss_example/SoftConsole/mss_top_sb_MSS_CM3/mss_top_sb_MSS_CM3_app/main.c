@@ -47,20 +47,21 @@ int main(void)
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
 	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
-	uint16_t mask = 0;
+	uint16_t print_mask = 0;
+	uint8_t motor_mask = 0x0F;
 	uint8_t i = 0;
 
     setup();
 
 	press_any_key_to_continue();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Hello, I am quadrocopter!\n\r");
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Hello, I am quadrocopter!\n");
 	press_any_key_to_continue();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Send anything calibration?\n\r");
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Send anything for calibration!\n");
 	press_any_key_to_continue();
 	
 	MPU6050_calibration();
 	
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okay, let's burn it!\n\r");
+	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okay, let's burn it!\n");
 	press_any_key_to_continue();
 
 	t_prev = micros();
@@ -125,12 +126,17 @@ int main(void)
 						setLim_I(my_atoi (rx_buff + rd_pos + 1, 5));
 						break;
 					}
+					case 'a':
+					{
+						motor_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
+						break;
+					}
 					case 'm':
 					{
-						mask = (my_atoi (rx_buff + rd_pos + 1, 5));
+						print_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
 						telemetry_skip = 0;
 						for(i = 0 ; i< 13 ; i++)
-							if(mask & (1<<i))
+							if(print_mask & (1<<i))
 								telemetry_skip++;
 						break;
 					}
@@ -158,7 +164,7 @@ int main(void)
 		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
 		d_t = micros() - t_prev;
 		t_prev = micros();
-		if(d_t>25000) // if shit happened and delta time is so big
+		if(d_t>50000) // if shit happened and delta time is so big
 		{
 			d_t = 0;
 		}
@@ -177,7 +183,7 @@ int main(void)
 			telemetry_skip_counter = 0;
 
 			send_telemetry(&g_uart,
-					mask,
+					print_mask,
 					pitch, roll, yaw,
 					get_P_p(), get_I_p(), get_D_p(),
 					get_P_r(), get_I_r(), get_D_r(),
@@ -188,13 +194,28 @@ int main(void)
 			telemetry_skip_counter++;
 		//------------------ send telemetry finished
 
-
+/*
 		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
 		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
 		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
 		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
-
-
+*/
+		if(motor_mask & (1<<0))
+			PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+		if(motor_mask & (1<<1))
+			PWM_set_duty_cycle(&g_pwm, PWM_2, m_power[1]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+		if(motor_mask & (1<<2))
+			PWM_set_duty_cycle(&g_pwm, PWM_4, m_power[2]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+		if(motor_mask & (1<<3))
+			PWM_set_duty_cycle(&g_pwm, PWM_3, m_power[3]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
 
 
 
@@ -239,7 +260,6 @@ void setup()
 	MPU6050_setDLPFMode(3);
 	MPU6050_setFullScaleGyroRange(1); // it's must set range of gyro's data 	+-500(deg/sec)
 	HMC_init();
-	init_timer();// run timer for micros();
 
 	PWM_enable(&g_pwm, PWM_1);
 	PWM_enable(&g_pwm, PWM_2);
@@ -258,6 +278,8 @@ void setup()
      */
     NVIC_SetPriority(SysTick_IRQn, 0xFFu); /* Lowest possible priority */
     SysTick_Config(MSS_SYS_M3_CLK_FREQ / 100);
+    init_timer();// run timer for micros();
+
 }
 
 
