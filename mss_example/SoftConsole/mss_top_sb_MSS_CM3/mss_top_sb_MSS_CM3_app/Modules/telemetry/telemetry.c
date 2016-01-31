@@ -34,7 +34,7 @@ void send_telemetry(UART_instance_t * g_uart, uint16_t mask, int16_t a, int16_t 
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', c*3);
+		itoa((char *)&print_buf, 'd', c*5);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"C");
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");

@@ -6,7 +6,7 @@
 #include "Modules/micros/micros.h"
 #include "Helpers/converter/converter.h"
 #include "Modules/telemetry/telemetry.h"
-#include "Modules/Modules/MadgwickAHRS.h"
+#include "Modules/MadgwickAHRS/MadgwickAHRS.h"
 
 #include "hal.h"
 #include "mss_top_hw_platform.h"
@@ -157,26 +157,22 @@ int main(void)
 		if(magn_skip > magn_skip_val)
 		{
 			HMC_get_true_Data(&mz, &my, &mx);
+			my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
 			magn_skip = 0;
 		}
 		else
 			magn_skip++;
-		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1); // get raw data
-		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
+		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
+		MadgwickAHRSupdate((float)gx/(-3754.936206f), (float)gy/(-3754.936206f), (float)gz/(-3754.936206f), ax, ay, az, mx, my, mz);
 		d_t = micros() - t_prev;
 		t_prev = micros();
-		if(d_t>50000) // if shit happened and delta time is so big
-		{
-			d_t = 0;
-		}
-		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &magn_yaw, &pitch, &roll, &yaw, d_t);
-		my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
-
+		delta = (float)d_t/1000000.f;
+		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
+		pitch = asin (2*(q0*q2-q3*q1))* k * k1;
+		yaw = atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
 		pitch+=pitch0;
 		roll+=roll0;
 		my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
-
-
 //------------------ send telemetry
 
 		if(telemetry_skip_counter > telemetry_skip)
@@ -195,7 +191,7 @@ int main(void)
 			telemetry_skip_counter++;
 		//------------------ send telemetry finished
 
-
+/*
 		if(motor_mask & (1<<0))
 			PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
 		else
@@ -210,6 +206,24 @@ int main(void)
 			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 		if(motor_mask & (1<<3))
 			PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+*/
+
+		if(motor_mask & (1<<0))
+			PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+		if(motor_mask & (1<<1))
+			PWM_set_duty_cycle(&g_pwm, PWM_2, m_power[1]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+		if(motor_mask & (1<<2))
+			PWM_set_duty_cycle(&g_pwm, PWM_4, m_power[2]);
+		else
+			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+		if(motor_mask & (1<<3))
+			PWM_set_duty_cycle(&g_pwm, PWM_3, m_power[3]);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
 
@@ -253,8 +267,7 @@ void setup()
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(3);
-	MPU6050_setFullScaleGyroRange(1); // it's must set range of gyro's data 	+-500(deg/sec)
+	MPU6050_setDLPFMode(0x02);
 	HMC_init();
 
 	PWM_enable(&g_pwm, PWM_1);

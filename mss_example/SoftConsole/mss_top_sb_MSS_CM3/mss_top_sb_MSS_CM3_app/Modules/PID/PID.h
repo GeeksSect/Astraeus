@@ -21,8 +21,8 @@
 
 // power range is 0 to 1000
 
-#define low_trottle 20
-#define low_trottle2 10
+#define low_trottle 180
+#define low_trottle2 120
 
 #define high_trottle 850
 #define high_trottle2 1000
@@ -30,7 +30,7 @@
 
 #define Kp_d 256
 #define Kd_d 256
-#define Ki_d 131072
+#define Ki_d 524288
 
 
 #include <stdint.h>
@@ -38,7 +38,7 @@
 #include <math.h>
 
 static int16_t Kp_u = 16, Kd_u= 8;
-static int32_t Ki_u= 12;//TODO calib
+static int32_t Ki_u= 4;//TODO calib
 static int16_t D_lim = 40; //TODO calib
 static int16_t I_lim = 16; //TODO calib
 static int16_t P_lim = 40; //TODO calib
