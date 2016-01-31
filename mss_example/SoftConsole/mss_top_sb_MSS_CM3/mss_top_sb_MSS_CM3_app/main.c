@@ -6,6 +6,7 @@
 #include "Modules/micros/micros.h"
 #include "Helpers/converter/converter.h"
 #include "Modules/telemetry/telemetry.h"
+#include "Modules/Modules/MadgwickAHRS.h"
 
 #include "hal.h"
 #include "mss_top_hw_platform.h"
@@ -78,12 +79,12 @@ int main(void)
 				{
 					case 'p':
 					{
-						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)*2;
+						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
 						break;
 					}
 					case 'r':
 					{
-						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)*2;
+						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
 						break;
 					}
 					case 'y':
@@ -194,26 +195,21 @@ int main(void)
 			telemetry_skip_counter++;
 		//------------------ send telemetry finished
 
-/*
-		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
-*/
+
 		if(motor_mask & (1<<0))
-			PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
+			PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
 		if(motor_mask & (1<<1))
-			PWM_set_duty_cycle(&g_pwm, PWM_2, m_power[1]);
+			PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
 		if(motor_mask & (1<<2))
-			PWM_set_duty_cycle(&g_pwm, PWM_4, m_power[2]);
+			PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 		if(motor_mask & (1<<3))
-			PWM_set_duty_cycle(&g_pwm, PWM_3, m_power[3]);
+			PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
 
