@@ -19,212 +19,197 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define BAUD_VALUE_115200    26
-#define PWM_PRESCALE 1
-#define PWM_PERIOD 1000
-#define threshold 20
-#define magn_skip_val 10
+#define BAUD_VALUE_115200   26
+#define PWM_PRESCALE        1
+#define PWM_PERIOD          1000
+#define threshold           20
+#define magn_skip_val       10
+
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
 
 void press_any_key_to_continue(void);
 void setup();
 
-
-
 int main(void)
 {
-
     uint8_t rx_buff[128];
     uint8_t rx_size = 0, rd_pos = 0, wr_pos = 0; // used for receiving BT data
-	uint8_t magn_skip = 0, telemetry_skip = 1, telemetry_skip_counter = 0; // skip doing some operation
-	int16_t ax = 0, ay = 0, az = 0;
-	int16_t gx = 0, gy = 0, gz = 0;
-	int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
-	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
-	int16_t pitch, roll, yaw; // true data
-	int16_t pitch0 = 0, roll0 = 0, yaw0; // îòêëîíåíèå îò îðèåíòèðîâ çàäàâàåìîå ñ ïóëüòà
-	int16_t force = 0;
-	int16_t m_power[4] = {0,0,0,0};
-	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
-	uint16_t print_mask = 0;
-	uint8_t motor_mask = 0x0F;
-	uint8_t i = 0;
+    uint8_t magn_skip = 0, telemetry_skip = 1, telemetry_skip_counter = 0; // skip doing some operation
+    int16_t ax = 0, ay = 0, az = 0;
+    int16_t gx = 0, gy = 0, gz = 0;
+    int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
+    int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
+    int16_t pitch, roll, yaw; // true data
+    int16_t pitch0 = 0, roll0 = 0, yaw0; // Ã®Ã²ÃªÃ«Ã®Ã­Ã¥Ã­Ã¨Ã¥ Ã®Ã² Ã®Ã°Ã¨Ã¥Ã­Ã²Ã¨Ã°Ã®Ã¢ Ã§Ã Ã¤Ã Ã¢Ã Ã¥Ã¬Ã®Ã¥ Ã± Ã¯Ã³Ã«Ã¼Ã²Ã 
+    int16_t force = 0;
+    int16_t m_power[4] = {0,0,0,0};
+    uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
+    uint16_t print_mask = 0;
+    uint8_t motor_mask = 0x0F;
+    uint8_t i = 0;
 
     setup();
 
-	press_any_key_to_continue();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Hello, I am quadrocopter!\n");
-	press_any_key_to_continue();
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Send anything for calibration!\n");
-	press_any_key_to_continue();
-	
-	MPU6050_calibration();
-	
-	UART_polled_tx_string(&g_uart, (const uint8_t *)"Okay, let's burn it!\n");
-	press_any_key_to_continue();
+    press_any_key_to_continue();
+    UART_polled_tx_string(&g_uart, (const uint8_t *)"Hello, I am quadrocopter!\n");
+    press_any_key_to_continue();
+    UART_polled_tx_string(&g_uart, (const uint8_t *)"Send anything for calibration!\n");
+    press_any_key_to_continue();
+    
+    MPU6050_calibration();
+    
+    UART_polled_tx_string(&g_uart, (const uint8_t *)"Okay, let's burn it!\n");
+    press_any_key_to_continue();
 
-	t_prev = micros();
-	while (1 == 1)
-	{
+    t_prev = micros();
+    while (1 == 1)
+    {
+        rx_size = UART_get_rx(&g_uart, rx_buff + wr_pos, sizeof(rx_buff) - wr_pos);
+        wr_pos += rx_size;
+        while(wr_pos - rd_pos > 6) // if something ready to read
+        {
+            if(rx_buff[rd_pos + 6] == 10)
+            {
+                switch (rx_buff[rd_pos])
+                {
+                    case 'p':
+                    {
+                        pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500) * 2;
+                        break;
+                    }
+                    case 'r':
+                    {
+                        roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500) * 2;
+                        break;
+                    }
+                    case 'y':
+                    {
+                        yaw0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
+                        break;
+                    }
+                    case 'f':
+                    {
+                        force = (my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'P':
+                    {
+                        set_P(my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'I':
+                    {
+                        set_I(my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'D':
+                    {
+                        set_D(my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'x':
+                    {
+                        setLim_P(my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'z':
+                    {
+                        setLim_D(my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'w':
+                    {
+                        setLim_I(my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'a':
+                    {
+                        motor_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
+                        break;
+                    }
+                    case 'm':
+                    {
+                        print_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
+                        telemetry_skip = 0;
+                        for(i = 0; i < 13; i++)
+                            if(print_mask & (1<<i))
+                                telemetry_skip++;
+                        break;
+                    }
+                }
+            }
+            rd_pos++;
+        }
 
-		rx_size = UART_get_rx(&g_uart, rx_buff + wr_pos, sizeof(rx_buff) - wr_pos);
-		wr_pos+=rx_size;
-		while(wr_pos - rd_pos >6) // if something ready to read
-		{
-			if(rx_buff[rd_pos+6] == 10)
-			{
-				switch (rx_buff[rd_pos])
-				{
-					case 'p':
-					{
-						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)*2;
-						break;
-					}
-					case 'r':
-					{
-						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)*2;
-						break;
-					}
-					case 'y':
-					{
-						yaw0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
-						break;
-					}
-					case 'f':
-					{
-						force = (my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'P':
-					{
-						set_P(my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'I':
-					{
-						set_I(my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'D':
-					{
-						set_D(my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'x':
-					{
-						setLim_P(my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'z':
-					{
-						setLim_D(my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'w':
-					{
-						setLim_I(my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'a':
-					{
-						motor_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
-						break;
-					}
-					case 'm':
-					{
-						print_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
-						telemetry_skip = 0;
-						for(i = 0 ; i< 13 ; i++)
-							if(print_mask & (1<<i))
-								telemetry_skip++;
-						break;
-					}
+        if(wr_pos > 90) // if read buffer come full
+        {
+            rd_pos=wr_pos = 0;
 
-				}
-			}
-			rd_pos++;
-		}
-		if(wr_pos >90) // if read buffer come full
-		{
-			rd_pos=wr_pos = 0;
+        }
 
-		}
+        if(magn_skip > magn_skip_val)
+        {
+            HMC_get_true_Data(&mz, &my, &mx);
+            magn_skip = 0;
+        }
+        else
+            magn_skip++;
+        MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1); // get raw data
+        acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
+        d_t = micros() - t_prev;
+        t_prev = micros();
+        if(d_t > 50000) // if shit happened and delta time is so big
+        {
+            d_t = 0;
+        }
+        my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &magn_yaw, &pitch, &roll, &yaw, d_t);
+        my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
 
-
-
-		if(magn_skip > magn_skip_val)
-		{
-			HMC_get_true_Data(&mz, &my, &mx);
-			magn_skip = 0;
-		}
-		else
-			magn_skip++;
-		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1); // get raw data
-		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
-		d_t = micros() - t_prev;
-		t_prev = micros();
-		if(d_t>50000) // if shit happened and delta time is so big
-		{
-			d_t = 0;
-		}
-		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &magn_yaw, &pitch, &roll, &yaw, d_t);
-		my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
-
-		pitch+=pitch0;
-		roll+=roll0;
-		my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
-
+        pitch += pitch0;
+        roll += roll0;
+        my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
 
 //------------------ send telemetry
+        if(telemetry_skip_counter > telemetry_skip)
+        {
+            telemetry_skip_counter = 0;
 
-		if(telemetry_skip_counter > telemetry_skip)
-		{
-			telemetry_skip_counter = 0;
-
-			send_telemetry(&g_uart,
-					print_mask,
-					pitch, roll, yaw,
-					get_P_p(), get_I_p(), get_D_p(),
-					get_P_r(), get_I_r(), get_D_r(),
-					get_P_y(), get_I_y(), get_D_y(),
-					d_t);
-		}
-		else
-			telemetry_skip_counter++;
-		//------------------ send telemetry finished
+            send_telemetry( &g_uart,
+                            print_mask,
+                            pitch, roll, yaw,
+                            get_P_p(), get_I_p(), get_D_p(),
+                            get_P_r(), get_I_r(), get_D_r(),
+                            get_P_y(), get_I_y(), get_D_y(),
+                            d_t);
+        }
+        else
+            telemetry_skip_counter++;
+//------------------ send telemetry finished
 
 /*
-		PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
-		PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
+        PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
+        PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
+        PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
+        PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
 */
-		if(motor_mask & (1<<0))
-			PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-		if(motor_mask & (1<<1))
-			PWM_set_duty_cycle(&g_pwm, PWM_2, m_power[1]);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-		if(motor_mask & (1<<2))
-			PWM_set_duty_cycle(&g_pwm, PWM_4, m_power[2]);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
-		if(motor_mask & (1<<3))
-			PWM_set_duty_cycle(&g_pwm, PWM_3, m_power[3]);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-
-
-
-
-
-	
-	}
-    
-
+        if(motor_mask & (1<<0))
+            PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
+        else
+            PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+        if(motor_mask & (1<<1))
+            PWM_set_duty_cycle(&g_pwm, PWM_2, m_power[1]);
+        else
+            PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+        if(motor_mask & (1<<2))
+            PWM_set_duty_cycle(&g_pwm, PWM_4, m_power[2]);
+        else
+            PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+        if(motor_mask & (1<<3))
+            PWM_set_duty_cycle(&g_pwm, PWM_3, m_power[3]);
+        else
+            PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+    }
     return 0;
 }
 
@@ -248,30 +233,30 @@ void SysTick_Handler(void)
 }
 void FabricIrq0_IRQHandler(void)
 {
-	I2C_isr(&g_core_i2c0);
+    I2C_isr(&g_core_i2c0);
 }
 void setup()
 {
-	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
-	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
-	i2c_init(1); // argument no matter
-	BMP_calibrate();
-	MPU6050_initialize();
-	MPU6050_setDLPFMode(3);
-	MPU6050_setFullScaleGyroRange(1); // it's must set range of gyro's data 	+-500(deg/sec)
-	HMC_init();
+    PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
+    UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
+    i2c_init(1); // argument no matter
+    BMP_calibrate();
+    MPU6050_initialize();
+    MPU6050_setDLPFMode(3);
+    MPU6050_setFullScaleGyroRange(1); // it's must set range of gyro's data     +-500(deg/sec)
+    HMC_init();
 
-	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
+    PWM_enable(&g_pwm, PWM_1);
+    PWM_enable(&g_pwm, PWM_2);
+    PWM_enable(&g_pwm, PWM_3);
+    PWM_enable(&g_pwm, PWM_4);
 
-	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+    PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
-	MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
+    MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
     /*-------------------------------------------------------------------------
      * Initialize the system tick for 10mS operation or 1 tick every 100th of
      * a second and also make sure it is lower priority than the I2C IRQs.

@@ -2,7 +2,7 @@
 
 void MPU6050_initialize()
 {
-	mpu6050_dev_addr = MPU6050_DEFAULT_ADDRESS;
+  mpu6050_dev_addr = MPU6050_DEFAULT_ADDRESS;
     MPU6050_setClockSource(MPU6050_CLOCK_PLL_XGYRO);
     MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_250);
     MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
@@ -108,36 +108,36 @@ inline void MPU6050_getMotion6(int16_t* ax,
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
     if(use_calib == 1)
     {
-    	*ax -= ax0;
-    	*ay -= ay0;
-		*az -= az0;
-		*gx -= gx0;
-		*gy -= gy0;
-		*gz -= gz0;
+      *ax -= ax0;
+      *ay -= ay0;
+    *az -= az0;
+    *gx -= gx0;
+    *gy -= gy0;
+    *gz -= gz0;
 
     }
 
 }
 void MPU6050_calibration(){
-	int i =0;
-	int16_t tmp[6];
-	for(i=0; i<1000; i++)
-	{
-		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
-		ax0 += tmp[0];
-		ay0 += tmp[1];
-		az0 += tmp[2];
-		gx0 += tmp[3];
-		gy0 += tmp[4];
-		gz0 += tmp[5];
-	}
-	ax0 /= 1000;
-	ay0 /= 1000;
-	az0 /= 1000;
-	gx0 /= 1000;
-	gy0 /= 1000;
-	gz0 /= 1000;
-	ax0 -= 16384;
+  int i =0;
+  int16_t tmp[6];
+  for(i=0; i<1000; i++)
+  {
+    MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
+    ax0 += tmp[0];
+    ay0 += tmp[1];
+    az0 += tmp[2];
+    gx0 += tmp[3];
+    gy0 += tmp[4];
+    gz0 += tmp[5];
+  }
+  ax0 /= 1000;
+  ay0 /= 1000;
+  az0 /= 1000;
+  gx0 /= 1000;
+  gy0 /= 1000;
+  gz0 /= 1000;
+  ax0 -= 16384;
 
 }
 
