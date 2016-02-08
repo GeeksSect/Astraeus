@@ -4,8 +4,7 @@ void MPU6050_initialize()
 {
 	mpu6050_dev_addr = MPU6050_DEFAULT_ADDRESS;
     MPU6050_setClockSource(MPU6050_CLOCK_PLL_XGYRO);
-    MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_500);
-    MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+
     MPU6050_setBypassMode();
     MPU6050_setSleepEnabled(0); // thanks to Jack Elston for pointing this one out!
 

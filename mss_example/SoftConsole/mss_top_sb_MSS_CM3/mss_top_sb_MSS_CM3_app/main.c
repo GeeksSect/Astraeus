@@ -79,12 +79,12 @@ int main(void)
 				{
 					case 'p':
 					{
-						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
+						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)/2;
 						break;
 					}
 					case 'r':
 					{
-						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
+						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)/2;
 						break;
 					}
 					case 'y':
@@ -163,10 +163,10 @@ int main(void)
 		else
 			magn_skip++;
 		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
-		MadgwickAHRSupdate((float)gx/(-3754.936206f), (float)gy/(-3754.936206f), (float)gz/(-3754.936206f), ax, ay, az, mx, my, mz);
+		MadgwickAHRSupdate((float)gx/(-1876.5298381655986911453492623174f), (float)gy/(-1876.5298381655986911453492623174f), (float)gz/(-1876.5298381655986911453492623174f), ax, ay, az, mx, my, mz);
 		d_t = micros() - t_prev;
 		t_prev = micros();
-		delta = (float)d_t/1000000.f;
+		delta = (double)d_t/1000000.;
 		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
 		pitch = asin (2*(q0*q2-q3*q1))* k * k1;
 		yaw = atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
@@ -183,6 +183,7 @@ int main(void)
 					print_mask,
 					pitch, roll, yaw,
 					get_P_p(), get_I_p(), get_D_p(),
+
 					get_P_r(), get_I_r(), get_D_r(),
 					get_P_y(), get_I_y(), get_D_y(),
 					d_t);
@@ -267,7 +268,9 @@ void setup()
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(0x02);
+	MPU6050_setDLPFMode(0x01);
+    MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
+    MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
 	HMC_init();
 
 	PWM_enable(&g_pwm, PWM_1);
