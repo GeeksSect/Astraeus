@@ -24,7 +24,7 @@
 #define PWM_PRESCALE 1
 #define PWM_PERIOD 1000
 #define threshold 20
-#define magn_skip_val 10
+#define magn_skip_val 20
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
 
@@ -79,12 +79,12 @@ int main(void)
 				{
 					case 'p':
 					{
-						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)/2;
+						pitch0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
 						break;
 					}
 					case 'r':
 					{
-						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500)/2;
+						roll0 = (my_atoi (rx_buff + rd_pos + 1, 5) - 1500);
 						break;
 					}
 					case 'y':
@@ -168,8 +168,8 @@ int main(void)
 		t_prev = micros();
 		delta = (double)d_t/1000000.;
 		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
-		pitch = asin (2*(q0*q2-q3*q1))* k * k1;
-		yaw = atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
+		pitch = -asin (2*(q0*q2-q3*q1))* k * k1;
+		yaw = -atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
 		pitch+=pitch0;
 		roll+=roll0;
 		my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
@@ -268,7 +268,7 @@ void setup()
 	i2c_init(1); // argument no matter
 	BMP_calibrate();
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(0x01);
+	MPU6050_setDLPFMode(0x03);
     MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
     MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
 	HMC_init();
