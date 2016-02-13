@@ -1,4 +1,4 @@
-#include "Modules/BMP/bmp.h"
+#include "Modules/bmp085_timer/bmp085_timer.h"
 #include "Modules/I2C/i2c.h"
 #include "Modules/HMC/HMC.h"
 #include "Modules/MPU6050/mpu6050.h"
@@ -42,15 +42,20 @@ int main(void)
 	int16_t ax = 0, ay = 0, az = 0;
 	int16_t gx = 0, gy = 0, gz = 0;
 	int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
-	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
+//	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
 	int16_t pitch, roll, yaw; // true data
-	int16_t pitch0 = 0, roll0 = 0, yaw0; // отклонение от ориентиров задаваемое с пульта
+	int16_t pitch0 = 0, roll0 = 0, yaw0, // отклонение от ориентиров задаваемое с пульта
+	pitch1 = 0, roll1 = 0;
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
 	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
 	uint16_t print_mask = 0;
 	uint8_t motor_mask = 0x0F;
 	uint8_t i = 0;
+	uint8_t BMP_state = 0;
+	uint16_t BMP_tmp1;
+	uint32_t BMP_tmp2;
+	int16_t BMP_Altitude;
 
     setup();
 
@@ -141,6 +146,13 @@ int main(void)
 								telemetry_skip++;
 						break;
 					}
+					case 'c':
+					{
+						pitch1 = pitch;
+						roll1 = roll;
+						break;
+					}
+
 
 				}
 			}
@@ -157,23 +169,43 @@ int main(void)
 		if(magn_skip > magn_skip_val)
 		{
 			HMC_get_true_Data(&mz, &my, &mx);
-			my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
 			magn_skip = 0;
 		}
 		else
 			magn_skip++;
+
+
 		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
 		MadgwickAHRSupdate((float)gx/(-1876.5298381655986911453492623174f), (float)gy/(-1876.5298381655986911453492623174f), (float)gz/(-1876.5298381655986911453492623174f), ax, ay, az, mx, my, mz);
 		d_t = micros() - t_prev;
 		t_prev = micros();
-		delta = (double)d_t/1000000.;
+		delta = 0.00295f;
+		//		delta = (double)d_t/1000000.;
 		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
 		pitch = -asin (2*(q0*q2-q3*q1))* k * k1;
 		yaw = -atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
-		pitch+=pitch0;
-		roll+=roll0;
+		pitch+=(pitch0-pitch1);
+		roll+=(roll0-roll1);
 		my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
-//------------------ send telemetry
+
+		switch (BMP_state)
+		{
+		case 0 :
+			BMP085_readRawTemperature_reqest();
+			BMP_state++;
+		case 3 :
+			BMP_tmp1 = BMP085_readRawTemperature_ask();
+			BMP085_readRawPressure_reqest();
+		case 13 :
+			BMP_tmp2 = BMP085_readRawPressure_ask();
+			BMP_Altitude = (BMP085_readPressure2(BMP_tmp1,BMP_tmp2)-950000)/16;
+			BMP_state = 0;
+		default :
+			if (BMP_state <15)
+				BMP_state++;
+			else
+				BMP_state = 0;
+		}
 
 		if(telemetry_skip_counter > telemetry_skip)
 		{
@@ -186,30 +218,10 @@ int main(void)
 
 					get_P_r(), get_I_r(), get_D_r(),
 					get_P_y(), get_I_y(), get_D_y(),
-					d_t);
+					d_t, BMP_Altitude);
 		}
 		else
 			telemetry_skip_counter++;
-		//------------------ send telemetry finished
-
-/*
-		if(motor_mask & (1<<0))
-			PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
-		if(motor_mask & (1<<1))
-			PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
-		if(motor_mask & (1<<2))
-			PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
-		if(motor_mask & (1<<3))
-			PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
-		else
-			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
-*/
 
 		if(motor_mask & (1<<0))
 			PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
@@ -266,9 +278,9 @@ void setup()
 	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
 	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
-	BMP_calibrate();
+	BMP085_begin(BMP085_ULTRAHIGHRES);
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(0x03);
+	MPU6050_setDLPFMode(0x05);
     MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
     MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
 	HMC_init();

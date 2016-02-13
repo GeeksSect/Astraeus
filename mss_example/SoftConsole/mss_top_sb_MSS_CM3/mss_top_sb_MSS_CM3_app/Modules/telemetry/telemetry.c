@@ -8,9 +8,9 @@
 #include "telemetry.h"
 
 
-void send_telemetry(UART_instance_t * g_uart, uint16_t mask, int16_t a, int16_t b, int16_t c, int16_t d, int16_t e, int16_t f, int16_t g, int16_t h, int16_t i, int16_t j, int16_t K, int16_t l, int16_t m)
+void send_telemetry(UART_instance_t * g_uart, uint16_t mask, int16_t a, int16_t b, int16_t c, int16_t d, int16_t e, int16_t f, int16_t g, int16_t h, int16_t I, int16_t j, int16_t K, int16_t l, int16_t m, int16_t n)
 {
-	uint8_t print_buf[8];
+	uint8_t print_buf[8], i;
 	if((mask & (1 << 0)))
 	{
 		for(i=0; i<6; i++)
@@ -88,7 +88,7 @@ void send_telemetry(UART_instance_t * g_uart, uint16_t mask, int16_t a, int16_t 
 	{
 		for(i=0; i<6; i++)
 			print_buf[i] = NULL;
-		itoa((char *)&print_buf, 'd', i*200);
+		itoa((char *)&print_buf, 'd',I*200);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"I");
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
@@ -129,7 +129,15 @@ void send_telemetry(UART_instance_t * g_uart, uint16_t mask, int16_t a, int16_t 
 		UART_send(g_uart, (const uint8_t *)print_buf, 6);
 		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
 	}
-
+	if((mask & (1 << 13)))
+	{
+		for(i=0; i<6; i++)
+			print_buf[i] = NULL;
+		itoa((char *)&print_buf, 'd', n);
+		UART_polled_tx_string(g_uart, (const uint8_t *)"N");
+		UART_send(g_uart, (const uint8_t *)print_buf, 6);
+		UART_polled_tx_string(g_uart, (const uint8_t *)"\n");
+	}
 	UART_polled_tx_string(g_uart, (const uint8_t *)"W\n");
 
 }

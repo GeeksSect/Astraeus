@@ -16,6 +16,6 @@ void send_telemetry(UART_instance_t * g_uart,
 		int16_t d, int16_t e, int16_t f,
 		int16_t g, int16_t h, int16_t i,
 		int16_t j, int16_t K, int16_t l,
-		int16_t m);
+		int16_t m, int16_t n);
 
 #endif /* TELEMETRY_H_ */
