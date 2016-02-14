@@ -1,4 +1,4 @@
-#include "Modules/BMP/bmp.h"
+#include "Modules/bmp085_timer/bmp085_timer.h"
 #include "Modules/I2C/i2c.h"
 #include "Modules/HMC/HMC.h"
 #include "Modules/MPU6050/mpu6050.h"
@@ -6,7 +6,7 @@
 #include "Modules/micros/micros.h"
 #include "Helpers/converter/converter.h"
 #include "Modules/telemetry/telemetry.h"
-#include "Modules/Modules/MadgwickAHRS.h"
+#include "Modules/MadgwickAHRS/MadgwickAHRS.h"
 
 #include "hal.h"
 #include "mss_top_hw_platform.h"
@@ -24,7 +24,7 @@
 #define PWM_PRESCALE 1
 #define PWM_PERIOD 1000
 #define threshold 20
-#define magn_skip_val 10
+#define magn_skip_val 20
 UART_instance_t g_uart;
 pwm_instance_t  g_pwm;
 
@@ -42,15 +42,20 @@ int main(void)
 	int16_t ax = 0, ay = 0, az = 0;
 	int16_t gx = 0, gy = 0, gz = 0;
 	int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
-	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
+//	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
 	int16_t pitch, roll, yaw; // true data
-	int16_t pitch0 = 0, roll0 = 0, yaw0; // отклонение от ориентиров задаваемое с пульта
+	int16_t pitch0 = 0, roll0 = 0, yaw0, // отклонение от ориентиров задаваемое с пульта
+	pitch1 = 0, roll1 = 0;
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
-	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
+	uint64_t t_prev; uint32_t d_t = 5000; // variables for time calculation
 	uint16_t print_mask = 0;
 	uint8_t motor_mask = 0x0F;
 	uint8_t i = 0;
+	uint8_t BMP_state = 0;
+	uint16_t BMP_tmp1;
+	uint32_t BMP_tmp2;
+	int16_t BMP_Altitude;
 
     setup();
 
@@ -141,6 +146,13 @@ int main(void)
 								telemetry_skip++;
 						break;
 					}
+					case 'c':
+					{
+						pitch1 += pitch;
+						roll1 += roll;
+						break;
+					}
+
 
 				}
 			}
@@ -161,23 +173,36 @@ int main(void)
 		}
 		else
 			magn_skip++;
-		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1); // get raw data
-		acell_angle(&ax, &ay, &az, &acell_pitch, &acell_roll);
-		d_t = micros() - t_prev;
-		t_prev = micros();
-		if(d_t>50000) // if shit happened and delta time is so big
-		{
-			d_t = 0;
-		}
-		my_angle(&gx, &gy, &gz, &acell_pitch, &acell_roll, &magn_yaw, &pitch, &roll, &yaw, d_t);
-		my_yaw(&mx, &my, &mz, &magn_yaw, &pitch, &roll);
 
-		pitch+=pitch0;
-		roll+=roll0;
+		while(micros()-t_prev<5000);
+		t_prev = micros();
+		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
+		MadgwickAHRSupdate((float)gx/(-1700.0f), (float)gy/(-1700.0f), (float)gz/(-1700.0f), ax, ay, az, mx, my, mz);
+		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
+		pitch = -asin (2*(q0*q2-q3*q1))* k * k1;
+		yaw = -atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
+		pitch+=(pitch0-pitch1);
+		roll+=(roll0-roll1);
 		my_PID(&pitch, &roll, &yaw, m_power, &force, &gx, &gy, &gz, d_t);
 
-
-//------------------ send telemetry
+		switch (BMP_state)
+		{
+		case 0 :
+			BMP085_readRawTemperature_reqest();
+			BMP_state++;
+		case 2 :
+			BMP_tmp1 = BMP085_readRawTemperature_ask();
+			BMP085_readRawPressure_reqest();
+		case 8 :
+			BMP_tmp2 = BMP085_readRawPressure_ask();
+			BMP_Altitude = BMP085_readAltitude2(960000,BMP085_readPressure2(BMP_tmp1,BMP_tmp2));
+			BMP_state = 0;
+		default :
+			if (BMP_state <10)
+				BMP_state++;
+			else
+				BMP_state = 0;
+		}
 
 		if(telemetry_skip_counter > telemetry_skip)
 		{
@@ -187,29 +212,28 @@ int main(void)
 					print_mask,
 					pitch, roll, yaw,
 					get_P_p(), get_I_p(), get_D_p(),
+
 					get_P_r(), get_I_r(), get_D_r(),
 					get_P_y(), get_I_y(), get_D_y(),
-					d_t);
+					d_t, BMP_Altitude);
 		}
 		else
 			telemetry_skip_counter++;
-		//------------------ send telemetry finished
-
 
 		if(motor_mask & (1<<0))
-			PWM_set_duty_cycle(&g_pwm, PWM_1, (int16_t)threshold + sqrt(m_power[0])*30);
+			PWM_set_duty_cycle(&g_pwm, PWM_1, m_power[0]);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
 		if(motor_mask & (1<<1))
-			PWM_set_duty_cycle(&g_pwm, PWM_2, (int16_t)threshold + sqrt(m_power[1])*30);
+			PWM_set_duty_cycle(&g_pwm, PWM_2, m_power[1]);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
 		if(motor_mask & (1<<2))
-			PWM_set_duty_cycle(&g_pwm, PWM_4, (int16_t)threshold + sqrt(m_power[2])*30);
+			PWM_set_duty_cycle(&g_pwm, PWM_4, m_power[2]);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 		if(motor_mask & (1<<3))
-			PWM_set_duty_cycle(&g_pwm, PWM_3, (int16_t)threshold + sqrt(m_power[3])*30);
+			PWM_set_duty_cycle(&g_pwm, PWM_3, m_power[3]);
 		else
 			PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
 
@@ -251,20 +275,21 @@ void setup()
 	PWM_init(&g_pwm, COREPWM_0_0, PWM_PRESCALE, PWM_PERIOD);
 	UART_init( &g_uart, COREUARTAPB_0_0, BAUD_VALUE_115200, (DATA_8_BITS | NO_PARITY) );
 	i2c_init(1); // argument no matter
-	BMP_calibrate();
+	BMP085_begin(BMP085_ULTRAHIGHRES);
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(3);
-	MPU6050_setFullScaleGyroRange(1); // it's must set range of gyro's data 	+-500(deg/sec)
+	MPU6050_setDLPFMode(0x02);
+    MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
+    MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+    MPU6050_setSampleRateDiv(4);
 	HMC_init();
 
 	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
-
 	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+	PWM_enable(&g_pwm, PWM_2);
 	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+	PWM_enable(&g_pwm, PWM_3);
 	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+	PWM_enable(&g_pwm, PWM_4);
 	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
 	MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);

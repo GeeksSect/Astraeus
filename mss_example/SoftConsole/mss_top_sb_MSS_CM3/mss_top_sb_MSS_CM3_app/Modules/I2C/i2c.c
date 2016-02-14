@@ -16,7 +16,7 @@ void i2c_init(uint8_t chanels_count)
 
 	// TODO! Handle situations with chanels_count != 1
 
-    I2C_init(&g_core_i2c0, COREI2C_0_0, MY_SERIAL_ADDR, I2C_PCLK_DIV_256);
+    I2C_init(&g_core_i2c0, COREI2C_0_0, MY_SERIAL_ADDR, I2C_PCLK_DIV_160);
 }
 
 i2c_status_t i2c_readInt(uint8_t serial_addr,

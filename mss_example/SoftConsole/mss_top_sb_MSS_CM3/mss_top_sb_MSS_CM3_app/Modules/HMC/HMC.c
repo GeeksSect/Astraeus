@@ -20,7 +20,6 @@ void HMC_init()
 
     i2c_writeBytes(HMC_SERIAL_ADDR, tx_buf, tx_len, 0);
 
-    delay(10, 50); // delay for 10 ms on 50 MHz freq
 }
 
 void HMC_get_raw_Data(int16_t* mx, int16_t* my, int16_t* mz)
@@ -40,8 +39,6 @@ void HMC_get_raw_Data(int16_t* mx, int16_t* my, int16_t* mz)
     *my = (rx_buf[4] << 8) | rx_buf[5];
     *mz = (rx_buf[2] << 8) | rx_buf[3];
 
-    // for next measurement
-//    delay(500, 50); // delay for 70 ms on 50 MHz freq
 }
 
 void HMC_get_true_Data(int16_t* mx, int16_t* my, int16_t* mz)

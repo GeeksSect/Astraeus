@@ -367,7 +367,7 @@
 
 static uint8_t mpu6050_dev_addr;
 
-static int32_t ax0 =0 , ay0=0, az0=0, gx0=0, gy0=0, gz0=0;
+static int32_t gx0=0, gy0=0, gz0=0;
 
 void MPU6050_initialize();
 
@@ -394,7 +394,11 @@ void MPU6050_getMotion6(int16_t* ax,
 // calibration is not tested!
 void MPU6050_calibration();
 
-
-
+void MPU6050_setAccelFIFOEnabled(uint8_t flag);
+void MPU6050_setFIFOEnabled(uint8_t enabled);
+uint16_t MPU6050_getFIFOCount();
+void MPU6050_getFIFOBytes(uint8_t *data, uint8_t length);
+void MPU6050_setGyrosFIFOEnabled(uint8_t enabled);
+void MPU6050_setSampleRateDiv(uint8_t data);
 
 #endif /* MPU6050_H_ */

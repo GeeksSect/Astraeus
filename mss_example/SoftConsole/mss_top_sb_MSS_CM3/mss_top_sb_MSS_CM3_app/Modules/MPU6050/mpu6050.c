@@ -2,14 +2,12 @@
 
 void MPU6050_initialize()
 {
-  mpu6050_dev_addr = MPU6050_DEFAULT_ADDRESS;
+	mpu6050_dev_addr = MPU6050_DEFAULT_ADDRESS;
     MPU6050_setClockSource(MPU6050_CLOCK_PLL_XGYRO);
-    MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_250);
-    MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+
     MPU6050_setBypassMode();
     MPU6050_setSleepEnabled(0); // thanks to Jack Elston for pointing this one out!
 
-    MPU6050_setDLPFMode(0x06);
 }
 
 void MPU6050_setClockSource(uint8_t source)
@@ -108,36 +106,27 @@ inline void MPU6050_getMotion6(int16_t* ax,
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
     if(use_calib == 1)
     {
-      *ax -= ax0;
-      *ay -= ay0;
-    *az -= az0;
-    *gx -= gx0;
-    *gy -= gy0;
-    *gz -= gz0;
-
+		*gx -= gx0;
+		*gy -= gy0;
+		*gz -= gz0;
     }
 
 }
 void MPU6050_calibration(){
-  int i =0;
-  int16_t tmp[6];
-  for(i=0; i<1000; i++)
-  {
-    MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
-    ax0 += tmp[0];
-    ay0 += tmp[1];
-    az0 += tmp[2];
-    gx0 += tmp[3];
-    gy0 += tmp[4];
-    gz0 += tmp[5];
-  }
-  ax0 /= 1000;
-  ay0 /= 1000;
-  az0 /= 1000;
-  gx0 /= 1000;
-  gy0 /= 1000;
-  gz0 /= 1000;
-  ax0 -= 16384;
+	int i =0;
+	int16_t tmp[6];
+	for(i=0; i<1000; i++)
+	{
+		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
+		gx0 += tmp[3];
+		gy0 += tmp[4];
+		gz0 += tmp[5];
+	}
+
+	gx0 /= 1000;
+	gy0 /= 1000;
+	gz0 /= 1000;
+
 
 }
 
@@ -165,6 +154,40 @@ void MPU6050_calibration(){
  */
 
 
+void MPU6050_setAccelFIFOEnabled(uint8_t flag){
+
+	i2c_writeBit(mpu6050_dev_addr, MPU6050_RA_FIFO_EN, MPU6050_ACCEL_FIFO_EN_BIT, flag, 0);
+
+}
+
+void MPU6050_setFIFOEnabled(uint8_t enabled) {
+	i2c_writeBit(mpu6050_dev_addr, MPU6050_RA_USER_CTRL, MPU6050_USERCTRL_FIFO_EN_BIT, enabled, 0);
+}
+uint16_t MPU6050_getFIFOCount() {
+    uint8_t tx_buf[1];
+    tx_buf[0] = MPU6050_RA_FIFO_COUNTH;
+    uint8_t rx_buf[2];
+    I2C_write_read(&g_core_i2c0, mpu6050_dev_addr, MPU6050_RA_FIFO_COUNTH, 1, rx_buf, 2, I2C_RELEASE_BUS);
+
+    return (((uint16_t)rx_buf[0]) << 8) | rx_buf[1];
+}
+void MPU6050_getFIFOBytes(uint8_t *data, uint8_t length) {
+    uint8_t tx_buf;
+    tx_buf = MPU6050_RA_FIFO_R_W;
 
 
+    i2c_writeBytes(mpu6050_dev_addr, &tx_buf, 1, 0);
+    i2c_readBytes(mpu6050_dev_addr, data, length, 0);
+}
+void MPU6050_setGyrosFIFOEnabled(uint8_t enabled) {
+	i2c_writeBit(mpu6050_dev_addr, MPU6050_RA_FIFO_EN, MPU6050_XG_FIFO_EN_BIT, enabled, 0);
+	i2c_writeBit(mpu6050_dev_addr, MPU6050_RA_FIFO_EN, MPU6050_YG_FIFO_EN_BIT, enabled, 0);
+	i2c_writeBit(mpu6050_dev_addr, MPU6050_RA_FIFO_EN, MPU6050_ZG_FIFO_EN_BIT, enabled, 0);
 
+}
+
+void MPU6050_setSampleRateDiv(uint8_t data) {
+
+    uint8_t tx_buf[2] = {MPU6050_RA_SMPLRT_DIV, data};
+    i2c_writeBytes(mpu6050_dev_addr, tx_buf, 2, 0);
+}
