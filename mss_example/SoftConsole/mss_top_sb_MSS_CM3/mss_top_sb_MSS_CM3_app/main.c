@@ -176,10 +176,8 @@ int main(void)
 
 		while(micros()-t_prev<5000);
 		t_prev = micros();
-
 		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
 		MadgwickAHRSupdate((float)gx/(-1700.0f), (float)gy/(-1700.0f), (float)gz/(-1700.0f), ax, ay, az, mx, my, mz);
-		//		delta = (double)d_t/1000000.;
 		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
 		pitch = -asin (2*(q0*q2-q3*q1))* k * k1;
 		yaw = -atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* k * k1;
@@ -192,15 +190,15 @@ int main(void)
 		case 0 :
 			BMP085_readRawTemperature_reqest();
 			BMP_state++;
-		case 3 :
+		case 2 :
 			BMP_tmp1 = BMP085_readRawTemperature_ask();
 			BMP085_readRawPressure_reqest();
-		case 13 :
+		case 8 :
 			BMP_tmp2 = BMP085_readRawPressure_ask();
-			BMP_Altitude = (BMP085_readPressure2(BMP_tmp1,BMP_tmp2)-950000)/16;
+			BMP_Altitude = BMP085_readAltitude2(960000,BMP085_readPressure2(BMP_tmp1,BMP_tmp2));
 			BMP_state = 0;
 		default :
-			if (BMP_state <15)
+			if (BMP_state <10)
 				BMP_state++;
 			else
 				BMP_state = 0;

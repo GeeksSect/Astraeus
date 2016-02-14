@@ -106,13 +106,9 @@ inline void MPU6050_getMotion6(int16_t* ax,
     *gz = (((int16_t)rx_buf[12]) << 8) | rx_buf[13];
     if(use_calib == 1)
     {
-    	*ax -= ax0;
-    	*ay -= ay0;
-		*az -= az0;
 		*gx -= gx0;
 		*gy -= gy0;
 		*gz -= gz0;
-
     }
 
 }
@@ -122,7 +118,6 @@ void MPU6050_calibration(){
 	for(i=0; i<1000; i++)
 	{
 		MPU6050_getMotion6(&tmp[0], &tmp[1], &tmp[2], &tmp[3], &tmp[4], &tmp[5], 0);
-
 		gx0 += tmp[3];
 		gy0 += tmp[4];
 		gz0 += tmp[5];
