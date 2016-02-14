@@ -44,7 +44,7 @@ int main(void)
 	int16_t mx = 0, my = 0, mz = 0; //raw values from gy87
 //	int16_t acell_pitch, acell_roll, magn_yaw; // half raw angle
 	int16_t pitch, roll, yaw; // true data
-	int16_t pitch0 = 0, roll0 = 0, yaw0, // отклонение от ориентиров задаваемое с пульта
+	int16_t pitch0 = 0, roll0 = 0, yaw0, // РѕС‚РєР»РѕРЅРµРЅРёРµ РѕС‚ РѕСЂРёРµРЅС‚РёСЂРѕРІ Р·Р°РґР°РІР°РµРјРѕРµ СЃ РїСѓР»СЊС‚Р°
 	pitch1 = 0, roll1 = 0;
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
