@@ -1,4 +1,4 @@
-# Astraeus
+﻿# Astraeus
 The Microsemi SmartFusion2 projects for quadcopter and rover
 
 ## Участники
@@ -6,6 +6,7 @@ The Microsemi SmartFusion2 projects for quadcopter and rover
 2. Радкевич Павел
 3. Позняк Андрей
 4. Вова Артёменко
+
 
 ## Наборы
 ### Avia Kit (квадрокоптер)

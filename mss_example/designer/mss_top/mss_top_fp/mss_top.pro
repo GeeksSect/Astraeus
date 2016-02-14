@@ -1,6 +1,6 @@
 <project name="mss_top" version="1.1">
     <ProjectDirectory>
-        C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/designer/mss_top/mss_top_fp
+        C:/Users/vetal/Documents/copter/Astraeus/mss_example/designer/mss_top/mss_top_fp
     </ProjectDirectory>
     <View>
         ChainView
@@ -9,7 +9,7 @@
         M2S010
     </LiberoTargetDevice>
     <LogFile>
-        C:/Users/kruci_000/Desktop/SoC/git/Astraeus/mss_example/designer/mss_top/mss_top_fp/mss_top.log
+        C:/Users/vetal/Documents/copter/Astraeus/mss_example/designer/mss_top/mss_top_fp/mss_top.log
     </LogFile>
     <SerializationOption>
         Skip

@@ -1,10 +1,10 @@
 Synopsys Netlist Linker, version comp201403sp1p1, Build 095R, built Oct  9 2014
 @N|Running in 64-bit mode
-File C:\Users\kruci_000\Desktop\SoC\git\Astraeus\mss_example\synthesis\synwork\mss_top_comp.srs changed - recompiling
+File C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\synwork\mss_top_comp.srs changed - recompiling
 
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 74MB peak: 74MB)
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 75MB peak: 76MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sat Nov 07 17:48:33 2015
+# Wed Jan 27 18:30:48 2016
 
 ###########################################################]

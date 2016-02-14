@@ -10,7 +10,6 @@
 
 #include <stdint.h>
 #include "../I2C/i2c.h"
-#include "../HMC/hmc.h"
 
 #define MPU6050_ADDRESS_AD0_LOW     0x68 // address pin low (GND), default for InvenSense evaluation board
 #define MPU6050_ADDRESS_AD0_HIGH    0x69 // address pin high (VCC)
@@ -368,6 +367,8 @@
 
 static uint8_t mpu6050_dev_addr;
 
+static int32_t gx0=0, gy0=0, gz0=0;
+
 void MPU6050_initialize();
 
 void MPU6050_setClockSource(uint8_t source);
@@ -387,15 +388,17 @@ void MPU6050_getMotion6(int16_t* ax,
                         int16_t* az,
                         int16_t* gx,
                         int16_t* gy,
-                        int16_t* gz);
-
-void MPU6050_getMotion9(int16_t* ax,
-                        int16_t* ay,
-                        int16_t* az,
-                        int16_t* gx,
-                        int16_t* gy,
                         int16_t* gz,
-                        int16_t* mx,
-                        int16_t* my,
-                        int16_t* mz);
+                        uint8_t use_calib);
+
+// calibration is not tested!
+void MPU6050_calibration();
+
+void MPU6050_setAccelFIFOEnabled(uint8_t flag);
+void MPU6050_setFIFOEnabled(uint8_t enabled);
+uint16_t MPU6050_getFIFOCount();
+void MPU6050_getFIFOBytes(uint8_t *data, uint8_t length);
+void MPU6050_setGyrosFIFOEnabled(uint8_t enabled);
+void MPU6050_setSampleRateDiv(uint8_t data);
+
 #endif /* MPU6050_H_ */

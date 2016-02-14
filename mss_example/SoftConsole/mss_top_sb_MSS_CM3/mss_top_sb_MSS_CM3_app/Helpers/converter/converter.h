@@ -3,8 +3,6 @@
  * Convert type to other type
  */
 
-#include <stdint.h>
-
 #ifndef CONVERTER_H_
 #define CONVERTER_H_
 
@@ -19,9 +17,6 @@ void itoa
 	int base,
 	int d
 );
-
-/* Convert uint8_t[2] to uint16_t */
-uint16_t twobtoi(uint8_t *buf);
 
 #ifdef __cplusplus
 }

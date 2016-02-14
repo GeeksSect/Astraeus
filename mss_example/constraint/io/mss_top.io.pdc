@@ -45,6 +45,17 @@ set_io TX              \
     -fixed yes         \
     -DIRECTION OUTPUT
 
+set_io RX2             \
+    -pinname 49        \
+    -fixed yes        \
+    -DIRECTION INPUT
+
+
+set_io TX2              \
+    -pinname 47         \
+    -fixed yes         \
+    -DIRECTION OUTPUT
+
 
 set_io pwm_out_1       \
     -pinname 83        \

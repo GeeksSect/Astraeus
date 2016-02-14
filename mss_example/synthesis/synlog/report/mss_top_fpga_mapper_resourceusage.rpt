@@ -4,42 +4,43 @@ Mapping to part: m2s010tq144std
 Cell usage:
 CCC             1 use
 CLKINT          2 uses
+INV             4 uses
 MSS_010         1 use
-OR3             3 uses
+OR3             6 uses
 RCOSC_25_50MHZ  1 use
-CFG1           4 uses
-CFG2           158 uses
-CFG3           170 uses
-CFG4           442 uses
+CFG1           31 uses
+CFG2           223 uses
+CFG3           203 uses
+CFG4           542 uses
 
 Carry primitives used for arithmetic functions:
-ARI1           166 uses
+ARI1           266 uses
 
 
 Sequential Cells: 
-SLE            406 uses
+SLE            673 uses
 
 DSP Blocks:    0
 
-I/O ports: 9
-I/O primitives: 9
+I/O ports: 11
+I/O primitives: 11
 BIBUF          2 uses
-INBUF          1 use
-OUTBUF         5 uses
+INBUF          2 uses
+OUTBUF         6 uses
 SYSRESET       1 use
 
 
 Global Clock Buffers: 2
 
 
-Total LUTs:    940
+Total LUTs:    1265
 
 Extra resources required for RAM and MACC interface logic during P&R:
 
-RAM64x18 Interface Logic : SLEs = 0; LUTs = 0;
+RAM64x18 Interface Logic : SLEs = 144; LUTs = 144;
 RAM1K18  Interface Logic : SLEs = 0; LUTs = 0;
 MACC     Interface Logic : SLEs = 0; LUTs = 0;
 
-Total number of SLEs after P&R:  406 + 0 + 0 + 0 = 406;
-Total number of LUTs after P&R:  940 + 0 + 0 + 0 = 940;
+Total number of SLEs after P&R:  673 + 144 + 0 + 0 = 817;
+Total number of LUTs after P&R:  1265 + 144 + 0 + 0 = 1409;
 

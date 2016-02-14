@@ -8,7 +8,7 @@
 
 # Family: SmartFusion2 , Die: M2S010 , Package: 144 TQ , Speed grade: STD 
 
-# Date generated: Sat Nov 07 17:49:13 2015 
+# Date generated: Wed Jan 27 18:31:28 2016 
 
 
 #
@@ -37,7 +37,9 @@ set_io COREI2C_0_0_SCL_IO -DIRECTION INOUT -pinname 94 -fixed yes
 set_io COREI2C_0_0_SDA_IO -DIRECTION INOUT -pinname 91 -fixed yes
 set_io DEVRST_N -DIRECTION INPUT -pinname 72
 set_io RX -DIRECTION INPUT -pinname 1 -fixed yes
+set_io RX2 -DIRECTION INPUT -pinname 49 -fixed yes
 set_io TX -DIRECTION OUTPUT -pinname 2 -fixed yes
+set_io TX2 -DIRECTION OUTPUT -pinname 47 -fixed yes
 set_io pwm_out_1 -DIRECTION OUTPUT -pinname 83 -fixed yes
 set_io pwm_out_2 -DIRECTION OUTPUT -pinname 43 -fixed yes
 set_io pwm_out_3 -DIRECTION OUTPUT -pinname 101 -fixed yes
