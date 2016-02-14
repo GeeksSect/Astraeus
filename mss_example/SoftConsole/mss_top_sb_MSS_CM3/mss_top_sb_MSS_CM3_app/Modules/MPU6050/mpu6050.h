@@ -394,7 +394,11 @@ void MPU6050_getMotion6(int16_t* ax,
 // calibration is not tested!
 void MPU6050_calibration();
 
-
-
+void MPU6050_setAccelFIFOEnabled(uint8_t flag);
+void MPU6050_setFIFOEnabled(uint8_t enabled);
+uint16_t MPU6050_getFIFOCount();
+void MPU6050_getFIFOBytes(uint8_t *data, uint8_t length);
+void MPU6050_setGyrosFIFOEnabled(uint8_t enabled);
+void MPU6050_setSampleRateDiv(uint8_t data);
 
 #endif /* MPU6050_H_ */

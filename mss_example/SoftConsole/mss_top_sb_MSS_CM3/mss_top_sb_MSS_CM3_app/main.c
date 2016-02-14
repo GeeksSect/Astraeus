@@ -48,7 +48,7 @@ int main(void)
 	pitch1 = 0, roll1 = 0;
 	int16_t force = 0;
 	int16_t m_power[4] = {0,0,0,0};
-	uint64_t t_prev; uint32_t d_t = 0; // variables for time calculation
+	uint64_t t_prev; uint32_t d_t = 5000; // variables for time calculation
 	uint16_t print_mask = 0;
 	uint8_t motor_mask = 0x0F;
 	uint8_t i = 0;
@@ -148,8 +148,8 @@ int main(void)
 					}
 					case 'c':
 					{
-						pitch1 = pitch;
-						roll1 = roll;
+						pitch1 += pitch;
+						roll1 += roll;
 						break;
 					}
 
@@ -174,12 +174,11 @@ int main(void)
 		else
 			magn_skip++;
 
+		while(micros()-t_prev<5000);
+		t_prev = micros();
 
 		MPU6050_getMotion6(&az, &ay, &ax, &gz, &gy, &gx, 1);
-		MadgwickAHRSupdate((float)gx/(-1876.5298381655986911453492623174f), (float)gy/(-1876.5298381655986911453492623174f), (float)gz/(-1876.5298381655986911453492623174f), ax, ay, az, mx, my, mz);
-		d_t = micros() - t_prev;
-		t_prev = micros();
-		delta = 0.00295f;
+		MadgwickAHRSupdate((float)gx/(-1700.0f), (float)gy/(-1700.0f), (float)gz/(-1700.0f), ax, ay, az, mx, my, mz);
 		//		delta = (double)d_t/1000000.;
 		roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))* k * k1;
 		pitch = -asin (2*(q0*q2-q3*q1))* k * k1;
@@ -280,19 +279,19 @@ void setup()
 	i2c_init(1); // argument no matter
 	BMP085_begin(BMP085_ULTRAHIGHRES);
 	MPU6050_initialize();
-	MPU6050_setDLPFMode(0x05);
+	MPU6050_setDLPFMode(0x02);
     MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
     MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+    MPU6050_setSampleRateDiv(4);
 	HMC_init();
 
 	PWM_enable(&g_pwm, PWM_1);
-	PWM_enable(&g_pwm, PWM_2);
-	PWM_enable(&g_pwm, PWM_3);
-	PWM_enable(&g_pwm, PWM_4);
-
 	PWM_set_duty_cycle(&g_pwm, PWM_1, 0);
+	PWM_enable(&g_pwm, PWM_2);
 	PWM_set_duty_cycle(&g_pwm, PWM_2, 0);
+	PWM_enable(&g_pwm, PWM_3);
 	PWM_set_duty_cycle(&g_pwm, PWM_3, 0);
+	PWM_enable(&g_pwm, PWM_4);
 	PWM_set_duty_cycle(&g_pwm, PWM_4, 0);
 
 	MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
