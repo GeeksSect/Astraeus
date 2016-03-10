@@ -8,7 +8,7 @@ inline uint64_t micros()
 }
 void init_timer()
 {
-	lose_connection = 2;
+
 	MSS_TIM1_load_background(frq);
 	MSS_TIM1_start();
 	MSS_TIM1_enable_irq();
@@ -20,10 +20,10 @@ void stop_timer()
 
 void Timer1_IRQHandler()
 {
+
 	t_h += 1;
 	MSS_TIM1_clear_irq();
-	if(lose_connection == 1)
-		lose_connection = 2;
+
 }
 int32_t my_atoi (uint8_t *buf, uint8_t l)
 {
@@ -38,17 +38,5 @@ int32_t my_atoi (uint8_t *buf, uint8_t l)
 	}
 	return tmp;
 
-}
-uint16_t get_conn()
-{
-	return lose_connection;
-}
-void inc_conn()
-{
-	lose_connection++;
-}
-void reset_conn()
-{
-	lose_connection = 1;
 }
 

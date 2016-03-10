@@ -157,7 +157,7 @@ original code -> new code
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_0_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_0_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
 @N: BN362 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\coreuartapb_1_0\rtl\vhdl\core\rx_async.vhd":340:6:340:7|Removing sequential instance CoreUARTapb_1_0.uUART.make_RX.parity_err_xhdl2 in hierarchy view:work.mss_top_sb(rtl) because there are no references to its outputs 
 
-Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 169MB peak: 170MB)
+Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 169MB peak: 170MB)
 
 
 Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 156MB peak: 170MB)
@@ -174,22 +174,22 @@ Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:05s; CP
 Starting Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 152MB peak: 170MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 164MB peak: 170MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:15s; CPU Time elapsed 0h:00m:11s; Memory used current: 164MB peak: 170MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 163MB peak: 170MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:15s; CPU Time elapsed 0h:00m:11s; Memory used current: 163MB peak: 170MB)
 
 
-Finished preparing to map (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 164MB peak: 170MB)
+Finished preparing to map (Real Time elapsed 0h:00m:16s; CPU Time elapsed 0h:00m:12s; Memory used current: 164MB peak: 170MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:11s; Memory used current: 203MB peak: 206MB)
+Finished technology mapping (Real Time elapsed 0h:00m:18s; CPU Time elapsed 0h:00m:14s; Memory used current: 203MB peak: 206MB)
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:11s		   -28.82ns		1240 /       672
+   1		0h:00m:14s		   -28.82ns		1240 /       672
 ------------------------------------------------------------
 
 
@@ -201,14 +201,14 @@ Added 0 LUTs via timing driven replication
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:12s		    -3.71ns		1258 /       673
+   1		0h:00m:16s		    -3.71ns		1258 /       673
 ------------------------------------------------------------
 
 
 
 Pass		 CPU time		Worst Slack		Luts / Registers
 ------------------------------------------------------------
-   1		0h:00m:12s		    -3.71ns		1258 /       673
+   1		0h:00m:16s		    -3.71ns		1258 /       673
 ------------------------------------------------------------
 
 @N: FP130 |Promoting Net mss_top_sb_0.MSS_READY on CLKINT  I_123 
@@ -218,10 +218,10 @@ Added 0 Cells via replication
 	Added 0 Sequential Cells via replication
 	Added 0 Combinational Cells via replication
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:13s; Memory used current: 164MB peak: 206MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:22s; CPU Time elapsed 0h:00m:17s; Memory used current: 164MB peak: 206MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:14s; CPU Time elapsed 0h:00m:13s; Memory used current: 165MB peak: 206MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:22s; CPU Time elapsed 0h:00m:17s; Memory used current: 165MB peak: 206MB)
 
 
 
@@ -243,18 +243,18 @@ Clock Tree ID     Driving Element                 Drive Element Type     Fanout 
 
 Writing Analyst data base C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\mss_top.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:16s; CPU Time elapsed 0h:00m:14s; Memory used current: 160MB peak: 206MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:24s; CPU Time elapsed 0h:00m:18s; Memory used current: 160MB peak: 206MB)
 
 Writing Analyst data base C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\synwork\mss_top_m.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:17s; CPU Time elapsed 0h:00m:15s; Memory used current: 160MB peak: 206MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:25s; CPU Time elapsed 0h:00m:19s; Memory used current: 160MB peak: 206MB)
 
 Writing EDIF Netlist and constraint files
 @N: BW103 |Synopsys Constraint File time units using default value of 1ns 
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 I-2014.03M-SP1
 
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:18s; CPU Time elapsed 0h:00m:16s; Memory used current: 161MB peak: 206MB)
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:26s; CPU Time elapsed 0h:00m:20s; Memory used current: 161MB peak: 206MB)
 
 @W: MT246 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\mss_top_sb.vhd":1386:0:1386:11|Blackbox SYSRESET is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
 @W: MT246 :"c:\users\vetal\documents\copter\astraeus\mss_example\component\work\mss_top_sb\ccc_0\mss_top_sb_ccc_0_fccc.vhd":106:4:106:11|Blackbox CCC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
@@ -263,7 +263,7 @@ Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:18s
 
 
 @S |##### START OF TIMING REPORT #####[
-# Timing Report written on Wed Jan 27 18:31:08 2016
+# Timing Report written on Sun Feb 14 22:33:17 2016
 #
 
 
@@ -721,9 +721,9 @@ Total number of LUTs after P&R:  1265 + 144 + 0 + 0 = 1409;
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:18s; CPU Time elapsed 0h:00m:17s; Memory used current: 58MB peak: 206MB)
+At Mapper Exit (Real Time elapsed 0h:00m:27s; CPU Time elapsed 0h:00m:21s; Memory used current: 58MB peak: 206MB)
 
-Process took 0h:00m:18s realtime, 0h:00m:17s cputime
-# Wed Jan 27 18:31:09 2016
+Process took 0h:00m:27s realtime, 0h:00m:21s cputime
+# Sun Feb 14 22:33:18 2016
 
 ###########################################################]

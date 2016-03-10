@@ -16,19 +16,19 @@
 // Header files
 
 #include "MadgwickAHRS.h"
-#include <math.h>
+
 
 //---------------------------------------------------------------------------------------------------
 // Definitions
 
-#define sampleTime 0.005f
-#define sampleFreq	512.0f		// sample frequency in Hz
-#define betaDef		0.1f		// 2 * proportional gain
+#define sampleTime 0.004f
+//#define sampleFreq	512.0f		// sample frequency in Hz
+#define beta		0.1f		// 2 * proportional gain
 
 //---------------------------------------------------------------------------------------------------
 // Variable definitions
 
-volatile float beta = betaDef;								// 2 * proportional gain (Kp)
+//volatile float beta = betaDef;								// 2 * proportional gain (Kp)
 volatile float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f;	// quaternion of sensor frame relative to auxiliary frame
 
 //---------------------------------------------------------------------------------------------------
@@ -221,6 +221,13 @@ float invSqrt(float x) {
 	y = *(float*)&i;
 	y = y * (1.5f - (halfx * y * y));
 	return y;
+}
+
+void get_euclid(int16_t * pitch, int16_t * roll, int16_t * yaw)
+{
+	*roll = atan2 (2*(q0*q1+q2*q3),1-2*(q1*q1+q2*q2))*rad_to_int;
+	*pitch = -asin (2*(q0*q2-q3*q1))* rad_to_int;
+	*yaw = -atan2 (2*(q0*q3+q1*q2),1-2*(q2*q2+q3*q3))* rad_to_int;
 }
 
 //====================================================================================================

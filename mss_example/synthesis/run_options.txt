@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version I-2014.03M-SP1
 #--  Project file C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\run_options.txt
-#--  Written on Wed Jan 27 18:30:41 2016
+#--  Written on Sun Feb 14 22:32:40 2016
 
 
 #project files

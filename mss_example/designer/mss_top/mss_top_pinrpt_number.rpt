@@ -1,5 +1,5 @@
 *****************************************************************
-Pin Report - Date: Wed Jan 27 18:33:18 2016 Pinchecksum: NOT-AVAILABLE
+Pin Report - Date: Sun Feb 14 22:35:44 2016 Pinchecksum: NOT-AVAILABLE
 Product: Designer
 Release: v11.5 SP3
 Version: 11.5.3.10
@@ -57,9 +57,9 @@ Number |Port               |Function                     |State      |I/O Std  |
 44                          MSIO102NB4/CCC_NE1_CLKI0      Special     
 45                          VDDI4                         Reserved    
 46                          MSIO103NB4/PROBE_B            Unassigned  
-47      TX2                 MSIO103PB4/PROBE_A            Fixed       LVCMOS33  Output     TRISTATE                        None           No                                  ---              ---         ---            ---             ---          ---   ---           4                  5                 
+47      RX2                 MSIO103PB4/PROBE_A            Fixed       LVCMOS33  Input      TRISTATE                        None           No                                  Off              ---         ---            Off             Off          ---   ---           ---                ---               
 48                          MSIO104NB4/GB7                Special     
-49      RX2                 MSIO104PB4/GB3                Special     LVCMOS33  Input      TRISTATE                        None           No                                  Off              ---         ---            Off             Off          ---   ---           ---                ---               
+49      TX2                 MSIO104PB4/GB3                Special     LVCMOS33  Output     TRISTATE                        None           No                                  ---              ---         ---            ---             ---          ---   ---           4                  5                 
 50                          VDD                           Reserved    
 51                          VSS                           Reserved    
 52                          MSIO105PB4/CCC_NE0_CLKI0      Special     

@@ -56,6 +56,19 @@ void HMC_get_true_Data(int16_t* mx, int16_t* my, int16_t* mz)
 
 }
 
+void HMC_get_Data(int16_t* mx, int16_t* my, int16_t* mz)
+{
+	if(magn_skip > magn_skip_val)
+			{
+				HMC_get_true_Data(mx, my, mz);
+				magn_skip = 0;
+			}
+			else
+				magn_skip++;
+}
+
+
+
 /*
 
 void HMC_getScaledData(int16_t* mx, int16_t* my, int16_t* mz)

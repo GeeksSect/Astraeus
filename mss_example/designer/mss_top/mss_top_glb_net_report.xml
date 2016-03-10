@@ -3,7 +3,7 @@
 <doc>
 <title>Global Net Report</title>
 <text>Microsemi Corporation - Microsemi Libero Software Release v11.5 SP3 (Version 11.5.3.10)</text>
-<text>Date: Wed Jan 27 18:32:44 2016
+<text>Date: Sun Feb 14 22:35:06 2016
 </text>
 <section>
 <name>Global Nets Information</name>
@@ -51,7 +51,7 @@
 <row>
  <cell>1</cell>
  <cell>mss_top_sb_0/CORERESETP_0/MSS_HPMS_READY_int:Q</cell>
- <cell>(289, 73)</cell>
+ <cell>(259, 64)</cell>
  <cell>GB[2] </cell>
  <cell>mss_top_sb_0/CORERESETP_0/MSS_HPMS_READY_int</cell>
  <cell>ROUTED</cell>
