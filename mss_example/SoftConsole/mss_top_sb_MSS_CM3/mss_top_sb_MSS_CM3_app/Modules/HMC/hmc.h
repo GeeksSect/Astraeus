@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include "../I2C/i2c.h"
-#include "../../Helpers/sys_helper/sys_helper.h"
+
 
 #define HMC_SERIAL_ADDR 0x1E
 

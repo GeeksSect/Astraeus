@@ -12,6 +12,7 @@
 #include <math.h>
 #include "core_uart_apb.h"
 #include "mss_top_hw_platform.h"
+
 #define BAUD_VALUE_115200    26
 
 
@@ -23,13 +24,14 @@ static uint8_t rd_pos = 0;
 static uint8_t wr_pos = 0;
 
 static uint16_t print_mask =0;
-static uint8_t motor_mask =0x04;
+static uint8_t motor_mask =0x0F;
 static uint8_t telemetry_skip = 1, telemetry_skip_counter = 0;
 static int16_t pitch0 = 0, roll0 = 0, yaw0 = 0;
 static int16_t force = 0;
+static int8_t yaw_state = 0;
 
-#define sleep_time 100 //как много обонвлений система будет спать, перед тем как проверить связь
-#define wait_time 100 // как много обновлений будет ожидаться ответ
+#define sleep_time 150 //как много обонвлений система будет спать, перед тем как проверить связь
+#define wait_time 150 // как много обновлений будет ожидаться ответ
 static uint16_t lose_state = 0;
 
 
@@ -45,5 +47,7 @@ void reserve_BT();
 void get_RC_angles(int16_t * pitch, int16_t * roll, int16_t * yaw);
 void get_force(int16_t * _force);
 void get_motor_mask(uint8_t * _mask);
+void send_val(int8_t _type, int32_t val);
 void lose_update(int16_t * force);
+void update_yaw0();
 #endif /* TELEMETRY_H_ */

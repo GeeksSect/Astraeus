@@ -152,7 +152,7 @@ void BMP085_update(float * Altitude)
 				BMP_state++;
 				break;
 			}
-			case 10 :
+			case 15 :
 			{
 				BMP_tmp2 = BMP085_readRawPressure_ask();
 				*Altitude = BMP085_readAltitude2(960000,BMP085_readPressure2(BMP_tmp1,BMP_tmp2));
@@ -161,7 +161,7 @@ void BMP085_update(float * Altitude)
 			}
 			default :
 			{
-				if (BMP_state <12)
+				if (BMP_state <25)
 					BMP_state++;
 				else
 					BMP_state = 0;

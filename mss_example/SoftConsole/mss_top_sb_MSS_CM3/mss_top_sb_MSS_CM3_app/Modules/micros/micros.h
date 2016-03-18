@@ -25,14 +25,5 @@ uint64_t micros();
 
 void init_timer();
 void stop_timer();
-//overflow
 void Timer1_IRQHandler();
-int32_t my_atoi(uint8_t *buf,
-			uint8_t l);
-
-
-
-
-
 #endif /* MICROS_H_ */
-

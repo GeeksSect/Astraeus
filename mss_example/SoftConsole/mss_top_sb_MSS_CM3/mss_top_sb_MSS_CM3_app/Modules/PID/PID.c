@@ -6,8 +6,7 @@
  */
 #include "PID.h"
 
-
-inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow, int16_t * force, int16_t * gx, int16_t * gy, int16_t * gz)
+inline void my_PID(int16_t pitch, int16_t roll, int16_t yaw, int16_t gx, int16_t gy, int16_t gz, int16_t * force, int16_t * pow)
 {
 	static int32_t Integr_pitch=0, Integr_roll=0, Integr_yaw=0;
     if(*force < force_low_trottle) // if force so low
@@ -20,22 +19,22 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
             *force = force_high_trottle;
 
 
-    if(no_overlim(*pitch, 20*degree_to_int) && no_overlim(*roll, 20*degree_to_int))// don't integrate if copter nonstable
+    if(no_overlim(pitch, 20*degree_to_int) && no_overlim(roll, 20*degree_to_int))// don't integrate if copter nonstable
     {
-            Integr_pitch = Integr_pitch+((int32_t)(*pitch * loop_time));
-            Integr_roll = Integr_roll+((int32_t)(*roll  * loop_time));
-            if(no_overlim(*yaw, 20*degree_to_int))
-                Integr_yaw = Integr_yaw+((int32_t)(*yaw  * loop_time));
+            Integr_pitch = Integr_pitch+((int32_t)(pitch * loop_time));
+            Integr_roll = Integr_roll+((int32_t)(roll  * loop_time));
+            if(no_overlim(yaw, 20*degree_to_int))
+                Integr_yaw = Integr_yaw+((int32_t)(yaw  * loop_time));
     }
 
 
-    Dtmp_p = (int16_t) ((int32_t)Kd_u * (int32_t)(*gy) / Kd_d);
-    Dtmp_r = (int16_t) ((-1) * (int32_t)Kd_u * (int32_t)(*gx) / Kd_d);
-    Dtmp_y = (int16_t) ((int32_t)Kd_u * (int32_t)(*gz) / Kd_d);
+    Dtmp_p = (int16_t) ((-1) *(int32_t)Kd_u * (int32_t)(gy) / Kd_d);
+    Dtmp_r = (int16_t) ((int32_t)Kd_u * (int32_t)(gx) / Kd_d);
+    Dtmp_y = (int16_t) ((-1) *(int32_t)Kd_u * (int32_t)(gz) / Kd_d);
 
-    Ptmp_p = (int16_t) ((int32_t)Kp_u * (int32_t)(*pitch) / Kp_d);
-    Ptmp_r = (int16_t) ((int32_t)Kp_u * (int32_t)(*roll) / Kp_d);
-    Ptmp_y = (int16_t) ((int32_t)Kp_u * (int32_t)(*yaw) / Kp_d);
+    Ptmp_p = (int16_t) ((int32_t)Kp_u * (int32_t)(pitch) / Kp_d);
+    Ptmp_r = (int16_t) ((int32_t)Kp_u * (int32_t)(roll) / Kp_d);
+    Ptmp_y = (int16_t) ((int32_t)Kp_u * (int32_t)(yaw) / Kp_d);
 
 
 
@@ -47,9 +46,10 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
     limit_value16(&Ptmp_y , P_lim);
     limit_value16(&Ptmp_r , P_lim);
     // integral limit
-    limit_value32(&Integr_pitch , I_lim*131072);
-    limit_value32(&Integr_roll , I_lim*131072);
-    limit_value32(&Integr_yaw , I_lim*131072);
+
+    limit_value32(&Integr_pitch , I_lim2);
+    limit_value32(&Integr_roll , I_lim2);
+    limit_value32(&Integr_yaw , I_lim2);
 
     Itmp_p = (int16_t)(Ki_u*Integr_pitch/Ki_d);
 	Itmp_r = (int16_t)(Ki_u*Integr_roll/Ki_d);
@@ -59,12 +59,12 @@ inline void my_PID(int16_t * pitch, int16_t * roll, int16_t * yaw, int16_t * pow
     int16_t sum_p, sum_r, sum_y;
     sum_p = Dtmp_p + Ptmp_p + Itmp_p;
     sum_r = Dtmp_r + Ptmp_r + Itmp_r;
-    sum_y = Itmp_y + Ptmp_y + Dtmp_y;
+    sum_y = (Itmp_y + Ptmp_y + Dtmp_y)*4;
 
-    pow[0] = *force + sum_p + sum_r + sum_y;
-    pow[1] = *force - sum_p + sum_r - sum_y;
-    pow[2] = *force - sum_p - sum_r + sum_y;
-    pow[3] = *force + sum_p - sum_r - sum_y;
+    pow[2] = *force + sum_p + sum_r + sum_y;
+    pow[3] = *force - sum_p + sum_r - sum_y;
+    pow[0] = *force - sum_p - sum_r + sum_y;
+    pow[1] = *force + sum_p - sum_r - sum_y;
 	int8_t i;
 	for( i = 0 ; i < 4; i++)
 	{
@@ -114,7 +114,7 @@ void my_ESC(int16_t * pow, int16_t * force)
 				if(delta<-80)
 					delta = -80;
 			last[i] = last[i] + (7*delta/8);
-			pow[i] = pow[i] +(delta*6);
+			pow[i] = pow[i] +(delta*5);
 			if(pow[i]< power_low_trottle)
 				pow[i] = power_low_trottle;
 			else
@@ -124,31 +124,7 @@ void my_ESC(int16_t * pow, int16_t * force)
 	}
 }
 
-void limit_value16(int16_t * val, int16_t lim)
-{
-	if(*val > lim)
-		*val = lim;
-	else
-		if(*val < -lim)
-			*val = -lim;
-}
 
-void limit_value32(int32_t * val, int32_t lim)
-{
-	if(*val > lim)
-		*val = lim;
-	else
-		if(*val < -lim)
-			*val = -lim;
-}
-void limit_value64(int64_t * val, int64_t lim)
-{
-	if(*val > lim)
-		*val = lim;
-	else
-		if(*val < -lim)
-			*val = -lim;
-}
 double my_degree_to_float (int16_t val)
 {
     return (double)val/rad_to_int;
@@ -162,6 +138,7 @@ void set_P(uint16_t val)
 void set_I(uint16_t val)
 {
     Ki_u = val;
+
 }
 void set_D(uint16_t val)
 {
@@ -175,6 +152,7 @@ void setLim_P(uint16_t val)
 void setLim_I(uint16_t val)
 {
     I_lim = val;
+    I_lim2 = I_lim*Ki_d/Ki_u;
 }
 void setLim_D(uint16_t val)
 {
@@ -216,11 +194,4 @@ int16_t get_I_y(void)
 int16_t get_D_y(void)
 {
     return Dtmp_y;
-}
-uint8_t no_overlim(int16_t val, int16_t lim)
-{
-	if(abs(val)<lim)
-		return 1;
-	else
-		return 0;
 }
