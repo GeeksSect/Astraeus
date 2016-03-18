@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include "../I2C/i2c.h"
-#include "../../Helpers/sys_helper/sys_helper.h"
+
 
 #define HMC_SERIAL_ADDR 0x1E
 
@@ -63,7 +63,8 @@
 #define a33_d 7
 
 
-
+#define magn_skip_val 20
+static uint8_t magn_skip = 0;
 
 
 void HMC_init();
@@ -71,7 +72,7 @@ void HMC_init();
 void HMC_get_raw_Data(int16_t* mx, int16_t* my, int16_t* mz);
 void HMC_get_true_Data(int16_t* mx, int16_t* my, int16_t* mz);
 void HMC_getScaledData(int16_t* mx, int16_t* my, int16_t* mz);
-
+void HMC_get_Data(int16_t* mx, int16_t* my, int16_t* mz);
 int8_t HMC_setMode(uint8_t mode);
 int8_t HMC_setScale(float gauss);
 

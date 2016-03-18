@@ -116,9 +116,9 @@ Finished Pre Mapping Phase.
 @N: BN225 |Writing default property annotation file C:\Users\vetal\Documents\copter\Astraeus\mss_example\synthesis\mss_top.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 73MB peak: 139MB)
+At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 73MB peak: 139MB)
 
-Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Wed Jan 27 18:30:50 2016
+Process took 0h:00m:02s realtime, 0h:00m:01s cputime
+# Sun Feb 14 22:32:50 2016
 
 ###########################################################]

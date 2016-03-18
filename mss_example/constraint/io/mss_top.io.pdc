@@ -46,13 +46,13 @@ set_io TX              \
     -DIRECTION OUTPUT
 
 set_io RX2             \
-    -pinname 49        \
+    -pinname 47        \
     -fixed yes        \
     -DIRECTION INPUT
 
 
 set_io TX2              \
-    -pinname 47         \
+    -pinname 49         \
     -fixed yes         \
     -DIRECTION OUTPUT
 

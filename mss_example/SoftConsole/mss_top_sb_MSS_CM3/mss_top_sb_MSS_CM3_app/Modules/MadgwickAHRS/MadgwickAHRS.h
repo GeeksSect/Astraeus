@@ -12,9 +12,12 @@
 //=====================================================================================================
 #ifndef MadgwickAHRS_h
 #define MadgwickAHRS_h
-
+#define rad_to_int 3437.746770784939
 //----------------------------------------------------------------------------------------------------
 // Variable declaration
+#include <stdint.h>
+#include <stdlib.h>
+#include <math.h>
 
 extern volatile float beta;				// algorithm gain
 extern volatile float q0, q1, q2, q3;	// quaternion of sensor frame relative to auxiliary frame
@@ -24,7 +27,7 @@ extern volatile float q0, q1, q2, q3;	// quaternion of sensor frame relative to 
 
 void MadgwickAHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
 void MadgwickAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az);
-
+void get_euclid(int16_t * pitch, int16_t * roll, int16_t * yaw);
 #endif
 //=====================================================================================================
 // End of file

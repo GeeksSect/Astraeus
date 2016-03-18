@@ -18,21 +18,12 @@
 #include "system_m2sxxx.h"
 #include "drivers/mss_timer/mss_timer.h"
 
-static uint32_t t_h = 0;
-static uint16_t lose_connection;
+static volatile uint32_t t_h = 0;
+
 
 uint64_t micros();
 
 void init_timer();
 void stop_timer();
-//overflow
 void Timer1_IRQHandler();
-int32_t my_atoi(uint8_t *buf,
-			uint8_t l);
-uint16_t get_conn();
-void inc_conn();
-void reset_conn();
-
-
 #endif /* MICROS_H_ */
-

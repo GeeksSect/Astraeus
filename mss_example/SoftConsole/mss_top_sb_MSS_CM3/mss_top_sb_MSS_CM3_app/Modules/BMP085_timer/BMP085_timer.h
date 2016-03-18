@@ -7,11 +7,10 @@
 
 #ifndef BMP085_timer_H_
 #define BMP085_timer_H_
-#include "../../Helpers/sys_helper/sys_helper.h"
+
 #include "../I2C/i2c.h"
 #include "system_m2sxxx.h"
-#include "drivers/mss_timer/mss_timer.h"
-
+#include <math.h>
 #define BMP085_I2CADDR 0x77
 
 #define BMP085_ULTRALOWPOWER 0
@@ -35,17 +34,12 @@
 #define BMP085_PRESSUREDATA      0xF6
 #define BMP085_READTEMPCMD          0x2E
 #define BMP085_READPRESSURECMD            0x34
-#define frq            50000000
+
 
 
 
 	uint8_t BMP085_begin(uint8_t mode);  // by default go highres
-	float BMP085_readTemperature(void);
-	int32_t BMP085_readPressure(void);
-	int32_t BMP085_readSealevelPressure(float altitude_meters);
-	float BMP085_readAltitude(float sealevelPressure); // std atmosphere
-	uint16_t BMP085_readRawTemperature(void);
-	uint32_t BMP085_readRawPressure(void);
+
 
 
 	void BMP085_readRawTemperature_reqest();
@@ -59,6 +53,7 @@
 	uint8_t BMP085_read8(uint8_t addr);
 	uint16_t BMP085_read16(uint8_t addr);
 	void BMP085_write8(uint8_t addr, uint8_t data);
+	void BMP085_update(float * Altitude);
 
 	uint8_t oversampling;
 
@@ -66,10 +61,8 @@
 	uint16_t ac4, ac5, ac6;
 
 	uint8_t BMP_state;
-	uint32_t tmp1, tmp2, pres;
+	uint32_t BMP_tmp1, BMP_tmp2, BMP_Altitude;
 
-	void run_BMP_by_timer();
-	void stop_timer2();
-	void Timer2_IRQHandler();
+
 
 #endif /* BMP085_H_ */

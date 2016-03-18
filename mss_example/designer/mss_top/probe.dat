@@ -2027,8 +2027,8 @@ PkgPin: Id=31 Name=38 Port= Status=2
 PkgPin: Id=32 Name=37 Port= Status=2
 PkgPin: Id=34 Name=43 Port=pwm_out_2 Status=2
 PkgPin: Id=36 Name=44 Port= Status=2
-PkgPin: Id=37 Name=47 Port=TX2 Status=2
 PkgPin: Id=38 Name=46 Port= Status=2
+PkgPin: Id=39 Name=49 Port=TX2 Status=2
 PkgPin: Id=40 Name=48 Port= Status=2
 PkgPin: Id=42 Name=52 Port= Status=2
 PkgPin: Id=44 Name=53 Port= Status=2
