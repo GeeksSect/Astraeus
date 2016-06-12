@@ -3,10 +3,17 @@
  *
  *  Created on: 28.01.2016
  *      Author: vetal
- */
+*/
 
 #include "telemetry.h"
 
+uint16_t print_mask =0; //mask which set data types for sending to PC
+uint8_t motor_mask_RC =0x0F; //mask for switch off
+uint8_t telemetry_skip = 1, telemetry_skip_counter = 0;
+int16_t pitch_RC = 0, roll_RC = 0, yaw_RC = 0; // angles which set by radio control
+int16_t gx_RC = 0, gy_RC = 0, gz_RC = 0;
+int16_t force_RC = 0;
+uint16_t lose_state = 0;
 
 void init_BT(void)
 {
@@ -27,6 +34,8 @@ void send_messange(const uint8_t * p_sz_string)
 {
 	UART_polled_tx_string(&uart_bt, p_sz_string);
 }
+
+
 void update_telemetry(int16_t a, int16_t b, int16_t c, int16_t d, int16_t e, int16_t f, int16_t g, int16_t h, int16_t I, int16_t j, int16_t K, int16_t l, int16_t m, int16_t n)
 {
 	if(telemetry_skip_counter > telemetry_skip)
@@ -67,8 +76,13 @@ void update_telemetry(int16_t a, int16_t b, int16_t c, int16_t d, int16_t e, int
 		telemetry_skip_counter++;
 }
 
+
 void reserve_BT()
 {
+	static uint8_t rx_buff[128];
+	static uint8_t rx_size = 0, rd_pos = 0, wr_pos = 0;
+
+
 	rx_size = UART_get_rx(&uart_bt, rx_buff + wr_pos, sizeof(rx_buff) - wr_pos);
 	wr_pos+=rx_size;
 	uint8_t i =0;
@@ -80,22 +94,22 @@ void reserve_BT()
 			{
 				case 'p':
 				{
-					pitch0 = my_atoi (rx_buff + rd_pos + 1, 5);
+					pitch_RC = my_atoi (rx_buff + rd_pos + 1, 5);
 					break;
 				}
 				case 'r':
 				{
-					roll0 = my_atoi (rx_buff + rd_pos + 1, 5);
+					roll_RC = my_atoi (rx_buff + rd_pos + 1, 5);
 					break;
 				}
 				case 'y':
 				{
-					yaw_state = my_atoi (rx_buff + rd_pos + 1, 5);
+					gz_RC = my_atoi (rx_buff + rd_pos + 1, 5);
 					break;
 				}
 				case 'f':
 				{
-					force = (my_atoi (rx_buff + rd_pos + 1, 5));
+					force_RC = (my_atoi (rx_buff + rd_pos + 1, 5));
 					break;
 				}
 				case 'P':
@@ -130,13 +144,18 @@ void reserve_BT()
 				}
 				case 'a':
 				{
-					motor_mask = (my_atoi (rx_buff + rd_pos + 1, 5));
+					motor_mask_RC = (my_atoi (rx_buff + rd_pos + 1, 5));
 					break;
 				}
 				case 'l':
 				{
-					force = (my_atoi (rx_buff + rd_pos + 1, 5));
+					force_RC = (my_atoi (rx_buff + rd_pos + 1, 5));
 					lose_state = 0;
+					break;
+				}
+				case 'c':
+				{
+
 					break;
 				}
 				case 'm':
@@ -146,6 +165,7 @@ void reserve_BT()
 					for(i = 0 ; i< 13 ; i++)
 						if(print_mask & (1<<i))
 							telemetry_skip++;
+					telemetry_skip = telemetry_skip/3;
 					break;
 				}
 			}
@@ -156,21 +176,19 @@ void reserve_BT()
 		rd_pos=wr_pos = 0;
 
 }
-void get_RC_angles(int16_t * pitch, int16_t * roll, int16_t * yaw)
+
+
+void update_RC_angles_move()
 {
-	*pitch = pitch0;
-	*roll = roll0;
-	*yaw = yaw0;
+	static int16_t pitch_RC_prev = 0, roll_RC_prev = 0;
+	gx_RC = (roll_RC_prev - roll_RC)*(250);
+	roll_RC_prev = roll_RC;
+	gy_RC = (pitch_RC - pitch_RC_prev)*(250);
+	pitch_RC_prev = pitch_RC;
 }
-void get_force(int16_t * _force)
-{
-	*_force = force;
-}
-void get_motor_mask(uint8_t * _mask)
-{
-	*_mask = motor_mask;
-}
-void lose_update(int16_t * force)
+
+
+void lose_update()
 {
 	lose_state++;
 	if(lose_state<sleep_time)
@@ -183,12 +201,14 @@ void lose_update(int16_t * force)
 	if(lose_state<sleep_time+wait_time)
 		return;
 	else
-		*force = 0;
+		force_RC = 0;
 
 }
+
+
 void send_val(int8_t _type, int32_t val)
 {
-	static uint8_t print_buf[8], i;
+	uint8_t print_buf[8], i;
 	for(i=0; i<8; i++)
 		print_buf[i] = NULL;
 	itoa((char *)&print_buf+1, 'd', val);
@@ -196,11 +216,25 @@ void send_val(int8_t _type, int32_t val)
 	UART_send(&uart_bt, (const uint8_t *)print_buf, 8);
 	UART_polled_tx_string(&uart_bt, (const uint8_t *)"\n");
 }
-void update_yaw0()
+void update_yaw_RC()
 {
-	if(yaw_state != 0)
+	if(gz_RC != 0)
 	{
-		yaw0 += yaw_state;
+		yaw_RC += gz_RC;
 	}
 }
 
+int8_t get_motor_mask()
+{
+	return motor_mask_RC;
+}
+int16_t get_force()
+{
+	return force_RC;
+}
+void get_RC_angles(int16_t * pitch, int16_t * roll, int16_t * yaw)
+{
+	*pitch = pitch_RC;
+	*roll = roll_RC;
+	*yaw = yaw_RC;
+}

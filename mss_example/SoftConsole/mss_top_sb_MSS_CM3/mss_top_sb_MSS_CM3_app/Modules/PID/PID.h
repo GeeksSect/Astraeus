@@ -29,23 +29,23 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
-#include "C:\Users\vetal\Documents\copter\Astraeus\mss_example\SoftConsole\mss_top_sb_MSS_CM3\mss_top_sb_MSS_CM3_app\Modules\helpers\helpers.h"
+#include "C:\Users\vetal\Documents\Astraeus\mss_example\SoftConsole\mss_top_sb_MSS_CM3\mss_top_sb_MSS_CM3_app\Modules\helpers\helpers.h"
 
-static int16_t Kp_u = 14, Kd_u= 10;
-static int32_t Ki_u= 4;
-static int16_t P_lim = 35, I_lim = 40, D_lim = 45;
+static int16_t Kp_u = 11, Kd_u= 11;
+static int32_t Ki_u= 12;
+static int16_t P_lim = 200, I_lim = 50, D_lim = 200;
+static int16_t amplif = 6;
 static int32_t I_lim2;
-static int16_t Itmp_p, Itmp_r, Itmp_y;
+static int16_t Itmp_p = 87381, Itmp_r = -1310720, Itmp_y; // this val's get from telemetry after flying
 static int16_t Dtmp_p, Dtmp_r, Dtmp_y;
 static int16_t Ptmp_p, Ptmp_r, Ptmp_y;
 
 
 inline void my_PID(int16_t pitch, int16_t roll, int16_t yaw,
 					int16_t gx, int16_t gy, int16_t gz,
-					int16_t * force, int16_t * pow);
+					int16_t force, int16_t * pow);
 void my_yaw(int16_t * mx, int16_t * my, int16_t * mz, int16_t *yaw, int16_t * pitch, int16_t *roll);
-void my_ESC(int16_t * pow, int16_t * force);
-
+void my_ESC(int16_t * pow, int16_t force);
 
 //helpers
 double my_degree_to_float (int16_t val);
